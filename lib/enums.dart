@@ -1,0 +1,1 @@
+enum AppBarAction { qrCodeScanner, notification }

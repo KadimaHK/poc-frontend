@@ -1,0 +1,52 @@
+{
+    "appTitle": "POC",
+    "home": "Home",
+    "explore": "Explore",
+    "search": "Search",
+    "message": "Message",
+    "profile": "Profile",
+    "setting": "Setting",
+    "logout": "Logout",
+
+    "bookings": "Bookings",
+    "showAllReservations": "Show all reservations.",
+    "storedLiqueurs": "Stored Liqueurs",
+    "recordAndShowDetailsOfYourStoredLiqueurs": "Record and show details of your stored liqueurs.",
+    "vouchers": "Vouchers",
+    "showAllVouchers": "Show all vouchers.",
+
+    "browsingHistory": "Browsing History",
+    "orderHistory": "Order History",
+    "privacySetting": "Privacy Setting",
+    "needHelp": "Need Help?",
+    "aboutUs": "About Us",
+    "whereIsMyVouchers": "Where is my vouchers?",
+
+    "qrCodeScanner": "QR Code Scanner",
+    "scan": "Scan",
+    "show": "Show",
+
+    "notification": "Notification",
+    "personal": "Personal",
+    "news": "News",
+
+    "order": "Order",
+    "menu": "Menu",
+    "booking": "Booking",
+    "contact": "Contact",
+
+    "notice": "Notice",
+    "benefits": "Benefits",
+    "photos": "Photos",
+    "about": "About",
+    "ratings": "Ratings",
+    "relatedNews": "Related News",
+    "suggestedBars": "Suggested Bars",
+
+    "distance": "Distance",
+    "location": "Location",
+    "theme": "Theme",
+    "facilities": "Facilities",
+
+    "empty":"empty"
+}
