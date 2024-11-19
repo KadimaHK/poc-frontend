@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:poc_frontend/components/searchBar.dart';
+import 'package:poc_frontend/components/iconButtonLabel.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -10,7 +12,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   TextEditingController searchController = TextEditingController();
-  bool _isShowClearBtn = false;
 
   @override
   Widget build(BuildContext context) {
@@ -26,192 +27,47 @@ class _HomePageState extends State<HomePage> {
             child: ListView(
               children: [
                 // Picks
+                Text(t.fridaysPick, style: TextStyle(fontSize: 20)),
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 20),
                   height: 200,
                   child: ListView(scrollDirection: Axis.horizontal, children: [
-                    Container(
-                      width: 200,
-                      margin: const EdgeInsets.only(right: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.blue,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.star, size: 50),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: 200,
-                      margin: const EdgeInsets.only(right: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.blue,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.star, size: 50),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: 200,
-                      margin: const EdgeInsets.only(right: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.blue,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.star, size: 50),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: 200,
-                      margin: const EdgeInsets.only(right: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.blue,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.star, size: 50),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: 200,
-                      margin: const EdgeInsets.only(right: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.blue,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.star, size: 50),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: 200,
-                      margin: const EdgeInsets.only(right: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.blue,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.star, size: 50),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: 200,
-                      margin: const EdgeInsets.only(right: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.blue,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.star, size: 50),
-                        ],
-                      ),
-                    ),
+                    
                   ]),
                 ),
 
-                // Container(
+                // Buttons
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    IconButton(onPressed: () => {}, icon: Icon(Icons.star)),
-                    IconButton(onPressed: () => {}, icon: Icon(Icons.star)),
-                    IconButton(onPressed: () => {}, icon: Icon(Icons.star)),
-                    IconButton(onPressed: () => {}, icon: Icon(Icons.star)),
+                    LabeledIconButton(
+                      assetImagePath: 'assets/images/icon_menu_0.png',
+                      label: t.nearby,
+                      onPressed: () => {},
+                    ),
+                    LabeledIconButton(
+                      assetImagePath: 'assets/images/icon_menu_1.png',
+                      label: t.bookings,
+                      onPressed: () => {},
+                    ),
+                    LabeledIconButton(
+                      assetImagePath: 'assets/images/icon_menu_2.png',
+                      label: t.benefit,
+                      onPressed: () => {},
+                    ),
+                    LabeledIconButton(
+                      assetImagePath: 'assets/images/icon_menu_3.png',
+                      label: t.storedLiqueurs,
+                      onPressed: () => {},
+                    ),
                   ],
                 ),
-                //ads dummy
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 20),
-                  height: 200,
-                  child: ListView(scrollDirection: Axis.horizontal, children: [
-                    Container(
-                      width: 200,
-                      margin: const EdgeInsets.only(right: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.blue,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.star, size: 50),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: 200,
-                      margin: const EdgeInsets.only(right: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.blue,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.star, size: 50),
-                        ],
-                      ),
-                    ),
-                  ]),
+
+                ListTile(
+                  title: Text(t.featured, style: TextStyle(fontSize: 20)),
+                  trailing: Icon(Icons.arrow_forward_ios, size: 10),
                 ),
                 //Featured
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 20),
-                  height: 200,
-                  child: ListView(scrollDirection: Axis.horizontal, children: [
-                    Text("featured"),
-                    Container(
-                      width: 200,
-                      margin: const EdgeInsets.only(right: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.blue,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.star, size: 50),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: 200,
-                      margin: const EdgeInsets.only(right: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.blue,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.star, size: 50),
-                        ],
-                      ),
-                    ),
-                  ]),
-                ),
               ],
             ),
           ),
@@ -220,4 +76,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-

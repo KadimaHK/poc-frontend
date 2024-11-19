@@ -118,7 +118,7 @@ class _MainPageState extends State<MainPage> {
 
   static final List<Widget> _list = [HomePage(), ExplorePage(), SearchPage(), MessagePage(), ProfilePage()];
 //change for debug
-  int _selectedIndex = 2;
+  int _selectedIndex = 0;
   bool _isMainPage = true;
 
   void _onBackButtonPressed() {

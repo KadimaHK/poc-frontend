@@ -36,6 +36,7 @@
     "contact": "Contact",
 
     "notice": "Notice",
+    "benefit": "Benefit",
     "benefits": "Benefits",
     "photos": "Photos",
     "about": "About",
@@ -47,6 +48,12 @@
     "location": "Location",
     "theme": "Theme",
     "facilities": "Facilities",
+
+    "nearby": "Nearby",
+    "featured": "Featured",
+
+    "fridaysPick": "Friday's Pick",
+
 
     "empty":"empty"
 }
