@@ -1,3 +1,59 @@
 {
-    "appTitle": "POC zh"
+    "appTitle": "POC",
+    "home": "首頁",
+    "explore": "探索",
+    "search": "搜尋",
+    "message": "訊息",
+    "profile": "個人資料",
+    "setting": "設定",
+    "logout": "登出",
+
+    "bookings": "訂單",
+    "showAllReservations": "顯示所有預訂。",
+    "storedLiqueurs": "儲存的酒類",
+    "recordAndShowDetailsOfYourStoredLiqueurs": "記錄並顯示您儲存的酒類的詳細資料。",
+    "vouchers": "禮券",
+    "showAllVouchers": "顯示所有禮券。",
+
+    "browsingHistory": "瀏覽歷史",
+    "orderHistory": "訂單歷史",
+    "privacySetting": "隱私設定",
+    "needHelp": "需要幫助嗎？",
+    "aboutUs": "關於我們",
+    "whereIsMyVouchers": "我的禮券在哪裡？",
+
+    "qrCodeScanner": "QR碼掃描器",
+    "scan": "掃描",
+    "show": "顯示",
+
+    "notification": "通知",
+    "personal": "個人",
+    "news": "新聞",
+
+    "order": "訂單",
+    "menu": "菜單",
+    "booking": "預訂",
+    "contact": "聯絡",
+
+    "notice": "通知",
+    "benefit": "好處",
+    "benefits": "好處",
+    "photos": "照片",
+    "about": "關於",
+    "ratings": "評分",
+    "relatedNews": "相關新聞",
+    "suggestedBars": "建議的酒吧",
+
+    "distance": "距離",
+    "location": "地點",
+    "theme": "主題",
+    "facilities": "設施",
+
+    "nearby": "附近",
+    "featured": "精選",
+
+    "fridaysPick": "星期五精選",
+
+
+    "empty":"空"
 }

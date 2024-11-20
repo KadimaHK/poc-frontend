@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:poc_frontend/api/lib/api.dart';
-import 'package:poc_frontend/components/searchBar.dart';
+import 'package:poc_frontend/components/search_bar.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});

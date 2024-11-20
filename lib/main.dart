@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:poc_frontend/pages/barProfilePage.dart';
-import 'package:poc_frontend/pages/explorePage.dart';
-import 'package:poc_frontend/pages/homePage.dart';
-import 'package:poc_frontend/pages/messagePage.dart';
-import 'package:poc_frontend/pages/notificationPage.dart';
-import 'package:poc_frontend/pages/profilePage.dart';
-import 'package:poc_frontend/pages/searchPage.dart';
-import 'package:poc_frontend/components/appBar.dart';
-import 'pages/qrCodeScannerPage.dart';
+import 'package:poc_frontend/pages/bar_profile_page.dart';
+import 'package:poc_frontend/pages/main/explore_page.dart';
+import 'package:poc_frontend/pages/main/home_page.dart';
+import 'package:poc_frontend/pages/main/message_page.dart';
+import 'package:poc_frontend/pages/notification_page.dart';
+import 'package:poc_frontend/pages/main/profile_page.dart';
+import 'package:poc_frontend/pages/main/search_page.dart';
+import 'package:poc_frontend/components/app_bar.dart';
+import 'pages/qr_code_scanner_page.dart';
 import 'enums.dart';
 
 void main() {

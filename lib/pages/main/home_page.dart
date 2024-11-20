@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:poc_frontend/components/searchBar.dart';
-import 'package:poc_frontend/components/iconButtonLabel.dart';
+import 'package:poc_frontend/api/lib/api.dart' as api;
+import 'package:poc_frontend/components/pick_card_view.dart';
+import 'package:poc_frontend/components/search_bar.dart';
+import 'package:poc_frontend/components/icon_button_label.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,6 +14,17 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   TextEditingController searchController = TextEditingController();
+  List<api.VwPick> picks = [];
+  @override
+  void initState() {
+    fetchPicks();
+    super.initState();
+  }
+
+  Future<void> fetchPicks() async {
+    picks = await api.VwPickApi().vwPickGet() ?? [];
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +40,14 @@ class _HomePageState extends State<HomePage> {
             child: ListView(
               children: [
                 // Picks
-                Text(t.fridaysPick, style: TextStyle(fontSize: 20)),
+                Text(t.pick, style: TextStyle(fontSize: 20)),
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 20),
                   height: 200,
-                  child: ListView(scrollDirection: Axis.horizontal, children: [
-                    
-                  ]),
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: picks.map((pick) => PickCardView(pick: pick)).toList(),
+                  ),
                 ),
 
                 // Buttons

@@ -52,8 +52,13 @@
     "nearby": "Nearby",
     "featured": "Featured",
 
-    "fridaysPick": "Friday's Pick",
 
+    "pick": "Pick",
+    "firdays": "Friday's",
+
+
+    "daysLeft": "Days Left",
+    "dayLeft": "Day Left",
 
     "empty":"empty"
 }
