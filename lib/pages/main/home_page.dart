@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:poc_frontend/api/lib/api.dart' as api;
+import 'package:poc_frontend/components/featured_card_view.dart';
+import 'package:poc_frontend/components/featured_offer_card_view.dart';
 import 'package:poc_frontend/components/pick_card_view.dart';
 import 'package:poc_frontend/components/search_bar.dart';
 import 'package:poc_frontend/components/icon_button_label.dart';
@@ -15,14 +17,19 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   TextEditingController searchController = TextEditingController();
   List<api.VwPick> picks = [];
+  List<api.VwFeatured> featured = [];
+  List<api.VwFeaturedOffer> featuredOffers = [];
+
   @override
   void initState() {
-    fetchPicks();
+    fetchData();
     super.initState();
   }
 
-  Future<void> fetchPicks() async {
+  Future<void> fetchData() async {
     picks = await api.VwPickApi().vwPickGet() ?? [];
+    featured = await api.VwFeaturedApi().vwFeaturedGet(limit: "4") ?? [];
+    featuredOffers = await api.VwFeaturedOfferApi().vwFeaturedOfferGet(limit: "8") ?? [];
     setState(() {});
   }
 
@@ -40,15 +47,18 @@ class _HomePageState extends State<HomePage> {
             child: ListView(
               children: [
                 // Picks
-                Text(t.pick, style: TextStyle(fontSize: 20)),
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 20),
-                  height: 200,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: picks.map((pick) => PickCardView(pick: pick)).toList(),
-                  ),
+                ListTile(
+                  title: Text(t.pick),
                 ),
+                Container(
+                    margin: const EdgeInsets.symmetric(vertical: 20),
+                    height: 150,
+                    child: ListView.separated(
+                      itemBuilder: (context, index) => PickCardView(pick: picks[index]),
+                      separatorBuilder: (context, index) => const SizedBox(width: 10),
+                      itemCount: picks.length,
+                      scrollDirection: Axis.horizontal,
+                    )),
 
                 // Buttons
                 Row(
@@ -78,10 +88,39 @@ class _HomePageState extends State<HomePage> {
                 ),
 
                 ListTile(
-                  title: Text(t.featured, style: TextStyle(fontSize: 20)),
+                  title: Text(t.featured),
                   trailing: Icon(Icons.arrow_forward_ios, size: 10),
                 ),
-                //Featured
+                // Featured
+
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 20),
+                  height: 300,
+                  child: GridView(
+                    physics: NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, mainAxisExtent: 150, crossAxisSpacing: 10, mainAxisSpacing: 10),
+                    children: [
+                      ...featured.map((f) => FeaturedCardView(featured: f)).toList(),
+                    ],
+                  ),
+                ),
+
+                // Featured Offers
+                ListTile(
+                  title: Text(t.featuredOffers),
+                  trailing: Icon(Icons.arrow_forward_ios, size: 10),
+                ),
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 20),
+                  height: 150,
+                  child: 
+                  ListView.separated(
+                    itemBuilder: (context, index) => FeaturedOfferCardView(featuredOffer: featuredOffers[index]),
+                    separatorBuilder: (context, index) => const SizedBox(width: 10),
+                    itemCount: featuredOffers.length,
+                    scrollDirection: Axis.horizontal,
+                  ),
+                ),
               ],
             ),
           ),

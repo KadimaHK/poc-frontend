@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:poc_frontend/pages/bar_profile_page.dart';
+import 'package:poc_frontend/api/lib/api.dart' as api;
+import 'package:poc_frontend/pages/featured_detail_page.dart';
 import 'package:poc_frontend/pages/main/explore_page.dart';
 import 'package:poc_frontend/pages/main/home_page.dart';
 import 'package:poc_frontend/pages/main/message_page.dart';
@@ -68,6 +69,7 @@ class _MyAppState extends State<MyApp> {
           tileColor: primaryColor,
           iconColor: Colors.white,
           textColor: Colors.white,
+          titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
         ),
         tabBarTheme: TabBarTheme(
           labelColor: Colors.white,
@@ -120,6 +122,7 @@ class _MainPageState extends State<MainPage> {
 //change for debug
   int _selectedIndex = 0;
   bool _isMainPage = true;
+  Widget? _externalPage;
 
   void _onBackButtonPressed() {
     setState(() {
@@ -134,7 +137,6 @@ class _MainPageState extends State<MainPage> {
     });
   }
 
-  Widget? _externalPage = BarProfilePage();
   void _onAppBarAction(AppBarAction action) {
     setState(() {
       _isMainPage = false;
@@ -180,7 +182,6 @@ class _MainPageState extends State<MainPage> {
     );
   }
 }
-
 
 Widget _drawerMenu = Drawer(
   child: ListView(

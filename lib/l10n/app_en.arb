@@ -60,5 +60,8 @@
     "daysLeft": "Days Left",
     "dayLeft": "Day Left",
 
+    "featuredOffers": "Featured Offers",
+    "restaurantInfo": "Restaurant Info",
+
     "empty":"empty"
 }
