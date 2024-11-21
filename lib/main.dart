@@ -12,6 +12,7 @@ import 'package:poc_frontend/pages/main/search_page.dart';
 import 'package:poc_frontend/components/app_bar.dart';
 import 'pages/qr_code_scanner_page.dart';
 import 'enums.dart';
+import 'dart:developer';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +26,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   Locale? _locale;
   void setLocale(Locale value) {
     setState(() {
@@ -122,58 +122,68 @@ class _MainState extends State<Main> {
   static final List<Widget> _list = [HomePage(), ExplorePage(), SearchPage(), MessagePage(), ProfilePage()];
 //change for debug
   int _selectedIndex = 0;
-  bool _isDefaultAppBarShow = true;
-  Widget? _externalPage;
-
-  void _onBackButtonPressed() {
-    setState(() {
-      _isDefaultAppBarShow = true;
-    });
-  }
 
   void _onItemTapped(int index) {
     setState(() {
-      _isDefaultAppBarShow = index != 4;
       _selectedIndex = index;
     });
   }
 
   void _onAppBarAction(AppBarAction action) {
     setState(() {
-      _isDefaultAppBarShow = false;
       switch (action) {
         case AppBarAction.qrCodeScanner:
           Navigator.push(context, MaterialPageRoute(builder: (context) => QrCodeScannerPage()));
           break;
         case AppBarAction.notification:
-          _externalPage = NotificationPage(onBackButtonPressed: _onBackButtonPressed);
+          Navigator.pushNamed(context, '/notification');
           break;
       }
     });
-  }
-  void _onBarProfilePressed(api.VwEstablishment establishment) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => BarProfilePage()));
   }
 
   @override
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
     final List<String> titles = [t.home, t.explore, t.search, t.message, t.profile];
-
+    GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
     return Scaffold(
       key: _scaffoldKey,
       drawer: _drawerMenu,
-      appBar: _isDefaultAppBarShow
-          ? MainAppBar(
-              scaffoldKey: _scaffoldKey,
-              onAction: _onAppBarAction,
-              title: titles[_selectedIndex],
-            )
-          : null,
-      body: _isDefaultAppBarShow ? _list[_selectedIndex] : _externalPage,
+      appBar: MainAppBar(
+        scaffoldKey: _scaffoldKey,
+        onAction: _onAppBarAction,
+        title: titles[_selectedIndex],
+      ),
+      body: Navigator(
+          key: _navigatorKey,
+        onGenerateRoute: (settings) {
+          if (settings.name == '/notification') {
+            return MaterialPageRoute(builder: (context) {
+              log('notification', name: 'Main');
+              return NotificationPage();
+            });
+          }
+          if (settings.name == '/featured_detail') {
+            final featured = settings.arguments as api.VwFeatured;
+            return MaterialPageRoute(builder: (context) {
+              log('featured_detail', name: 'Main');
+              return FeaturedDetailPage(featured: featured);
+            });
+          }
+          return MaterialPageRoute(
+            builder: (context) {
+              return _list[_selectedIndex];
+            },
+          );
+        },
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
-        onTap: (value) => _onItemTapped(value),
+        onTap: (value) => setState(() {
+          // _selectedIndex = value;
+          _navigatorKey.currentState!.pushNamed('/${titles[_selectedIndex].toLowerCase().replaceAll(' ', '_')}');
+        }),
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: t.home),

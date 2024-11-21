@@ -38,7 +38,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
           },
         ),
         IconButton(onPressed: () => onAction(AppBarAction.qrCodeScanner), icon: Icon(Icons.qr_code_scanner)),
-        IconButton(onPressed: () => onAction(AppBarAction.notification), icon: Icon(Icons.notifications_none)),
+        IconButton(onPressed: () => Navigator.pushNamed(context, '/notification'), icon: Icon(Icons.notifications_none)),
       ],
     );
   }

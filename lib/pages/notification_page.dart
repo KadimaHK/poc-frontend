@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NotificationPage extends StatefulWidget {
-  const NotificationPage({super.key, required this.onBackButtonPressed});
-  //back button call back
-  final void Function() onBackButtonPressed;
+  const NotificationPage({super.key});
 
   @override
   State<NotificationPage> createState() => _NotificationPageState();
@@ -20,22 +18,23 @@ class _NotificationPageState extends State<NotificationPage> with SingleTickerPr
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
   }
+
   @override
   void dispose() {
     super.dispose();
     _tabController.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(onPressed: widget.onBackButtonPressed, icon: Icon(Icons.arrow_back_ios_new)),
+        leading: IconButton(onPressed: () => Navigator.pop(context), icon: Icon(Icons.arrow_back_ios_new)),
         title: Text(t.notification, textAlign: TextAlign.center),
       ),
-      body: 
-      Column(
+      body: Column(
         children: [
           TabBar(
             controller: _tabController,
@@ -58,7 +57,6 @@ class _NotificationPageState extends State<NotificationPage> with SingleTickerPr
     );
   }
 }
-
 
 class PersonalListView extends StatelessWidget {
   const PersonalListView({super.key});

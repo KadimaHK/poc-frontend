@@ -68,7 +68,9 @@
 
     "global": "Global",
     "exclusive": "Exclusive",
-
+    
+    "login": "Login",
+    "signUp": "Sign Up",
 
     "empty":"empty"
 }
