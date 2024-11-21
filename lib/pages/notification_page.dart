@@ -20,7 +20,11 @@ class _NotificationPageState extends State<NotificationPage> with SingleTickerPr
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
   }
-
+  @override
+  void dispose() {
+    super.dispose();
+    _tabController.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;

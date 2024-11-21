@@ -44,7 +44,10 @@ class _FeaturedDetailPageState extends State<FeaturedDetailPage> {
           ListTile(
             title: Text(t.restaurantInfo),
           ),
-          EstablishmentInfoCardView(establishmentId: widget.featured.establishmentId)
+          Container(
+            margin: EdgeInsets.all(10),
+            child: EstablishmentInfoCardView(establishmentId: widget.featured.establishmentId),
+          ),
         ],
       ),
     );

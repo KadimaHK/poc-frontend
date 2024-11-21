@@ -66,6 +66,9 @@
     "earn": "Earn",
     "pointsPerSeat": "points per seat",
 
+    "global": "Global",
+    "exclusive": "Exclusive",
+
 
     "empty":"empty"
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:poc_frontend/api/lib/api.dart' as api;
 
 class BarProfilePage extends StatefulWidget {
   const BarProfilePage({super.key});
-
   @override
   State<BarProfilePage> createState() => _BarProfilePageState();
 }
@@ -75,12 +75,10 @@ class _BarProfilePageState extends State<BarProfilePage> {
           subtitle: Text("Enjoy 10% off on all drinks during happy hour."),
           trailing: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
         ),
-       
         ListTile(
           title: Text(t.photos),
           trailing: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
         ),
-
         ListTile(
           title: Text(t.about),
           subtitle: Text("Expansive shopping complex offering chain boutiques, eateries, a cinema & public green spaces."),

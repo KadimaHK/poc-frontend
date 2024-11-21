@@ -40,7 +40,7 @@ class _SearchPageState extends State<SearchPage> {
               childAspectRatio: 1.5,
             ),
             children: [
-              ...categories.map((category) => SearchCategoryButton(type: category.category ?? "")).toList(),
+              ...categories.map((category) => SearchCategoryButton(type: category.category)).toList(),
             ],
           ),
         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:poc_frontend/api/lib/api.dart' as api;
+import 'package:poc_frontend/pages/bar_profile_page.dart';
 import 'package:poc_frontend/pages/featured_detail_page.dart';
 import 'package:poc_frontend/pages/main/explore_page.dart';
 import 'package:poc_frontend/pages/main/home_page.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
   Locale? _locale;
   void setLocale(Locale value) {
     setState(() {
@@ -90,7 +92,6 @@ class _MyAppState extends State<MyApp> {
           style: ButtonStyle(
             foregroundColor: WidgetStatePropertyAll(Colors.white),
             backgroundColor: WidgetStatePropertyAll(const Color(0xFF44B37E)),
-            
           ),
         ),
         chipTheme: ChipThemeData(
@@ -104,42 +105,42 @@ class _MyAppState extends State<MyApp> {
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: MainPage(),
+      home: Main(),
     );
   }
 }
 
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+class Main extends StatefulWidget {
+  const Main({super.key});
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<Main> createState() => _MainState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _MainState extends State<Main> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   static final List<Widget> _list = [HomePage(), ExplorePage(), SearchPage(), MessagePage(), ProfilePage()];
 //change for debug
   int _selectedIndex = 0;
-  bool _isMainPage = true;
+  bool _isDefaultAppBarShow = true;
   Widget? _externalPage;
 
   void _onBackButtonPressed() {
     setState(() {
-      _isMainPage = true;
+      _isDefaultAppBarShow = true;
     });
   }
 
   void _onItemTapped(int index) {
     setState(() {
-      _isMainPage = true;
+      _isDefaultAppBarShow = index != 4;
       _selectedIndex = index;
     });
   }
 
   void _onAppBarAction(AppBarAction action) {
     setState(() {
-      _isMainPage = false;
+      _isDefaultAppBarShow = false;
       switch (action) {
         case AppBarAction.qrCodeScanner:
           Navigator.push(context, MaterialPageRoute(builder: (context) => QrCodeScannerPage()));
@@ -150,6 +151,9 @@ class _MainPageState extends State<MainPage> {
       }
     });
   }
+  void _onBarProfilePressed(api.VwEstablishment establishment) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => BarProfilePage()));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -159,14 +163,14 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       key: _scaffoldKey,
       drawer: _drawerMenu,
-      appBar: _isMainPage
+      appBar: _isDefaultAppBarShow
           ? MainAppBar(
               scaffoldKey: _scaffoldKey,
               onAction: _onAppBarAction,
               title: titles[_selectedIndex],
             )
           : null,
-      body: _isMainPage ? _list[_selectedIndex] : _externalPage,
+      body: _isDefaultAppBarShow ? _list[_selectedIndex] : _externalPage,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: (value) => _onItemTapped(value),

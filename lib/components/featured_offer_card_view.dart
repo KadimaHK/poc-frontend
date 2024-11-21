@@ -15,12 +15,10 @@ class FeaturedOfferCardView extends StatefulWidget {
 }
 
 class _FeaturedOfferCardViewState extends State<FeaturedOfferCardView> {
-  static const width = 180.0;
-
   @override
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
-    
+
     return ClipRRect(
       borderRadius: BorderRadius.circular(8),
       child: Column(
@@ -28,14 +26,14 @@ class _FeaturedOfferCardViewState extends State<FeaturedOfferCardView> {
           Image.network(
             "${widget.featuredOffer.baseUrl}${widget.featuredOffer.fileName}",
             height: 80,
-            width: width,
+            width: double.infinity,
             fit: BoxFit.cover,
             loadingBuilder: (context, child, loadingProgress) => loadingProgress == null ? child : CircularProgressIndicator(),
           ),
           Container(
             padding: const EdgeInsets.all(10),
-            width: width,
-            height:70,
+            width: double.infinity,
+            height: 70,
             decoration: BoxDecoration(
               color: Colors.white,
             ),

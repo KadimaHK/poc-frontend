@@ -6,6 +6,8 @@ import 'package:poc_frontend/components/featured_offer_card_view.dart';
 import 'package:poc_frontend/components/pick_card_view.dart';
 import 'package:poc_frontend/components/search_bar.dart';
 import 'package:poc_frontend/components/icon_button_label.dart';
+import 'package:poc_frontend/pages/featured_offers_page.dart';
+import 'package:poc_frontend/pages/featured_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -51,14 +53,15 @@ class _HomePageState extends State<HomePage> {
                   title: Text(t.pick),
                 ),
                 Container(
-                    margin: const EdgeInsets.symmetric(vertical: 20),
-                    height: 150,
-                    child: ListView.separated(
-                      itemBuilder: (context, index) => PickCardView(pick: picks[index]),
-                      separatorBuilder: (context, index) => const SizedBox(width: 10),
-                      itemCount: picks.length,
-                      scrollDirection: Axis.horizontal,
-                    )),
+                  margin: const EdgeInsets.symmetric(vertical: 20),
+                  height: 150,
+                  child: ListView.separated(
+                    itemBuilder: (context, index) => PickCardView(pick: picks[index]),
+                    separatorBuilder: (context, index) => const SizedBox(width: 10),
+                    itemCount: picks.length,
+                    scrollDirection: Axis.horizontal,
+                  ),
+                ),
 
                 // Buttons
                 Row(
@@ -90,6 +93,7 @@ class _HomePageState extends State<HomePage> {
                 ListTile(
                   title: Text(t.featured),
                   trailing: Icon(Icons.arrow_forward_ios, size: 10),
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => FeaturedPage())),
                 ),
                 // Featured
 
@@ -109,13 +113,16 @@ class _HomePageState extends State<HomePage> {
                 ListTile(
                   title: Text(t.featuredOffers),
                   trailing: Icon(Icons.arrow_forward_ios, size: 10),
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => FeaturedOffersPage())),
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 20),
                   height: 150,
-                  child: 
-                  ListView.separated(
-                    itemBuilder: (context, index) => FeaturedOfferCardView(featuredOffer: featuredOffers[index]),
+                  child: ListView.separated(
+                    itemBuilder: (context, index) => SizedBox(
+                      width: 150,
+                      child: FeaturedOfferCardView(featuredOffer: featuredOffers[index]),
+                    ),
                     separatorBuilder: (context, index) => const SizedBox(width: 10),
                     itemCount: featuredOffers.length,
                     scrollDirection: Axis.horizontal,
