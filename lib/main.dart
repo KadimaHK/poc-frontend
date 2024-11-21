@@ -89,8 +89,8 @@ class _MyAppState extends State<MyApp> {
         textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
             foregroundColor: WidgetStatePropertyAll(Colors.white),
-            backgroundColor: WidgetStatePropertyAll(const Color.fromARGB(16, 179, 135, 135)),
-            shape: WidgetStatePropertyAll(CircleBorder()),
+            backgroundColor: WidgetStatePropertyAll(const Color(0xFF44B37E)),
+            
           ),
         ),
         chipTheme: ChipThemeData(

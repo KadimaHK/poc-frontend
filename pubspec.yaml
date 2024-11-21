@@ -44,6 +44,7 @@ dependencies:
       url: https://github.com/asmrtfm/qr_code_scanner
       ref: patch-1
       version: ^1.0.0
+  flutter_svg: ^2.0.15
 
 dev_dependencies:
   flutter_test:

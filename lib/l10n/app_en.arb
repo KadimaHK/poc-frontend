@@ -62,6 +62,10 @@
 
     "featuredOffers": "Featured Offers",
     "restaurantInfo": "Restaurant Info",
+    "buy": "Buy",
+    "earn": "Earn",
+    "pointsPerSeat": "points per seat",
+
 
     "empty":"empty"
 }
