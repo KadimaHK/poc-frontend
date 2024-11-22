@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:poc_frontend/api/lib/api.dart' as api;
+import 'package:poc_frontend/components/app_bar.dart';
 import 'package:poc_frontend/components/featured_card_view.dart';
 import 'package:poc_frontend/components/featured_offer_card_view.dart';
 import 'package:poc_frontend/components/pick_card_view.dart';
@@ -39,6 +40,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
     return Scaffold(
+      appBar: MainAppBar(title: t.home,),
       body: Column(
         children: [
           Padding(

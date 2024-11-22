@@ -108,16 +108,17 @@ class _EstablishmentInfoCardViewState extends State<EstablishmentInfoCardView> {
                     SizedBox(width: 10),
                     Text("${t.earn} "),
                     SvgPicture.asset(
-                      "assets/images/icon_poc.svg",
+                      "assets/images/logo.svg",
                       width: Theme.of(context).textTheme.bodyMedium?.fontSize,
                       height: Theme.of(context).textTheme.bodyMedium?.fontSize,
                     ),
                     Text(" ${establishment!.bookingPoints}"),
                     Text(" ${t.pointsPerSeat}"),
                     Spacer(),
-                    TextButton(onPressed: () => {}, child: Text(t.booking))
+                    TextButton(onPressed: () => {}, child: Text(t.booking)),
+                    
                   ],
-                )
+                ),
               ],
             ),
           ),

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:poc_frontend/api/lib/api.dart' as api;
+import 'package:poc_frontend/components/profile_drawer.dart';
 import 'package:poc_frontend/pages/bar_profile_page.dart';
 import 'package:poc_frontend/pages/featured_detail_page.dart';
+import 'package:poc_frontend/pages/login_page.dart';
 import 'package:poc_frontend/pages/main/explore_page.dart';
 import 'package:poc_frontend/pages/main/home_page.dart';
 import 'package:poc_frontend/pages/main/message_page.dart';
@@ -10,6 +12,7 @@ import 'package:poc_frontend/pages/notification_page.dart';
 import 'package:poc_frontend/pages/main/profile_page.dart';
 import 'package:poc_frontend/pages/main/search_page.dart';
 import 'package:poc_frontend/components/app_bar.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'pages/qr_code_scanner_page.dart';
 import 'enums.dart';
 import 'dart:developer';
@@ -20,6 +23,7 @@ void main() {
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
+  static SharedPreferences? prefs;
   @override
   State<MyApp> createState() => _MyAppState();
   static _MyAppState? of(BuildContext context) => context.findAncestorStateOfType<_MyAppState>();
@@ -34,9 +38,23 @@ class _MyAppState extends State<MyApp> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    SharedPreferences.getInstance().then((value) {
+      MyApp.prefs = value;
+      final String? languageCode = value.getString('languageCode');
+      final String? countryCode = value.getString('countryCode');
+      if (languageCode != null && countryCode != null) {
+        _locale = Locale(languageCode, countryCode);
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     Color primaryColor = Color(0xFF5F4F55);
     Color secondaryColor = Color(0xFF78626A);
+    Color tertiaryColor = Color(0xFFFFF1D8);
     return MaterialApp(
       title: 'POC',
       locale: _locale,
@@ -53,8 +71,10 @@ class _MyAppState extends State<MyApp> {
           unselectedItemColor: Colors.grey,
         ),
         colorScheme: ColorScheme.fromSeed(
-          primary: secondaryColor,
+          primary: primaryColor,
           seedColor: primaryColor,
+          secondary: secondaryColor,
+          surface: tertiaryColor,
         ),
         textTheme: Theme.of(context).textTheme.apply(
               bodyColor: Colors.white,
@@ -90,10 +110,12 @@ class _MyAppState extends State<MyApp> {
         ),
         textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
-            foregroundColor: WidgetStatePropertyAll(Colors.white),
-            backgroundColor: WidgetStatePropertyAll(const Color(0xFF44B37E)),
+            shape: WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+            foregroundColor: WidgetStatePropertyAll(const Color(0xFF4F3B49)),
+            backgroundColor: WidgetStatePropertyAll(const Color(0xFFFFF1D8)),
           ),
         ),
+        
         chipTheme: ChipThemeData(
           backgroundColor: primaryColor.withAlpha(200),
           labelStyle: TextStyle(color: Colors.white),
@@ -113,21 +135,16 @@ class _MyAppState extends State<MyApp> {
 class Main extends StatefulWidget {
   const Main({super.key});
   @override
-  State<Main> createState() => _MainState();
+  State<Main> createState() => MainState();
 }
 
-class _MainState extends State<Main> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+class MainState extends State<Main> {
+  static final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  static final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-  static final List<Widget> _list = [HomePage(), ExplorePage(), SearchPage(), MessagePage(), ProfilePage()];
+  static final List<Widget> _list = [HomePage(), ExplorePage(), SearchPage(), MessagePage()];
 //change for debug
   int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
   void _onAppBarAction(AppBarAction action) {
     setState(() {
@@ -136,7 +153,7 @@ class _MainState extends State<Main> {
           Navigator.push(context, MaterialPageRoute(builder: (context) => QrCodeScannerPage()));
           break;
         case AppBarAction.notification:
-          Navigator.pushNamed(context, '/notification');
+          Navigator.pushNamed(context, NotificationPage.routeName);
           break;
       }
     });
@@ -145,45 +162,53 @@ class _MainState extends State<Main> {
   @override
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
-    final List<String> titles = [t.home, t.explore, t.search, t.message, t.profile];
-    GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
     return Scaffold(
-      key: _scaffoldKey,
-      drawer: _drawerMenu,
-      appBar: MainAppBar(
-        scaffoldKey: _scaffoldKey,
-        onAction: _onAppBarAction,
-        title: titles[_selectedIndex],
-      ),
+      key: scaffoldKey,
+      drawer: profileDrawer,
       body: Navigator(
-          key: _navigatorKey,
+        key: navigatorKey,
         onGenerateRoute: (settings) {
-          if (settings.name == '/notification') {
+          log("onGenerateRoute", name: 'Main');
+          log(_selectedIndex.toString(), name: 'selectedIndex');
+          log(settings.name.toString(), name: 'settings.name');
+          if (settings.name == NotificationPage.routeName) {
             return MaterialPageRoute(builder: (context) {
-              log('notification', name: 'Main');
               return NotificationPage();
             });
           }
-          if (settings.name == '/featured_detail') {
+          if (settings.name == FeaturedDetailPage.routeName) {
             final featured = settings.arguments as api.VwFeatured;
             return MaterialPageRoute(builder: (context) {
-              log('featured_detail', name: 'Main');
               return FeaturedDetailPage(featured: featured);
             });
           }
-          return MaterialPageRoute(
-            builder: (context) {
+
+          // for the main pages without transition animation
+          return PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) {
+              log('PageRouteBuilder', name: 'Main');
+              if (_selectedIndex == 4) {
+                //check if user is logged in
+                log(MyApp.prefs!.getString('token') ?? 'no token', name: 'token');
+                if (MyApp.prefs!.getString('token') == null) {
+                  return LoginPage();
+                } else {
+                  return ProfilePage();
+                }
+              }
               return _list[_selectedIndex];
             },
+            transitionDuration: Duration.zero,
+            reverseTransitionDuration: Duration.zero,
           );
         },
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
-        onTap: (value) => setState(() {
-          // _selectedIndex = value;
-          _navigatorKey.currentState!.pushNamed('/${titles[_selectedIndex].toLowerCase().replaceAll(' ', '_')}');
-        }),
+        onTap: (index) {
+          setState(() => _selectedIndex = index);
+          navigatorKey.currentState!.pushReplacementNamed('/');
+        },
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: t.home),
@@ -196,81 +221,3 @@ class _MainState extends State<Main> {
     );
   }
 }
-
-Widget _drawerMenu = Drawer(
-  child: ListView(
-    children: [
-      DrawerHeader(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            CircleAvatar(
-              radius: 30,
-              backgroundImage: Image.network("https://www.shareicon.net/data/128x128/2016/05/24/770117_people_512x512.png").image,
-            ),
-            const SizedBox(width: 20),
-            Text('User Name'),
-            IconButton(onPressed: () => {}, icon: Icon(Icons.qr_code, color: Colors.white)),
-          ],
-        ),
-      ),
-      ListTile(
-        leading: Icon(Icons.table_bar_outlined),
-        title: Text('Bookings'),
-        subtitle: Text('Show all reservations'),
-        onTap: () {},
-      ),
-      ListTile(
-        leading: Icon(Icons.archive_outlined),
-        title: Text('Setting'),
-        subtitle: Text('Record and show details of your stored liqueurs'),
-        onTap: () {},
-      ),
-      ListTile(
-        leading: Icon(Icons.confirmation_num_outlined),
-        title: Text('Vouchers'),
-        subtitle: Text('Show all vouchers'),
-        onTap: () {},
-      ),
-      //split line
-      const Divider(),
-      ListTile(
-        leading: Icon(Icons.history),
-        title: Text('Browsing History'),
-        onTap: () {},
-      ),
-      ListTile(
-        leading: Icon(Icons.history),
-        title: Text('Order History'),
-        onTap: () {},
-      ),
-      ListTile(
-        leading: Icon(Icons.admin_panel_settings_outlined),
-        title: Text('Privacy Setting'),
-        onTap: () {},
-      ),
-      const Divider(),
-      ListTile(
-        title: Text('Need Help'),
-        onTap: () {},
-      ),
-      ListTile(
-        title: Text('About Us'),
-        onTap: () {},
-      ),
-      ListTile(
-        title: Text('Where is my vouchers'),
-        onTap: () {},
-      ),
-      const Divider(),
-      ListTile(
-        title: Text(
-          'Logout',
-          textAlign: TextAlign.center,
-        ),
-        tileColor: Color(0xFF78626A),
-        onTap: () {},
-      ),
-    ],
-  ),
-);

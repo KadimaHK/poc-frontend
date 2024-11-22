@@ -29,7 +29,7 @@ class _EstablishmentCardViewState extends State<EstablishmentCardView> {
                   right: 15,
                   top: 15,
                   child: Column(
-                    children: [Icon(Icons.bookmark_border, color: Colors.white), Text("1234")],
+                    children: [IconButton(onPressed: () {}, icon: Icon(Icons.bookmark_border)), Text("1234")],
                   )),
             ],
           ),

@@ -5,7 +5,7 @@ import 'package:poc_frontend/components/establishment_info_card_view.dart';
 
 class FeaturedDetailPage extends StatefulWidget {
   const FeaturedDetailPage({super.key, required this.featured});
-  // static const routeName = '/featured_detail';
+  static const routeName = '/featured_detail';
   final api.VwFeatured featured;
   @override
   State<FeaturedDetailPage> createState() => _FeaturedDetailPageState();

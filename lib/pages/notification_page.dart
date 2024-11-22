@@ -3,7 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NotificationPage extends StatefulWidget {
   const NotificationPage({super.key});
-
+  static const routeName = '/notification';
   @override
   State<NotificationPage> createState() => _NotificationPageState();
 }

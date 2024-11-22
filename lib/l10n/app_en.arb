@@ -71,6 +71,20 @@
     
     "login": "Login",
     "signUp": "Sign Up",
+    "enterYourEmailToLoginForThisApp": "Enter your email to login for this app",
+    "enterYourEmailToSignUpForThisApp": "Enter your email to sign up for this app",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot Password?",
+    "name": "Name",
+    "confirmPassword": "Confirm Password",
+    "alreadyHaveAnAccount": "Already have an account?",
+    "newUser": "New User?",
+    "createAccount": "Create Account",
+    "byContinuingYouAgreeToOur": "By continuing you agree to our",
+    "termsOfService": "Terms of Service",
+    "and": "and",
+    "privacyPolicy": "Privacy Policy",
 
     "empty":"empty"
 }

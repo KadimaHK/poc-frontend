@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:poc_frontend/api/lib/api.dart';
+import 'package:poc_frontend/components/app_bar.dart';
 import 'package:poc_frontend/components/search_bar.dart';
 
 class SearchPage extends StatefulWidget {
@@ -11,7 +12,6 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-
   List<EstablishmentCategory> categories = [];
 
   @override
@@ -28,23 +28,26 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        MainSearchBar(),
-        Expanded(
-          child: GridView(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              childAspectRatio: 1.5,
+    return Scaffold(
+      appBar: MainAppBar(title: AppLocalizations.of(context)!.search),
+      body: Column(
+        children: [
+          MainSearchBar(),
+          Expanded(
+            child: GridView(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                childAspectRatio: 1.5,
+              ),
+              children: [
+                ...categories.map((category) => SearchCategoryButton(type: category.category)).toList(),
+              ],
             ),
-            children: [
-              ...categories.map((category) => SearchCategoryButton(type: category.category)).toList(),
-            ],
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

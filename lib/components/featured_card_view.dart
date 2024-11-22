@@ -22,7 +22,6 @@ class _FeaturedCardViewState extends State<FeaturedCardView> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Navigator.push(context, MaterialPageRoute(builder: (context) => FeaturedDetailPage(featured: widget.featured)));
         Navigator.pushNamed(context, '/featured_detail', arguments: widget.featured);
       },
       

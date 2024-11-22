@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:poc_frontend/api/lib/api.dart' as api;
+import 'package:poc_frontend/components/app_bar.dart';
 import 'package:poc_frontend/components/establishment_card_view.dart';
 import 'package:poc_frontend/components/search_bar.dart';
 import 'package:poc_frontend/main.dart';
@@ -29,55 +30,58 @@ class _ExplorePageState extends State<ExplorePage> {
   @override
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
-    return Column(
-      children: [
-        MainSearchBar(),
-        Wrap(
-          children: [
-            RawChip(
-              label: Text(t.distance),
-              avatar: Icon(
-                Icons.arrow_drop_down,
+    return Scaffold(
+      appBar: MainAppBar(title: t.explore),
+      body: Column(
+        children: [
+          MainSearchBar(),
+          Wrap(
+            children: [
+              RawChip(
+                label: Text(t.distance),
+                avatar: Icon(
+                  Icons.arrow_drop_down,
+                ),
+                onPressed: () => {},
               ),
-              onPressed: () => {},
-            ),
-            RawChip(
-              label: Text(t.location),
-              avatar: Icon(
-                Icons.arrow_drop_down,
+              RawChip(
+                label: Text(t.location),
+                avatar: Icon(
+                  Icons.arrow_drop_down,
+                ),
+                onPressed: () => {},
               ),
-              onPressed: () => {},
-            ),
-            RawChip(
-              label: Text(t.theme),
-              avatar: Icon(
-                Icons.arrow_drop_down,
+              RawChip(
+                label: Text(t.theme),
+                avatar: Icon(
+                  Icons.arrow_drop_down,
+                ),
+                onPressed: () => {},
               ),
-              onPressed: () => {},
-            ),
-            RawChip(
-              label: Text(t.facilities),
-              avatar: Icon(
-                Icons.arrow_drop_down,
+              RawChip(
+                label: Text(t.facilities),
+                avatar: Icon(
+                  Icons.arrow_drop_down,
+                ),
+                onPressed: () => {},
               ),
-              onPressed: () => {},
-            ),
-          ],
-        ),
-        Expanded(
-            child: GridView(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            childAspectRatio: .6,
+            ],
           ),
-          shrinkWrap: true,
-          children: [
-            ...establishments.map((e) => EstablishmentCardView(establishment: e)),
-          ],
-        )),
-      ],
+          Expanded(
+              child: GridView(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              childAspectRatio: .6,
+            ),
+            shrinkWrap: true,
+            children: [
+              ...establishments.map((e) => EstablishmentCardView(establishment: e)),
+            ],
+          )),
+        ],
+      ),
     );
   }
 }
