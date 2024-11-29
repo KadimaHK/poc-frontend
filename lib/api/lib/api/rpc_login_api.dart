@@ -1,0 +1,108 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+part of openapi.api;
+
+
+class RpcLoginApi {
+  RpcLoginApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
+
+  final ApiClient apiClient;
+
+  /// Don't use this function with GET method, use POST method instead
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> rpcLoginGetWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/rpc/login';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Don't use this function with GET method, use POST method instead
+  Future<void> rpcLoginGet() async {
+    final response = await rpcLoginGetWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
+  /// Don't use this function with GET method, use POST method instead
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [Object] args (required):
+  ///
+  /// * [String] prefer:
+  ///   Preference
+  Future<Response> rpcLoginPostWithHttpInfo(Object args, { String? prefer, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/rpc/login';
+
+    // ignore: prefer_final_locals
+    Object? postBody = args;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (prefer != null) {
+      headerParams[r'Prefer'] = parameterToString(prefer);
+    }
+
+    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Don't use this function with GET method, use POST method instead
+  ///
+  /// Parameters:
+  ///
+  /// * [Object] args (required):
+  ///
+  /// * [String] prefer:
+  ///   Preference
+  Future<void> rpcLoginPost(Object args, { String? prefer, }) async {
+    final response = await rpcLoginPostWithHttpInfo(args,  prefer: prefer, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+}

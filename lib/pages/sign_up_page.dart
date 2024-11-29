@@ -1,22 +1,30 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:http/src/response.dart';
 import 'package:poc_frontend/api/lib/api.dart';
-import 'package:poc_frontend/pages/sign_up_page.dart';
-import 'package:poc_frontend/api/lib/api.dart' as api;
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
-  static const routeName = '/login';
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
+  static const routeName = '/signUp';
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
   bool _isShowPassword = false;
+
+  final _emailController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
+    Response res;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -27,8 +35,8 @@ class _LoginPageState extends State<LoginPage> {
           height: 100,
         ),
         SizedBox(height: 20),
-        Text(t.login, style: Theme.of(context).textTheme.headlineLarge),
-        Text(t.enterYourEmailToLoginForThisApp),
+        Text(t.signUp, style: Theme.of(context).textTheme.headlineLarge),
+        Text(t.enterYourEmailToSignUpForThisApp),
         SizedBox(height: 20),
         TextField(
           decoration: InputDecoration(
@@ -37,6 +45,14 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
         TextField(
+          controller: _nameController,
+          decoration: InputDecoration(
+            labelText: t.name,
+            hintText: t.name,
+          ),
+        ),
+        TextField(
+          controller: _passwordController,
           obscureText: !_isShowPassword,
           decoration: InputDecoration(
             labelText: t.password,
@@ -51,15 +67,42 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
         ),
+        //confirm password
+        TextField(
+          obscureText: !_isShowPassword,
+          controller: _confirmPasswordController,
+          decoration: InputDecoration(
+            labelText: t.confirmPassword,
+            hintText: t.confirmPassword,
+            suffixIcon: IconButton(
+              icon: Icon(_isShowPassword ? Icons.visibility : Icons.visibility_off),
+              onPressed: () {
+                setState(() {
+                  _isShowPassword = !_isShowPassword;
+                });
+              },
+            ),
+          ),
+        ),
         TextButton(
-          onPressed: () {
-            api.defaultApiClient.loginPost(email: 'email', password: 'password');
+          onPressed: () async {
+            log("sign up");
+            log(_emailController.text, name: 'email');
+            log(_nameController.text, name: 'name');
+            log(_passwordController.text, name: 'password');
+            res = await RpcSignUpApi().rpcSignUpPostWithHttpInfo(
+              RpcSignUpPostRequest(
+                email: _emailController.text,
+                name: _nameController.text,
+                password: _passwordController.text,
+              ),
+            );
+
+            log(res.body);
           },
           style: Theme.of(context).textButtonTheme.style,
-          child: Text(t.login),
+          child: Text(t.signUp),
         ),
-        _clickableText(text: t.forgotPassword, onPressed: () {}),
-        Row(mainAxisSize: MainAxisSize.min, children: [Text(t.newUser), _clickableText(text: t.createAccount, onPressed: () => Navigator.pushNamed(context, SignUpPage.routeName))]),
         Spacer(),
         RichText(
           text: TextSpan(
@@ -82,23 +125,6 @@ class _LoginPageState extends State<LoginPage> {
         ),
         SizedBox(height: 20),
       ],
-    );
-  }
-}
-
-class _clickableText extends StatelessWidget {
-  const _clickableText({super.key, required this.text, required this.onPressed});
-  final String text;
-  final Function() onPressed;
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-      style: ButtonStyle(backgroundColor: WidgetStateProperty.all(Colors.transparent)),
-      onPressed: onPressed,
-      child: Text(
-        text,
-        style: TextStyle(decoration: TextDecoration.underline, color: Theme.of(context).colorScheme.surfaceBright, decorationColor: Theme.of(context).colorScheme.surfaceBright),
-      ),
     );
   }
 }

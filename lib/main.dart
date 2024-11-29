@@ -12,6 +12,7 @@ import 'package:poc_frontend/pages/notification_page.dart';
 import 'package:poc_frontend/pages/main/profile_page.dart';
 import 'package:poc_frontend/pages/main/search_page.dart';
 import 'package:poc_frontend/components/app_bar.dart';
+import 'package:poc_frontend/pages/sign_up_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'pages/qr_code_scanner_page.dart';
 import 'enums.dart';
@@ -146,18 +147,6 @@ class MainState extends State<Main> {
 //change for debug
   int _selectedIndex = 0;
 
-  void _onAppBarAction(AppBarAction action) {
-    setState(() {
-      switch (action) {
-        case AppBarAction.qrCodeScanner:
-          Navigator.push(context, MaterialPageRoute(builder: (context) => QrCodeScannerPage()));
-          break;
-        case AppBarAction.notification:
-          Navigator.pushNamed(context, NotificationPage.routeName);
-          break;
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -182,6 +171,11 @@ class MainState extends State<Main> {
               return FeaturedDetailPage(featured: featured);
             });
           }
+          if(settings.name == SignUpPage.routeName){
+            return MaterialPageRoute(builder: (context) {
+              return SignUpPage();
+            });
+          }
 
           // for the main pages without transition animation
           return PageRouteBuilder(
@@ -189,8 +183,8 @@ class MainState extends State<Main> {
               log('PageRouteBuilder', name: 'Main');
               if (_selectedIndex == 4) {
                 //check if user is logged in
-                log(MyApp.prefs!.getString('token') ?? 'no token', name: 'token');
-                if (MyApp.prefs!.getString('token') == null) {
+                log(MyApp.prefs!.getString('loginSessionToken') ?? 'no loginSessionToken', name: 'loginSessionToken');
+                if (MyApp.prefs!.getString('loginSessionToken') == null) {
                   return LoginPage();
                 } else {
                   return ProfilePage();
