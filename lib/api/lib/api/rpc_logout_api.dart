@@ -10,13 +10,15 @@
 
 part of openapi.api;
 
-class RpcLoginApi {
-  RpcLoginApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
+
+class RpcLogoutApi {
+  RpcLogoutApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
-  Future<Response> rpcLoginPostWithHttpInfo(String email, String password, { String? prefer, }) async {
-    final path = r'/rpc/login';
+  Future<Response> rpcLogoutPostWithHttpInfo( { String? prefer, }) async {
+    final path = r'/rpc/logout';
+
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -25,9 +27,6 @@ class RpcLoginApi {
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
-    headerParams[r'email'] = email;
-    headerParams[r'password'] = password;
-
 
     return apiClient.invokeAPI(
       path,
@@ -41,14 +40,10 @@ class RpcLoginApi {
   }
 
 
-  Future<String> rpcLoginPost(String email, String password) async {
-    final response = await rpcLoginPostWithHttpInfo(email, password);
-    String body = await _decodeBodyBytes(response);
+  Future<void> rpcLogoutPost( { String? prefer, }) async {
+    final response = await rpcLogoutPostWithHttpInfo( prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
-      return body;
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
-
-    JsonDecoder _decoder = JsonDecoder();
-    return _decoder.convert(body)['session_token'];
   }
 }

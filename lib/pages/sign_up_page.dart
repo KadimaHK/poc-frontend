@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:http/src/response.dart';
 import 'package:poc_frontend/api/lib/api.dart';
+import 'package:poc_frontend/main.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -21,10 +23,11 @@ class _SignUpPageState extends State<SignUpPage> {
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
 
+  String? _errorText;
+
   @override
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
-    Response res;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -39,6 +42,7 @@ class _SignUpPageState extends State<SignUpPage> {
         Text(t.enterYourEmailToSignUpForThisApp),
         SizedBox(height: 20),
         TextField(
+          controller: _emailController,
           decoration: InputDecoration(
             labelText: t.email,
             hintText: t.email,
@@ -74,6 +78,7 @@ class _SignUpPageState extends State<SignUpPage> {
           decoration: InputDecoration(
             labelText: t.confirmPassword,
             hintText: t.confirmPassword,
+            errorText: _passwordController.text != _confirmPasswordController.text ? t.passwordsDoNotMatch : null,
             suffixIcon: IconButton(
               icon: Icon(_isShowPassword ? Icons.visibility : Icons.visibility_off),
               onPressed: () {
@@ -84,21 +89,36 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
           ),
         ),
+
+        Text(
+          _errorText ?? '',
+          style: TextStyle(color: Colors.red),
+        ),
         TextButton(
           onPressed: () async {
-            log("sign up");
-            log(_emailController.text, name: 'email');
-            log(_nameController.text, name: 'name');
-            log(_passwordController.text, name: 'password');
-            res = await RpcSignUpApi().rpcSignUpPostWithHttpInfo(
-              RpcSignUpPostRequest(
-                email: _emailController.text,
-                name: _nameController.text,
-                password: _passwordController.text,
-              ),
-            );
-
-            log(res.body);
+            try {
+              Object res = await RpcSignUpApi().rpcSignUpPost({
+                'email': _emailController.text,
+                'name': _nameController.text,
+                'password': _passwordController.text,
+              });
+              String sessionToken = res as String;
+              log(sessionToken, name: 'session_token');
+              MyApp.prefs!.setString('loginSessionToken', sessionToken);
+              MyApp.prefs!.setString('email', _emailController.text);
+              if (defaultApiClient.authentication is ApiKeyAuth) {
+                (defaultApiClient.authentication as ApiKeyAuth).apiKey = sessionToken;
+              }
+            } on Response catch (response, _) {
+              if (response.statusCode == 409) {
+                final body = jsonDecode(response.body);
+                if (body['code'] == '23505') {
+                  setState(() {
+                    _errorText = t.emailAlreadyInUse;
+                  });
+                }
+              };
+            }
           },
           style: Theme.of(context).textButtonTheme.style,
           child: Text(t.signUp),

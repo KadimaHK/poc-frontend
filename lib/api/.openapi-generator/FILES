@@ -46,6 +46,7 @@ doc/ReviewApi.md
 doc/ReviewImage.md
 doc/ReviewImageApi.md
 doc/RpcLoginApi.md
+doc/RpcLogoutApi.md
 doc/RpcSignUpApi.md
 doc/RpcSignUpPostRequest.md
 doc/User.md
@@ -92,8 +93,6 @@ lib/api/pick_api.dart
 lib/api/pick_establishment_api.dart
 lib/api/review_api.dart
 lib/api/review_image_api.dart
-lib/api/rpc_login_api.dart
-lib/api/rpc_sign_up_api.dart
 lib/api/user_api.dart
 lib/api/user_benefit_api.dart
 lib/api/user_featured_offer_api.dart

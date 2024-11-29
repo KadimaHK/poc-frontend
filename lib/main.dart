@@ -143,7 +143,7 @@ class MainState extends State<Main> {
   static final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   static final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-  static final List<Widget> _list = [HomePage(), ExplorePage(), SearchPage(), MessagePage()];
+  static final List<Widget> _list = [HomePage(), ExplorePage(), SearchPage(), MessagePage(),LoginPage()];
 //change for debug
   int _selectedIndex = 0;
 
@@ -153,13 +153,10 @@ class MainState extends State<Main> {
     final t = AppLocalizations.of(context)!;
     return Scaffold(
       key: scaffoldKey,
-      drawer: profileDrawer,
+      drawer: ProfileDrawer(),
       body: Navigator(
         key: navigatorKey,
         onGenerateRoute: (settings) {
-          log("onGenerateRoute", name: 'Main');
-          log(_selectedIndex.toString(), name: 'selectedIndex');
-          log(settings.name.toString(), name: 'settings.name');
           if (settings.name == NotificationPage.routeName) {
             return MaterialPageRoute(builder: (context) {
               return NotificationPage();
@@ -180,16 +177,6 @@ class MainState extends State<Main> {
           // for the main pages without transition animation
           return PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) {
-              log('PageRouteBuilder', name: 'Main');
-              if (_selectedIndex == 4) {
-                //check if user is logged in
-                log(MyApp.prefs!.getString('loginSessionToken') ?? 'no loginSessionToken', name: 'loginSessionToken');
-                if (MyApp.prefs!.getString('loginSessionToken') == null) {
-                  return LoginPage();
-                } else {
-                  return ProfilePage();
-                }
-              }
               return _list[_selectedIndex];
             },
             transitionDuration: Duration.zero,

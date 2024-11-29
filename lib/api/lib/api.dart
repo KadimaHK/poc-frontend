@@ -51,6 +51,7 @@ part 'api/pick_establishment_api.dart';
 part 'api/review_api.dart';
 part 'api/review_image_api.dart';
 part 'api/rpc_login_api.dart';
+part 'api/rpc_logout_api.dart';
 part 'api/rpc_sign_up_api.dart';
 part 'api/user_api.dart';
 part 'api/user_benefit_api.dart';

@@ -154,6 +154,8 @@ Class | Method | HTTP request | Description
 *ReviewImageApi* | [**reviewImagePost**](doc//ReviewImageApi.md#reviewimagepost) | **POST** /review_image | 
 *RpcLoginApi* | [**rpcLoginGet**](doc//RpcLoginApi.md#rpcloginget) | **GET** /rpc/login | Don't use this function with GET method, use POST method instead
 *RpcLoginApi* | [**rpcLoginPost**](doc//RpcLoginApi.md#rpcloginpost) | **POST** /rpc/login | Don't use this function with GET method, use POST method instead
+*RpcLogoutApi* | [**rpcLogoutGet**](doc//RpcLogoutApi.md#rpclogoutget) | **GET** /rpc/logout | Don't use this function with GET method, use POST method instead
+*RpcLogoutApi* | [**rpcLogoutPost**](doc//RpcLogoutApi.md#rpclogoutpost) | **POST** /rpc/logout | Don't use this function with GET method, use POST method instead
 *RpcSignUpApi* | [**rpcSignUpGet**](doc//RpcSignUpApi.md#rpcsignupget) | **GET** /rpc/sign_up | Don't use this function with GET method, use POST method instead
 *RpcSignUpApi* | [**rpcSignUpPost**](doc//RpcSignUpApi.md#rpcsignuppost) | **POST** /rpc/sign_up | Don't use this function with GET method, use POST method instead
 *UserApi* | [**userDelete**](doc//UserApi.md#userdelete) | **DELETE** /user | 

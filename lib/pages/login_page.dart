@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:poc_frontend/api/lib/api.dart';
+import 'package:poc_frontend/main.dart';
 import 'package:poc_frontend/pages/sign_up_page.dart';
 import 'package:poc_frontend/api/lib/api.dart' as api;
 
@@ -14,6 +17,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool _isShowPassword = false;
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
@@ -31,12 +37,14 @@ class _LoginPageState extends State<LoginPage> {
         Text(t.enterYourEmailToLoginForThisApp),
         SizedBox(height: 20),
         TextField(
+          controller: _emailController,
           decoration: InputDecoration(
             labelText: t.email,
             hintText: t.email,
           ),
         ),
         TextField(
+          controller: _passwordController,
           obscureText: !_isShowPassword,
           decoration: InputDecoration(
             labelText: t.password,
@@ -53,13 +61,17 @@ class _LoginPageState extends State<LoginPage> {
         ),
         TextButton(
           onPressed: () {
-            api.defaultApiClient.loginPost(email: 'email', password: 'password');
+            RpcLoginApi().rpcLoginPost(_emailController.text, _passwordController.text).then((value) {
+              MyApp.prefs!.setString('loginSessionToken', value);
+              MyApp.prefs!.setString('email', _emailController.text);
+              Navigator.pop(context);
+            });
           },
           style: Theme.of(context).textButtonTheme.style,
           child: Text(t.login),
         ),
-        _clickableText(text: t.forgotPassword, onPressed: () {}),
-        Row(mainAxisSize: MainAxisSize.min, children: [Text(t.newUser), _clickableText(text: t.createAccount, onPressed: () => Navigator.pushNamed(context, SignUpPage.routeName))]),
+        _ClickableText(text: t.forgotPassword, onPressed: () {}),
+        Row(mainAxisSize: MainAxisSize.min, children: [Text(t.newUser), _ClickableText(text: t.createAccount, onPressed: () => Navigator.pushNamed(context, SignUpPage.routeName))]),
         Spacer(),
         RichText(
           text: TextSpan(
@@ -86,8 +98,8 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
-class _clickableText extends StatelessWidget {
-  const _clickableText({super.key, required this.text, required this.onPressed});
+class _ClickableText extends StatelessWidget {
+  const _ClickableText({super.key, required this.text, required this.onPressed});
   final String text;
   final Function() onPressed;
   @override

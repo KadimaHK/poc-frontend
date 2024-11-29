@@ -5,6 +5,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:poc_frontend/components/app_bar.dart';
 import 'package:poc_frontend/main.dart';
 import 'package:poc_frontend/pages/login_page.dart';
+import 'package:poc_frontend/api/lib/api.dart' as api;
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -14,6 +15,13 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  @override
+  void initState() {
+    super.initState();
+    if (MyApp.prefs!.getString('loginSessionToken') == null) {
+      Navigator.pushNamed(context, LoginPage.routeName);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +35,13 @@ class _ProfilePageState extends State<ProfilePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(t.logout),
+              TextButton(
+                  onPressed: () async {
+                    await api.RpcLogoutApi().rpcLogoutPost();
+                    MyApp.prefs!.remove('loginSessionToken');
+                    Navigator.pushReplacementNamed(context, LoginPage.routeName);
+                  },
+                  child: Text('logout'))
             ],
           ),
         ));

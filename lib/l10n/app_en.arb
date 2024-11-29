@@ -86,7 +86,12 @@
     "and": "and",
     "privacyPolicy": "Privacy Policy",
 
-
+    "passwordsDoNotMatch": "Passwords do not match",
+    "passwordIsTooShort": "Password is too short",
+    "emailIsInvalid": "Email is invalid",
+    "emailIsRequired": "Email is required",
+    "passwordIsRequired": "Password is required",
+    "emailAlreadyInUse": "Email is already in use",
     
 
     "empty":"empty"
