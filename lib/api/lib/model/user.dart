@@ -13,22 +13,25 @@ part of openapi.api;
 class User {
   /// Returns a new [User] instance.
   User({
-    this.email,
+    required this.id,
+    required this.email,
     this.name,
+    this.password,
+    this.iconId,
     this.age,
     this.gender,
     this.description,
     this.followingCount,
     this.followerCount,
+    this.verified = false,
+    this.createdAt = 'now()',
+    this.updatedAt = 'now()',
   });
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? email;
+  /// Note: This is a Primary Key.<pk/>
+  int id;
+
+  String email;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -37,6 +40,23 @@ class User {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? name;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? password;
+
+  /// Note: This is a Foreign Key to `image.id`.<fk table='image' column='id'/>
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? iconId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -78,41 +98,66 @@ class User {
   ///
   int? followerCount;
 
+  bool verified;
+
+  String createdAt;
+
+  String updatedAt;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is User &&
+    other.id == id &&
     other.email == email &&
     other.name == name &&
+    other.password == password &&
+    other.iconId == iconId &&
     other.age == age &&
     other.gender == gender &&
     other.description == description &&
     other.followingCount == followingCount &&
-    other.followerCount == followerCount;
+    other.followerCount == followerCount &&
+    other.verified == verified &&
+    other.createdAt == createdAt &&
+    other.updatedAt == updatedAt;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (email == null ? 0 : email!.hashCode) +
+    (id.hashCode) +
+    (email.hashCode) +
     (name == null ? 0 : name!.hashCode) +
+    (password == null ? 0 : password!.hashCode) +
+    (iconId == null ? 0 : iconId!.hashCode) +
     (age == null ? 0 : age!.hashCode) +
     (gender == null ? 0 : gender!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (followingCount == null ? 0 : followingCount!.hashCode) +
-    (followerCount == null ? 0 : followerCount!.hashCode);
+    (followerCount == null ? 0 : followerCount!.hashCode) +
+    (verified.hashCode) +
+    (createdAt.hashCode) +
+    (updatedAt.hashCode);
 
   @override
-  String toString() => 'User[email=$email, name=$name, age=$age, gender=$gender, description=$description, followingCount=$followingCount, followerCount=$followerCount]';
+  String toString() => 'User[id=$id, email=$email, name=$name, password=$password, iconId=$iconId, age=$age, gender=$gender, description=$description, followingCount=$followingCount, followerCount=$followerCount, verified=$verified, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.email != null) {
+      json[r'id'] = this.id;
       json[r'email'] = this.email;
-    } else {
-      json[r'email'] = null;
-    }
     if (this.name != null) {
       json[r'name'] = this.name;
     } else {
       json[r'name'] = null;
+    }
+    if (this.password != null) {
+      json[r'password'] = this.password;
+    } else {
+      json[r'password'] = null;
+    }
+    if (this.iconId != null) {
+      json[r'icon_id'] = this.iconId;
+    } else {
+      json[r'icon_id'] = null;
     }
     if (this.age != null) {
       json[r'age'] = this.age;
@@ -139,6 +184,9 @@ class User {
     } else {
       json[r'follower_count'] = null;
     }
+      json[r'verified'] = this.verified;
+      json[r'created_at'] = this.createdAt;
+      json[r'updated_at'] = this.updatedAt;
     return json;
   }
 
@@ -161,13 +209,19 @@ class User {
       }());
 
       return User(
-        email: mapValueOfType<String>(json, r'email'),
+        id: mapValueOfType<int>(json, r'id')!,
+        email: mapValueOfType<String>(json, r'email')!,
         name: mapValueOfType<String>(json, r'name'),
+        password: mapValueOfType<String>(json, r'password'),
+        iconId: mapValueOfType<int>(json, r'icon_id'),
         age: mapValueOfType<int>(json, r'age'),
         gender: mapValueOfType<String>(json, r'gender'),
         description: mapValueOfType<String>(json, r'description'),
         followingCount: mapValueOfType<int>(json, r'following_count'),
         followerCount: mapValueOfType<int>(json, r'follower_count'),
+        verified: mapValueOfType<bool>(json, r'verified') ?? false,
+        createdAt: mapValueOfType<String>(json, r'created_at') ?? 'now()',
+        updatedAt: mapValueOfType<String>(json, r'updated_at') ?? 'now()',
       );
     }
     return null;
@@ -215,6 +269,8 @@ class User {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'id',
+    'email',
   };
 }
 

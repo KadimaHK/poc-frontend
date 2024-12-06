@@ -21,7 +21,7 @@ class EstablishmentRank {
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `establishment.id`.<fk table='establishment' column='id'/>
   int establishmentId;
 
-  /// Note: This is a Primary Key.<pk/>
+  /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
   int userId;
 
   ///

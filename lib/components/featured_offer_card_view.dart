@@ -29,6 +29,7 @@ class _FeaturedOfferCardViewState extends State<FeaturedOfferCardView> {
             width: double.infinity,
             fit: BoxFit.cover,
             loadingBuilder: (context, child, loadingProgress) => loadingProgress == null ? child : CircularProgressIndicator(),
+                      errorBuilder: (context, error, stackTrace) => Placeholder(fallbackHeight: 80, fallbackWidth: double.infinity),
           ),
           Container(
             padding: const EdgeInsets.all(10),

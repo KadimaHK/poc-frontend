@@ -10,5 +10,4 @@ after the backend up
 
 
 ------
-rm -rf lib/api
 openapi-generator generate -i http://0.0.0.0:3000 -o lib/api -g dart

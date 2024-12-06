@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:poc_frontend/main.dart';
 import 'package:poc_frontend/enums.dart';
+import 'package:poc_frontend/pages/notification_page.dart';
 import 'package:poc_frontend/pages/qr_code_scanner_page.dart';
 
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const MainAppBar({super.key, this.title = ''});
+  const MainAppBar({super.key, this.title = '', this.icon = const Icon(Icons.person)});
   final String title;
+  final Icon icon;
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -15,7 +17,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
     final t = AppLocalizations.of(context)!;
     return AppBar(
       leading: IconButton(
-        icon: const Icon(Icons.person),
+        icon: icon,
         onPressed: () => MainState.scaffoldKey.currentState?.openDrawer(),
       ),
       title: Text(title),
@@ -36,8 +38,8 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
             ];
           },
         ),
-        IconButton(onPressed:() => MainState.navigatorKey.currentState?.push(MaterialPageRoute(builder: (context) => QrCodeScannerPage())), icon: Icon(Icons.qr_code_scanner)),
-        IconButton(onPressed: () => Navigator.pushNamed(context, '/notification_page'), icon: Icon(Icons.notifications_none)),
+        IconButton(onPressed: () => MyAppState.navigatorKey.currentState?.push(MaterialPageRoute(builder: (context) => QrCodeScannerPage())), icon: Icon(Icons.qr_code_scanner)),
+        IconButton(onPressed: () => Navigator.pushNamed(context, NotificationPage.routeName), icon: Icon(Icons.notifications_none)),
       ],
     );
   }

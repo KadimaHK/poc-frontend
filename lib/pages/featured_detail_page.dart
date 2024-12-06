@@ -27,6 +27,7 @@ class _FeaturedDetailPageState extends State<FeaturedDetailPage> {
             height: 200,
             fit: BoxFit.cover,
             loadingBuilder: (context, child, loadingProgress) => loadingProgress == null ? child : CircularProgressIndicator(),
+            errorBuilder: (context, error, stackTrace) => Placeholder(fallbackHeight: 200),
           ),
           Container(
             padding: const EdgeInsets.all(10),

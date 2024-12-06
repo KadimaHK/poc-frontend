@@ -24,3 +24,4 @@
 
 lib/api/rpc*
 api.dart
+auth/api_key_auth.dart

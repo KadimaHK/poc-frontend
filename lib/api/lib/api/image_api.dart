@@ -225,7 +225,7 @@ class ImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<Image>?> imageGet({ String? id, String? baseUrl, String? fileName, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<List<Image>?> imageGet(int i, { String? id, String? baseUrl, String? fileName, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
     final response = await imageGetWithHttpInfo( id: id, baseUrl: baseUrl, fileName: fileName, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));

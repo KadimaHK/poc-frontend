@@ -25,6 +25,7 @@ class Review {
   /// Note: This is a Primary Key.<pk/>
   int id;
 
+  /// Note: This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated

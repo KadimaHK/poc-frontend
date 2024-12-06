@@ -105,7 +105,6 @@ class _SignUpPageState extends State<SignUpPage> {
               String sessionToken = res as String;
               log(sessionToken, name: 'session_token');
               MyApp.prefs!.setString('loginSessionToken', sessionToken);
-              MyApp.prefs!.setString('email', _emailController.text);
               if (defaultApiClient.authentication is ApiKeyAuth) {
                 (defaultApiClient.authentication as ApiKeyAuth).apiKey = sessionToken;
               }
@@ -117,7 +116,8 @@ class _SignUpPageState extends State<SignUpPage> {
                     _errorText = t.emailAlreadyInUse;
                   });
                 }
-              };
+              }
+              ;
             }
           },
           style: Theme.of(context).textButtonTheme.style,

@@ -35,6 +35,7 @@ class _FeaturedCardViewState extends State<FeaturedCardView> {
               width: width,
               fit: BoxFit.cover,
               loadingBuilder: (context, child, loadingProgress) => loadingProgress == null ? child : CircularProgressIndicator(),
+                      errorBuilder: (context, error, stackTrace) => Placeholder(fallbackHeight: 100, fallbackWidth: width),
             ),
           ),
           Text(widget.featured.title ?? '', style: const TextStyle(fontSize: 12)),

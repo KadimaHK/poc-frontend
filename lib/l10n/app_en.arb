@@ -92,6 +92,13 @@
     "emailIsRequired": "Email is required",
     "passwordIsRequired": "Password is required",
     "emailAlreadyInUse": "Email is already in use",
+
+    "pleaseLoginToShowMoreFeatures": "Please log in to access additional features",
+    "followers": "Followers",
+    "following": "Following",
+
+    "edit": "Edit",
+    "loading": "Loading",
     
 
     "empty":"empty"

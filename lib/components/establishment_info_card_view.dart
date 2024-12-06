@@ -38,7 +38,6 @@ class _EstablishmentInfoCardViewState extends State<EstablishmentInfoCardView> {
     }
     return ClipRRect(
       borderRadius: BorderRadius.circular(30),
-      
       child: Stack(
         fit: StackFit.passthrough,
         children: [
@@ -65,6 +64,7 @@ class _EstablishmentInfoCardViewState extends State<EstablishmentInfoCardView> {
                         width: 150,
                         fit: BoxFit.cover,
                         loadingBuilder: (context, child, loadingProgress) => loadingProgress == null ? child : CircularProgressIndicator(),
+                        errorBuilder: (context, error, stackTrace) => Placeholder(fallbackHeight: 140, fallbackWidth: 150),
                       ),
                     ),
                     SizedBox(width: 10),
@@ -88,6 +88,7 @@ class _EstablishmentInfoCardViewState extends State<EstablishmentInfoCardView> {
                                 width: 100,
                                 fit: BoxFit.cover,
                                 loadingBuilder: (context, child, loadingProgress) => loadingProgress == null ? child : CircularProgressIndicator(),
+                                errorBuilder: (context, error, stackTrace) => Placeholder(fallbackHeight: 50, fallbackWidth: 100),
                               );
                             },
                           ),
@@ -116,7 +117,6 @@ class _EstablishmentInfoCardViewState extends State<EstablishmentInfoCardView> {
                     Text(" ${t.pointsPerSeat}"),
                     Spacer(),
                     TextButton(onPressed: () => {}, child: Text(t.booking)),
-                    
                   ],
                 ),
               ],
@@ -190,6 +190,7 @@ class _EstablishmentFeaturedOfferViewState extends State<EstablishmentFeaturedOf
                     width: 80,
                     fit: BoxFit.cover,
                     loadingBuilder: (context, child, loadingProgress) => loadingProgress == null ? child : CircularProgressIndicator(),
+                    errorBuilder: (context, error, stackTrace) => Placeholder(fallbackHeight: 80, fallbackWidth: 80),
                   ),
                 ),
                 SizedBox(width: 10),

@@ -23,7 +23,11 @@ class _EstablishmentCardViewState extends State<EstablishmentCardView> {
                   borderRadius: BorderRadius.circular(10),
                   child: AspectRatio(
                     aspectRatio: .75,
-                    child: Image.network('${widget.establishment.baseUrl}${widget.establishment.fileName}', fit: BoxFit.cover),
+                    child: Image.network(
+                      '${widget.establishment.baseUrl}${widget.establishment.fileName}',
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) => Placeholder(),
+                    ),
                   )),
               Positioned(
                   right: 15,

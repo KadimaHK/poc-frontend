@@ -61,9 +61,12 @@ class _LoginPageState extends State<LoginPage> {
         ),
         TextButton(
           onPressed: () {
-            RpcLoginApi().rpcLoginPost(_emailController.text, _passwordController.text).then((value) {
-              MyApp.prefs!.setString('loginSessionToken', value);
-              MyApp.prefs!.setString('email', _emailController.text);
+            RpcLoginApi().rpcLoginPost(_emailController.text, _passwordController.text).then((sessionToken) {
+              log(sessionToken, name: 'sessionToken');
+              MyApp.prefs!.setString('loginSessionToken', sessionToken);
+              if (defaultApiClient.authentication is ApiKeyAuth) {
+                (defaultApiClient.authentication as ApiKeyAuth).apiKey = sessionToken;
+              }
               Navigator.pop(context);
             });
           },

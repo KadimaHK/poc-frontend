@@ -9,7 +9,7 @@ import 'package:openapi/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | Note: This is a Primary Key.<pk/> | 
-**userId** | **int** |  | [optional] 
+**userId** | **int** | Note: This is a Foreign Key to `user.id`.<fk table='user' column='id'/> | [optional] 
 **message** | **String** |  | [optional] 
 **type** | **String** | Note: This is a Foreign Key to `notification_type.type`.<fk table='notification_type' column='type'/> | [optional] 
 **createdAt** | **String** |  | [optional] [default to 'now()']

@@ -17,10 +17,10 @@ class Follow {
     required this.following,
   });
 
-  /// Note: This is a Primary Key.<pk/>
+  /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
   int follower;
 
-  /// Note: This is a Primary Key.<pk/>
+  /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
   int following;
 
   @override

@@ -17,7 +17,7 @@ class UserFeaturedOffer {
     required this.featuredOfferId,
   });
 
-  /// Note: This is a Primary Key.<pk/>
+  /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
   int userId;
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `featured_offer.id`.<fk table='featured_offer' column='id'/>

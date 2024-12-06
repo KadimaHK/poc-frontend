@@ -9,7 +9,7 @@ import 'package:openapi/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | Note: This is a Primary Key.<pk/> | 
-**userId** | **int** |  | [optional] 
+**userId** | **int** | Note: This is a Foreign Key to `user.id`.<fk table='user' column='id'/> | [optional] 
 **establishmentMenuId** | **int** | Note: This is a Foreign Key to `establishment_menu.id`.<fk table='establishment_menu' column='id'/> | [optional] 
 **createdAt** | **String** |  | [optional] [default to 'now()']
 **updatedAt** | **String** |  | [optional] [default to 'now()']

@@ -31,6 +31,7 @@ class _PickCardViewState extends State<PickCardView> {
             width: width,
             fit: BoxFit.cover,
             loadingBuilder: (context, child, loadingProgress) => loadingProgress == null ? child : CircularProgressIndicator(),
+                      errorBuilder: (context, error, stackTrace) => Placeholder(fallbackHeight: 100, fallbackWidth: width),
           ),
           Container(
             padding: const EdgeInsets.all(10),

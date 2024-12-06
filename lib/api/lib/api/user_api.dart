@@ -19,9 +19,15 @@ class UserApi {
   /// Performs an HTTP 'DELETE /user' operation and returns the [Response].
   /// Parameters:
   ///
+  /// * [String] id:
+  ///
   /// * [String] email:
   ///
   /// * [String] name:
+  ///
+  /// * [String] password:
+  ///
+  /// * [String] iconId:
   ///
   /// * [String] age:
   ///
@@ -33,9 +39,15 @@ class UserApi {
   ///
   /// * [String] followerCount:
   ///
+  /// * [String] verified:
+  ///
+  /// * [String] createdAt:
+  ///
+  /// * [String] updatedAt:
+  ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> userDeleteWithHttpInfo({ String? email, String? name, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? prefer, }) async {
+  Future<Response> userDeleteWithHttpInfo({ String? id, String? email, String? name, String? password, String? iconId, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? verified, String? createdAt, String? updatedAt, String? prefer, }) async {
     // ignore: prefer_const_declarations
     final path = r'/user';
 
@@ -46,11 +58,20 @@ class UserApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
+    if (id != null) {
+      queryParams.addAll(_queryParams('', 'id', id));
+    }
     if (email != null) {
       queryParams.addAll(_queryParams('', 'email', email));
     }
     if (name != null) {
       queryParams.addAll(_queryParams('', 'name', name));
+    }
+    if (password != null) {
+      queryParams.addAll(_queryParams('', 'password', password));
+    }
+    if (iconId != null) {
+      queryParams.addAll(_queryParams('', 'icon_id', iconId));
     }
     if (age != null) {
       queryParams.addAll(_queryParams('', 'age', age));
@@ -66,6 +87,15 @@ class UserApi {
     }
     if (followerCount != null) {
       queryParams.addAll(_queryParams('', 'follower_count', followerCount));
+    }
+    if (verified != null) {
+      queryParams.addAll(_queryParams('', 'verified', verified));
+    }
+    if (createdAt != null) {
+      queryParams.addAll(_queryParams('', 'created_at', createdAt));
+    }
+    if (updatedAt != null) {
+      queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
 
     if (prefer != null) {
@@ -88,9 +118,15 @@ class UserApi {
 
   /// Parameters:
   ///
+  /// * [String] id:
+  ///
   /// * [String] email:
   ///
   /// * [String] name:
+  ///
+  /// * [String] password:
+  ///
+  /// * [String] iconId:
   ///
   /// * [String] age:
   ///
@@ -102,10 +138,16 @@ class UserApi {
   ///
   /// * [String] followerCount:
   ///
+  /// * [String] verified:
+  ///
+  /// * [String] createdAt:
+  ///
+  /// * [String] updatedAt:
+  ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> userDelete({ String? email, String? name, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? prefer, }) async {
-    final response = await userDeleteWithHttpInfo( email: email, name: name, age: age, gender: gender, description: description, followingCount: followingCount, followerCount: followerCount, prefer: prefer, );
+  Future<void> userDelete({ String? id, String? email, String? name, String? password, String? iconId, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? verified, String? createdAt, String? updatedAt, String? prefer, }) async {
+    final response = await userDeleteWithHttpInfo( id: id, email: email, name: name, password: password, iconId: iconId, age: age, gender: gender, description: description, followingCount: followingCount, followerCount: followerCount, verified: verified, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -114,9 +156,15 @@ class UserApi {
   /// Performs an HTTP 'GET /user' operation and returns the [Response].
   /// Parameters:
   ///
+  /// * [String] id:
+  ///
   /// * [String] email:
   ///
   /// * [String] name:
+  ///
+  /// * [String] password:
+  ///
+  /// * [String] iconId:
   ///
   /// * [String] age:
   ///
@@ -127,6 +175,12 @@ class UserApi {
   /// * [String] followingCount:
   ///
   /// * [String] followerCount:
+  ///
+  /// * [String] verified:
+  ///
+  /// * [String] createdAt:
+  ///
+  /// * [String] updatedAt:
   ///
   /// * [String] select:
   ///   Filtering Columns
@@ -148,7 +202,7 @@ class UserApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> userGetWithHttpInfo({ String? email, String? name, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> userGetWithHttpInfo({ String? id, String? email, String? name, String? password, String? iconId, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? verified, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
     // ignore: prefer_const_declarations
     final path = r'/user';
 
@@ -159,11 +213,20 @@ class UserApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
+    if (id != null) {
+      queryParams.addAll(_queryParams('', 'id', id));
+    }
     if (email != null) {
       queryParams.addAll(_queryParams('', 'email', email));
     }
     if (name != null) {
       queryParams.addAll(_queryParams('', 'name', name));
+    }
+    if (password != null) {
+      queryParams.addAll(_queryParams('', 'password', password));
+    }
+    if (iconId != null) {
+      queryParams.addAll(_queryParams('', 'icon_id', iconId));
     }
     if (age != null) {
       queryParams.addAll(_queryParams('', 'age', age));
@@ -179,6 +242,15 @@ class UserApi {
     }
     if (followerCount != null) {
       queryParams.addAll(_queryParams('', 'follower_count', followerCount));
+    }
+    if (verified != null) {
+      queryParams.addAll(_queryParams('', 'verified', verified));
+    }
+    if (createdAt != null) {
+      queryParams.addAll(_queryParams('', 'created_at', createdAt));
+    }
+    if (updatedAt != null) {
+      queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
     if (select != null) {
       queryParams.addAll(_queryParams('', 'select', select));
@@ -219,9 +291,15 @@ class UserApi {
 
   /// Parameters:
   ///
+  /// * [String] id:
+  ///
   /// * [String] email:
   ///
   /// * [String] name:
+  ///
+  /// * [String] password:
+  ///
+  /// * [String] iconId:
   ///
   /// * [String] age:
   ///
@@ -232,6 +310,12 @@ class UserApi {
   /// * [String] followingCount:
   ///
   /// * [String] followerCount:
+  ///
+  /// * [String] verified:
+  ///
+  /// * [String] createdAt:
+  ///
+  /// * [String] updatedAt:
   ///
   /// * [String] select:
   ///   Filtering Columns
@@ -253,8 +337,8 @@ class UserApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<User>?> userGet({ String? email, String? name, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await userGetWithHttpInfo( email: email, name: name, age: age, gender: gender, description: description, followingCount: followingCount, followerCount: followerCount, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<User>?> userGet({ String? id, String? email, String? name, String? password, String? iconId, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? verified, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+    final response = await userGetWithHttpInfo( id: id, email: email, name: name, password: password, iconId: iconId, age: age, gender: gender, description: description, followingCount: followingCount, followerCount: followerCount, verified: verified, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -274,9 +358,15 @@ class UserApi {
   /// Performs an HTTP 'PATCH /user' operation and returns the [Response].
   /// Parameters:
   ///
+  /// * [String] id:
+  ///
   /// * [String] email:
   ///
   /// * [String] name:
+  ///
+  /// * [String] password:
+  ///
+  /// * [String] iconId:
   ///
   /// * [String] age:
   ///
@@ -288,12 +378,18 @@ class UserApi {
   ///
   /// * [String] followerCount:
   ///
+  /// * [String] verified:
+  ///
+  /// * [String] createdAt:
+  ///
+  /// * [String] updatedAt:
+  ///
   /// * [String] prefer:
   ///   Preference
   ///
   /// * [User] user:
   ///   user
-  Future<Response> userPatchWithHttpInfo({ String? email, String? name, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? prefer, User? user, }) async {
+  Future<Response> userPatchWithHttpInfo({ String? id, String? email, String? name, String? password, String? iconId, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? verified, String? createdAt, String? updatedAt, String? prefer, User? user, }) async {
     // ignore: prefer_const_declarations
     final path = r'/user';
 
@@ -304,11 +400,20 @@ class UserApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
+    if (id != null) {
+      queryParams.addAll(_queryParams('', 'id', id));
+    }
     if (email != null) {
       queryParams.addAll(_queryParams('', 'email', email));
     }
     if (name != null) {
       queryParams.addAll(_queryParams('', 'name', name));
+    }
+    if (password != null) {
+      queryParams.addAll(_queryParams('', 'password', password));
+    }
+    if (iconId != null) {
+      queryParams.addAll(_queryParams('', 'icon_id', iconId));
     }
     if (age != null) {
       queryParams.addAll(_queryParams('', 'age', age));
@@ -324,6 +429,15 @@ class UserApi {
     }
     if (followerCount != null) {
       queryParams.addAll(_queryParams('', 'follower_count', followerCount));
+    }
+    if (verified != null) {
+      queryParams.addAll(_queryParams('', 'verified', verified));
+    }
+    if (createdAt != null) {
+      queryParams.addAll(_queryParams('', 'created_at', createdAt));
+    }
+    if (updatedAt != null) {
+      queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
 
     if (prefer != null) {
@@ -346,9 +460,15 @@ class UserApi {
 
   /// Parameters:
   ///
+  /// * [String] id:
+  ///
   /// * [String] email:
   ///
   /// * [String] name:
+  ///
+  /// * [String] password:
+  ///
+  /// * [String] iconId:
   ///
   /// * [String] age:
   ///
@@ -360,13 +480,19 @@ class UserApi {
   ///
   /// * [String] followerCount:
   ///
+  /// * [String] verified:
+  ///
+  /// * [String] createdAt:
+  ///
+  /// * [String] updatedAt:
+  ///
   /// * [String] prefer:
   ///   Preference
   ///
   /// * [User] user:
   ///   user
-  Future<void> userPatch({ String? email, String? name, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? prefer, User? user, }) async {
-    final response = await userPatchWithHttpInfo( email: email, name: name, age: age, gender: gender, description: description, followingCount: followingCount, followerCount: followerCount, prefer: prefer, user: user, );
+  Future<void> userPatch({ String? id, String? email, String? name, String? password, String? iconId, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? verified, String? createdAt, String? updatedAt, String? prefer, User? user, }) async {
+    final response = await userPatchWithHttpInfo( id: id, email: email, name: name, password: password, iconId: iconId, age: age, gender: gender, description: description, followingCount: followingCount, followerCount: followerCount, verified: verified, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, user: user, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

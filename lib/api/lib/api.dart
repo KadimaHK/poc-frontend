@@ -12,6 +12,7 @@ library openapi.api;
 
 import 'dart:async';
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:collection/collection.dart';
@@ -100,7 +101,7 @@ part 'model/vw_pick.dart';
 
 /// An [ApiClient] instance that uses the default values obtained from
 /// the OpenAPI specification file.
-var defaultApiClient = ApiClient();
+ApiClient defaultApiClient = ApiClient(authentication: ApiKeyAuth('cookie', 'session_token'));
 
 const _delimiters = {'csv': ',', 'ssv': ' ', 'tsv': '\t', 'pipes': '|'};
 const _dateEpochMarker = 'epoch';

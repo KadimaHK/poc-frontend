@@ -26,12 +26,14 @@ class MyApp extends StatefulWidget {
   const MyApp({super.key});
   static SharedPreferences? prefs;
   @override
-  State<MyApp> createState() => _MyAppState();
-  static _MyAppState? of(BuildContext context) => context.findAncestorStateOfType<_MyAppState>();
+  State<MyApp> createState() => MyAppState();
+  static MyAppState? of(BuildContext context) => context.findAncestorStateOfType<MyAppState>();
 }
 
-class _MyAppState extends State<MyApp> {
+class MyAppState extends State<MyApp> {
   Locale? _locale;
+  static final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
   void setLocale(Locale value) {
     setState(() {
       _locale = value;
@@ -59,6 +61,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'POC',
       locale: _locale,
+      navigatorKey: navigatorKey,
       theme: ThemeData(
         appBarTheme: AppBarTheme(
           backgroundColor: primaryColor,
@@ -116,7 +119,6 @@ class _MyAppState extends State<MyApp> {
             backgroundColor: WidgetStatePropertyAll(const Color(0xFFFFF1D8)),
           ),
         ),
-        
         chipTheme: ChipThemeData(
           backgroundColor: primaryColor.withAlpha(200),
           labelStyle: TextStyle(color: Colors.white),
@@ -143,10 +145,9 @@ class MainState extends State<Main> {
   static final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   static final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-  static final List<Widget> _list = [HomePage(), ExplorePage(), SearchPage(), MessagePage(),LoginPage()];
+  static final List<Widget> _list = [HomePage(), ExplorePage(), SearchPage(), MessagePage(), ProfilePage()];
 //change for debug
   int _selectedIndex = 0;
-
 
   @override
   Widget build(BuildContext context) {
@@ -168,10 +169,21 @@ class MainState extends State<Main> {
               return FeaturedDetailPage(featured: featured);
             });
           }
-          if(settings.name == SignUpPage.routeName){
+          if (settings.name == SignUpPage.routeName) {
             return MaterialPageRoute(builder: (context) {
               return SignUpPage();
             });
+          }
+
+          if (settings.name == LoginPage.routeName) {
+            return MaterialPageRoute(builder: (context) {
+              return LoginPage();
+            });
+          }
+
+          if (settings.name == ProfilePage.routeName) {
+            _selectedIndex = 4;
+            setState(() {});
           }
 
           // for the main pages without transition animation

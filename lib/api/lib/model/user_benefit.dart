@@ -17,7 +17,7 @@ class UserBenefit {
     required this.benefitId,
   });
 
-  /// Note: This is a Primary Key.<pk/>
+  /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
   int userId;
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `benefit.id`.<fk table='benefit' column='id'/>
