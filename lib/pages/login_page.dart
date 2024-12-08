@@ -65,8 +65,9 @@ class _LoginPageState extends State<LoginPage> {
               log(sessionToken, name: 'sessionToken');
               MyApp.prefs!.setString('loginSessionToken', sessionToken);
 
-              Authentication apiClientAuth = ApiKeyAuth('cookie', 'session_token');
+              ApiKeyAuth apiClientAuth = ApiKeyAuth('cookie', 'session_token');
               apiClientAuth.apiKey = sessionToken;
+
               MyApp.sessionApiClient = ApiClient(authentication: apiClientAuth);
 
               Navigator.pop(context);

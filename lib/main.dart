@@ -32,10 +32,9 @@ class MyApp extends StatefulWidget {
   static MyAppState? of(BuildContext context) => context.findAncestorStateOfType<MyAppState>();
 }
 
-extension ApiSetter on Authentication {
-  set apiKey(String apiKey) {
-    apiKey = apiKey;
-  }
+extension ApiSetter on api.ApiKeyAuth {
+  set apiKey(String apiKey) => this.apiKey = apiKey;
+  String get apiKey => this.apiKey;
 }
 
 class MyAppState extends State<MyApp> {
@@ -59,7 +58,7 @@ class MyAppState extends State<MyApp> {
         _locale = Locale(languageCode, countryCode);
       }
       if (value.getString('loginSessionToken') != null) {
-        Authentication apiClientAuth = ApiKeyAuth('cookie', 'session_token');
+        ApiKeyAuth apiClientAuth = ApiKeyAuth('cookie', 'session_token');
         apiClientAuth.apiKey = value.getString('loginSessionToken')!;
         MyApp.sessionApiClient = ApiClient(authentication: apiClientAuth);
       }

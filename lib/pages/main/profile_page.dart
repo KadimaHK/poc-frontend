@@ -25,13 +25,16 @@ class _ProfilePageState extends State<ProfilePage> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (MyApp.prefs!.getString('loginSessionToken') == null) {
         Navigator.pushNamed(context, LoginPage.routeName);
+        return;
       }
+
     });
     fetchUser();
   }
 
   void fetchUser() async {
     try {
+     
       final users = await api.UserApi(MyApp.sessionApiClient).userGet();
       final user = users != null && users.isNotEmpty ? users[0] : null;
       setState(() {

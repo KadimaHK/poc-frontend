@@ -7,7 +7,6 @@
 // ignore_for_file: always_put_required_named_parameters_first
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
-
 part of openapi.api;
 
 class ApiKeyAuth implements Authentication {
@@ -22,7 +21,7 @@ class ApiKeyAuth implements Authentication {
   @override
   Future<void> applyToParams(List<QueryParam> queryParams, Map<String, String> headerParams,) async {
     final paramValue = apiKeyPrefix.isEmpty ? apiKey : '$apiKeyPrefix $apiKey';
-
+    print('paramValue: $paramValue');
     if (paramValue.isNotEmpty) {
       if (location == 'query') {
         queryParams.add(QueryParam(paramName, paramValue));
@@ -34,6 +33,7 @@ class ApiKeyAuth implements Authentication {
           (existingCookie) => '$existingCookie; $paramName=$paramValue',
           ifAbsent: () => '$paramName=$paramValue',
         );
+        print("headerParams: $headerParams");
       }
     }
   }

@@ -13,33 +13,36 @@ class EstablishmentCardView extends StatefulWidget {
 class _EstablishmentCardViewState extends State<EstablishmentCardView> {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => BarProfilePage())),
-      child: Column(
-        children: [
-          Stack(
-            children: [
-              ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: AspectRatio(
-                    aspectRatio: .75,
-                    child: Image.network(
-                      '${widget.establishment.thumbnailUrl}',
-                      fit: BoxFit.cover,
-                      // errorBuilder: (context, error, stackTrace) => Placeholder(),
-                    ),
-                  )),
-              Positioned(
-                  right: 15,
-                  top: 15,
-                  child: Column(
-                    children: [IconButton(onPressed: () {}, icon: Icon(Icons.bookmark_border)), Text("1234")],
-                  )),
-            ],
-          ),
-          Text('${widget.establishment.name}', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-          Text('${widget.establishment.category} | ★ ${widget.establishment.rank}', style: TextStyle(fontSize: 15, color: Colors.grey)),
-        ],
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => BarProfilePage())),
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: AspectRatio(
+                      aspectRatio: .75,
+                      child: Image.network(
+                        '${widget.establishment.thumbnailUrl}',
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) => Placeholder(),
+                      ),
+                    )),
+                Positioned(
+                    right: 15,
+                    top: 15,
+                    child: Column(
+                      children: [IconButton(onPressed: () {}, icon: Icon(Icons.bookmark_border)), Text("1234")],
+                    )),
+              ],
+            ),
+            Text('${widget.establishment.name}', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            Text('${widget.establishment.category} | ★ ${widget.establishment.rank}', style: TextStyle(fontSize: 15, color: Colors.grey)),
+          ],
+        ),
       ),
     );
   }

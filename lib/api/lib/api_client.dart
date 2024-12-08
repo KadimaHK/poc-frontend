@@ -47,7 +47,7 @@ class ApiClient {
     String? contentType,
   ) async {
     await authentication?.applyToParams(queryParams, headerParams);
-
+    print("headerParams2: $headerParams");
     headerParams.addAll(_defaultHeaderMap);
     if (contentType != null) {
       headerParams['Content-Type'] = contentType;
@@ -91,7 +91,11 @@ class ApiClient {
         ? formParams
         : await serializeAsync(body);
       final nullableHeaderParams = headerParams.isEmpty ? null : headerParams;
-
+      print('nullableHeaderParams: $nullableHeaderParams');
+      print('method: $method');
+      print('uri: $uri');
+      print('msgBody: $msgBody');
+      
       switch(method) {
         case 'POST': return await _client.post(uri, headers: nullableHeaderParams, body: msgBody,);
         case 'PUT': return await _client.put(uri, headers: nullableHeaderParams, body: msgBody,);
