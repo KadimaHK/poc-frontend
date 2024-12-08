@@ -1,3 +1,3 @@
 lib/api/rpc*
-lib/api.dart
-lib/auth/api_key_auth.dart
+#lib/api.dart
+#lib/auth/api_key_auth.dart

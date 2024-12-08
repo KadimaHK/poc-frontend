@@ -5,7 +5,7 @@ import 'package:poc_frontend/pages/bar_profile_page.dart';
 
 class EstablishmentCardView extends StatefulWidget {
   const EstablishmentCardView({super.key, required this.establishment});
-  final api.VwEstablishment establishment;
+  final api.Establishment establishment;
   @override
   _EstablishmentCardViewState createState() => _EstablishmentCardViewState();
 }
@@ -24,9 +24,9 @@ class _EstablishmentCardViewState extends State<EstablishmentCardView> {
                   child: AspectRatio(
                     aspectRatio: .75,
                     child: Image.network(
-                      '${widget.establishment.baseUrl}${widget.establishment.fileName}',
+                      '${widget.establishment.thumbnailUrl}',
                       fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) => Placeholder(),
+                      // errorBuilder: (context, error, stackTrace) => Placeholder(),
                     ),
                   )),
               Positioned(

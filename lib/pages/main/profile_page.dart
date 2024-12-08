@@ -32,7 +32,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   void fetchUser() async {
     try {
-      final users = await api.UserApi().userGet();
+      final users = await api.UserApi(MyApp.sessionApiClient).userGet();
       final user = users != null && users.isNotEmpty ? users[0] : null;
       setState(() {
         this.user = user;

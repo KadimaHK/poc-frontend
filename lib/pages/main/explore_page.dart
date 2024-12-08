@@ -14,7 +14,7 @@ class ExplorePage extends StatefulWidget {
 
 class _ExplorePageState extends State<ExplorePage> {
   TextEditingController searchController = TextEditingController();
-  List<api.VwEstablishment> establishments = [];
+  List<api.Establishment> establishments = [];
 
   @override
   void initState() {
@@ -23,7 +23,7 @@ class _ExplorePageState extends State<ExplorePage> {
   }
 
   void _fetchData() async {
-    establishments = (await api.VwEstablishmentApi().vwEstablishmentGet()) ?? [];
+    establishments = (await api.EstablishmentApi().establishmentGet()) ?? [];
     setState(() {});
   }
 

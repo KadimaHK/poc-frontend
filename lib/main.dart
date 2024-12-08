@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:poc_frontend/api/lib/api.dart' as api;
+import 'package:poc_frontend/api/lib/api.dart';
 import 'package:poc_frontend/components/profile_drawer.dart';
 import 'package:poc_frontend/pages/bar_profile_page.dart';
 import 'package:poc_frontend/pages/featured_detail_page.dart';
@@ -25,9 +26,16 @@ void main() {
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
   static SharedPreferences? prefs;
+  static ApiClient? sessionApiClient;
   @override
   State<MyApp> createState() => MyAppState();
   static MyAppState? of(BuildContext context) => context.findAncestorStateOfType<MyAppState>();
+}
+
+extension ApiSetter on Authentication {
+  set apiKey(String apiKey) {
+    apiKey = apiKey;
+  }
 }
 
 class MyAppState extends State<MyApp> {
@@ -49,6 +57,11 @@ class MyAppState extends State<MyApp> {
       final String? countryCode = value.getString('countryCode');
       if (languageCode != null && countryCode != null) {
         _locale = Locale(languageCode, countryCode);
+      }
+      if (value.getString('loginSessionToken') != null) {
+        Authentication apiClientAuth = ApiKeyAuth('cookie', 'session_token');
+        apiClientAuth.apiKey = value.getString('loginSessionToken')!;
+        MyApp.sessionApiClient = ApiClient(authentication: apiClientAuth);
       }
     });
   }
@@ -164,7 +177,7 @@ class MainState extends State<Main> {
             });
           }
           if (settings.name == FeaturedDetailPage.routeName) {
-            final featured = settings.arguments as api.VwFeatured;
+            final featured = settings.arguments as api.Featured;
             return MaterialPageRoute(builder: (context) {
               return FeaturedDetailPage(featured: featured);
             });

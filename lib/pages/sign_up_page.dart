@@ -105,9 +105,11 @@ class _SignUpPageState extends State<SignUpPage> {
               String sessionToken = res as String;
               log(sessionToken, name: 'session_token');
               MyApp.prefs!.setString('loginSessionToken', sessionToken);
-              if (defaultApiClient.authentication is ApiKeyAuth) {
-                (defaultApiClient.authentication as ApiKeyAuth).apiKey = sessionToken;
-              }
+
+              Authentication apiClientAuth = ApiKeyAuth('cookie', 'session_token');
+              apiClientAuth.apiKey = sessionToken;
+              MyApp.sessionApiClient = ApiClient(authentication: apiClientAuth);
+              
             } on Response catch (response, _) {
               if (response.statusCode == 409) {
                 final body = jsonDecode(response.body);

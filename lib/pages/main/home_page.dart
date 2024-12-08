@@ -19,8 +19,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   TextEditingController searchController = TextEditingController();
-  List<api.VwPick> picks = [];
-  List<api.VwFeatured> featured = [];
+  List<api.Pick> picks = [];
+  List<api.Featured> featured = [];
   List<api.VwFeaturedOffer> featuredOffers = [];
 
   @override
@@ -30,8 +30,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> fetchData() async {
-    picks = await api.VwPickApi().vwPickGet() ?? [];
-    featured = await api.VwFeaturedApi().vwFeaturedGet(limit: "4") ?? [];
+    picks = await api.PickApi().pickGet() ?? [];
+    featured = await api.FeaturedApi().featuredGet(limit: "4") ?? [];
     featuredOffers = await api.VwFeaturedOfferApi().vwFeaturedOfferGet(limit: "8") ?? [];
     setState(() {});
   }

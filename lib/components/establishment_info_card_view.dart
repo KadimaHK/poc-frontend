@@ -16,8 +16,8 @@ class EstablishmentInfoCardView extends StatefulWidget {
 }
 
 class _EstablishmentInfoCardViewState extends State<EstablishmentInfoCardView> {
-  api.VwEstablishment? establishment;
-  List<api.VwEstablishmentImage>? establishmentImages = [];
+  api.Establishment? establishment;
+  List<api.EstablishmentImage>? establishmentImages = [];
   @override
   void initState() {
     fetchData();
@@ -25,8 +25,8 @@ class _EstablishmentInfoCardViewState extends State<EstablishmentInfoCardView> {
   }
 
   void fetchData() async {
-    establishment = (await api.VwEstablishmentApi().vwEstablishmentGet(id: widget.establishmentId?.toString()))?.firstOrNull;
-    establishmentImages = await api.VwEstablishmentImageApi().vwEstablishmentImageGet(establishmentId: widget.establishmentId?.toString());
+    establishment = (await api.EstablishmentApi().establishmentGet(id: widget.establishmentId?.toString()))?.firstOrNull;
+    establishmentImages = await api.EstablishmentImageApi().establishmentImageGet(establishmentId: widget.establishmentId?.toString());
     setState(() {});
   }
 
@@ -59,7 +59,7 @@ class _EstablishmentInfoCardViewState extends State<EstablishmentInfoCardView> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Image.network(
-                        "${establishment!.baseUrl}${establishment!.fileName}",
+                        "${establishment!.thumbnailUrl}",
                         height: 140,
                         width: 150,
                         fit: BoxFit.cover,
@@ -83,7 +83,7 @@ class _EstablishmentInfoCardViewState extends State<EstablishmentInfoCardView> {
                             separatorBuilder: (context, index) => const SizedBox(width: 10),
                             itemBuilder: (context, index) {
                               return Image.network(
-                                "${establishmentImages![index].baseUrl}${establishmentImages![index].fileName}",
+                                "${establishmentImages![index].imageUrl}",
                                 height: 50,
                                 width: 100,
                                 fit: BoxFit.cover,

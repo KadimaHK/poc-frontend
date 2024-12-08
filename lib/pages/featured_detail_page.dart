@@ -6,7 +6,7 @@ import 'package:poc_frontend/components/establishment_info_card_view.dart';
 class FeaturedDetailPage extends StatefulWidget {
   const FeaturedDetailPage({super.key, required this.featured});
   static const routeName = '/featured_detail';
-  final api.VwFeatured featured;
+  final api.Featured featured;
   @override
   State<FeaturedDetailPage> createState() => _FeaturedDetailPageState();
 }
@@ -23,7 +23,7 @@ class _FeaturedDetailPageState extends State<FeaturedDetailPage> {
       body: ListView(
         children: [
           Image.network(
-            "${widget.featured.baseUrl}${widget.featured.fileName}",
+            "${widget.featured.imageUrl}",
             height: 200,
             fit: BoxFit.cover,
             loadingBuilder: (context, child, loadingProgress) => loadingProgress == null ? child : CircularProgressIndicator(),

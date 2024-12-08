@@ -9,7 +9,7 @@ class FeaturedCardView extends StatefulWidget {
     required this.featured,
   }) : super(key: key);
 
-  final api.VwFeatured featured;
+  final api.Featured featured;
 
   @override
   State<FeaturedCardView> createState() => _FeaturedCardViewState();
@@ -30,7 +30,7 @@ class _FeaturedCardViewState extends State<FeaturedCardView> {
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: Image.network(
-              "${widget.featured.baseUrl}${widget.featured.fileName}",
+              "${widget.featured.imageUrl}",
               height: 100,
               width: width,
               fit: BoxFit.cover,

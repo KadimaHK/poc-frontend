@@ -8,7 +8,7 @@ class PickCardView extends StatefulWidget {
     required this.pick,
   }) : super(key: key);
 
-  final api.VwPick pick;
+  final api.Pick pick;
 
   @override
   State<PickCardView> createState() => _PickCardViewState();
@@ -26,7 +26,7 @@ class _PickCardViewState extends State<PickCardView> {
       child: Column(
         children: [
           Image.network(
-            "${widget.pick.baseUrl}${widget.pick.fileName}",
+            "${widget.pick.imageUrl}",
             height: 100,
             width: width,
             fit: BoxFit.cover,

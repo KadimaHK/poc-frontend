@@ -64,9 +64,11 @@ class _LoginPageState extends State<LoginPage> {
             RpcLoginApi().rpcLoginPost(_emailController.text, _passwordController.text).then((sessionToken) {
               log(sessionToken, name: 'sessionToken');
               MyApp.prefs!.setString('loginSessionToken', sessionToken);
-              if (defaultApiClient.authentication is ApiKeyAuth) {
-                (defaultApiClient.authentication as ApiKeyAuth).apiKey = sessionToken;
-              }
+
+              Authentication apiClientAuth = ApiKeyAuth('cookie', 'session_token');
+              apiClientAuth.apiKey = sessionToken;
+              MyApp.sessionApiClient = ApiClient(authentication: apiClientAuth);
+
               Navigator.pop(context);
             });
           },
@@ -100,6 +102,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
+
 
 class _ClickableText extends StatelessWidget {
   const _ClickableText({super.key, required this.text, required this.onPressed});

@@ -52,23 +52,8 @@ class _ProfileDrawerState extends State<ProfileDrawer> {
                     radius: 25,
                     backgroundColor: Colors.white,
                     child: loggedIn
-                        ? user?.iconId != null
-                            ? FutureBuilder(
-                                future: api.ImageApi().imageGet(1, id: user!.iconId!.toString()),
-                                builder: (context, snapshot) {
-                                  if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
-                                    api.Image image = snapshot.data!.first;
-                                    return Image.network(
-                                      '${image.baseUrl ?? ''}${image.fileName ?? ''}',
-                                      width: 30,
-                                      height: 30,
-                                      errorBuilder: (context, error, stackTrace) => Placeholder(),
-                                    );
-                                  } else {
-                                    return Icon(Icons.person, size: 30);
-                                  }
-                                },
-                              )
+                        ? user?.iconUrl != null
+                            ? Image.network(user!.iconUrl!)
                             : Icon(Icons.person, size: 30)
                         : Icon(Icons.person, size: 30),
                   ),

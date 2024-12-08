@@ -13,7 +13,7 @@ class FeaturedPage extends StatefulWidget {
 class _FeaturedPageState extends State<FeaturedPage> with SingleTickerProviderStateMixin {
   late final TabController _tabController;
 
-  List<api.VwFeatured> featured = [];
+  List<api.Featured> featured = [];
 
   @override
   void initState() {
@@ -29,7 +29,7 @@ class _FeaturedPageState extends State<FeaturedPage> with SingleTickerProviderSt
   }
 
   void _fetchData() async {
-    featured = (await api.VwFeaturedApi().vwFeaturedGet()) ?? [];
+    featured = (await api.FeaturedApi().featuredGet()) ?? [];
     setState(() {});
   }
 
@@ -55,7 +55,7 @@ class _FeaturedPageState extends State<FeaturedPage> with SingleTickerProviderSt
 
 class _FeaturedGrid extends StatelessWidget {
   const _FeaturedGrid({required this.featured});
-  final List<api.VwFeatured> featured;
+  final List<api.Featured> featured;
   @override
   Widget build(BuildContext context) {
     return GridView(

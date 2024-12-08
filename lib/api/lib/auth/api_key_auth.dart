@@ -11,7 +11,7 @@
 part of openapi.api;
 
 class ApiKeyAuth implements Authentication {
-  ApiKeyAuth(this.location, this.paramName, {this.apiKeyPrefix = '', this.apiKey = ''});
+  ApiKeyAuth(this.location, this.paramName);
 
   final String location;
   final String paramName;
@@ -20,11 +20,9 @@ class ApiKeyAuth implements Authentication {
   String apiKey = '';
 
   @override
-  Future<void> applyToParams(
-    List<QueryParam> queryParams,
-    Map<String, String> headerParams,
-  ) async {
+  Future<void> applyToParams(List<QueryParam> queryParams, Map<String, String> headerParams,) async {
     final paramValue = apiKeyPrefix.isEmpty ? apiKey : '$apiKeyPrefix $apiKey';
+
     if (paramValue.isNotEmpty) {
       if (location == 'query') {
         queryParams.add(QueryParam(paramName, paramValue));

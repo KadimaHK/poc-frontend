@@ -12,7 +12,6 @@ library openapi.api;
 
 import 'dart:async';
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:collection/collection.dart';
@@ -57,13 +56,7 @@ part 'api/rpc_sign_up_api.dart';
 part 'api/user_api.dart';
 part 'api/user_benefit_api.dart';
 part 'api/user_featured_offer_api.dart';
-part 'api/vw_establishment_api.dart';
-part 'api/vw_establishment_image_api.dart';
-part 'api/vw_featured_api.dart';
 part 'api/vw_featured_offer_api.dart';
-part 'api/vw_featured_offer_exclusive_api.dart';
-part 'api/vw_featured_offer_global_api.dart';
-part 'api/vw_pick_api.dart';
 
 part 'model/benefit.dart';
 part 'model/booking.dart';
@@ -90,18 +83,12 @@ part 'model/rpc_sign_up_post_request.dart';
 part 'model/user.dart';
 part 'model/user_benefit.dart';
 part 'model/user_featured_offer.dart';
-part 'model/vw_establishment.dart';
-part 'model/vw_establishment_image.dart';
-part 'model/vw_featured.dart';
 part 'model/vw_featured_offer.dart';
-part 'model/vw_featured_offer_exclusive.dart';
-part 'model/vw_featured_offer_global.dart';
-part 'model/vw_pick.dart';
 
 
 /// An [ApiClient] instance that uses the default values obtained from
 /// the OpenAPI specification file.
-ApiClient defaultApiClient = ApiClient(authentication: ApiKeyAuth('cookie', 'session_token'));
+var defaultApiClient = ApiClient();
 
 const _delimiters = {'csv': ',', 'ssv': ' ', 'tsv': '\t', 'pipes': '|'};
 const _dateEpochMarker = 'epoch';
