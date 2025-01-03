@@ -106,7 +106,7 @@ class _SignUpPageState extends State<SignUpPage> {
               log(sessionToken, name: 'session_token');
               MyApp.prefs!.setString('loginSessionToken', sessionToken);
 
-              ApiKeyAuth apiClientAuth = ApiKeyAuth('cookie', 'session_token');
+              ApiKeyAuth apiClientAuth = ApiKeyAuth('header', 'session-token');
               apiClientAuth.apiKey = sessionToken;
               MyApp.sessionApiClient = ApiClient(authentication: apiClientAuth);
               

@@ -58,7 +58,7 @@ class MyAppState extends State<MyApp> {
         _locale = Locale(languageCode, countryCode);
       }
       if (value.getString('loginSessionToken') != null) {
-        ApiKeyAuth apiClientAuth = ApiKeyAuth('cookie', 'session_token');
+        ApiKeyAuth apiClientAuth = ApiKeyAuth('header', 'session-token');
         apiClientAuth.apiKey = value.getString('loginSessionToken')!;
         MyApp.sessionApiClient = ApiClient(authentication: apiClientAuth);
       }

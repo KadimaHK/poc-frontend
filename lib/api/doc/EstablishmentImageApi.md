@@ -5,7 +5,7 @@
 import 'package:openapi/api.dart';
 ```
 
-All URIs are relative to *http://192.168.50.79:3000*
+All URIs are relative to *https://poc-bar-app.com:443/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

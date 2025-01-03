@@ -35,12 +35,6 @@ class _ProfilePageState extends State<ProfilePage> {
 
   void fetchUser() async {
     try {
-      Client client = new Client();
-      Uri uri = Uri.parse('${MyApp.sessionApiClient!.basePath}/user');
-
-      var result = await client.get(uri, headers: {'Cookie': 'session_token=${MyApp.prefs!.getString('loginSessionToken')}'});
-      log('result: ${result.statusCode}');
-      log('result: ${result.body}');
       final users = await api.UserApi(MyApp.sessionApiClient).userGet();      
       final user = users != null && users.isNotEmpty ? users[0] : null;
       setState(() {
