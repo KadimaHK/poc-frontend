@@ -37,9 +37,12 @@ extension ApiSetter on api.ApiKeyAuth {
   String get apiKey => this.apiKey;
 }
 
+final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
+final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 class MyAppState extends State<MyApp> {
   Locale? _locale;
-  static final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   void setLocale(Locale value) {
     setState(() {
@@ -73,7 +76,7 @@ class MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'POC',
       locale: _locale,
-      navigatorKey: navigatorKey,
+      navigatorKey: rootNavigatorKey,
       theme: ThemeData(
         appBarTheme: AppBarTheme(
           backgroundColor: primaryColor,
@@ -153,10 +156,8 @@ class Main extends StatefulWidget {
   State<Main> createState() => MainState();
 }
 
-class MainState extends State<Main> {
-  static final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  static final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
+class MainState extends State<Main> {
   static final List<Widget> _list = [HomePage(), ExplorePage(), SearchPage(), MessagePage(), ProfilePage()];
 //change for debug
   int _selectedIndex = 0;

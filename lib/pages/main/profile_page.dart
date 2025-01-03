@@ -88,9 +88,18 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ],
             ),
-            Text(user?.description ?? ''),
+            _Description(description: user?.description ?? ''),
             UserMembershipCard(),
           ],
         ));
+  }
+}
+
+class _Description extends StatelessWidget {
+  final String description;
+  const _Description({required this.description, super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Text(description);
   }
 }

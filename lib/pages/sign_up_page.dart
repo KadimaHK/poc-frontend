@@ -109,6 +109,8 @@ class _SignUpPageState extends State<SignUpPage> {
               ApiKeyAuth apiClientAuth = ApiKeyAuth('header', 'session-token');
               apiClientAuth.apiKey = sessionToken;
               MyApp.sessionApiClient = ApiClient(authentication: apiClientAuth);
+              Navigator.pop(context);
+              Navigator.pushReplacementNamed(context, '/');
               
             } on Response catch (response, _) {
               if (response.statusCode == 409) {

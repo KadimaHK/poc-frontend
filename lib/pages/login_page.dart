@@ -71,13 +71,14 @@ class _LoginPageState extends State<LoginPage> {
               MyApp.sessionApiClient = ApiClient(authentication: apiClientAuth);
 
               Navigator.pop(context);
+              Navigator.pushReplacementNamed(context, '/');
             });
           },
           style: Theme.of(context).textButtonTheme.style,
           child: Text(t.login),
         ),
         _ClickableText(text: t.forgotPassword, onPressed: () {}),
-        Row(mainAxisSize: MainAxisSize.min, children: [Text(t.newUser), _ClickableText(text: t.createAccount, onPressed: () => Navigator.pushNamed(context, SignUpPage.routeName))]),
+        Row(mainAxisSize: MainAxisSize.min, children: [Text(t.newUser), _ClickableText(text: t.createAccount, onPressed: () => Navigator.pushReplacementNamed(context, SignUpPage.routeName))]),
         Spacer(),
         RichText(
           text: TextSpan(

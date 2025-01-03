@@ -64,7 +64,7 @@ class _ProfileDrawerState extends State<ProfileDrawer> {
                 ],
               ),
               onTap: () {
-                MainState.navigatorKey.currentState!.pushNamed(ProfilePage.routeName);
+                navigatorKey.currentState!.pushNamed(ProfilePage.routeName);
                 Navigator.pop(context);
               },
             ),
@@ -128,9 +128,9 @@ class _ProfileDrawerState extends State<ProfileDrawer> {
               onTap: () async {
                 await api.RpcLogoutApi().rpcLogoutPost();
                 MyApp.prefs!.remove('loginSessionToken');
-                // Navigator.pop(context);
-                // Navigator.pushNamed(context, HomePage.routeName);
-                Navigator.pushReplacementNamed(context, HomePage.routeName);
+                MyApp.sessionApiClient = null;
+                Navigator.pop(context);
+                navigatorKey.currentState!.pushReplacementNamed('/');
               },
             ),
         ],

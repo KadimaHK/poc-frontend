@@ -18,7 +18,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       leading: IconButton(
         icon: icon,
-        onPressed: () => MainState.scaffoldKey.currentState?.openDrawer(),
+        onPressed: () => scaffoldKey.currentState?.openDrawer(),
       ),
       title: Text(title),
       actions: [
@@ -38,7 +38,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
             ];
           },
         ),
-        IconButton(onPressed: () => MyAppState.navigatorKey.currentState?.push(MaterialPageRoute(builder: (context) => QrCodeScannerPage())), icon: Icon(Icons.qr_code_scanner)),
+        IconButton(onPressed: () => rootNavigatorKey.currentState?.push(MaterialPageRoute(builder: (context) => QrCodeScannerPage())), icon: Icon(Icons.qr_code_scanner)),
         IconButton(onPressed: () => Navigator.pushNamed(context, NotificationPage.routeName), icon: Icon(Icons.notifications_none)),
       ],
     );
