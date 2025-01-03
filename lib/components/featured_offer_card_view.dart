@@ -8,13 +8,26 @@ class FeaturedOfferCardView extends StatefulWidget {
     required this.featuredOffer,
   }) : super(key: key);
 
-  final api.VwFeaturedOffer featuredOffer;
+  final api.FeaturedOffer featuredOffer;
 
   @override
   State<FeaturedOfferCardView> createState() => _FeaturedOfferCardViewState();
 }
 
 class _FeaturedOfferCardViewState extends State<FeaturedOfferCardView> {
+  api.Establishment? establishment;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  void fetchData() async {
+    establishment = (await api.EstablishmentApi().establishmentGet(id:"eq.${widget.featuredOffer.establishmentId?.toString()}"))?.firstOrNull;
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
@@ -24,12 +37,12 @@ class _FeaturedOfferCardViewState extends State<FeaturedOfferCardView> {
       child: Column(
         children: [
           Image.network(
-            "${widget.featuredOffer.baseUrl}${widget.featuredOffer.fileName}",
+            "${widget.featuredOffer.imageUrl}",
             height: 80,
             width: double.infinity,
             fit: BoxFit.cover,
             loadingBuilder: (context, child, loadingProgress) => loadingProgress == null ? child : CircularProgressIndicator(),
-                      errorBuilder: (context, error, stackTrace) => Placeholder(fallbackHeight: 80, fallbackWidth: double.infinity),
+            errorBuilder: (context, error, stackTrace) => Placeholder(fallbackHeight: 80, fallbackWidth: double.infinity),
           ),
           Container(
             padding: const EdgeInsets.all(10),
@@ -42,7 +55,7 @@ class _FeaturedOfferCardViewState extends State<FeaturedOfferCardView> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(widget.featuredOffer.title ?? '', style: const TextStyle(fontSize: 12, color: Colors.black)),
-                Text(widget.featuredOffer.location ?? '', style: const TextStyle(fontSize: 10, color: Colors.grey)),
+                Text(establishment?.location ?? '', style: const TextStyle(fontSize: 10, color: Colors.grey)),
               ],
             ),
           ),

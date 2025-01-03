@@ -5,6 +5,7 @@ import 'package:poc_frontend/api/lib/api.dart' as api;
 import 'package:poc_frontend/main.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:poc_frontend/pages/login_page.dart';
+import 'package:poc_frontend/pages/main/home_page.dart';
 import 'package:poc_frontend/pages/main/profile_page.dart';
 
 class ProfileDrawer extends StatefulWidget {
@@ -25,7 +26,7 @@ class _ProfileDrawerState extends State<ProfileDrawer> {
       return;
     }
     
-    user = (await api.UserApi().userGet())?[0];
+    user = (await api.UserApi(MyApp.sessionApiClient).userGet())?[0];
     setState(() {});
   }
 
@@ -127,7 +128,9 @@ class _ProfileDrawerState extends State<ProfileDrawer> {
               onTap: () async {
                 await api.RpcLogoutApi().rpcLogoutPost();
                 MyApp.prefs!.remove('loginSessionToken');
-                Navigator.pop(context);
+                // Navigator.pop(context);
+                // Navigator.pushNamed(context, HomePage.routeName);
+                Navigator.pushReplacementNamed(context, HomePage.routeName);
               },
             ),
         ],

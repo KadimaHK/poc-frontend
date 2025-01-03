@@ -14,9 +14,9 @@ class FeaturedOffersPage extends StatefulWidget {
 class _FeaturedOffersPageState extends State<FeaturedOffersPage> with SingleTickerProviderStateMixin {
   late final TabController _tabController;
 
-  List<api.VwFeaturedOffer> featuredOffers = [];
-  List<api.VwFeaturedOffer> featuredOffersGlobal = [];
-  List<api.VwFeaturedOffer> featuredOffersExclusive = [];
+  List<api.FeaturedOffer> featuredOffers = [];
+  List<api.FeaturedOffer> featuredOffersGlobal = [];
+  List<api.FeaturedOffer> featuredOffersExclusive = [];
 
   @override
   void initState() {
@@ -32,7 +32,7 @@ class _FeaturedOffersPageState extends State<FeaturedOffersPage> with SingleTick
   }
 
   void _fetchData() async {
-    featuredOffers = (await api.VwFeaturedOfferApi(MyApp.sessionApiClient).vwFeaturedOfferGet()) ?? [];
+    featuredOffers = (await api.FeaturedOfferApi(MyApp.sessionApiClient).featuredOfferGet()) ?? [];
     featuredOffersGlobal = featuredOffers.where((element) => element.isGlobal == true).toList();
     featuredOffersExclusive = featuredOffers.where((element) => element.isGlobal == false).toList();
 
@@ -78,7 +78,7 @@ class _FeaturedOffersPageState extends State<FeaturedOffersPage> with SingleTick
 
 class _FeaturedOffersGrid extends StatelessWidget {
   const _FeaturedOffersGrid({required this.featuredOffers});
-  final List<api.VwFeaturedOffer> featuredOffers;
+  final List<api.FeaturedOffer> featuredOffers;
   @override
   Widget build(BuildContext context) {
     return GridView(

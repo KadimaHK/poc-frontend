@@ -25,7 +25,7 @@ class _EstablishmentInfoCardViewState extends State<EstablishmentInfoCardView> {
   }
 
   void fetchData() async {
-    establishment = (await api.EstablishmentApi().establishmentGet(id: widget.establishmentId?.toString()))?.firstOrNull;
+    establishment = (await api.EstablishmentApi().establishmentGet(id: "eq.${widget.establishmentId?.toString()}"))?.firstOrNull;
     establishmentImages = await api.EstablishmentImageApi().establishmentImageGet(establishmentId: widget.establishmentId?.toString());
     setState(() {});
   }
@@ -148,7 +148,7 @@ class EstablishmentFeaturedOfferView extends StatefulWidget {
 }
 
 class _EstablishmentFeaturedOfferViewState extends State<EstablishmentFeaturedOfferView> {
-  List<api.VwFeaturedOffer>? featuredOffers;
+  List<api.FeaturedOffer>? featuredOffers;
   @override
   void initState() {
     fetchData();
@@ -156,7 +156,7 @@ class _EstablishmentFeaturedOfferViewState extends State<EstablishmentFeaturedOf
   }
 
   void fetchData() async {
-    featuredOffers = await api.VwFeaturedOfferApi().vwFeaturedOfferGet(establishmentId: widget.establishmentId?.toString());
+    featuredOffers = await api.FeaturedOfferApi().featuredOfferGet(establishmentId: widget.establishmentId?.toString());  
     setState(() {});
   }
 
@@ -185,7 +185,7 @@ class _EstablishmentFeaturedOfferViewState extends State<EstablishmentFeaturedOf
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: Image.network(
-                    "${featuredOffers![index].baseUrl}${featuredOffers![index].fileName}",
+                    "${featuredOffers![index].imageUrl}",
                     height: 80,
                     width: 80,
                     fit: BoxFit.cover,

@@ -12,7 +12,7 @@ import 'package:poc_frontend/pages/featured_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
-
+  static const routeName = '/home';
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
   TextEditingController searchController = TextEditingController();
   List<api.Pick> picks = [];
   List<api.Featured> featured = [];
-  List<api.VwFeaturedOffer> featuredOffers = [];
+  List<api.FeaturedOffer> featuredOffers = [];
 
   @override
   void initState() {
@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
   Future<void> fetchData() async {
     picks = await api.PickApi().pickGet() ?? [];
     featured = await api.FeaturedApi().featuredGet(limit: "4") ?? [];
-    featuredOffers = await api.VwFeaturedOfferApi().vwFeaturedOfferGet(limit: "8") ?? [];
+    featuredOffers = await api.FeaturedOfferApi().featuredOfferGet(limit: "8") ?? [];
     setState(() {});
   }
 

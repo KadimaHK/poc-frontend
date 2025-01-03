@@ -55,8 +55,6 @@ doc/UserBenefit.md
 doc/UserBenefitApi.md
 doc/UserFeaturedOffer.md
 doc/UserFeaturedOfferApi.md
-doc/VwFeaturedOffer.md
-doc/VwFeaturedOfferApi.md
 git_push.sh
 lib/api.dart
 lib/api/benefit_api.dart
@@ -84,7 +82,6 @@ lib/api/review_image_api.dart
 lib/api/user_api.dart
 lib/api/user_benefit_api.dart
 lib/api/user_featured_offer_api.dart
-lib/api/vw_featured_offer_api.dart
 lib/api_client.dart
 lib/api_exception.dart
 lib/api_helper.dart
@@ -118,5 +115,4 @@ lib/model/rpc_sign_up_post_request.dart
 lib/model/user.dart
 lib/model/user_benefit.dart
 lib/model/user_featured_offer.dart
-lib/model/vw_featured_offer.dart
 pubspec.yaml

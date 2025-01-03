@@ -11,7 +11,7 @@
 part of openapi.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'http://192.168.1.2:3000', this.authentication,});
+  ApiClient({this.basePath = 'http://192.168.50.79:3000', this.authentication,});
 
   final String basePath;
   final Authentication? authentication;
@@ -47,7 +47,7 @@ class ApiClient {
     String? contentType,
   ) async {
     await authentication?.applyToParams(queryParams, headerParams);
-    print("headerParams2: $headerParams");
+
     headerParams.addAll(_defaultHeaderMap);
     if (contentType != null) {
       headerParams['Content-Type'] = contentType;
@@ -91,11 +91,7 @@ class ApiClient {
         ? formParams
         : await serializeAsync(body);
       final nullableHeaderParams = headerParams.isEmpty ? null : headerParams;
-      print('nullableHeaderParams: $nullableHeaderParams');
-      print('method: $method');
-      print('uri: $uri');
-      print('msgBody: $msgBody');
-      
+
       switch(method) {
         case 'POST': return await _client.post(uri, headers: nullableHeaderParams, body: msgBody,);
         case 'PUT': return await _client.put(uri, headers: nullableHeaderParams, body: msgBody,);
@@ -236,8 +232,6 @@ class ApiClient {
           return UserBenefit.fromJson(value);
         case 'UserFeaturedOffer':
           return UserFeaturedOffer.fromJson(value);
-        case 'VwFeaturedOffer':
-          return VwFeaturedOffer.fromJson(value);
         default:
           dynamic match;
           if (value is List && (match = _regList.firstMatch(targetType)?.group(1)) != null) {

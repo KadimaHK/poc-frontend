@@ -9,6 +9,7 @@ import 'package:poc_frontend/components/user_membership_card.dart';
 import 'package:poc_frontend/main.dart';
 import 'package:poc_frontend/pages/login_page.dart';
 import 'package:poc_frontend/api/lib/api.dart' as api;
+import 'package:http/src/client.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -26,16 +27,21 @@ class _ProfilePageState extends State<ProfilePage> {
       if (MyApp.prefs!.getString('loginSessionToken') == null) {
         Navigator.pushNamed(context, LoginPage.routeName);
         return;
+      } else {
+        fetchUser();
       }
-
     });
-    fetchUser();
   }
 
   void fetchUser() async {
     try {
-     
-      final users = await api.UserApi(MyApp.sessionApiClient).userGet();
+      Client client = new Client();
+      Uri uri = Uri.parse('${MyApp.sessionApiClient!.basePath}/user');
+
+      var result = await client.get(uri, headers: {'Cookie': 'session_token=${MyApp.prefs!.getString('loginSessionToken')}'});
+      log('result: ${result.statusCode}');
+      log('result: ${result.body}');
+      final users = await api.UserApi(MyApp.sessionApiClient).userGet();      
       final user = users != null && users.isNotEmpty ? users[0] : null;
       setState(() {
         this.user = user;

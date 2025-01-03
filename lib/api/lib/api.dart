@@ -56,7 +56,6 @@ part 'api/rpc_sign_up_api.dart';
 part 'api/user_api.dart';
 part 'api/user_benefit_api.dart';
 part 'api/user_featured_offer_api.dart';
-part 'api/vw_featured_offer_api.dart';
 
 part 'model/benefit.dart';
 part 'model/booking.dart';
@@ -83,7 +82,6 @@ part 'model/rpc_sign_up_post_request.dart';
 part 'model/user.dart';
 part 'model/user_benefit.dart';
 part 'model/user_featured_offer.dart';
-part 'model/vw_featured_offer.dart';
 
 
 /// An [ApiClient] instance that uses the default values obtained from
