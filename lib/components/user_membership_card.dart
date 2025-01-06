@@ -18,7 +18,7 @@ class _UserMembershipCardState extends State<UserMembershipCard> {
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withValues(alpha: 0.9),
+            color: Colors.grey.withOpacity(0.1),
             spreadRadius: 1,
             blurRadius: 2,
             offset: const Offset(0, 1),

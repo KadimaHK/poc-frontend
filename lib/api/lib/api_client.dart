@@ -11,7 +11,7 @@
 part of openapi.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'https://poc-bar-app.com:443/api', this.authentication,});
+  ApiClient({this.basePath = 'http://poc-bar-app.com:80/api', this.authentication,});
 
   final String basePath;
   final Authentication? authentication;

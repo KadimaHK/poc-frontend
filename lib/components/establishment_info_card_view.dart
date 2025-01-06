@@ -26,7 +26,7 @@ class _EstablishmentInfoCardViewState extends State<EstablishmentInfoCardView> {
 
   void fetchData() async {
     establishment = (await api.EstablishmentApi().establishmentGet(id: "eq.${widget.establishmentId?.toString()}"))?.firstOrNull;
-    establishmentImages = await api.EstablishmentImageApi().establishmentImageGet(establishmentId: widget.establishmentId?.toString());
+    establishmentImages = await api.EstablishmentImageApi().establishmentImageGet(establishmentId: "eq.${widget.establishmentId?.toString()}");
     setState(() {});
   }
 
@@ -156,7 +156,7 @@ class _EstablishmentFeaturedOfferViewState extends State<EstablishmentFeaturedOf
   }
 
   void fetchData() async {
-    featuredOffers = await api.FeaturedOfferApi().featuredOfferGet(establishmentId: widget.establishmentId?.toString());  
+    featuredOffers = await api.FeaturedOfferApi().featuredOfferGet(establishmentId: "eq.${widget.establishmentId?.toString()}");
     setState(() {});
   }
 
