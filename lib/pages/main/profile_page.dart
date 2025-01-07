@@ -5,6 +5,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:poc_frontend/components/app_bar.dart';
+import 'package:poc_frontend/components/icon_button_label.dart';
+import 'package:poc_frontend/components/textbutton_no_background.dart';
+import 'package:poc_frontend/components/textbutton_secondary.dart';
 import 'package:poc_frontend/components/user_membership_card.dart';
 import 'package:poc_frontend/main.dart';
 import 'package:poc_frontend/pages/login_page.dart';
@@ -18,7 +21,9 @@ class ProfilePage extends StatefulWidget {
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStateMixin {
+  late final TabController _tabController;
+
   api.User? user;
   @override
   void initState() {
@@ -31,18 +36,21 @@ class _ProfilePageState extends State<ProfilePage> {
         fetchUser();
       }
     });
+    _tabController = TabController(length: 4, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _tabController.dispose();
   }
 
   void fetchUser() async {
-    try {
-      final users = await api.UserApi(MyApp.sessionApiClient).userGet();      
-      final user = users != null && users.isNotEmpty ? users[0] : null;
-      setState(() {
-        this.user = user;
-      });
-    } catch (e) {
-      log('Error fetching user: $e');
-    }
+    final users = await api.UserApi(MyApp.sessionApiClient).userGet();
+    final user = users != null && users.isNotEmpty ? users[0] : null;
+    setState(() {
+      this.user = user;
+    });
   }
 
   @override
@@ -51,7 +59,7 @@ class _ProfilePageState extends State<ProfilePage> {
     if (user == null) {
       return Scaffold(
         appBar: MainAppBar(
-          title: "${t.loading}...",
+          title: '${t.loading}...',
         ),
         body: Center(
           child: SizedBox(
@@ -67,31 +75,82 @@ class _ProfilePageState extends State<ProfilePage> {
     }
 
     return Scaffold(
-        appBar: MainAppBar(
-          title: user!.name ?? '',
-        ),
-        body: ListView(
-          children: [
-            Row(
-              children: [
-                TextButton(
-                  onPressed: () {},
-                  child: Text('${user!.followerCount}\n${t.followers}'),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  child: Text('${user!.followingCount}\n${t.following}'),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  child: Text(t.edit),
-                ),
-              ],
-            ),
-            _Description(description: user?.description ?? ''),
-            UserMembershipCard(),
-          ],
-        ));
+      appBar: MainAppBar(
+        title: user!.name ?? '',
+      ),
+      body: ListView(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              TextButtonNoBackground(
+                onPressed: () {},
+                text: '${user!.followerCount}\n${t.followers}',
+              ),
+              TextButtonNoBackground(
+                onPressed: () {},
+                text: '${user!.followingCount}\n${t.following}',
+              ),
+              SizedBox(width: 10),
+              Expanded(
+                child: TextButtonSecondary(onPressed: () {}, text: t.edit),
+              ),
+            ],
+          ),
+          _Description(description: user?.description ?? ''),
+          UserMembershipCard(user: user!),
+          Text(t.earnPointsToRenewMembershipDesc('${user?.points!}', user?.pointsExpiry?.substring(0, 10) ?? '', '3000')),
+          LinearProgressIndicator(
+            value: user!.points! / 3000,
+          ),
+          Text(t.membershipRemainingDays(
+            user!.pointsExpiry?.substring(0, 10) ?? '',
+            DateTime.parse(user!.pointsExpiry!).difference(DateTime.now()).inDays.toString(),
+            (3000 - user!.points!).toString(),
+          )),
+          Text(t.learnMore),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              LabeledIconButton(
+                size: 50,
+                assetImagePath: 'assets/images/icon_menu_voucher.png',
+                label: t.vouchers,
+                onPressed: () {},
+              ),
+              LabeledIconButton(
+                assetImagePath: 'assets/images/icon_menu_booking.png',
+                label: t.bookings,
+                onPressed: () {},
+              ),
+              LabeledIconButton(
+                assetImagePath: 'assets/images/icon_menu_benefit.png',
+                label: t.exclusiveBenefit,
+                onPressed: () {},
+              ),
+              LabeledIconButton(
+                assetImagePath: 'assets/images/icon_menu_store.png',
+                label: t.storedLiqueurs,
+                onPressed: () {},
+              ),
+            ],
+          ),
+          Column(
+            children: [
+              TabBar(
+                tabs: [
+                  Tab(text: t.overview),
+                  Tab(text: t.bookmarks),
+                  Tab(text: t.reviews),
+                  Tab(text: t.photos),
+                ],
+                controller: _tabController,
+              )
+            ],
+          )
+        ],
+      ),
+    );
   }
 }
 

@@ -9,6 +9,7 @@ import 'package:openapi/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | Note: This is a Primary Key.<pk/> | 
+**uuid** | **String** |  | [optional] 
 **email** | **String** |  | 
 **name** | **String** |  | [optional] 
 **password** | **String** |  | [optional] 
@@ -18,6 +19,8 @@ Name | Type | Description | Notes
 **description** | **String** |  | [optional] 
 **followingCount** | **int** |  | [optional] 
 **followerCount** | **int** |  | [optional] 
+**points** | **int** |  | [optional] 
+**pointsExpiry** | **String** |  | [optional] 
 **verified** | **bool** |  | [optional] [default to false]
 **createdAt** | **String** |  | [optional] [default to 'now()']
 **updatedAt** | **String** |  | [optional] [default to 'now()']

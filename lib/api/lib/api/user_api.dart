@@ -21,6 +21,8 @@ class UserApi {
   ///
   /// * [String] id:
   ///
+  /// * [String] uuid:
+  ///
   /// * [String] email:
   ///
   /// * [String] name:
@@ -39,6 +41,10 @@ class UserApi {
   ///
   /// * [String] followerCount:
   ///
+  /// * [String] points:
+  ///
+  /// * [String] pointsExpiry:
+  ///
   /// * [String] verified:
   ///
   /// * [String] createdAt:
@@ -47,7 +53,7 @@ class UserApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> userDeleteWithHttpInfo({ String? id, String? email, String? name, String? password, String? iconUrl, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? verified, String? createdAt, String? updatedAt, String? prefer, }) async {
+  Future<Response> userDeleteWithHttpInfo({ String? id, String? uuid, String? email, String? name, String? password, String? iconUrl, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? points, String? pointsExpiry, String? verified, String? createdAt, String? updatedAt, String? prefer, }) async {
     // ignore: prefer_const_declarations
     final path = r'/user';
 
@@ -60,6 +66,9 @@ class UserApi {
 
     if (id != null) {
       queryParams.addAll(_queryParams('', 'id', id));
+    }
+    if (uuid != null) {
+      queryParams.addAll(_queryParams('', 'uuid', uuid));
     }
     if (email != null) {
       queryParams.addAll(_queryParams('', 'email', email));
@@ -87,6 +96,12 @@ class UserApi {
     }
     if (followerCount != null) {
       queryParams.addAll(_queryParams('', 'follower_count', followerCount));
+    }
+    if (points != null) {
+      queryParams.addAll(_queryParams('', 'points', points));
+    }
+    if (pointsExpiry != null) {
+      queryParams.addAll(_queryParams('', 'points_expiry', pointsExpiry));
     }
     if (verified != null) {
       queryParams.addAll(_queryParams('', 'verified', verified));
@@ -120,6 +135,8 @@ class UserApi {
   ///
   /// * [String] id:
   ///
+  /// * [String] uuid:
+  ///
   /// * [String] email:
   ///
   /// * [String] name:
@@ -138,6 +155,10 @@ class UserApi {
   ///
   /// * [String] followerCount:
   ///
+  /// * [String] points:
+  ///
+  /// * [String] pointsExpiry:
+  ///
   /// * [String] verified:
   ///
   /// * [String] createdAt:
@@ -146,8 +167,8 @@ class UserApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> userDelete({ String? id, String? email, String? name, String? password, String? iconUrl, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? verified, String? createdAt, String? updatedAt, String? prefer, }) async {
-    final response = await userDeleteWithHttpInfo( id: id, email: email, name: name, password: password, iconUrl: iconUrl, age: age, gender: gender, description: description, followingCount: followingCount, followerCount: followerCount, verified: verified, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, );
+  Future<void> userDelete({ String? id, String? uuid, String? email, String? name, String? password, String? iconUrl, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? points, String? pointsExpiry, String? verified, String? createdAt, String? updatedAt, String? prefer, }) async {
+    final response = await userDeleteWithHttpInfo( id: id, uuid: uuid, email: email, name: name, password: password, iconUrl: iconUrl, age: age, gender: gender, description: description, followingCount: followingCount, followerCount: followerCount, points: points, pointsExpiry: pointsExpiry, verified: verified, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -158,6 +179,8 @@ class UserApi {
   ///
   /// * [String] id:
   ///
+  /// * [String] uuid:
+  ///
   /// * [String] email:
   ///
   /// * [String] name:
@@ -175,6 +198,10 @@ class UserApi {
   /// * [String] followingCount:
   ///
   /// * [String] followerCount:
+  ///
+  /// * [String] points:
+  ///
+  /// * [String] pointsExpiry:
   ///
   /// * [String] verified:
   ///
@@ -202,7 +229,7 @@ class UserApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> userGetWithHttpInfo({ String? id, String? email, String? name, String? password, String? iconUrl, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? verified, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> userGetWithHttpInfo({ String? id, String? uuid, String? email, String? name, String? password, String? iconUrl, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? points, String? pointsExpiry, String? verified, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
     // ignore: prefer_const_declarations
     final path = r'/user';
 
@@ -215,6 +242,9 @@ class UserApi {
 
     if (id != null) {
       queryParams.addAll(_queryParams('', 'id', id));
+    }
+    if (uuid != null) {
+      queryParams.addAll(_queryParams('', 'uuid', uuid));
     }
     if (email != null) {
       queryParams.addAll(_queryParams('', 'email', email));
@@ -242,6 +272,12 @@ class UserApi {
     }
     if (followerCount != null) {
       queryParams.addAll(_queryParams('', 'follower_count', followerCount));
+    }
+    if (points != null) {
+      queryParams.addAll(_queryParams('', 'points', points));
+    }
+    if (pointsExpiry != null) {
+      queryParams.addAll(_queryParams('', 'points_expiry', pointsExpiry));
     }
     if (verified != null) {
       queryParams.addAll(_queryParams('', 'verified', verified));
@@ -293,6 +329,8 @@ class UserApi {
   ///
   /// * [String] id:
   ///
+  /// * [String] uuid:
+  ///
   /// * [String] email:
   ///
   /// * [String] name:
@@ -310,6 +348,10 @@ class UserApi {
   /// * [String] followingCount:
   ///
   /// * [String] followerCount:
+  ///
+  /// * [String] points:
+  ///
+  /// * [String] pointsExpiry:
   ///
   /// * [String] verified:
   ///
@@ -337,8 +379,8 @@ class UserApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<User>?> userGet({ String? id, String? email, String? name, String? password, String? iconUrl, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? verified, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await userGetWithHttpInfo( id: id, email: email, name: name, password: password, iconUrl: iconUrl, age: age, gender: gender, description: description, followingCount: followingCount, followerCount: followerCount, verified: verified, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<User>?> userGet({ String? id, String? uuid, String? email, String? name, String? password, String? iconUrl, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? points, String? pointsExpiry, String? verified, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+    final response = await userGetWithHttpInfo( id: id, uuid: uuid, email: email, name: name, password: password, iconUrl: iconUrl, age: age, gender: gender, description: description, followingCount: followingCount, followerCount: followerCount, points: points, pointsExpiry: pointsExpiry, verified: verified, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -360,6 +402,8 @@ class UserApi {
   ///
   /// * [String] id:
   ///
+  /// * [String] uuid:
+  ///
   /// * [String] email:
   ///
   /// * [String] name:
@@ -378,6 +422,10 @@ class UserApi {
   ///
   /// * [String] followerCount:
   ///
+  /// * [String] points:
+  ///
+  /// * [String] pointsExpiry:
+  ///
   /// * [String] verified:
   ///
   /// * [String] createdAt:
@@ -389,7 +437,7 @@ class UserApi {
   ///
   /// * [User] user:
   ///   user
-  Future<Response> userPatchWithHttpInfo({ String? id, String? email, String? name, String? password, String? iconUrl, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? verified, String? createdAt, String? updatedAt, String? prefer, User? user, }) async {
+  Future<Response> userPatchWithHttpInfo({ String? id, String? uuid, String? email, String? name, String? password, String? iconUrl, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? points, String? pointsExpiry, String? verified, String? createdAt, String? updatedAt, String? prefer, User? user, }) async {
     // ignore: prefer_const_declarations
     final path = r'/user';
 
@@ -402,6 +450,9 @@ class UserApi {
 
     if (id != null) {
       queryParams.addAll(_queryParams('', 'id', id));
+    }
+    if (uuid != null) {
+      queryParams.addAll(_queryParams('', 'uuid', uuid));
     }
     if (email != null) {
       queryParams.addAll(_queryParams('', 'email', email));
@@ -429,6 +480,12 @@ class UserApi {
     }
     if (followerCount != null) {
       queryParams.addAll(_queryParams('', 'follower_count', followerCount));
+    }
+    if (points != null) {
+      queryParams.addAll(_queryParams('', 'points', points));
+    }
+    if (pointsExpiry != null) {
+      queryParams.addAll(_queryParams('', 'points_expiry', pointsExpiry));
     }
     if (verified != null) {
       queryParams.addAll(_queryParams('', 'verified', verified));
@@ -462,6 +519,8 @@ class UserApi {
   ///
   /// * [String] id:
   ///
+  /// * [String] uuid:
+  ///
   /// * [String] email:
   ///
   /// * [String] name:
@@ -480,6 +539,10 @@ class UserApi {
   ///
   /// * [String] followerCount:
   ///
+  /// * [String] points:
+  ///
+  /// * [String] pointsExpiry:
+  ///
   /// * [String] verified:
   ///
   /// * [String] createdAt:
@@ -491,8 +554,8 @@ class UserApi {
   ///
   /// * [User] user:
   ///   user
-  Future<void> userPatch({ String? id, String? email, String? name, String? password, String? iconUrl, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? verified, String? createdAt, String? updatedAt, String? prefer, User? user, }) async {
-    final response = await userPatchWithHttpInfo( id: id, email: email, name: name, password: password, iconUrl: iconUrl, age: age, gender: gender, description: description, followingCount: followingCount, followerCount: followerCount, verified: verified, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, user: user, );
+  Future<void> userPatch({ String? id, String? uuid, String? email, String? name, String? password, String? iconUrl, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? points, String? pointsExpiry, String? verified, String? createdAt, String? updatedAt, String? prefer, User? user, }) async {
+    final response = await userPatchWithHttpInfo( id: id, uuid: uuid, email: email, name: name, password: password, iconUrl: iconUrl, age: age, gender: gender, description: description, followingCount: followingCount, followerCount: followerCount, points: points, pointsExpiry: pointsExpiry, verified: verified, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, user: user, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

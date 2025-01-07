@@ -6,11 +6,13 @@ class LabeledIconButton extends StatefulWidget {
     required this.assetImagePath,
     required this.label,
     required this.onPressed,
+    this.size = 50,
   }) : super(key: key);
 
   final String assetImagePath;
   final String label;
   final void Function() onPressed;
+  final double size;
 
   @override
   State<LabeledIconButton> createState() => _LabeledIconButtonState();
@@ -22,10 +24,14 @@ class _LabeledIconButtonState extends State<LabeledIconButton> {
     return Column(
       children: [
         IconButton(
+          iconSize: widget.size,
           onPressed: widget.onPressed,
-          icon: Image.asset(widget.assetImagePath)
+          icon: Image.asset(widget.assetImagePath, width: widget.size, height: widget.size),
         ),
-        Text(widget.label),
+        SizedBox(
+          width: widget.size * 1.5,
+          child: Text(widget.label, textAlign: TextAlign.center),
+        ),
       ],
     );
   }

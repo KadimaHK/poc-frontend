@@ -99,7 +99,25 @@
 
     "edit": "Edit",
     "loading": "Loading",
+
+    "pointExpiredDate": "Point Expired Date: {date}",
+    "viewSummary": "View Summary",
+    "earnPointsToRenewMembershipDesc": "Earn {currentPoints} / {requiredPoints} points by {expirationDate} to renew your membership",
+    "membershipRemainingDays": "{days} days remaining in membership. Earn {points} points by {date} through using various services to extend membership.",
     
+    
+    
+
+    
+    "learnMore": "Learn More",
+
+    "exclusiveBenefit": "Exclusive Benefit",
+
+    "overview": "Overview",
+    "bookmarks": "Bookmarks",
+    "reviews": "Reviews",
+    "photos": "Photos",
+
 
     "empty":"empty"
 }

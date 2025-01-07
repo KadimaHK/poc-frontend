@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **userDelete**
-> userDelete(id, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, verified, createdAt, updatedAt, prefer)
+> userDelete(id, uuid, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, points, pointsExpiry, verified, createdAt, updatedAt, prefer)
 
 
 
@@ -30,6 +30,7 @@ import 'package:openapi/api.dart';
 
 final api_instance = UserApi();
 final id = id_example; // String | 
+final uuid = uuid_example; // String | 
 final email = email_example; // String | 
 final name = name_example; // String | 
 final password = password_example; // String | 
@@ -39,13 +40,15 @@ final gender = gender_example; // String |
 final description = description_example; // String | 
 final followingCount = followingCount_example; // String | 
 final followerCount = followerCount_example; // String | 
+final points = points_example; // String | 
+final pointsExpiry = pointsExpiry_example; // String | 
 final verified = verified_example; // String | 
 final createdAt = createdAt_example; // String | 
 final updatedAt = updatedAt_example; // String | 
 final prefer = prefer_example; // String | Preference
 
 try {
-    api_instance.userDelete(id, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, verified, createdAt, updatedAt, prefer);
+    api_instance.userDelete(id, uuid, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, points, pointsExpiry, verified, createdAt, updatedAt, prefer);
 } catch (e) {
     print('Exception when calling UserApi->userDelete: $e\n');
 }
@@ -56,6 +59,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | [optional] 
+ **uuid** | **String**|  | [optional] 
  **email** | **String**|  | [optional] 
  **name** | **String**|  | [optional] 
  **password** | **String**|  | [optional] 
@@ -65,6 +69,8 @@ Name | Type | Description  | Notes
  **description** | **String**|  | [optional] 
  **followingCount** | **String**|  | [optional] 
  **followerCount** | **String**|  | [optional] 
+ **points** | **String**|  | [optional] 
+ **pointsExpiry** | **String**|  | [optional] 
  **verified** | **String**|  | [optional] 
  **createdAt** | **String**|  | [optional] 
  **updatedAt** | **String**|  | [optional] 
@@ -86,7 +92,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **userGet**
-> List<User> userGet(id, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, verified, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer)
+> List<User> userGet(id, uuid, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, points, pointsExpiry, verified, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer)
 
 
 
@@ -100,6 +106,7 @@ import 'package:openapi/api.dart';
 
 final api_instance = UserApi();
 final id = id_example; // String | 
+final uuid = uuid_example; // String | 
 final email = email_example; // String | 
 final name = name_example; // String | 
 final password = password_example; // String | 
@@ -109,6 +116,8 @@ final gender = gender_example; // String |
 final description = description_example; // String | 
 final followingCount = followingCount_example; // String | 
 final followerCount = followerCount_example; // String | 
+final points = points_example; // String | 
+final pointsExpiry = pointsExpiry_example; // String | 
 final verified = verified_example; // String | 
 final createdAt = createdAt_example; // String | 
 final updatedAt = updatedAt_example; // String | 
@@ -121,7 +130,7 @@ final limit = limit_example; // String | Limiting and Pagination
 final prefer = prefer_example; // String | Preference
 
 try {
-    final result = api_instance.userGet(id, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, verified, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer);
+    final result = api_instance.userGet(id, uuid, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, points, pointsExpiry, verified, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer);
     print(result);
 } catch (e) {
     print('Exception when calling UserApi->userGet: $e\n');
@@ -133,6 +142,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | [optional] 
+ **uuid** | **String**|  | [optional] 
  **email** | **String**|  | [optional] 
  **name** | **String**|  | [optional] 
  **password** | **String**|  | [optional] 
@@ -142,6 +152,8 @@ Name | Type | Description  | Notes
  **description** | **String**|  | [optional] 
  **followingCount** | **String**|  | [optional] 
  **followerCount** | **String**|  | [optional] 
+ **points** | **String**|  | [optional] 
+ **pointsExpiry** | **String**|  | [optional] 
  **verified** | **String**|  | [optional] 
  **createdAt** | **String**|  | [optional] 
  **updatedAt** | **String**|  | [optional] 
@@ -169,7 +181,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **userPatch**
-> userPatch(id, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, verified, createdAt, updatedAt, prefer, user)
+> userPatch(id, uuid, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, points, pointsExpiry, verified, createdAt, updatedAt, prefer, user)
 
 
 
@@ -183,6 +195,7 @@ import 'package:openapi/api.dart';
 
 final api_instance = UserApi();
 final id = id_example; // String | 
+final uuid = uuid_example; // String | 
 final email = email_example; // String | 
 final name = name_example; // String | 
 final password = password_example; // String | 
@@ -192,6 +205,8 @@ final gender = gender_example; // String |
 final description = description_example; // String | 
 final followingCount = followingCount_example; // String | 
 final followerCount = followerCount_example; // String | 
+final points = points_example; // String | 
+final pointsExpiry = pointsExpiry_example; // String | 
 final verified = verified_example; // String | 
 final createdAt = createdAt_example; // String | 
 final updatedAt = updatedAt_example; // String | 
@@ -199,7 +214,7 @@ final prefer = prefer_example; // String | Preference
 final user = User(); // User | user
 
 try {
-    api_instance.userPatch(id, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, verified, createdAt, updatedAt, prefer, user);
+    api_instance.userPatch(id, uuid, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, points, pointsExpiry, verified, createdAt, updatedAt, prefer, user);
 } catch (e) {
     print('Exception when calling UserApi->userPatch: $e\n');
 }
@@ -210,6 +225,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | [optional] 
+ **uuid** | **String**|  | [optional] 
  **email** | **String**|  | [optional] 
  **name** | **String**|  | [optional] 
  **password** | **String**|  | [optional] 
@@ -219,6 +235,8 @@ Name | Type | Description  | Notes
  **description** | **String**|  | [optional] 
  **followingCount** | **String**|  | [optional] 
  **followerCount** | **String**|  | [optional] 
+ **points** | **String**|  | [optional] 
+ **pointsExpiry** | **String**|  | [optional] 
  **verified** | **String**|  | [optional] 
  **createdAt** | **String**|  | [optional] 
  **updatedAt** | **String**|  | [optional] 

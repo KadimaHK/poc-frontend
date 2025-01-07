@@ -105,7 +105,7 @@ class _EstablishmentInfoCardViewState extends State<EstablishmentInfoCardView> {
                 SizedBox(height: 10),
                 Row(
                   children: [
-                    Image.asset("assets/images/icon_menu_1.png", height: 50, width: 50),
+                    Image.asset("assets/images/icon_menu_booking.png", height: 50, width: 50),
                     SizedBox(width: 10),
                     Text("${t.earn} "),
                     SvgPicture.asset(

@@ -23,7 +23,7 @@ class _FeaturedDetailPageState extends State<FeaturedDetailPage> {
       body: ListView(
         children: [
           Image.network(
-            "${widget.featured.imageUrl}",
+            '${widget.featured.imageUrl}',
             height: 200,
             fit: BoxFit.cover,
             loadingBuilder: (context, child, loadingProgress) => loadingProgress == null ? child : CircularProgressIndicator(),

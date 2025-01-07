@@ -14,6 +14,7 @@ class User {
   /// Returns a new [User] instance.
   User({
     required this.id,
+    this.uuid,
     required this.email,
     this.name,
     this.password,
@@ -23,6 +24,8 @@ class User {
     this.description,
     this.followingCount,
     this.followerCount,
+    this.points,
+    this.pointsExpiry,
     this.verified = false,
     this.createdAt = 'now()',
     this.updatedAt = 'now()',
@@ -30,6 +33,14 @@ class User {
 
   /// Note: This is a Primary Key.<pk/>
   int id;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? uuid;
 
   String email;
 
@@ -98,6 +109,22 @@ class User {
   ///
   int? followerCount;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? points;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? pointsExpiry;
+
   bool verified;
 
   String createdAt;
@@ -107,6 +134,7 @@ class User {
   @override
   bool operator ==(Object other) => identical(this, other) || other is User &&
     other.id == id &&
+    other.uuid == uuid &&
     other.email == email &&
     other.name == name &&
     other.password == password &&
@@ -116,6 +144,8 @@ class User {
     other.description == description &&
     other.followingCount == followingCount &&
     other.followerCount == followerCount &&
+    other.points == points &&
+    other.pointsExpiry == pointsExpiry &&
     other.verified == verified &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt;
@@ -124,6 +154,7 @@ class User {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id.hashCode) +
+    (uuid == null ? 0 : uuid!.hashCode) +
     (email.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (password == null ? 0 : password!.hashCode) +
@@ -133,16 +164,23 @@ class User {
     (description == null ? 0 : description!.hashCode) +
     (followingCount == null ? 0 : followingCount!.hashCode) +
     (followerCount == null ? 0 : followerCount!.hashCode) +
+    (points == null ? 0 : points!.hashCode) +
+    (pointsExpiry == null ? 0 : pointsExpiry!.hashCode) +
     (verified.hashCode) +
     (createdAt.hashCode) +
     (updatedAt.hashCode);
 
   @override
-  String toString() => 'User[id=$id, email=$email, name=$name, password=$password, iconUrl=$iconUrl, age=$age, gender=$gender, description=$description, followingCount=$followingCount, followerCount=$followerCount, verified=$verified, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'User[id=$id, uuid=$uuid, email=$email, name=$name, password=$password, iconUrl=$iconUrl, age=$age, gender=$gender, description=$description, followingCount=$followingCount, followerCount=$followerCount, points=$points, pointsExpiry=$pointsExpiry, verified=$verified, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'id'] = this.id;
+    if (this.uuid != null) {
+      json[r'uuid'] = this.uuid;
+    } else {
+      json[r'uuid'] = null;
+    }
       json[r'email'] = this.email;
     if (this.name != null) {
       json[r'name'] = this.name;
@@ -184,6 +222,16 @@ class User {
     } else {
       json[r'follower_count'] = null;
     }
+    if (this.points != null) {
+      json[r'points'] = this.points;
+    } else {
+      json[r'points'] = null;
+    }
+    if (this.pointsExpiry != null) {
+      json[r'points_expiry'] = this.pointsExpiry;
+    } else {
+      json[r'points_expiry'] = null;
+    }
       json[r'verified'] = this.verified;
       json[r'created_at'] = this.createdAt;
       json[r'updated_at'] = this.updatedAt;
@@ -210,6 +258,7 @@ class User {
 
       return User(
         id: mapValueOfType<int>(json, r'id')!,
+        uuid: mapValueOfType<String>(json, r'uuid'),
         email: mapValueOfType<String>(json, r'email')!,
         name: mapValueOfType<String>(json, r'name'),
         password: mapValueOfType<String>(json, r'password'),
@@ -219,6 +268,8 @@ class User {
         description: mapValueOfType<String>(json, r'description'),
         followingCount: mapValueOfType<int>(json, r'following_count'),
         followerCount: mapValueOfType<int>(json, r'follower_count'),
+        points: mapValueOfType<int>(json, r'points'),
+        pointsExpiry: mapValueOfType<String>(json, r'points_expiry'),
         verified: mapValueOfType<bool>(json, r'verified') ?? false,
         createdAt: mapValueOfType<String>(json, r'created_at') ?? 'now()',
         updatedAt: mapValueOfType<String>(json, r'updated_at') ?? 'now()',

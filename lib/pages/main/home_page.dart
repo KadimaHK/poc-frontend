@@ -31,8 +31,8 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> fetchData() async {
     picks = await api.PickApi().pickGet() ?? [];
-    featured = await api.FeaturedApi().featuredGet(limit: "4") ?? [];
-    featuredOffers = await api.FeaturedOfferApi().featuredOfferGet(limit: "8") ?? [];
+    featured = await api.FeaturedApi().featuredGet(limit: '4') ?? [];
+    featuredOffers = await api.FeaturedOfferApi().featuredOfferGet(limit: '8') ?? [];
     setState(() {});
   }
 
@@ -70,22 +70,22 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     LabeledIconButton(
-                      assetImagePath: 'assets/images/icon_menu_0.png',
+                      assetImagePath: 'assets/images/icon_menu_compass.png',
                       label: t.nearby,
                       onPressed: () => {},
                     ),
                     LabeledIconButton(
-                      assetImagePath: 'assets/images/icon_menu_1.png',
+                      assetImagePath: 'assets/images/icon_menu_booking.png',
                       label: t.bookings,
                       onPressed: () => {},
                     ),
                     LabeledIconButton(
-                      assetImagePath: 'assets/images/icon_menu_2.png',
+                      assetImagePath: 'assets/images/icon_menu_benefit.png',
                       label: t.benefit,
                       onPressed: () => {},
                     ),
                     LabeledIconButton(
-                      assetImagePath: 'assets/images/icon_menu_3.png',
+                      assetImagePath: 'assets/images/icon_menu_store.png',
                       label: t.storedLiqueurs,
                       onPressed: () => {},
                     ),

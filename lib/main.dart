@@ -1,3 +1,7 @@
+import 'dart:convert';
+import 'dart:io';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:poc_frontend/api/lib/api.dart' as api;
@@ -20,7 +24,23 @@ import 'enums.dart';
 import 'dart:developer';
 
 void main() {
+  PlatformDispatcher.instance.onError = (error, stack) {
+    if (error is api.ApiException) {
+      var messageDict = JsonDecoder().convert(error.message!);
+      if (messageDict['code'] == "P0001" && messageDict['message'] == "Invalid session token") {
+        logout();
+      }
+      return true;
+    }
+    return false;
+  };
   runApp(const MyApp());
+}
+
+void logout() {
+  MyApp.prefs!.remove('loginSessionToken');
+  MyApp.sessionApiClient = null;
+  navigatorKey.currentState!.pushNamed(LoginPage.routeName);
 }
 
 class MyApp extends StatefulWidget {
@@ -134,6 +154,7 @@ class MyAppState extends State<MyApp> {
             backgroundColor: WidgetStatePropertyAll(const Color(0xFFFFF1D8)),
           ),
         ),
+        
         chipTheme: ChipThemeData(
           backgroundColor: primaryColor.withAlpha(200),
           labelStyle: TextStyle(color: Colors.white),
@@ -155,7 +176,6 @@ class Main extends StatefulWidget {
   @override
   State<Main> createState() => MainState();
 }
-
 
 class MainState extends State<Main> {
   static final List<Widget> _list = [HomePage(), ExplorePage(), SearchPage(), MessagePage(), ProfilePage()];
