@@ -27,20 +27,35 @@ import 'dart:developer';
 void main() {
   PlatformDispatcher.instance.onError = (error, stack) {
     if (error is api.ApiException) {
-      apiErrorHandler(error);
-      return true;
+      return apiErrorHandler(error);
     }
     return false;
   };
   runApp(const MyApp());
 }
 
-void apiErrorHandler(api.ApiException error) {
-  var messageDict = JsonDecoder().convert(error.message!);
-  if (messageDict['code'] == "P0001" && messageDict['message'] == "Invalid session token") {
-    MyApp.prefs!.remove('loginSessionToken');
-    MyApp.sessionApiClient = null;
-    navigatorKey.currentState!.pushNamed(LoginPage.routeName);
+bool apiErrorHandler(api.ApiException error) {
+  switch (error.code) {
+    case 400:
+      {
+        var messageDict = JsonDecoder().convert(error.message!);
+        if (messageDict['code'] == "P0001" && messageDict['message'] == "Invalid session token") {
+          MyApp.prefs!.remove('loginSessionToken');
+          MyApp.sessionApiClient = null;
+          navigatorKey.currentState!.pushNamed(LoginPage.routeName);
+          return true;
+        }
+        return false;
+      }
+      case 503:
+      {
+        log('Service Unavailable');
+        return true;
+      }
+    default:
+      {
+        return false;
+      }
   }
 }
 
@@ -218,6 +233,12 @@ class MainState extends State<Main> {
           if (settings.name == LoginPage.routeName) {
             return MaterialPageRoute(builder: (context) {
               return LoginPage();
+            });
+          }
+          if (settings.name == EstablishmentProfilePage.routeName) {
+            final establishment = settings.arguments as api.Establishment;
+            return MaterialPageRoute(builder: (context) {
+              return EstablishmentProfilePage(establishment: establishment);
             });
           }
 

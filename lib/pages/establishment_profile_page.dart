@@ -1,21 +1,77 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:intl/intl.dart';
 import 'package:poc_frontend/api/lib/api.dart' as api;
+import 'package:url_launcher/url_launcher_string.dart';
 
 class EstablishmentProfilePage extends StatefulWidget {
-  const EstablishmentProfilePage({super.key});
+  const EstablishmentProfilePage({super.key, required this.establishment});
   static const String routeName = '/establishment_profile';
+  final api.Establishment establishment;
   @override
   State<EstablishmentProfilePage> createState() => _EstablishmentProfilePageState();
 }
 
 class _EstablishmentProfilePageState extends State<EstablishmentProfilePage> {
+  bool isOpening = false;
+  api.EstablishmentOpeningHours? openingHours;
+  List<api.Benefit> benefits = [];
+  List<api.EstablishmentImage> images = [];
+  List<api.Review> reviews = [];
+
+  @override
+  initState() {
+    super.initState();
+    fetchIsOpen();
+    fetchBenefits();
+    fetchImages();
+    fetchReviews(1);
+  }
+
+  void fetchReviews(int limit) async {
+    final reviews = (await api.ReviewApi().reviewGet(establishmentId: 'eq.${widget.establishment.id}', limit: limit.toString())) ?? [];
+    setState(() {
+      this.reviews = reviews;
+    });
+  }
+
+  void fetchImages() async {
+    final images = (await api.EstablishmentImageApi().establishmentImageGet(establishmentId: 'eq.${widget.establishment.id}')) ?? [];
+    setState(() {
+      this.images = images;
+    });
+  }
+
+  void fetchBenefits() async {
+    final establishmentBenefits = (await api.EstablishmentBenefitApi().establishmentBenefitGet(establishmentId: 'eq.${widget.establishment.id}')) ?? [];
+    final benefits = (await api.BenefitApi().benefitGet(id: 'in.(${establishmentBenefits.map((e) => e.benefitId).join(',')})')) ?? [];
+    setState(() {
+      this.benefits = benefits;
+    });
+  }
+
+  void fetchIsOpen() async {
+    String day = DateFormat('EEEE').format(DateTime.now());
+    final openingHoursRes = (await api.EstablishmentOpeningHoursApi().establishmentOpeningHoursGet(establishmentId: 'eq.${widget.establishment.id}', day: 'eq.${day.toLowerCase()}'));
+    if (openingHoursRes == null || openingHoursRes.isEmpty) return;
+    setState(() {
+      // time format "23:59:59"
+      openingHours = openingHoursRes[0];
+      String currentTime = '${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}';
+      if (openingHours!.openTime!.compareTo(currentTime) <= 0 && openingHours!.closeTime!.compareTo(currentTime) >= 0) {
+        isOpening = true;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
     return ListView(
       children: [
-        TextButton.icon(onPressed: () {}, label: Text(t.order), icon: Icon(Icons.qr_code_scanner)),
         Stack(
           children: [
             Container(
@@ -23,8 +79,11 @@ class _EstablishmentProfilePageState extends State<EstablishmentProfilePage> {
               width: double.infinity,
               decoration: BoxDecoration(
                 image: DecorationImage(
+                  fit: BoxFit.cover,
                   image: Image.network(
-                    'https://s3-alpha-sig.figma.com/img/ff15/362e/264409c1ad26b2486d7aea2f5768200c?Expires=1731888000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=fkpJGRinRqe0DxDCiZvDAaC9B0ZgPbrRHsShXVN6Z4NmQCPN1gp56qQiSiRZXgTL2c5-A0uEeZ9BZiUQxBCAL7a8fHJ0CfXBCSzl4NnrRF8gLn4SG1bHGd04OEgj1vk5hn~seurFsfoDqChFcGaRvgVX03x1NW~5F7KaeBTlearKg0vjEI5OQxOvs2VQ1DSOaI-8oaw30iKl6zY~AQUASOzBJpKLwQtcrXFv~yg7mRPQ7-XsAupeWDppCO85n0rLKBSv0IpBPRnBW7K09K7FFI1DSg5dbjugWBgowZYFOdODQ2J4dN5UYhwIQ37T6qn9JB-KIp88YP9afZrl2i8d-A__',
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                    widget.establishment.thumbnailUrl!,
                     errorBuilder: (context, error, stackTrace) => Placeholder(),
                   ).image,
                 ),
@@ -35,63 +94,210 @@ class _EstablishmentProfilePageState extends State<EstablishmentProfilePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  IconButton(onPressed: () => {}, icon: Icon(Icons.arrow_back)),
+                  IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: Icon(Icons.arrow_back)),
                   IconButton(onPressed: () => {}, icon: Icon(Icons.share_outlined)),
                 ],
               ),
             ),
           ],
         ),
-        ListTile(
-          leading: Image.network(
-              'https://s3-alpha-sig.figma.com/img/6775/a9df/ea7d766d30f5a4bd0b09d1a2bfbd0fbe?Expires=1731888000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Wm3QdCOlg~X5k8xogx~lrE4dsfYfWqbCH62cVIEhmpv9GlHQ~G840PV~zpnVrDs-397rz-XOy7uAzlg0n-A4sOi0tT38~t2sqA6JV6kxt~nQ-YUrZmqO3QKoeu1yYuwMU~5HuiiUB2XrKzvM33YDY-Xsg7LzCk3Y1hJFgR7kbE6RkXwBYPgqxGyegN64Ch3PvcOqPDZ8zlhISA8DK-XbJ~iWHkrL~VKBjlcXZgV~X3aDFSfK84XoPlK0ZolvM3i4dS4-1rz7DfTmD9Lw9PYSgfqFAL0po7qhdC~BDUW9qRouLrh0kwjx20hITemvDkKhDnsK4-gMP-1-MsNxBCjHzA__',
-                      errorBuilder: (context, error, stackTrace) => Placeholder(),),
-          title: Text('Oasis Establishment & Restaurant'),
-          subtitle: Text('Prince Edward・2.8km\nCocktail | Beer Pong\n ★ 3.24'),
-          trailing: IconButton(onPressed: () => {}, icon: Icon(Icons.bookmark_border)),
+
+        Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            spacing: 10,
+            children: [
+              Flexible(
+                child: Image.network(
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                  widget.establishment.thumbnailUrl!,
+                  errorBuilder: (context, error, stackTrace) => Placeholder(),
+                ),
+              ),
+              Flexible(
+                flex: 2,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(widget.establishment.name ?? '', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                    Text(widget.establishment.address ?? '', style: TextStyle(fontSize: 15)),
+                    Text(widget.establishment.description ?? '', style: TextStyle(fontSize: 15)),
+                    Row(
+                      children: [
+                        Icon(Icons.star, color: Colors.yellow),
+                        Text(widget.establishment.rank.toString(), style: TextStyle(fontSize: 15)),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Flexible(
+                child: Column(
+                  children: [
+                    IconButton(onPressed: () => {}, icon: Icon(Icons.bookmark_border)),
+                    Text(widget.establishment.bookmarkCount.toString()),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
-        ListTile(
-          subtitle: Text('Expansive shopping complex offering chain boutiques, eateries, a cinema & public green spaces.'),
+        Padding(padding: const EdgeInsets.all(20), child: Text(widget.establishment.description ?? '')),
+
+        Padding(
+          padding: const EdgeInsets.all(20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              _EstablishmentIconButton(icon: Icons.qr_code_scanner, onPressed: () {}, label: t.order),
+              _EstablishmentIconButton(icon: Icons.wine_bar_outlined, onPressed: () {}, label: t.menu),
+              _EstablishmentIconButton(icon: Icons.table_bar_outlined, onPressed: () {}, label: t.booking),
+              _EstablishmentIconButton(icon: Icons.phone_outlined, onPressed: () {}, label: t.contact),
+            ],
+          ),
         ),
-        Row(
+
+        // // Opening Hours
+        ListTile(
+          key: Key('opening_hours'),
+          title: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(isOpening ? t.open : t.closed, style: TextStyle(color: isOpening ? Colors.green : Colors.red, fontWeight: FontWeight.bold, fontSize: 15)),
+                Text('・${openingHours?.openTime} - ${openingHours?.closeTime}', style: TextStyle(fontSize: 14)),
+              ],
+            ),
+          ),
+          trailing: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
+          shape: Border(
+            top: BorderSide(color: Colors.grey),
+            bottom: BorderSide(color: Colors.grey),
+          ),
+        ),
+
+        // Notice
+        Column(
           children: [
-            TextButton.icon(onPressed: () {}, label: Text(t.order), icon: Icon(Icons.qr_code_scanner)),
-            TextButton.icon(onPressed: () {}, label: Text(t.menu), icon: Icon(Icons.qr_code_scanner)),
-            //booking contact
-            TextButton.icon(onPressed: () {}, label: Text(t.booking), icon: Icon(Icons.qr_code_scanner)),
-            TextButton.icon(onPressed: () {}, label: Text(t.contact), icon: Icon(Icons.qr_code_scanner)),
+            ListTile(
+              title: Text(t.notice),
+              trailing: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Text(widget.establishment.notice ?? ''),
+            ),
           ],
         ),
-        ListTile(
-            title: Text('Opening Hours'),
-            trailing: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
-            shape: Border(
-              top: BorderSide(color: Colors.grey),
-              bottom: BorderSide(color: Colors.grey),
-            )),
-        ListTile(
-          title: Text(t.notice),
-          subtitle: Text('Please note that the establishment will be closed on 1st and 2nd of January 2022.'),
-          trailing: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
-        ),
+
         ListTile(
           title: Text(t.benefits),
-          subtitle: Text('Enjoy 10% off on all drinks during happy hour.'),
           trailing: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
         ),
+        Container(
+          margin: const EdgeInsets.symmetric(vertical: 20),
+          height: 100,
+          child: ListView.separated(
+            itemBuilder: (context, index) => SizedBox(
+              width: 300,
+              child: _BenefitCard(benefit: benefits[index]),
+            ),
+            separatorBuilder: (context, index) => const SizedBox(width: 10),
+            itemCount: benefits.length,
+            scrollDirection: Axis.horizontal,
+          ),
+        ),
+
+        // Photos
         ListTile(
           title: Text(t.photos),
           trailing: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
         ),
+        Container(
+          margin: const EdgeInsets.symmetric(vertical: 20),
+          height: 100,
+          child: ListView.separated(
+            itemBuilder: (context, index) => SizedBox(
+              width: 100,
+              child: Image.network(
+                width: 100,
+                height: 100,
+                fit: BoxFit.cover,
+                images[index].imageUrl,
+                errorBuilder: (context, error, stackTrace) => Placeholder(),
+              ),
+            ),
+            separatorBuilder: (context, index) => const SizedBox(width: 10),
+            itemCount: images.length,
+            scrollDirection: Axis.horizontal,
+          ),
+        ),
+
+        // About
         ListTile(
           title: Text(t.about),
-          subtitle: Text('Expansive shopping complex offering chain boutiques, eateries, a cinema & public green spaces.'),
           trailing: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
         ),
+        Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Icon(Icons.location_on_outlined, color: Colors.white),
+                  SizedBox(width: 5),
+                  Text(widget.establishment.address ?? ''),
+                  IconButton(onPressed: () => Clipboard.setData(ClipboardData(text: widget.establishment.address!)), icon: Icon(Icons.copy)),
+                ],
+              ),
+              //phone
+              Row(
+                children: [
+                  Icon(Icons.phone_outlined, color: Colors.white),
+                  SizedBox(width: 5),
+                  Text(widget.establishment.phone ?? ''),
+                  IconButton(onPressed: () => launchUrlString('tel://${widget.establishment.phone}'), icon: Icon(Icons.call_made)),
+                ],
+              ),
+              //website
+              Row(
+                children: [
+                  Icon(Icons.language, color: Colors.white),
+                  SizedBox(width: 5),
+                  Text(widget.establishment.website ?? ''),
+                  IconButton(onPressed: () => launchUrlString(widget.establishment.website!), icon: Icon(Icons.call_made)),
+                ],
+              ),
+            ],
+          ),
+        ),
+        // Ratings
         ListTile(
           title: Text(t.ratings),
           trailing: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
         ),
+        LinearProgressIndicator(value: widget.establishment.rank! / 5),
+        ...reviews.map((review) => ListTile(
+              title: Text(review.title ?? ''),
+              subtitle: Row(
+                children: [
+                  Icon(Icons.star, color: Colors.yellow),
+                  Text(review.description ?? ''),
+                ],
+              ),
+            )),
+
+
+
+
         ListTile(
           title: Text(t.relatedNews),
           trailing: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
@@ -101,6 +307,99 @@ class _EstablishmentProfilePageState extends State<EstablishmentProfilePage> {
           trailing: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
         ),
       ],
+    );
+  }
+}
+
+class _EstablishmentIconButton extends StatelessWidget {
+  const _EstablishmentIconButton({required this.icon, required this.onPressed, required this.label});
+  final IconData icon;
+  final String label;
+  final VoidCallback onPressed;
+  final double size = 60;
+  @override
+  Widget build(BuildContext context) {
+    Color color = Theme.of(context).textButtonTheme.style?.backgroundColor?.resolve({}) ?? Colors.black;
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: onPressed,
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Column(
+            children: [
+              Container(
+                width: size,
+                height: size,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(color: color, width: size * .05),
+                ),
+                child: Icon(icon, size: size * .6, color: color),
+              ),
+              SizedBox(height: 5),
+              Text(label, style: TextStyle(color: color)),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _BenefitCard extends StatelessWidget {
+  const _BenefitCard({required this.benefit});
+  final api.Benefit benefit;
+  @override
+  Widget build(BuildContext context) {
+    // return Text(benefit.name ?? '');
+    final t = AppLocalizations.of(context)!;
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: () => {},
+        child: Card(
+          color: Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Flexible(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.network(
+                      benefit.thumbnailUrl!,
+                      width: 100,
+                      height: 60,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) => Placeholder(),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 10),
+                Flexible(
+                  flex: 2,
+                  child: Column(
+                    children: [
+                      Text(benefit.name ?? '', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
+                      Text(benefit.description ?? '', style: TextStyle(color: Colors.black)),
+                    ],
+                  ),
+                ),
+                SizedBox(width: 10),
+                Flexible(
+                  child: TextButton(
+                    onPressed: () {},
+                    style: ButtonStyle(backgroundColor: WidgetStateProperty.all(Colors.green)),
+                    child: Text(t.buy, style: TextStyle(color: Colors.white)),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

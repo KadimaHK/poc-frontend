@@ -16,13 +16,18 @@ class Establishment {
     required this.id,
     this.name,
     this.description,
-    this.location,
+    this.notice,
+    this.address,
     this.cordX,
     this.cordY,
+    this.phone,
+    this.email,
+    this.website,
     this.category,
     this.thumbnailUrl,
     this.rank,
     this.bookingPoints,
+    this.bookmarkCount,
     this.createdAt = 'now()',
     this.updatedAt = 'now()',
   });
@@ -52,7 +57,15 @@ class Establishment {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? location;
+  String? notice;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? address;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -69,6 +82,30 @@ class Establishment {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? cordY;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? phone;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? email;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? website;
 
   /// Note: This is a Foreign Key to `establishment_category.category`.<fk table='establishment_category' column='category'/>
   ///
@@ -106,6 +143,14 @@ class Establishment {
   ///
   int? bookingPoints;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? bookmarkCount;
+
   String createdAt;
 
   String updatedAt;
@@ -115,13 +160,18 @@ class Establishment {
     other.id == id &&
     other.name == name &&
     other.description == description &&
-    other.location == location &&
+    other.notice == notice &&
+    other.address == address &&
     other.cordX == cordX &&
     other.cordY == cordY &&
+    other.phone == phone &&
+    other.email == email &&
+    other.website == website &&
     other.category == category &&
     other.thumbnailUrl == thumbnailUrl &&
     other.rank == rank &&
     other.bookingPoints == bookingPoints &&
+    other.bookmarkCount == bookmarkCount &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt;
 
@@ -131,18 +181,23 @@ class Establishment {
     (id.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
-    (location == null ? 0 : location!.hashCode) +
+    (notice == null ? 0 : notice!.hashCode) +
+    (address == null ? 0 : address!.hashCode) +
     (cordX == null ? 0 : cordX!.hashCode) +
     (cordY == null ? 0 : cordY!.hashCode) +
+    (phone == null ? 0 : phone!.hashCode) +
+    (email == null ? 0 : email!.hashCode) +
+    (website == null ? 0 : website!.hashCode) +
     (category == null ? 0 : category!.hashCode) +
     (thumbnailUrl == null ? 0 : thumbnailUrl!.hashCode) +
     (rank == null ? 0 : rank!.hashCode) +
     (bookingPoints == null ? 0 : bookingPoints!.hashCode) +
+    (bookmarkCount == null ? 0 : bookmarkCount!.hashCode) +
     (createdAt.hashCode) +
     (updatedAt.hashCode);
 
   @override
-  String toString() => 'Establishment[id=$id, name=$name, description=$description, location=$location, cordX=$cordX, cordY=$cordY, category=$category, thumbnailUrl=$thumbnailUrl, rank=$rank, bookingPoints=$bookingPoints, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'Establishment[id=$id, name=$name, description=$description, notice=$notice, address=$address, cordX=$cordX, cordY=$cordY, phone=$phone, email=$email, website=$website, category=$category, thumbnailUrl=$thumbnailUrl, rank=$rank, bookingPoints=$bookingPoints, bookmarkCount=$bookmarkCount, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -157,10 +212,15 @@ class Establishment {
     } else {
       json[r'description'] = null;
     }
-    if (this.location != null) {
-      json[r'location'] = this.location;
+    if (this.notice != null) {
+      json[r'notice'] = this.notice;
     } else {
-      json[r'location'] = null;
+      json[r'notice'] = null;
+    }
+    if (this.address != null) {
+      json[r'address'] = this.address;
+    } else {
+      json[r'address'] = null;
     }
     if (this.cordX != null) {
       json[r'cord_x'] = this.cordX;
@@ -171,6 +231,21 @@ class Establishment {
       json[r'cord_y'] = this.cordY;
     } else {
       json[r'cord_y'] = null;
+    }
+    if (this.phone != null) {
+      json[r'phone'] = this.phone;
+    } else {
+      json[r'phone'] = null;
+    }
+    if (this.email != null) {
+      json[r'email'] = this.email;
+    } else {
+      json[r'email'] = null;
+    }
+    if (this.website != null) {
+      json[r'website'] = this.website;
+    } else {
+      json[r'website'] = null;
     }
     if (this.category != null) {
       json[r'category'] = this.category;
@@ -191,6 +266,11 @@ class Establishment {
       json[r'booking_points'] = this.bookingPoints;
     } else {
       json[r'booking_points'] = null;
+    }
+    if (this.bookmarkCount != null) {
+      json[r'bookmark_count'] = this.bookmarkCount;
+    } else {
+      json[r'bookmark_count'] = null;
     }
       json[r'created_at'] = this.createdAt;
       json[r'updated_at'] = this.updatedAt;
@@ -219,13 +299,18 @@ class Establishment {
         id: mapValueOfType<int>(json, r'id')!,
         name: mapValueOfType<String>(json, r'name'),
         description: mapValueOfType<String>(json, r'description'),
-        location: mapValueOfType<String>(json, r'location'),
+        notice: mapValueOfType<String>(json, r'notice'),
+        address: mapValueOfType<String>(json, r'address'),
         cordX: num.parse('${json[r'cord_x']}'),
         cordY: num.parse('${json[r'cord_y']}'),
+        phone: mapValueOfType<String>(json, r'phone'),
+        email: mapValueOfType<String>(json, r'email'),
+        website: mapValueOfType<String>(json, r'website'),
         category: mapValueOfType<String>(json, r'category'),
         thumbnailUrl: mapValueOfType<String>(json, r'thumbnail_url'),
         rank: num.parse('${json[r'rank']}'),
         bookingPoints: mapValueOfType<int>(json, r'booking_points'),
+        bookmarkCount: mapValueOfType<int>(json, r'bookmark_count'),
         createdAt: mapValueOfType<String>(json, r'created_at') ?? 'now()',
         updatedAt: mapValueOfType<String>(json, r'updated_at') ?? 'now()',
       );

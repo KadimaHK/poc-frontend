@@ -1,4 +1,4 @@
-# openapi.api.BenefitApi
+# openapi.api.EstablishmentBenefitApi
 
 ## Load the API package
 ```dart
@@ -9,14 +9,14 @@ All URIs are relative to *http://poc-bar-app.com:80/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**benefitDelete**](BenefitApi.md#benefitdelete) | **DELETE** /benefit | 
-[**benefitGet**](BenefitApi.md#benefitget) | **GET** /benefit | 
-[**benefitPatch**](BenefitApi.md#benefitpatch) | **PATCH** /benefit | 
-[**benefitPost**](BenefitApi.md#benefitpost) | **POST** /benefit | 
+[**establishmentBenefitDelete**](EstablishmentBenefitApi.md#establishmentbenefitdelete) | **DELETE** /establishment_benefit | 
+[**establishmentBenefitGet**](EstablishmentBenefitApi.md#establishmentbenefitget) | **GET** /establishment_benefit | 
+[**establishmentBenefitPatch**](EstablishmentBenefitApi.md#establishmentbenefitpatch) | **PATCH** /establishment_benefit | 
+[**establishmentBenefitPost**](EstablishmentBenefitApi.md#establishmentbenefitpost) | **POST** /establishment_benefit | 
 
 
-# **benefitDelete**
-> benefitDelete(id, name, description, thumbnailUrl, createdAt, updatedAt, prefer)
+# **establishmentBenefitDelete**
+> establishmentBenefitDelete(establishmentId, benefitId, prefer)
 
 
 
@@ -28,19 +28,15 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = BenefitApi();
-final id = id_example; // String | 
-final name = name_example; // String | 
-final description = description_example; // String | 
-final thumbnailUrl = thumbnailUrl_example; // String | 
-final createdAt = createdAt_example; // String | 
-final updatedAt = updatedAt_example; // String | 
+final api_instance = EstablishmentBenefitApi();
+final establishmentId = establishmentId_example; // String | 
+final benefitId = benefitId_example; // String | 
 final prefer = prefer_example; // String | Preference
 
 try {
-    api_instance.benefitDelete(id, name, description, thumbnailUrl, createdAt, updatedAt, prefer);
+    api_instance.establishmentBenefitDelete(establishmentId, benefitId, prefer);
 } catch (e) {
-    print('Exception when calling BenefitApi->benefitDelete: $e\n');
+    print('Exception when calling EstablishmentBenefitApi->establishmentBenefitDelete: $e\n');
 }
 ```
 
@@ -48,12 +44,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**|  | [optional] 
- **name** | **String**|  | [optional] 
- **description** | **String**|  | [optional] 
- **thumbnailUrl** | **String**|  | [optional] 
- **createdAt** | **String**|  | [optional] 
- **updatedAt** | **String**|  | [optional] 
+ **establishmentId** | **String**|  | [optional] 
+ **benefitId** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 
 
 ### Return type
@@ -71,8 +63,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **benefitGet**
-> List<Benefit> benefitGet(id, name, description, thumbnailUrl, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer)
+# **establishmentBenefitGet**
+> List<EstablishmentBenefit> establishmentBenefitGet(establishmentId, benefitId, select, order, range, rangeUnit, offset, limit, prefer)
 
 
 
@@ -84,13 +76,9 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = BenefitApi();
-final id = id_example; // String | 
-final name = name_example; // String | 
-final description = description_example; // String | 
-final thumbnailUrl = thumbnailUrl_example; // String | 
-final createdAt = createdAt_example; // String | 
-final updatedAt = updatedAt_example; // String | 
+final api_instance = EstablishmentBenefitApi();
+final establishmentId = establishmentId_example; // String | 
+final benefitId = benefitId_example; // String | 
 final select = select_example; // String | Filtering Columns
 final order = order_example; // String | Ordering
 final range = range_example; // String | Limiting and Pagination
@@ -100,10 +88,10 @@ final limit = limit_example; // String | Limiting and Pagination
 final prefer = prefer_example; // String | Preference
 
 try {
-    final result = api_instance.benefitGet(id, name, description, thumbnailUrl, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer);
+    final result = api_instance.establishmentBenefitGet(establishmentId, benefitId, select, order, range, rangeUnit, offset, limit, prefer);
     print(result);
 } catch (e) {
-    print('Exception when calling BenefitApi->benefitGet: $e\n');
+    print('Exception when calling EstablishmentBenefitApi->establishmentBenefitGet: $e\n');
 }
 ```
 
@@ -111,12 +99,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**|  | [optional] 
- **name** | **String**|  | [optional] 
- **description** | **String**|  | [optional] 
- **thumbnailUrl** | **String**|  | [optional] 
- **createdAt** | **String**|  | [optional] 
- **updatedAt** | **String**|  | [optional] 
+ **establishmentId** | **String**|  | [optional] 
+ **benefitId** | **String**|  | [optional] 
  **select** | **String**| Filtering Columns | [optional] 
  **order** | **String**| Ordering | [optional] 
  **range** | **String**| Limiting and Pagination | [optional] 
@@ -127,7 +111,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<Benefit>**](Benefit.md)
+[**List<EstablishmentBenefit>**](EstablishmentBenefit.md)
 
 ### Authorization
 
@@ -140,8 +124,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **benefitPatch**
-> benefitPatch(id, name, description, thumbnailUrl, createdAt, updatedAt, prefer, benefit)
+# **establishmentBenefitPatch**
+> establishmentBenefitPatch(establishmentId, benefitId, prefer, establishmentBenefit)
 
 
 
@@ -153,20 +137,16 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = BenefitApi();
-final id = id_example; // String | 
-final name = name_example; // String | 
-final description = description_example; // String | 
-final thumbnailUrl = thumbnailUrl_example; // String | 
-final createdAt = createdAt_example; // String | 
-final updatedAt = updatedAt_example; // String | 
+final api_instance = EstablishmentBenefitApi();
+final establishmentId = establishmentId_example; // String | 
+final benefitId = benefitId_example; // String | 
 final prefer = prefer_example; // String | Preference
-final benefit = Benefit(); // Benefit | benefit
+final establishmentBenefit = EstablishmentBenefit(); // EstablishmentBenefit | establishment_benefit
 
 try {
-    api_instance.benefitPatch(id, name, description, thumbnailUrl, createdAt, updatedAt, prefer, benefit);
+    api_instance.establishmentBenefitPatch(establishmentId, benefitId, prefer, establishmentBenefit);
 } catch (e) {
-    print('Exception when calling BenefitApi->benefitPatch: $e\n');
+    print('Exception when calling EstablishmentBenefitApi->establishmentBenefitPatch: $e\n');
 }
 ```
 
@@ -174,14 +154,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**|  | [optional] 
- **name** | **String**|  | [optional] 
- **description** | **String**|  | [optional] 
- **thumbnailUrl** | **String**|  | [optional] 
- **createdAt** | **String**|  | [optional] 
- **updatedAt** | **String**|  | [optional] 
+ **establishmentId** | **String**|  | [optional] 
+ **benefitId** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 
- **benefit** | [**Benefit**](Benefit.md)| benefit | [optional] 
+ **establishmentBenefit** | [**EstablishmentBenefit**](EstablishmentBenefit.md)| establishment_benefit | [optional] 
 
 ### Return type
 
@@ -198,8 +174,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **benefitPost**
-> benefitPost(select, prefer, benefit)
+# **establishmentBenefitPost**
+> establishmentBenefitPost(select, prefer, establishmentBenefit)
 
 
 
@@ -211,15 +187,15 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = BenefitApi();
+final api_instance = EstablishmentBenefitApi();
 final select = select_example; // String | Filtering Columns
 final prefer = prefer_example; // String | Preference
-final benefit = Benefit(); // Benefit | benefit
+final establishmentBenefit = EstablishmentBenefit(); // EstablishmentBenefit | establishment_benefit
 
 try {
-    api_instance.benefitPost(select, prefer, benefit);
+    api_instance.establishmentBenefitPost(select, prefer, establishmentBenefit);
 } catch (e) {
-    print('Exception when calling BenefitApi->benefitPost: $e\n');
+    print('Exception when calling EstablishmentBenefitApi->establishmentBenefitPost: $e\n');
 }
 ```
 
@@ -229,7 +205,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **select** | **String**| Filtering Columns | [optional] 
  **prefer** | **String**| Preference | [optional] 
- **benefit** | [**Benefit**](Benefit.md)| benefit | [optional] 
+ **establishmentBenefit** | [**EstablishmentBenefit**](EstablishmentBenefit.md)| establishment_benefit | [optional] 
 
 ### Return type
 

@@ -49,12 +49,13 @@ final api_instance = BenefitApi();
 final id = id_example; // String | 
 final name = name_example; // String | 
 final description = description_example; // String | 
+final thumbnailUrl = thumbnailUrl_example; // String | 
 final createdAt = createdAt_example; // String | 
 final updatedAt = updatedAt_example; // String | 
 final prefer = prefer_example; // String | Preference
 
 try {
-    api_instance.benefitDelete(id, name, description, createdAt, updatedAt, prefer);
+    api_instance.benefitDelete(id, name, description, thumbnailUrl, createdAt, updatedAt, prefer);
 } catch (e) {
     print('Exception when calling BenefitApi->benefitDelete: $e\n');
 }
@@ -79,6 +80,10 @@ Class | Method | HTTP request | Description
 *EstablishmentApi* | [**establishmentGet**](doc//EstablishmentApi.md#establishmentget) | **GET** /establishment | 
 *EstablishmentApi* | [**establishmentPatch**](doc//EstablishmentApi.md#establishmentpatch) | **PATCH** /establishment | 
 *EstablishmentApi* | [**establishmentPost**](doc//EstablishmentApi.md#establishmentpost) | **POST** /establishment | 
+*EstablishmentBenefitApi* | [**establishmentBenefitDelete**](doc//EstablishmentBenefitApi.md#establishmentbenefitdelete) | **DELETE** /establishment_benefit | 
+*EstablishmentBenefitApi* | [**establishmentBenefitGet**](doc//EstablishmentBenefitApi.md#establishmentbenefitget) | **GET** /establishment_benefit | 
+*EstablishmentBenefitApi* | [**establishmentBenefitPatch**](doc//EstablishmentBenefitApi.md#establishmentbenefitpatch) | **PATCH** /establishment_benefit | 
+*EstablishmentBenefitApi* | [**establishmentBenefitPost**](doc//EstablishmentBenefitApi.md#establishmentbenefitpost) | **POST** /establishment_benefit | 
 *EstablishmentCategoryApi* | [**establishmentCategoryDelete**](doc//EstablishmentCategoryApi.md#establishmentcategorydelete) | **DELETE** /establishment_category | 
 *EstablishmentCategoryApi* | [**establishmentCategoryGet**](doc//EstablishmentCategoryApi.md#establishmentcategoryget) | **GET** /establishment_category | 
 *EstablishmentCategoryApi* | [**establishmentCategoryPatch**](doc//EstablishmentCategoryApi.md#establishmentcategorypatch) | **PATCH** /establishment_category | 
@@ -95,6 +100,10 @@ Class | Method | HTTP request | Description
 *EstablishmentMenuImageApi* | [**establishmentMenuImageGet**](doc//EstablishmentMenuImageApi.md#establishmentmenuimageget) | **GET** /establishment_menu_image | 
 *EstablishmentMenuImageApi* | [**establishmentMenuImagePatch**](doc//EstablishmentMenuImageApi.md#establishmentmenuimagepatch) | **PATCH** /establishment_menu_image | 
 *EstablishmentMenuImageApi* | [**establishmentMenuImagePost**](doc//EstablishmentMenuImageApi.md#establishmentmenuimagepost) | **POST** /establishment_menu_image | 
+*EstablishmentOpeningHoursApi* | [**establishmentOpeningHoursDelete**](doc//EstablishmentOpeningHoursApi.md#establishmentopeninghoursdelete) | **DELETE** /establishment_opening_hours | 
+*EstablishmentOpeningHoursApi* | [**establishmentOpeningHoursGet**](doc//EstablishmentOpeningHoursApi.md#establishmentopeninghoursget) | **GET** /establishment_opening_hours | 
+*EstablishmentOpeningHoursApi* | [**establishmentOpeningHoursPatch**](doc//EstablishmentOpeningHoursApi.md#establishmentopeninghourspatch) | **PATCH** /establishment_opening_hours | 
+*EstablishmentOpeningHoursApi* | [**establishmentOpeningHoursPost**](doc//EstablishmentOpeningHoursApi.md#establishmentopeninghourspost) | **POST** /establishment_opening_hours | 
 *EstablishmentRankApi* | [**establishmentRankDelete**](doc//EstablishmentRankApi.md#establishmentrankdelete) | **DELETE** /establishment_rank | 
 *EstablishmentRankApi* | [**establishmentRankGet**](doc//EstablishmentRankApi.md#establishmentrankget) | **GET** /establishment_rank | 
 *EstablishmentRankApi* | [**establishmentRankPatch**](doc//EstablishmentRankApi.md#establishmentrankpatch) | **PATCH** /establishment_rank | 
@@ -166,10 +175,10 @@ Class | Method | HTTP request | Description
 *UserBenefitApi* | [**userBenefitGet**](doc//UserBenefitApi.md#userbenefitget) | **GET** /user_benefit | 
 *UserBenefitApi* | [**userBenefitPatch**](doc//UserBenefitApi.md#userbenefitpatch) | **PATCH** /user_benefit | 
 *UserBenefitApi* | [**userBenefitPost**](doc//UserBenefitApi.md#userbenefitpost) | **POST** /user_benefit | 
-*UserBookmarkApi* | [**userBookmarkDelete**](doc//UserBookmarkApi.md#userbookmarkdelete) | **DELETE** /user_bookmark | 
-*UserBookmarkApi* | [**userBookmarkGet**](doc//UserBookmarkApi.md#userbookmarkget) | **GET** /user_bookmark | 
-*UserBookmarkApi* | [**userBookmarkPatch**](doc//UserBookmarkApi.md#userbookmarkpatch) | **PATCH** /user_bookmark | 
-*UserBookmarkApi* | [**userBookmarkPost**](doc//UserBookmarkApi.md#userbookmarkpost) | **POST** /user_bookmark | 
+*UserEstablishmentBookmarkApi* | [**userEstablishmentBookmarkDelete**](doc//UserEstablishmentBookmarkApi.md#userestablishmentbookmarkdelete) | **DELETE** /user_establishment_bookmark | 
+*UserEstablishmentBookmarkApi* | [**userEstablishmentBookmarkGet**](doc//UserEstablishmentBookmarkApi.md#userestablishmentbookmarkget) | **GET** /user_establishment_bookmark | 
+*UserEstablishmentBookmarkApi* | [**userEstablishmentBookmarkPatch**](doc//UserEstablishmentBookmarkApi.md#userestablishmentbookmarkpatch) | **PATCH** /user_establishment_bookmark | 
+*UserEstablishmentBookmarkApi* | [**userEstablishmentBookmarkPost**](doc//UserEstablishmentBookmarkApi.md#userestablishmentbookmarkpost) | **POST** /user_establishment_bookmark | 
 *UserFeaturedOfferApi* | [**userFeaturedOfferDelete**](doc//UserFeaturedOfferApi.md#userfeaturedofferdelete) | **DELETE** /user_featured_offer | 
 *UserFeaturedOfferApi* | [**userFeaturedOfferGet**](doc//UserFeaturedOfferApi.md#userfeaturedofferget) | **GET** /user_featured_offer | 
 *UserFeaturedOfferApi* | [**userFeaturedOfferPatch**](doc//UserFeaturedOfferApi.md#userfeaturedofferpatch) | **PATCH** /user_featured_offer | 
@@ -189,10 +198,12 @@ Class | Method | HTTP request | Description
  - [Benefit](doc//Benefit.md)
  - [Booking](doc//Booking.md)
  - [Establishment](doc//Establishment.md)
+ - [EstablishmentBenefit](doc//EstablishmentBenefit.md)
  - [EstablishmentCategory](doc//EstablishmentCategory.md)
  - [EstablishmentImage](doc//EstablishmentImage.md)
  - [EstablishmentMenu](doc//EstablishmentMenu.md)
  - [EstablishmentMenuImage](doc//EstablishmentMenuImage.md)
+ - [EstablishmentOpeningHours](doc//EstablishmentOpeningHours.md)
  - [EstablishmentRank](doc//EstablishmentRank.md)
  - [Featured](doc//Featured.md)
  - [FeaturedOffer](doc//FeaturedOffer.md)
@@ -210,7 +221,7 @@ Class | Method | HTTP request | Description
  - [RpcSignUpPostRequest](doc//RpcSignUpPostRequest.md)
  - [User](doc//User.md)
  - [UserBenefit](doc//UserBenefit.md)
- - [UserBookmark](doc//UserBookmark.md)
+ - [UserEstablishmentBookmark](doc//UserEstablishmentBookmark.md)
  - [UserFeaturedOffer](doc//UserFeaturedOffer.md)
  - [UserImageLike](doc//UserImageLike.md)
  - [UserReviewLike](doc//UserReviewLike.md)

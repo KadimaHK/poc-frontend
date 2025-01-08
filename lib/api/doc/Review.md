@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **title** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
 **content** | **String** |  | [optional] 
+**isApproved** | **bool** |  | [optional] [default to false]
 **rating** | **num** |  | [optional] 
 **tasteRating** | **num** |  | [optional] 
 **decorRating** | **num** |  | [optional] 

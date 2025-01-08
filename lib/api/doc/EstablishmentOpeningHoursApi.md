@@ -1,4 +1,4 @@
-# openapi.api.UserBookmarkApi
+# openapi.api.EstablishmentOpeningHoursApi
 
 ## Load the API package
 ```dart
@@ -9,14 +9,14 @@ All URIs are relative to *http://poc-bar-app.com:80/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**userBookmarkDelete**](UserBookmarkApi.md#userbookmarkdelete) | **DELETE** /user_bookmark | 
-[**userBookmarkGet**](UserBookmarkApi.md#userbookmarkget) | **GET** /user_bookmark | 
-[**userBookmarkPatch**](UserBookmarkApi.md#userbookmarkpatch) | **PATCH** /user_bookmark | 
-[**userBookmarkPost**](UserBookmarkApi.md#userbookmarkpost) | **POST** /user_bookmark | 
+[**establishmentOpeningHoursDelete**](EstablishmentOpeningHoursApi.md#establishmentopeninghoursdelete) | **DELETE** /establishment_opening_hours | 
+[**establishmentOpeningHoursGet**](EstablishmentOpeningHoursApi.md#establishmentopeninghoursget) | **GET** /establishment_opening_hours | 
+[**establishmentOpeningHoursPatch**](EstablishmentOpeningHoursApi.md#establishmentopeninghourspatch) | **PATCH** /establishment_opening_hours | 
+[**establishmentOpeningHoursPost**](EstablishmentOpeningHoursApi.md#establishmentopeninghourspost) | **POST** /establishment_opening_hours | 
 
 
-# **userBookmarkDelete**
-> userBookmarkDelete(userId, establishmentId, createdAt, prefer)
+# **establishmentOpeningHoursDelete**
+> establishmentOpeningHoursDelete(establishmentId, day, openTime, closeTime, isOvernight, prefer)
 
 
 
@@ -28,16 +28,18 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserBookmarkApi();
-final userId = userId_example; // String | 
+final api_instance = EstablishmentOpeningHoursApi();
 final establishmentId = establishmentId_example; // String | 
-final createdAt = createdAt_example; // String | 
+final day = day_example; // String | 
+final openTime = openTime_example; // String | 
+final closeTime = closeTime_example; // String | 
+final isOvernight = isOvernight_example; // String | 
 final prefer = prefer_example; // String | Preference
 
 try {
-    api_instance.userBookmarkDelete(userId, establishmentId, createdAt, prefer);
+    api_instance.establishmentOpeningHoursDelete(establishmentId, day, openTime, closeTime, isOvernight, prefer);
 } catch (e) {
-    print('Exception when calling UserBookmarkApi->userBookmarkDelete: $e\n');
+    print('Exception when calling EstablishmentOpeningHoursApi->establishmentOpeningHoursDelete: $e\n');
 }
 ```
 
@@ -45,9 +47,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **String**|  | [optional] 
  **establishmentId** | **String**|  | [optional] 
- **createdAt** | **String**|  | [optional] 
+ **day** | **String**|  | [optional] 
+ **openTime** | **String**|  | [optional] 
+ **closeTime** | **String**|  | [optional] 
+ **isOvernight** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 
 
 ### Return type
@@ -65,8 +69,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userBookmarkGet**
-> List<UserBookmark> userBookmarkGet(userId, establishmentId, createdAt, select, order, range, rangeUnit, offset, limit, prefer)
+# **establishmentOpeningHoursGet**
+> List<EstablishmentOpeningHours> establishmentOpeningHoursGet(establishmentId, day, openTime, closeTime, isOvernight, select, order, range, rangeUnit, offset, limit, prefer)
 
 
 
@@ -78,10 +82,12 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserBookmarkApi();
-final userId = userId_example; // String | 
+final api_instance = EstablishmentOpeningHoursApi();
 final establishmentId = establishmentId_example; // String | 
-final createdAt = createdAt_example; // String | 
+final day = day_example; // String | 
+final openTime = openTime_example; // String | 
+final closeTime = closeTime_example; // String | 
+final isOvernight = isOvernight_example; // String | 
 final select = select_example; // String | Filtering Columns
 final order = order_example; // String | Ordering
 final range = range_example; // String | Limiting and Pagination
@@ -91,10 +97,10 @@ final limit = limit_example; // String | Limiting and Pagination
 final prefer = prefer_example; // String | Preference
 
 try {
-    final result = api_instance.userBookmarkGet(userId, establishmentId, createdAt, select, order, range, rangeUnit, offset, limit, prefer);
+    final result = api_instance.establishmentOpeningHoursGet(establishmentId, day, openTime, closeTime, isOvernight, select, order, range, rangeUnit, offset, limit, prefer);
     print(result);
 } catch (e) {
-    print('Exception when calling UserBookmarkApi->userBookmarkGet: $e\n');
+    print('Exception when calling EstablishmentOpeningHoursApi->establishmentOpeningHoursGet: $e\n');
 }
 ```
 
@@ -102,9 +108,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **String**|  | [optional] 
  **establishmentId** | **String**|  | [optional] 
- **createdAt** | **String**|  | [optional] 
+ **day** | **String**|  | [optional] 
+ **openTime** | **String**|  | [optional] 
+ **closeTime** | **String**|  | [optional] 
+ **isOvernight** | **String**|  | [optional] 
  **select** | **String**| Filtering Columns | [optional] 
  **order** | **String**| Ordering | [optional] 
  **range** | **String**| Limiting and Pagination | [optional] 
@@ -115,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<UserBookmark>**](UserBookmark.md)
+[**List<EstablishmentOpeningHours>**](EstablishmentOpeningHours.md)
 
 ### Authorization
 
@@ -128,8 +136,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userBookmarkPatch**
-> userBookmarkPatch(userId, establishmentId, createdAt, prefer, userBookmark)
+# **establishmentOpeningHoursPatch**
+> establishmentOpeningHoursPatch(establishmentId, day, openTime, closeTime, isOvernight, prefer, establishmentOpeningHours)
 
 
 
@@ -141,17 +149,19 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserBookmarkApi();
-final userId = userId_example; // String | 
+final api_instance = EstablishmentOpeningHoursApi();
 final establishmentId = establishmentId_example; // String | 
-final createdAt = createdAt_example; // String | 
+final day = day_example; // String | 
+final openTime = openTime_example; // String | 
+final closeTime = closeTime_example; // String | 
+final isOvernight = isOvernight_example; // String | 
 final prefer = prefer_example; // String | Preference
-final userBookmark = UserBookmark(); // UserBookmark | user_bookmark
+final establishmentOpeningHours = EstablishmentOpeningHours(); // EstablishmentOpeningHours | establishment_opening_hours
 
 try {
-    api_instance.userBookmarkPatch(userId, establishmentId, createdAt, prefer, userBookmark);
+    api_instance.establishmentOpeningHoursPatch(establishmentId, day, openTime, closeTime, isOvernight, prefer, establishmentOpeningHours);
 } catch (e) {
-    print('Exception when calling UserBookmarkApi->userBookmarkPatch: $e\n');
+    print('Exception when calling EstablishmentOpeningHoursApi->establishmentOpeningHoursPatch: $e\n');
 }
 ```
 
@@ -159,11 +169,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **String**|  | [optional] 
  **establishmentId** | **String**|  | [optional] 
- **createdAt** | **String**|  | [optional] 
+ **day** | **String**|  | [optional] 
+ **openTime** | **String**|  | [optional] 
+ **closeTime** | **String**|  | [optional] 
+ **isOvernight** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 
- **userBookmark** | [**UserBookmark**](UserBookmark.md)| user_bookmark | [optional] 
+ **establishmentOpeningHours** | [**EstablishmentOpeningHours**](EstablishmentOpeningHours.md)| establishment_opening_hours | [optional] 
 
 ### Return type
 
@@ -180,8 +192,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userBookmarkPost**
-> userBookmarkPost(select, prefer, userBookmark)
+# **establishmentOpeningHoursPost**
+> establishmentOpeningHoursPost(select, prefer, establishmentOpeningHours)
 
 
 
@@ -193,15 +205,15 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserBookmarkApi();
+final api_instance = EstablishmentOpeningHoursApi();
 final select = select_example; // String | Filtering Columns
 final prefer = prefer_example; // String | Preference
-final userBookmark = UserBookmark(); // UserBookmark | user_bookmark
+final establishmentOpeningHours = EstablishmentOpeningHours(); // EstablishmentOpeningHours | establishment_opening_hours
 
 try {
-    api_instance.userBookmarkPost(select, prefer, userBookmark);
+    api_instance.establishmentOpeningHoursPost(select, prefer, establishmentOpeningHours);
 } catch (e) {
-    print('Exception when calling UserBookmarkApi->userBookmarkPost: $e\n');
+    print('Exception when calling EstablishmentOpeningHoursApi->establishmentOpeningHoursPost: $e\n');
 }
 ```
 
@@ -211,7 +223,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **select** | **String**| Filtering Columns | [optional] 
  **prefer** | **String**| Preference | [optional] 
- **userBookmark** | [**UserBookmark**](UserBookmark.md)| user_bookmark | [optional] 
+ **establishmentOpeningHours** | [**EstablishmentOpeningHours**](EstablishmentOpeningHours.md)| establishment_opening_hours | [optional] 
 
 ### Return type
 

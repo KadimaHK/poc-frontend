@@ -10,50 +10,44 @@
 
 part of openapi.api;
 
-class UserBookmark {
-  /// Returns a new [UserBookmark] instance.
-  UserBookmark({
-    required this.userId,
+class EstablishmentBenefit {
+  /// Returns a new [EstablishmentBenefit] instance.
+  EstablishmentBenefit({
     required this.establishmentId,
-    this.createdAt = 'now()',
+    required this.benefitId,
   });
-
-  /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
-  int userId;
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `establishment.id`.<fk table='establishment' column='id'/>
   int establishmentId;
 
-  String createdAt;
+  /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `benefit.id`.<fk table='benefit' column='id'/>
+  int benefitId;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is UserBookmark &&
-    other.userId == userId &&
+  bool operator ==(Object other) => identical(this, other) || other is EstablishmentBenefit &&
     other.establishmentId == establishmentId &&
-    other.createdAt == createdAt;
+    other.benefitId == benefitId;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (userId.hashCode) +
     (establishmentId.hashCode) +
-    (createdAt.hashCode);
+    (benefitId.hashCode);
 
   @override
-  String toString() => 'UserBookmark[userId=$userId, establishmentId=$establishmentId, createdAt=$createdAt]';
+  String toString() => 'EstablishmentBenefit[establishmentId=$establishmentId, benefitId=$benefitId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'user_id'] = this.userId;
       json[r'establishment_id'] = this.establishmentId;
-      json[r'created_at'] = this.createdAt;
+      json[r'benefit_id'] = this.benefitId;
     return json;
   }
 
-  /// Returns a new [UserBookmark] instance and imports its values from
+  /// Returns a new [EstablishmentBenefit] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static UserBookmark? fromJson(dynamic value) {
+  static EstablishmentBenefit? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -62,26 +56,25 @@ class UserBookmark {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "UserBookmark[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "UserBookmark[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "EstablishmentBenefit[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "EstablishmentBenefit[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return UserBookmark(
-        userId: mapValueOfType<int>(json, r'user_id')!,
+      return EstablishmentBenefit(
         establishmentId: mapValueOfType<int>(json, r'establishment_id')!,
-        createdAt: mapValueOfType<String>(json, r'created_at') ?? 'now()',
+        benefitId: mapValueOfType<int>(json, r'benefit_id')!,
       );
     }
     return null;
   }
 
-  static List<UserBookmark> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <UserBookmark>[];
+  static List<EstablishmentBenefit> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <EstablishmentBenefit>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = UserBookmark.fromJson(row);
+        final value = EstablishmentBenefit.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -90,12 +83,12 @@ class UserBookmark {
     return result.toList(growable: growable);
   }
 
-  static Map<String, UserBookmark> mapFromJson(dynamic json) {
-    final map = <String, UserBookmark>{};
+  static Map<String, EstablishmentBenefit> mapFromJson(dynamic json) {
+    final map = <String, EstablishmentBenefit>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = UserBookmark.fromJson(entry.value);
+        final value = EstablishmentBenefit.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -104,14 +97,14 @@ class UserBookmark {
     return map;
   }
 
-  // maps a json object with a list of UserBookmark-objects as value to a dart map
-  static Map<String, List<UserBookmark>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<UserBookmark>>{};
+  // maps a json object with a list of EstablishmentBenefit-objects as value to a dart map
+  static Map<String, List<EstablishmentBenefit>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<EstablishmentBenefit>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = UserBookmark.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = EstablishmentBenefit.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -119,8 +112,8 @@ class UserBookmark {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'user_id',
     'establishment_id',
+    'benefit_id',
   };
 }
 

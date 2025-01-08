@@ -1,4 +1,4 @@
-# openapi.model.UserBookmark
+# openapi.model.UserEstablishmentBookmark
 
 ## Load the model package
 ```dart

@@ -25,11 +25,19 @@ class EstablishmentApi {
   ///
   /// * [String] description:
   ///
-  /// * [String] location:
+  /// * [String] notice:
+  ///
+  /// * [String] address:
   ///
   /// * [String] cordX:
   ///
   /// * [String] cordY:
+  ///
+  /// * [String] phone:
+  ///
+  /// * [String] email:
+  ///
+  /// * [String] website:
   ///
   /// * [String] category:
   ///
@@ -41,13 +49,15 @@ class EstablishmentApi {
   /// * [String] bookingPoints:
   ///   How many points are a user earning by booking this establishment
   ///
+  /// * [String] bookmarkCount:
+  ///
   /// * [String] createdAt:
   ///
   /// * [String] updatedAt:
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> establishmentDeleteWithHttpInfo({ String? id, String? name, String? description, String? location, String? cordX, String? cordY, String? category, String? thumbnailUrl, String? rank, String? bookingPoints, String? createdAt, String? updatedAt, String? prefer, }) async {
+  Future<Response> establishmentDeleteWithHttpInfo({ String? id, String? name, String? description, String? notice, String? address, String? cordX, String? cordY, String? phone, String? email, String? website, String? category, String? thumbnailUrl, String? rank, String? bookingPoints, String? bookmarkCount, String? createdAt, String? updatedAt, String? prefer, }) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment';
 
@@ -67,14 +77,26 @@ class EstablishmentApi {
     if (description != null) {
       queryParams.addAll(_queryParams('', 'description', description));
     }
-    if (location != null) {
-      queryParams.addAll(_queryParams('', 'location', location));
+    if (notice != null) {
+      queryParams.addAll(_queryParams('', 'notice', notice));
+    }
+    if (address != null) {
+      queryParams.addAll(_queryParams('', 'address', address));
     }
     if (cordX != null) {
       queryParams.addAll(_queryParams('', 'cord_x', cordX));
     }
     if (cordY != null) {
       queryParams.addAll(_queryParams('', 'cord_y', cordY));
+    }
+    if (phone != null) {
+      queryParams.addAll(_queryParams('', 'phone', phone));
+    }
+    if (email != null) {
+      queryParams.addAll(_queryParams('', 'email', email));
+    }
+    if (website != null) {
+      queryParams.addAll(_queryParams('', 'website', website));
     }
     if (category != null) {
       queryParams.addAll(_queryParams('', 'category', category));
@@ -87,6 +109,9 @@ class EstablishmentApi {
     }
     if (bookingPoints != null) {
       queryParams.addAll(_queryParams('', 'booking_points', bookingPoints));
+    }
+    if (bookmarkCount != null) {
+      queryParams.addAll(_queryParams('', 'bookmark_count', bookmarkCount));
     }
     if (createdAt != null) {
       queryParams.addAll(_queryParams('', 'created_at', createdAt));
@@ -121,11 +146,19 @@ class EstablishmentApi {
   ///
   /// * [String] description:
   ///
-  /// * [String] location:
+  /// * [String] notice:
+  ///
+  /// * [String] address:
   ///
   /// * [String] cordX:
   ///
   /// * [String] cordY:
+  ///
+  /// * [String] phone:
+  ///
+  /// * [String] email:
+  ///
+  /// * [String] website:
   ///
   /// * [String] category:
   ///
@@ -137,14 +170,16 @@ class EstablishmentApi {
   /// * [String] bookingPoints:
   ///   How many points are a user earning by booking this establishment
   ///
+  /// * [String] bookmarkCount:
+  ///
   /// * [String] createdAt:
   ///
   /// * [String] updatedAt:
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> establishmentDelete({ String? id, String? name, String? description, String? location, String? cordX, String? cordY, String? category, String? thumbnailUrl, String? rank, String? bookingPoints, String? createdAt, String? updatedAt, String? prefer, }) async {
-    final response = await establishmentDeleteWithHttpInfo( id: id, name: name, description: description, location: location, cordX: cordX, cordY: cordY, category: category, thumbnailUrl: thumbnailUrl, rank: rank, bookingPoints: bookingPoints, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, );
+  Future<void> establishmentDelete({ String? id, String? name, String? description, String? notice, String? address, String? cordX, String? cordY, String? phone, String? email, String? website, String? category, String? thumbnailUrl, String? rank, String? bookingPoints, String? bookmarkCount, String? createdAt, String? updatedAt, String? prefer, }) async {
+    final response = await establishmentDeleteWithHttpInfo( id: id, name: name, description: description, notice: notice, address: address, cordX: cordX, cordY: cordY, phone: phone, email: email, website: website, category: category, thumbnailUrl: thumbnailUrl, rank: rank, bookingPoints: bookingPoints, bookmarkCount: bookmarkCount, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -159,11 +194,19 @@ class EstablishmentApi {
   ///
   /// * [String] description:
   ///
-  /// * [String] location:
+  /// * [String] notice:
+  ///
+  /// * [String] address:
   ///
   /// * [String] cordX:
   ///
   /// * [String] cordY:
+  ///
+  /// * [String] phone:
+  ///
+  /// * [String] email:
+  ///
+  /// * [String] website:
   ///
   /// * [String] category:
   ///
@@ -174,6 +217,8 @@ class EstablishmentApi {
   ///
   /// * [String] bookingPoints:
   ///   How many points are a user earning by booking this establishment
+  ///
+  /// * [String] bookmarkCount:
   ///
   /// * [String] createdAt:
   ///
@@ -199,7 +244,7 @@ class EstablishmentApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> establishmentGetWithHttpInfo({ String? id, String? name, String? description, String? location, String? cordX, String? cordY, String? category, String? thumbnailUrl, String? rank, String? bookingPoints, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> establishmentGetWithHttpInfo({ String? id, String? name, String? description, String? notice, String? address, String? cordX, String? cordY, String? phone, String? email, String? website, String? category, String? thumbnailUrl, String? rank, String? bookingPoints, String? bookmarkCount, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment';
 
@@ -219,14 +264,26 @@ class EstablishmentApi {
     if (description != null) {
       queryParams.addAll(_queryParams('', 'description', description));
     }
-    if (location != null) {
-      queryParams.addAll(_queryParams('', 'location', location));
+    if (notice != null) {
+      queryParams.addAll(_queryParams('', 'notice', notice));
+    }
+    if (address != null) {
+      queryParams.addAll(_queryParams('', 'address', address));
     }
     if (cordX != null) {
       queryParams.addAll(_queryParams('', 'cord_x', cordX));
     }
     if (cordY != null) {
       queryParams.addAll(_queryParams('', 'cord_y', cordY));
+    }
+    if (phone != null) {
+      queryParams.addAll(_queryParams('', 'phone', phone));
+    }
+    if (email != null) {
+      queryParams.addAll(_queryParams('', 'email', email));
+    }
+    if (website != null) {
+      queryParams.addAll(_queryParams('', 'website', website));
     }
     if (category != null) {
       queryParams.addAll(_queryParams('', 'category', category));
@@ -239,6 +296,9 @@ class EstablishmentApi {
     }
     if (bookingPoints != null) {
       queryParams.addAll(_queryParams('', 'booking_points', bookingPoints));
+    }
+    if (bookmarkCount != null) {
+      queryParams.addAll(_queryParams('', 'bookmark_count', bookmarkCount));
     }
     if (createdAt != null) {
       queryParams.addAll(_queryParams('', 'created_at', createdAt));
@@ -291,11 +351,19 @@ class EstablishmentApi {
   ///
   /// * [String] description:
   ///
-  /// * [String] location:
+  /// * [String] notice:
+  ///
+  /// * [String] address:
   ///
   /// * [String] cordX:
   ///
   /// * [String] cordY:
+  ///
+  /// * [String] phone:
+  ///
+  /// * [String] email:
+  ///
+  /// * [String] website:
   ///
   /// * [String] category:
   ///
@@ -306,6 +374,8 @@ class EstablishmentApi {
   ///
   /// * [String] bookingPoints:
   ///   How many points are a user earning by booking this establishment
+  ///
+  /// * [String] bookmarkCount:
   ///
   /// * [String] createdAt:
   ///
@@ -331,8 +401,8 @@ class EstablishmentApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<Establishment>?> establishmentGet({ String? id, String? name, String? description, String? location, String? cordX, String? cordY, String? category, String? thumbnailUrl, String? rank, String? bookingPoints, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await establishmentGetWithHttpInfo( id: id, name: name, description: description, location: location, cordX: cordX, cordY: cordY, category: category, thumbnailUrl: thumbnailUrl, rank: rank, bookingPoints: bookingPoints, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<Establishment>?> establishmentGet({ String? id, String? name, String? description, String? notice, String? address, String? cordX, String? cordY, String? phone, String? email, String? website, String? category, String? thumbnailUrl, String? rank, String? bookingPoints, String? bookmarkCount, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+    final response = await establishmentGetWithHttpInfo( id: id, name: name, description: description, notice: notice, address: address, cordX: cordX, cordY: cordY, phone: phone, email: email, website: website, category: category, thumbnailUrl: thumbnailUrl, rank: rank, bookingPoints: bookingPoints, bookmarkCount: bookmarkCount, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -358,11 +428,19 @@ class EstablishmentApi {
   ///
   /// * [String] description:
   ///
-  /// * [String] location:
+  /// * [String] notice:
+  ///
+  /// * [String] address:
   ///
   /// * [String] cordX:
   ///
   /// * [String] cordY:
+  ///
+  /// * [String] phone:
+  ///
+  /// * [String] email:
+  ///
+  /// * [String] website:
   ///
   /// * [String] category:
   ///
@@ -374,6 +452,8 @@ class EstablishmentApi {
   /// * [String] bookingPoints:
   ///   How many points are a user earning by booking this establishment
   ///
+  /// * [String] bookmarkCount:
+  ///
   /// * [String] createdAt:
   ///
   /// * [String] updatedAt:
@@ -383,7 +463,7 @@ class EstablishmentApi {
   ///
   /// * [Establishment] establishment:
   ///   establishment
-  Future<Response> establishmentPatchWithHttpInfo({ String? id, String? name, String? description, String? location, String? cordX, String? cordY, String? category, String? thumbnailUrl, String? rank, String? bookingPoints, String? createdAt, String? updatedAt, String? prefer, Establishment? establishment, }) async {
+  Future<Response> establishmentPatchWithHttpInfo({ String? id, String? name, String? description, String? notice, String? address, String? cordX, String? cordY, String? phone, String? email, String? website, String? category, String? thumbnailUrl, String? rank, String? bookingPoints, String? bookmarkCount, String? createdAt, String? updatedAt, String? prefer, Establishment? establishment, }) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment';
 
@@ -403,14 +483,26 @@ class EstablishmentApi {
     if (description != null) {
       queryParams.addAll(_queryParams('', 'description', description));
     }
-    if (location != null) {
-      queryParams.addAll(_queryParams('', 'location', location));
+    if (notice != null) {
+      queryParams.addAll(_queryParams('', 'notice', notice));
+    }
+    if (address != null) {
+      queryParams.addAll(_queryParams('', 'address', address));
     }
     if (cordX != null) {
       queryParams.addAll(_queryParams('', 'cord_x', cordX));
     }
     if (cordY != null) {
       queryParams.addAll(_queryParams('', 'cord_y', cordY));
+    }
+    if (phone != null) {
+      queryParams.addAll(_queryParams('', 'phone', phone));
+    }
+    if (email != null) {
+      queryParams.addAll(_queryParams('', 'email', email));
+    }
+    if (website != null) {
+      queryParams.addAll(_queryParams('', 'website', website));
     }
     if (category != null) {
       queryParams.addAll(_queryParams('', 'category', category));
@@ -423,6 +515,9 @@ class EstablishmentApi {
     }
     if (bookingPoints != null) {
       queryParams.addAll(_queryParams('', 'booking_points', bookingPoints));
+    }
+    if (bookmarkCount != null) {
+      queryParams.addAll(_queryParams('', 'bookmark_count', bookmarkCount));
     }
     if (createdAt != null) {
       queryParams.addAll(_queryParams('', 'created_at', createdAt));
@@ -457,11 +552,19 @@ class EstablishmentApi {
   ///
   /// * [String] description:
   ///
-  /// * [String] location:
+  /// * [String] notice:
+  ///
+  /// * [String] address:
   ///
   /// * [String] cordX:
   ///
   /// * [String] cordY:
+  ///
+  /// * [String] phone:
+  ///
+  /// * [String] email:
+  ///
+  /// * [String] website:
   ///
   /// * [String] category:
   ///
@@ -473,6 +576,8 @@ class EstablishmentApi {
   /// * [String] bookingPoints:
   ///   How many points are a user earning by booking this establishment
   ///
+  /// * [String] bookmarkCount:
+  ///
   /// * [String] createdAt:
   ///
   /// * [String] updatedAt:
@@ -482,8 +587,8 @@ class EstablishmentApi {
   ///
   /// * [Establishment] establishment:
   ///   establishment
-  Future<void> establishmentPatch({ String? id, String? name, String? description, String? location, String? cordX, String? cordY, String? category, String? thumbnailUrl, String? rank, String? bookingPoints, String? createdAt, String? updatedAt, String? prefer, Establishment? establishment, }) async {
-    final response = await establishmentPatchWithHttpInfo( id: id, name: name, description: description, location: location, cordX: cordX, cordY: cordY, category: category, thumbnailUrl: thumbnailUrl, rank: rank, bookingPoints: bookingPoints, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, establishment: establishment, );
+  Future<void> establishmentPatch({ String? id, String? name, String? description, String? notice, String? address, String? cordX, String? cordY, String? phone, String? email, String? website, String? category, String? thumbnailUrl, String? rank, String? bookingPoints, String? bookmarkCount, String? createdAt, String? updatedAt, String? prefer, Establishment? establishment, }) async {
+    final response = await establishmentPatchWithHttpInfo( id: id, name: name, description: description, notice: notice, address: address, cordX: cordX, cordY: cordY, phone: phone, email: email, website: website, category: category, thumbnailUrl: thumbnailUrl, rank: rank, bookingPoints: bookingPoints, bookmarkCount: bookmarkCount, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, establishment: establishment, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

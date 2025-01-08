@@ -16,6 +16,7 @@ class Benefit {
     required this.id,
     this.name,
     this.description,
+    this.thumbnailUrl,
     this.createdAt = 'now()',
     this.updatedAt = 'now()',
   });
@@ -39,6 +40,15 @@ class Benefit {
   ///
   String? description;
 
+  /// Note: This is a Foreign Key to `image.image_url`.<fk table='image' column='image_url'/>
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? thumbnailUrl;
+
   String createdAt;
 
   String updatedAt;
@@ -48,6 +58,7 @@ class Benefit {
     other.id == id &&
     other.name == name &&
     other.description == description &&
+    other.thumbnailUrl == thumbnailUrl &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt;
 
@@ -57,11 +68,12 @@ class Benefit {
     (id.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
+    (thumbnailUrl == null ? 0 : thumbnailUrl!.hashCode) +
     (createdAt.hashCode) +
     (updatedAt.hashCode);
 
   @override
-  String toString() => 'Benefit[id=$id, name=$name, description=$description, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'Benefit[id=$id, name=$name, description=$description, thumbnailUrl=$thumbnailUrl, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -75,6 +87,11 @@ class Benefit {
       json[r'description'] = this.description;
     } else {
       json[r'description'] = null;
+    }
+    if (this.thumbnailUrl != null) {
+      json[r'thumbnail_url'] = this.thumbnailUrl;
+    } else {
+      json[r'thumbnail_url'] = null;
     }
       json[r'created_at'] = this.createdAt;
       json[r'updated_at'] = this.updatedAt;
@@ -103,6 +120,7 @@ class Benefit {
         id: mapValueOfType<int>(json, r'id')!,
         name: mapValueOfType<String>(json, r'name'),
         description: mapValueOfType<String>(json, r'description'),
+        thumbnailUrl: mapValueOfType<String>(json, r'thumbnail_url'),
         createdAt: mapValueOfType<String>(json, r'created_at') ?? 'now()',
         updatedAt: mapValueOfType<String>(json, r'updated_at') ?? 'now()',
       );

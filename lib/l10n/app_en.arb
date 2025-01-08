@@ -130,5 +130,8 @@
     "hygiene": "Hygiene",
     "value": "Value",
 
+    "open": "Open",
+    "closed": "Closed",
+
     "empty":"empty"
 }

@@ -1,4 +1,4 @@
-# openapi.api.BenefitApi
+# openapi.api.UserEstablishmentBookmarkApi
 
 ## Load the API package
 ```dart
@@ -9,14 +9,14 @@ All URIs are relative to *http://poc-bar-app.com:80/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**benefitDelete**](BenefitApi.md#benefitdelete) | **DELETE** /benefit | 
-[**benefitGet**](BenefitApi.md#benefitget) | **GET** /benefit | 
-[**benefitPatch**](BenefitApi.md#benefitpatch) | **PATCH** /benefit | 
-[**benefitPost**](BenefitApi.md#benefitpost) | **POST** /benefit | 
+[**userEstablishmentBookmarkDelete**](UserEstablishmentBookmarkApi.md#userestablishmentbookmarkdelete) | **DELETE** /user_establishment_bookmark | 
+[**userEstablishmentBookmarkGet**](UserEstablishmentBookmarkApi.md#userestablishmentbookmarkget) | **GET** /user_establishment_bookmark | 
+[**userEstablishmentBookmarkPatch**](UserEstablishmentBookmarkApi.md#userestablishmentbookmarkpatch) | **PATCH** /user_establishment_bookmark | 
+[**userEstablishmentBookmarkPost**](UserEstablishmentBookmarkApi.md#userestablishmentbookmarkpost) | **POST** /user_establishment_bookmark | 
 
 
-# **benefitDelete**
-> benefitDelete(id, name, description, thumbnailUrl, createdAt, updatedAt, prefer)
+# **userEstablishmentBookmarkDelete**
+> userEstablishmentBookmarkDelete(userId, establishmentId, createdAt, prefer)
 
 
 
@@ -28,19 +28,16 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = BenefitApi();
-final id = id_example; // String | 
-final name = name_example; // String | 
-final description = description_example; // String | 
-final thumbnailUrl = thumbnailUrl_example; // String | 
+final api_instance = UserEstablishmentBookmarkApi();
+final userId = userId_example; // String | 
+final establishmentId = establishmentId_example; // String | 
 final createdAt = createdAt_example; // String | 
-final updatedAt = updatedAt_example; // String | 
 final prefer = prefer_example; // String | Preference
 
 try {
-    api_instance.benefitDelete(id, name, description, thumbnailUrl, createdAt, updatedAt, prefer);
+    api_instance.userEstablishmentBookmarkDelete(userId, establishmentId, createdAt, prefer);
 } catch (e) {
-    print('Exception when calling BenefitApi->benefitDelete: $e\n');
+    print('Exception when calling UserEstablishmentBookmarkApi->userEstablishmentBookmarkDelete: $e\n');
 }
 ```
 
@@ -48,12 +45,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**|  | [optional] 
- **name** | **String**|  | [optional] 
- **description** | **String**|  | [optional] 
- **thumbnailUrl** | **String**|  | [optional] 
+ **userId** | **String**|  | [optional] 
+ **establishmentId** | **String**|  | [optional] 
  **createdAt** | **String**|  | [optional] 
- **updatedAt** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 
 
 ### Return type
@@ -71,8 +65,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **benefitGet**
-> List<Benefit> benefitGet(id, name, description, thumbnailUrl, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer)
+# **userEstablishmentBookmarkGet**
+> List<UserEstablishmentBookmark> userEstablishmentBookmarkGet(userId, establishmentId, createdAt, select, order, range, rangeUnit, offset, limit, prefer)
 
 
 
@@ -84,13 +78,10 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = BenefitApi();
-final id = id_example; // String | 
-final name = name_example; // String | 
-final description = description_example; // String | 
-final thumbnailUrl = thumbnailUrl_example; // String | 
+final api_instance = UserEstablishmentBookmarkApi();
+final userId = userId_example; // String | 
+final establishmentId = establishmentId_example; // String | 
 final createdAt = createdAt_example; // String | 
-final updatedAt = updatedAt_example; // String | 
 final select = select_example; // String | Filtering Columns
 final order = order_example; // String | Ordering
 final range = range_example; // String | Limiting and Pagination
@@ -100,10 +91,10 @@ final limit = limit_example; // String | Limiting and Pagination
 final prefer = prefer_example; // String | Preference
 
 try {
-    final result = api_instance.benefitGet(id, name, description, thumbnailUrl, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer);
+    final result = api_instance.userEstablishmentBookmarkGet(userId, establishmentId, createdAt, select, order, range, rangeUnit, offset, limit, prefer);
     print(result);
 } catch (e) {
-    print('Exception when calling BenefitApi->benefitGet: $e\n');
+    print('Exception when calling UserEstablishmentBookmarkApi->userEstablishmentBookmarkGet: $e\n');
 }
 ```
 
@@ -111,12 +102,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**|  | [optional] 
- **name** | **String**|  | [optional] 
- **description** | **String**|  | [optional] 
- **thumbnailUrl** | **String**|  | [optional] 
+ **userId** | **String**|  | [optional] 
+ **establishmentId** | **String**|  | [optional] 
  **createdAt** | **String**|  | [optional] 
- **updatedAt** | **String**|  | [optional] 
  **select** | **String**| Filtering Columns | [optional] 
  **order** | **String**| Ordering | [optional] 
  **range** | **String**| Limiting and Pagination | [optional] 
@@ -127,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<Benefit>**](Benefit.md)
+[**List<UserEstablishmentBookmark>**](UserEstablishmentBookmark.md)
 
 ### Authorization
 
@@ -140,8 +128,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **benefitPatch**
-> benefitPatch(id, name, description, thumbnailUrl, createdAt, updatedAt, prefer, benefit)
+# **userEstablishmentBookmarkPatch**
+> userEstablishmentBookmarkPatch(userId, establishmentId, createdAt, prefer, userEstablishmentBookmark)
 
 
 
@@ -153,20 +141,17 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = BenefitApi();
-final id = id_example; // String | 
-final name = name_example; // String | 
-final description = description_example; // String | 
-final thumbnailUrl = thumbnailUrl_example; // String | 
+final api_instance = UserEstablishmentBookmarkApi();
+final userId = userId_example; // String | 
+final establishmentId = establishmentId_example; // String | 
 final createdAt = createdAt_example; // String | 
-final updatedAt = updatedAt_example; // String | 
 final prefer = prefer_example; // String | Preference
-final benefit = Benefit(); // Benefit | benefit
+final userEstablishmentBookmark = UserEstablishmentBookmark(); // UserEstablishmentBookmark | user_establishment_bookmark
 
 try {
-    api_instance.benefitPatch(id, name, description, thumbnailUrl, createdAt, updatedAt, prefer, benefit);
+    api_instance.userEstablishmentBookmarkPatch(userId, establishmentId, createdAt, prefer, userEstablishmentBookmark);
 } catch (e) {
-    print('Exception when calling BenefitApi->benefitPatch: $e\n');
+    print('Exception when calling UserEstablishmentBookmarkApi->userEstablishmentBookmarkPatch: $e\n');
 }
 ```
 
@@ -174,14 +159,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**|  | [optional] 
- **name** | **String**|  | [optional] 
- **description** | **String**|  | [optional] 
- **thumbnailUrl** | **String**|  | [optional] 
+ **userId** | **String**|  | [optional] 
+ **establishmentId** | **String**|  | [optional] 
  **createdAt** | **String**|  | [optional] 
- **updatedAt** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 
- **benefit** | [**Benefit**](Benefit.md)| benefit | [optional] 
+ **userEstablishmentBookmark** | [**UserEstablishmentBookmark**](UserEstablishmentBookmark.md)| user_establishment_bookmark | [optional] 
 
 ### Return type
 
@@ -198,8 +180,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **benefitPost**
-> benefitPost(select, prefer, benefit)
+# **userEstablishmentBookmarkPost**
+> userEstablishmentBookmarkPost(select, prefer, userEstablishmentBookmark)
 
 
 
@@ -211,15 +193,15 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = BenefitApi();
+final api_instance = UserEstablishmentBookmarkApi();
 final select = select_example; // String | Filtering Columns
 final prefer = prefer_example; // String | Preference
-final benefit = Benefit(); // Benefit | benefit
+final userEstablishmentBookmark = UserEstablishmentBookmark(); // UserEstablishmentBookmark | user_establishment_bookmark
 
 try {
-    api_instance.benefitPost(select, prefer, benefit);
+    api_instance.userEstablishmentBookmarkPost(select, prefer, userEstablishmentBookmark);
 } catch (e) {
-    print('Exception when calling BenefitApi->benefitPost: $e\n');
+    print('Exception when calling UserEstablishmentBookmarkApi->userEstablishmentBookmarkPost: $e\n');
 }
 ```
 
@@ -229,7 +211,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **select** | **String**| Filtering Columns | [optional] 
  **prefer** | **String**| Preference | [optional] 
- **benefit** | [**Benefit**](Benefit.md)| benefit | [optional] 
+ **userEstablishmentBookmark** | [**UserEstablishmentBookmark**](UserEstablishmentBookmark.md)| user_establishment_bookmark | [optional] 
 
 ### Return type
 

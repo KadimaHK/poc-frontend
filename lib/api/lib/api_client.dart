@@ -188,6 +188,8 @@ class ApiClient {
           return Booking.fromJson(value);
         case 'Establishment':
           return Establishment.fromJson(value);
+        case 'EstablishmentBenefit':
+          return EstablishmentBenefit.fromJson(value);
         case 'EstablishmentCategory':
           return EstablishmentCategory.fromJson(value);
         case 'EstablishmentImage':
@@ -196,6 +198,8 @@ class ApiClient {
           return EstablishmentMenu.fromJson(value);
         case 'EstablishmentMenuImage':
           return EstablishmentMenuImage.fromJson(value);
+        case 'EstablishmentOpeningHours':
+          return EstablishmentOpeningHours.fromJson(value);
         case 'EstablishmentRank':
           return EstablishmentRank.fromJson(value);
         case 'Featured':
@@ -230,8 +234,8 @@ class ApiClient {
           return User.fromJson(value);
         case 'UserBenefit':
           return UserBenefit.fromJson(value);
-        case 'UserBookmark':
-          return UserBookmark.fromJson(value);
+        case 'UserEstablishmentBookmark':
+          return UserEstablishmentBookmark.fromJson(value);
         case 'UserFeaturedOffer':
           return UserFeaturedOffer.fromJson(value);
         case 'UserImageLike':

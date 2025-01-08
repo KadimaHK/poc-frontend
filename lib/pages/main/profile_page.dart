@@ -336,9 +336,9 @@ class _ReviewComponentState extends State<_ReviewComponent> {
 }
 
 class _BookmarkComponent extends StatefulWidget {
-  const _BookmarkComponent({super.key, required this.bookmark});
+  const _BookmarkComponent({required this.bookmark});
 
-  final api.UserBookmark bookmark;
+  final api.UserEstablishmentBookmark bookmark;
 
   @override
   State<_BookmarkComponent> createState() => _BookmarkComponentState();
@@ -387,7 +387,7 @@ class _Bookmarks extends StatefulWidget {
 }
 
 class _BookmarksState extends State<_Bookmarks> {
-  List<api.UserBookmark> bookmarks = [];
+  List<api.UserEstablishmentBookmark> bookmarks = [];
   @override
   void initState() {
     super.initState();
@@ -395,7 +395,7 @@ class _BookmarksState extends State<_Bookmarks> {
   }
 
   void fetchData() async {
-    final bookmarks = await api.UserBookmarkApi(MyApp.sessionApiClient).userBookmarkGet();
+    final bookmarks = await api.UserEstablishmentBookmarkApi(MyApp.sessionApiClient).userEstablishmentBookmarkGet();
     setState(() {
       this.bookmarks = bookmarks!;
     });

@@ -8,6 +8,8 @@ doc/Booking.md
 doc/BookingApi.md
 doc/Establishment.md
 doc/EstablishmentApi.md
+doc/EstablishmentBenefit.md
+doc/EstablishmentBenefitApi.md
 doc/EstablishmentCategory.md
 doc/EstablishmentCategoryApi.md
 doc/EstablishmentImage.md
@@ -16,6 +18,8 @@ doc/EstablishmentMenu.md
 doc/EstablishmentMenuApi.md
 doc/EstablishmentMenuImage.md
 doc/EstablishmentMenuImageApi.md
+doc/EstablishmentOpeningHours.md
+doc/EstablishmentOpeningHoursApi.md
 doc/EstablishmentRank.md
 doc/EstablishmentRankApi.md
 doc/Featured.md
@@ -53,8 +57,8 @@ doc/User.md
 doc/UserApi.md
 doc/UserBenefit.md
 doc/UserBenefitApi.md
-doc/UserBookmark.md
-doc/UserBookmarkApi.md
+doc/UserEstablishmentBookmark.md
+doc/UserEstablishmentBookmarkApi.md
 doc/UserFeaturedOffer.md
 doc/UserFeaturedOfferApi.md
 doc/UserImageLike.md
@@ -66,10 +70,12 @@ lib/api.dart
 lib/api/benefit_api.dart
 lib/api/booking_api.dart
 lib/api/establishment_api.dart
+lib/api/establishment_benefit_api.dart
 lib/api/establishment_category_api.dart
 lib/api/establishment_image_api.dart
 lib/api/establishment_menu_api.dart
 lib/api/establishment_menu_image_api.dart
+lib/api/establishment_opening_hours_api.dart
 lib/api/establishment_rank_api.dart
 lib/api/featured_api.dart
 lib/api/featured_offer_api.dart
@@ -87,7 +93,7 @@ lib/api/review_api.dart
 lib/api/review_image_api.dart
 lib/api/user_api.dart
 lib/api/user_benefit_api.dart
-lib/api/user_bookmark_api.dart
+lib/api/user_establishment_bookmark_api.dart
 lib/api/user_featured_offer_api.dart
 lib/api/user_image_like_api.dart
 lib/api/user_review_like_api.dart
@@ -102,10 +108,12 @@ lib/auth/oauth.dart
 lib/model/benefit.dart
 lib/model/booking.dart
 lib/model/establishment.dart
+lib/model/establishment_benefit.dart
 lib/model/establishment_category.dart
 lib/model/establishment_image.dart
 lib/model/establishment_menu.dart
 lib/model/establishment_menu_image.dart
+lib/model/establishment_opening_hours.dart
 lib/model/establishment_rank.dart
 lib/model/featured.dart
 lib/model/featured_offer.dart
@@ -123,7 +131,7 @@ lib/model/review_image.dart
 lib/model/rpc_sign_up_post_request.dart
 lib/model/user.dart
 lib/model/user_benefit.dart
-lib/model/user_bookmark.dart
+lib/model/user_establishment_bookmark.dart
 lib/model/user_featured_offer.dart
 lib/model/user_image_like.dart
 lib/model/user_review_like.dart

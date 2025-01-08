@@ -55,7 +55,7 @@ class _FeaturedOfferCardViewState extends State<FeaturedOfferCardView> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(widget.featuredOffer.title ?? '', style: const TextStyle(fontSize: 12, color: Colors.black)),
-                Text(establishment?.location ?? '', style: const TextStyle(fontSize: 10, color: Colors.grey)),
+                Text(establishment?.address ?? '', style: const TextStyle(fontSize: 10, color: Colors.grey)),
               ],
             ),
           ),

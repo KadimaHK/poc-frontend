@@ -19,6 +19,7 @@ class Review {
     this.title,
     this.description,
     this.content,
+    this.isApproved = false,
     this.rating,
     this.tasteRating,
     this.decorRating,
@@ -77,6 +78,8 @@ class Review {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? content;
+
+  bool isApproved;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -165,6 +168,7 @@ class Review {
     other.title == title &&
     other.description == description &&
     other.content == content &&
+    other.isApproved == isApproved &&
     other.rating == rating &&
     other.tasteRating == tasteRating &&
     other.decorRating == decorRating &&
@@ -187,6 +191,7 @@ class Review {
     (title == null ? 0 : title!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (content == null ? 0 : content!.hashCode) +
+    (isApproved.hashCode) +
     (rating == null ? 0 : rating!.hashCode) +
     (tasteRating == null ? 0 : tasteRating!.hashCode) +
     (decorRating == null ? 0 : decorRating!.hashCode) +
@@ -201,7 +206,7 @@ class Review {
     (updatedAt.hashCode);
 
   @override
-  String toString() => 'Review[id=$id, userId=$userId, establishmentId=$establishmentId, title=$title, description=$description, content=$content, rating=$rating, tasteRating=$tasteRating, decorRating=$decorRating, serviceRating=$serviceRating, hygieneRating=$hygieneRating, valueRating=$valueRating, dateVisited=$dateVisited, spend=$spend, likes=$likes, status=$status, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'Review[id=$id, userId=$userId, establishmentId=$establishmentId, title=$title, description=$description, content=$content, isApproved=$isApproved, rating=$rating, tasteRating=$tasteRating, decorRating=$decorRating, serviceRating=$serviceRating, hygieneRating=$hygieneRating, valueRating=$valueRating, dateVisited=$dateVisited, spend=$spend, likes=$likes, status=$status, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -231,6 +236,7 @@ class Review {
     } else {
       json[r'content'] = null;
     }
+      json[r'is_approved'] = this.isApproved;
     if (this.rating != null) {
       json[r'rating'] = this.rating;
     } else {
@@ -307,6 +313,7 @@ class Review {
         title: mapValueOfType<String>(json, r'title'),
         description: mapValueOfType<String>(json, r'description'),
         content: mapValueOfType<String>(json, r'content'),
+        isApproved: mapValueOfType<bool>(json, r'is_approved') ?? false,
         rating: num.parse('${json[r'rating']}'),
         tasteRating: num.parse('${json[r'taste_rating']}'),
         decorRating: num.parse('${json[r'decor_rating']}'),

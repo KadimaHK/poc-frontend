@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **reviewDelete**
-> reviewDelete(id, userId, establishmentId, title, description, content, rating, tasteRating, decorRating, serviceRating, hygieneRating, valueRating, dateVisited, spend, likes, status, createdAt, updatedAt, prefer)
+> reviewDelete(id, userId, establishmentId, title, description, content, isApproved, rating, tasteRating, decorRating, serviceRating, hygieneRating, valueRating, dateVisited, spend, likes, status, createdAt, updatedAt, prefer)
 
 
 
@@ -35,6 +35,7 @@ final establishmentId = establishmentId_example; // String |
 final title = title_example; // String | 
 final description = description_example; // String | 
 final content = content_example; // String | 
+final isApproved = isApproved_example; // String | 
 final rating = rating_example; // String | 
 final tasteRating = tasteRating_example; // String | 
 final decorRating = decorRating_example; // String | 
@@ -50,7 +51,7 @@ final updatedAt = updatedAt_example; // String |
 final prefer = prefer_example; // String | Preference
 
 try {
-    api_instance.reviewDelete(id, userId, establishmentId, title, description, content, rating, tasteRating, decorRating, serviceRating, hygieneRating, valueRating, dateVisited, spend, likes, status, createdAt, updatedAt, prefer);
+    api_instance.reviewDelete(id, userId, establishmentId, title, description, content, isApproved, rating, tasteRating, decorRating, serviceRating, hygieneRating, valueRating, dateVisited, spend, likes, status, createdAt, updatedAt, prefer);
 } catch (e) {
     print('Exception when calling ReviewApi->reviewDelete: $e\n');
 }
@@ -66,6 +67,7 @@ Name | Type | Description  | Notes
  **title** | **String**|  | [optional] 
  **description** | **String**|  | [optional] 
  **content** | **String**|  | [optional] 
+ **isApproved** | **String**|  | [optional] 
  **rating** | **String**|  | [optional] 
  **tasteRating** | **String**|  | [optional] 
  **decorRating** | **String**|  | [optional] 
@@ -96,7 +98,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reviewGet**
-> List<Review> reviewGet(id, userId, establishmentId, title, description, content, rating, tasteRating, decorRating, serviceRating, hygieneRating, valueRating, dateVisited, spend, likes, status, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer)
+> List<Review> reviewGet(id, userId, establishmentId, title, description, content, isApproved, rating, tasteRating, decorRating, serviceRating, hygieneRating, valueRating, dateVisited, spend, likes, status, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer)
 
 
 
@@ -115,6 +117,7 @@ final establishmentId = establishmentId_example; // String |
 final title = title_example; // String | 
 final description = description_example; // String | 
 final content = content_example; // String | 
+final isApproved = isApproved_example; // String | 
 final rating = rating_example; // String | 
 final tasteRating = tasteRating_example; // String | 
 final decorRating = decorRating_example; // String | 
@@ -136,7 +139,7 @@ final limit = limit_example; // String | Limiting and Pagination
 final prefer = prefer_example; // String | Preference
 
 try {
-    final result = api_instance.reviewGet(id, userId, establishmentId, title, description, content, rating, tasteRating, decorRating, serviceRating, hygieneRating, valueRating, dateVisited, spend, likes, status, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer);
+    final result = api_instance.reviewGet(id, userId, establishmentId, title, description, content, isApproved, rating, tasteRating, decorRating, serviceRating, hygieneRating, valueRating, dateVisited, spend, likes, status, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer);
     print(result);
 } catch (e) {
     print('Exception when calling ReviewApi->reviewGet: $e\n');
@@ -153,6 +156,7 @@ Name | Type | Description  | Notes
  **title** | **String**|  | [optional] 
  **description** | **String**|  | [optional] 
  **content** | **String**|  | [optional] 
+ **isApproved** | **String**|  | [optional] 
  **rating** | **String**|  | [optional] 
  **tasteRating** | **String**|  | [optional] 
  **decorRating** | **String**|  | [optional] 
@@ -189,7 +193,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reviewPatch**
-> reviewPatch(id, userId, establishmentId, title, description, content, rating, tasteRating, decorRating, serviceRating, hygieneRating, valueRating, dateVisited, spend, likes, status, createdAt, updatedAt, prefer, review)
+> reviewPatch(id, userId, establishmentId, title, description, content, isApproved, rating, tasteRating, decorRating, serviceRating, hygieneRating, valueRating, dateVisited, spend, likes, status, createdAt, updatedAt, prefer, review)
 
 
 
@@ -208,6 +212,7 @@ final establishmentId = establishmentId_example; // String |
 final title = title_example; // String | 
 final description = description_example; // String | 
 final content = content_example; // String | 
+final isApproved = isApproved_example; // String | 
 final rating = rating_example; // String | 
 final tasteRating = tasteRating_example; // String | 
 final decorRating = decorRating_example; // String | 
@@ -224,7 +229,7 @@ final prefer = prefer_example; // String | Preference
 final review = Review(); // Review | review
 
 try {
-    api_instance.reviewPatch(id, userId, establishmentId, title, description, content, rating, tasteRating, decorRating, serviceRating, hygieneRating, valueRating, dateVisited, spend, likes, status, createdAt, updatedAt, prefer, review);
+    api_instance.reviewPatch(id, userId, establishmentId, title, description, content, isApproved, rating, tasteRating, decorRating, serviceRating, hygieneRating, valueRating, dateVisited, spend, likes, status, createdAt, updatedAt, prefer, review);
 } catch (e) {
     print('Exception when calling ReviewApi->reviewPatch: $e\n');
 }
@@ -240,6 +245,7 @@ Name | Type | Description  | Notes
  **title** | **String**|  | [optional] 
  **description** | **String**|  | [optional] 
  **content** | **String**|  | [optional] 
+ **isApproved** | **String**|  | [optional] 
  **rating** | **String**|  | [optional] 
  **tasteRating** | **String**|  | [optional] 
  **decorRating** | **String**|  | [optional] 

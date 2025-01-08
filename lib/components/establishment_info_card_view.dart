@@ -71,7 +71,7 @@ class _EstablishmentInfoCardViewState extends State<EstablishmentInfoCardView> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('${establishment!.location} ・ ${1234}km', style: const TextStyle(fontSize: 15)),
+                        Text('${establishment!.address} ・ ${1234}km', style: const TextStyle(fontSize: 15)),
                         Text('${establishment!.category}', style: const TextStyle(fontSize: 15)),
                         Text('★ ${establishment!.rank}', style: const TextStyle(fontSize: 15)),
                         SizedBox(

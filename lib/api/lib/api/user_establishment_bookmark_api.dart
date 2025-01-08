@@ -11,31 +11,25 @@
 part of openapi.api;
 
 
-class BenefitApi {
-  BenefitApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
+class UserEstablishmentBookmarkApi {
+  UserEstablishmentBookmarkApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'DELETE /benefit' operation and returns the [Response].
+  /// Performs an HTTP 'DELETE /user_establishment_bookmark' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [String] id:
+  /// * [String] userId:
   ///
-  /// * [String] name:
-  ///
-  /// * [String] description:
-  ///
-  /// * [String] thumbnailUrl:
+  /// * [String] establishmentId:
   ///
   /// * [String] createdAt:
   ///
-  /// * [String] updatedAt:
-  ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> benefitDeleteWithHttpInfo({ String? id, String? name, String? description, String? thumbnailUrl, String? createdAt, String? updatedAt, String? prefer, }) async {
+  Future<Response> userEstablishmentBookmarkDeleteWithHttpInfo({ String? userId, String? establishmentId, String? createdAt, String? prefer, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/benefit';
+    final path = r'/user_establishment_bookmark';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -44,23 +38,14 @@ class BenefitApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (id != null) {
-      queryParams.addAll(_queryParams('', 'id', id));
+    if (userId != null) {
+      queryParams.addAll(_queryParams('', 'user_id', userId));
     }
-    if (name != null) {
-      queryParams.addAll(_queryParams('', 'name', name));
-    }
-    if (description != null) {
-      queryParams.addAll(_queryParams('', 'description', description));
-    }
-    if (thumbnailUrl != null) {
-      queryParams.addAll(_queryParams('', 'thumbnail_url', thumbnailUrl));
+    if (establishmentId != null) {
+      queryParams.addAll(_queryParams('', 'establishment_id', establishmentId));
     }
     if (createdAt != null) {
       queryParams.addAll(_queryParams('', 'created_at', createdAt));
-    }
-    if (updatedAt != null) {
-      queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
 
     if (prefer != null) {
@@ -83,41 +68,29 @@ class BenefitApi {
 
   /// Parameters:
   ///
-  /// * [String] id:
+  /// * [String] userId:
   ///
-  /// * [String] name:
-  ///
-  /// * [String] description:
-  ///
-  /// * [String] thumbnailUrl:
+  /// * [String] establishmentId:
   ///
   /// * [String] createdAt:
   ///
-  /// * [String] updatedAt:
-  ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> benefitDelete({ String? id, String? name, String? description, String? thumbnailUrl, String? createdAt, String? updatedAt, String? prefer, }) async {
-    final response = await benefitDeleteWithHttpInfo( id: id, name: name, description: description, thumbnailUrl: thumbnailUrl, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, );
+  Future<void> userEstablishmentBookmarkDelete({ String? userId, String? establishmentId, String? createdAt, String? prefer, }) async {
+    final response = await userEstablishmentBookmarkDeleteWithHttpInfo( userId: userId, establishmentId: establishmentId, createdAt: createdAt, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
   }
 
-  /// Performs an HTTP 'GET /benefit' operation and returns the [Response].
+  /// Performs an HTTP 'GET /user_establishment_bookmark' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [String] id:
+  /// * [String] userId:
   ///
-  /// * [String] name:
-  ///
-  /// * [String] description:
-  ///
-  /// * [String] thumbnailUrl:
+  /// * [String] establishmentId:
   ///
   /// * [String] createdAt:
-  ///
-  /// * [String] updatedAt:
   ///
   /// * [String] select:
   ///   Filtering Columns
@@ -139,9 +112,9 @@ class BenefitApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> benefitGetWithHttpInfo({ String? id, String? name, String? description, String? thumbnailUrl, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> userEstablishmentBookmarkGetWithHttpInfo({ String? userId, String? establishmentId, String? createdAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/benefit';
+    final path = r'/user_establishment_bookmark';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -150,23 +123,14 @@ class BenefitApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (id != null) {
-      queryParams.addAll(_queryParams('', 'id', id));
+    if (userId != null) {
+      queryParams.addAll(_queryParams('', 'user_id', userId));
     }
-    if (name != null) {
-      queryParams.addAll(_queryParams('', 'name', name));
-    }
-    if (description != null) {
-      queryParams.addAll(_queryParams('', 'description', description));
-    }
-    if (thumbnailUrl != null) {
-      queryParams.addAll(_queryParams('', 'thumbnail_url', thumbnailUrl));
+    if (establishmentId != null) {
+      queryParams.addAll(_queryParams('', 'establishment_id', establishmentId));
     }
     if (createdAt != null) {
       queryParams.addAll(_queryParams('', 'created_at', createdAt));
-    }
-    if (updatedAt != null) {
-      queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
     if (select != null) {
       queryParams.addAll(_queryParams('', 'select', select));
@@ -207,17 +171,11 @@ class BenefitApi {
 
   /// Parameters:
   ///
-  /// * [String] id:
+  /// * [String] userId:
   ///
-  /// * [String] name:
-  ///
-  /// * [String] description:
-  ///
-  /// * [String] thumbnailUrl:
+  /// * [String] establishmentId:
   ///
   /// * [String] createdAt:
-  ///
-  /// * [String] updatedAt:
   ///
   /// * [String] select:
   ///   Filtering Columns
@@ -239,8 +197,8 @@ class BenefitApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<Benefit>?> benefitGet({ String? id, String? name, String? description, String? thumbnailUrl, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await benefitGetWithHttpInfo( id: id, name: name, description: description, thumbnailUrl: thumbnailUrl, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<UserEstablishmentBookmark>?> userEstablishmentBookmarkGet({ String? userId, String? establishmentId, String? createdAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+    final response = await userEstablishmentBookmarkGetWithHttpInfo( userId: userId, establishmentId: establishmentId, createdAt: createdAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -249,62 +207,47 @@ class BenefitApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<Benefit>') as List)
-        .cast<Benefit>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<UserEstablishmentBookmark>') as List)
+        .cast<UserEstablishmentBookmark>()
         .toList(growable: false);
 
     }
     return null;
   }
 
-  /// Performs an HTTP 'PATCH /benefit' operation and returns the [Response].
+  /// Performs an HTTP 'PATCH /user_establishment_bookmark' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [String] id:
+  /// * [String] userId:
   ///
-  /// * [String] name:
-  ///
-  /// * [String] description:
-  ///
-  /// * [String] thumbnailUrl:
+  /// * [String] establishmentId:
   ///
   /// * [String] createdAt:
-  ///
-  /// * [String] updatedAt:
   ///
   /// * [String] prefer:
   ///   Preference
   ///
-  /// * [Benefit] benefit:
-  ///   benefit
-  Future<Response> benefitPatchWithHttpInfo({ String? id, String? name, String? description, String? thumbnailUrl, String? createdAt, String? updatedAt, String? prefer, Benefit? benefit, }) async {
+  /// * [UserEstablishmentBookmark] userEstablishmentBookmark:
+  ///   user_establishment_bookmark
+  Future<Response> userEstablishmentBookmarkPatchWithHttpInfo({ String? userId, String? establishmentId, String? createdAt, String? prefer, UserEstablishmentBookmark? userEstablishmentBookmark, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/benefit';
+    final path = r'/user_establishment_bookmark';
 
     // ignore: prefer_final_locals
-    Object? postBody = benefit;
+    Object? postBody = userEstablishmentBookmark;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (id != null) {
-      queryParams.addAll(_queryParams('', 'id', id));
+    if (userId != null) {
+      queryParams.addAll(_queryParams('', 'user_id', userId));
     }
-    if (name != null) {
-      queryParams.addAll(_queryParams('', 'name', name));
-    }
-    if (description != null) {
-      queryParams.addAll(_queryParams('', 'description', description));
-    }
-    if (thumbnailUrl != null) {
-      queryParams.addAll(_queryParams('', 'thumbnail_url', thumbnailUrl));
+    if (establishmentId != null) {
+      queryParams.addAll(_queryParams('', 'establishment_id', establishmentId));
     }
     if (createdAt != null) {
       queryParams.addAll(_queryParams('', 'created_at', createdAt));
-    }
-    if (updatedAt != null) {
-      queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
 
     if (prefer != null) {
@@ -327,31 +270,25 @@ class BenefitApi {
 
   /// Parameters:
   ///
-  /// * [String] id:
+  /// * [String] userId:
   ///
-  /// * [String] name:
-  ///
-  /// * [String] description:
-  ///
-  /// * [String] thumbnailUrl:
+  /// * [String] establishmentId:
   ///
   /// * [String] createdAt:
-  ///
-  /// * [String] updatedAt:
   ///
   /// * [String] prefer:
   ///   Preference
   ///
-  /// * [Benefit] benefit:
-  ///   benefit
-  Future<void> benefitPatch({ String? id, String? name, String? description, String? thumbnailUrl, String? createdAt, String? updatedAt, String? prefer, Benefit? benefit, }) async {
-    final response = await benefitPatchWithHttpInfo( id: id, name: name, description: description, thumbnailUrl: thumbnailUrl, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, benefit: benefit, );
+  /// * [UserEstablishmentBookmark] userEstablishmentBookmark:
+  ///   user_establishment_bookmark
+  Future<void> userEstablishmentBookmarkPatch({ String? userId, String? establishmentId, String? createdAt, String? prefer, UserEstablishmentBookmark? userEstablishmentBookmark, }) async {
+    final response = await userEstablishmentBookmarkPatchWithHttpInfo( userId: userId, establishmentId: establishmentId, createdAt: createdAt, prefer: prefer, userEstablishmentBookmark: userEstablishmentBookmark, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
   }
 
-  /// Performs an HTTP 'POST /benefit' operation and returns the [Response].
+  /// Performs an HTTP 'POST /user_establishment_bookmark' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] select:
@@ -360,14 +297,14 @@ class BenefitApi {
   /// * [String] prefer:
   ///   Preference
   ///
-  /// * [Benefit] benefit:
-  ///   benefit
-  Future<Response> benefitPostWithHttpInfo({ String? select, String? prefer, Benefit? benefit, }) async {
+  /// * [UserEstablishmentBookmark] userEstablishmentBookmark:
+  ///   user_establishment_bookmark
+  Future<Response> userEstablishmentBookmarkPostWithHttpInfo({ String? select, String? prefer, UserEstablishmentBookmark? userEstablishmentBookmark, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/benefit';
+    final path = r'/user_establishment_bookmark';
 
     // ignore: prefer_final_locals
-    Object? postBody = benefit;
+    Object? postBody = userEstablishmentBookmark;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -403,10 +340,10 @@ class BenefitApi {
   /// * [String] prefer:
   ///   Preference
   ///
-  /// * [Benefit] benefit:
-  ///   benefit
-  Future<void> benefitPost({ String? select, String? prefer, Benefit? benefit, }) async {
-    final response = await benefitPostWithHttpInfo( select: select, prefer: prefer, benefit: benefit, );
+  /// * [UserEstablishmentBookmark] userEstablishmentBookmark:
+  ///   user_establishment_bookmark
+  Future<void> userEstablishmentBookmarkPost({ String? select, String? prefer, UserEstablishmentBookmark? userEstablishmentBookmark, }) async {
+    final response = await userEstablishmentBookmarkPostWithHttpInfo( select: select, prefer: prefer, userEstablishmentBookmark: userEstablishmentBookmark, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
