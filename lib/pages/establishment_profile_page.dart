@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:poc_frontend/api/lib/api.dart' as api;
 
-class BarProfilePage extends StatefulWidget {
-  const BarProfilePage({super.key});
+class EstablishmentProfilePage extends StatefulWidget {
+  const EstablishmentProfilePage({super.key});
+  static const String routeName = '/establishment_profile';
   @override
-  State<BarProfilePage> createState() => _BarProfilePageState();
+  State<EstablishmentProfilePage> createState() => _EstablishmentProfilePageState();
 }
 
-class _BarProfilePageState extends State<BarProfilePage> {
+class _EstablishmentProfilePageState extends State<EstablishmentProfilePage> {
   @override
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
@@ -45,7 +46,7 @@ class _BarProfilePageState extends State<BarProfilePage> {
           leading: Image.network(
               'https://s3-alpha-sig.figma.com/img/6775/a9df/ea7d766d30f5a4bd0b09d1a2bfbd0fbe?Expires=1731888000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Wm3QdCOlg~X5k8xogx~lrE4dsfYfWqbCH62cVIEhmpv9GlHQ~G840PV~zpnVrDs-397rz-XOy7uAzlg0n-A4sOi0tT38~t2sqA6JV6kxt~nQ-YUrZmqO3QKoeu1yYuwMU~5HuiiUB2XrKzvM33YDY-Xsg7LzCk3Y1hJFgR7kbE6RkXwBYPgqxGyegN64Ch3PvcOqPDZ8zlhISA8DK-XbJ~iWHkrL~VKBjlcXZgV~X3aDFSfK84XoPlK0ZolvM3i4dS4-1rz7DfTmD9Lw9PYSgfqFAL0po7qhdC~BDUW9qRouLrh0kwjx20hITemvDkKhDnsK4-gMP-1-MsNxBCjHzA__',
                       errorBuilder: (context, error, stackTrace) => Placeholder(),),
-          title: Text('Oasis Bar & Restaurant'),
+          title: Text('Oasis Establishment & Restaurant'),
           subtitle: Text('Prince Edward・2.8km\nCocktail | Beer Pong\n ★ 3.24'),
           trailing: IconButton(onPressed: () => {}, icon: Icon(Icons.bookmark_border)),
         ),
@@ -70,7 +71,7 @@ class _BarProfilePageState extends State<BarProfilePage> {
             )),
         ListTile(
           title: Text(t.notice),
-          subtitle: Text('Please note that the bar will be closed on 1st and 2nd of January 2022.'),
+          subtitle: Text('Please note that the establishment will be closed on 1st and 2nd of January 2022.'),
           trailing: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
         ),
         ListTile(

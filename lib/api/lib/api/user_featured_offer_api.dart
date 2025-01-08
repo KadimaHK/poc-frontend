@@ -19,13 +19,13 @@ class UserFeaturedOfferApi {
   /// Performs an HTTP 'DELETE /user_featured_offer' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [String] userEmail:
+  /// * [String] userId:
   ///
   /// * [String] featuredOfferId:
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> userFeaturedOfferDeleteWithHttpInfo({ String? userEmail, String? featuredOfferId, String? prefer, }) async {
+  Future<Response> userFeaturedOfferDeleteWithHttpInfo({ String? userId, String? featuredOfferId, String? prefer, }) async {
     // ignore: prefer_const_declarations
     final path = r'/user_featured_offer';
 
@@ -36,8 +36,8 @@ class UserFeaturedOfferApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (userEmail != null) {
-      queryParams.addAll(_queryParams('', 'user_email', userEmail));
+    if (userId != null) {
+      queryParams.addAll(_queryParams('', 'user_id', userId));
     }
     if (featuredOfferId != null) {
       queryParams.addAll(_queryParams('', 'featured_offer_id', featuredOfferId));
@@ -63,14 +63,14 @@ class UserFeaturedOfferApi {
 
   /// Parameters:
   ///
-  /// * [String] userEmail:
+  /// * [String] userId:
   ///
   /// * [String] featuredOfferId:
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> userFeaturedOfferDelete({ String? userEmail, String? featuredOfferId, String? prefer, }) async {
-    final response = await userFeaturedOfferDeleteWithHttpInfo( userEmail: userEmail, featuredOfferId: featuredOfferId, prefer: prefer, );
+  Future<void> userFeaturedOfferDelete({ String? userId, String? featuredOfferId, String? prefer, }) async {
+    final response = await userFeaturedOfferDeleteWithHttpInfo( userId: userId, featuredOfferId: featuredOfferId, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -79,7 +79,7 @@ class UserFeaturedOfferApi {
   /// Performs an HTTP 'GET /user_featured_offer' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [String] userEmail:
+  /// * [String] userId:
   ///
   /// * [String] featuredOfferId:
   ///
@@ -103,7 +103,7 @@ class UserFeaturedOfferApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> userFeaturedOfferGetWithHttpInfo({ String? userEmail, String? featuredOfferId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> userFeaturedOfferGetWithHttpInfo({ String? userId, String? featuredOfferId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
     // ignore: prefer_const_declarations
     final path = r'/user_featured_offer';
 
@@ -114,8 +114,8 @@ class UserFeaturedOfferApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (userEmail != null) {
-      queryParams.addAll(_queryParams('', 'user_email', userEmail));
+    if (userId != null) {
+      queryParams.addAll(_queryParams('', 'user_id', userId));
     }
     if (featuredOfferId != null) {
       queryParams.addAll(_queryParams('', 'featured_offer_id', featuredOfferId));
@@ -159,7 +159,7 @@ class UserFeaturedOfferApi {
 
   /// Parameters:
   ///
-  /// * [String] userEmail:
+  /// * [String] userId:
   ///
   /// * [String] featuredOfferId:
   ///
@@ -183,8 +183,8 @@ class UserFeaturedOfferApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<UserFeaturedOffer>?> userFeaturedOfferGet({ String? userEmail, String? featuredOfferId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await userFeaturedOfferGetWithHttpInfo( userEmail: userEmail, featuredOfferId: featuredOfferId, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<UserFeaturedOffer>?> userFeaturedOfferGet({ String? userId, String? featuredOfferId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+    final response = await userFeaturedOfferGetWithHttpInfo( userId: userId, featuredOfferId: featuredOfferId, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -204,7 +204,7 @@ class UserFeaturedOfferApi {
   /// Performs an HTTP 'PATCH /user_featured_offer' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [String] userEmail:
+  /// * [String] userId:
   ///
   /// * [String] featuredOfferId:
   ///
@@ -213,7 +213,7 @@ class UserFeaturedOfferApi {
   ///
   /// * [UserFeaturedOffer] userFeaturedOffer:
   ///   user_featured_offer
-  Future<Response> userFeaturedOfferPatchWithHttpInfo({ String? userEmail, String? featuredOfferId, String? prefer, UserFeaturedOffer? userFeaturedOffer, }) async {
+  Future<Response> userFeaturedOfferPatchWithHttpInfo({ String? userId, String? featuredOfferId, String? prefer, UserFeaturedOffer? userFeaturedOffer, }) async {
     // ignore: prefer_const_declarations
     final path = r'/user_featured_offer';
 
@@ -224,8 +224,8 @@ class UserFeaturedOfferApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (userEmail != null) {
-      queryParams.addAll(_queryParams('', 'user_email', userEmail));
+    if (userId != null) {
+      queryParams.addAll(_queryParams('', 'user_id', userId));
     }
     if (featuredOfferId != null) {
       queryParams.addAll(_queryParams('', 'featured_offer_id', featuredOfferId));
@@ -251,7 +251,7 @@ class UserFeaturedOfferApi {
 
   /// Parameters:
   ///
-  /// * [String] userEmail:
+  /// * [String] userId:
   ///
   /// * [String] featuredOfferId:
   ///
@@ -260,8 +260,8 @@ class UserFeaturedOfferApi {
   ///
   /// * [UserFeaturedOffer] userFeaturedOffer:
   ///   user_featured_offer
-  Future<void> userFeaturedOfferPatch({ String? userEmail, String? featuredOfferId, String? prefer, UserFeaturedOffer? userFeaturedOffer, }) async {
-    final response = await userFeaturedOfferPatchWithHttpInfo( userEmail: userEmail, featuredOfferId: featuredOfferId, prefer: prefer, userFeaturedOffer: userFeaturedOffer, );
+  Future<void> userFeaturedOfferPatch({ String? userId, String? featuredOfferId, String? prefer, UserFeaturedOffer? userFeaturedOffer, }) async {
+    final response = await userFeaturedOfferPatchWithHttpInfo( userId: userId, featuredOfferId: featuredOfferId, prefer: prefer, userFeaturedOffer: userFeaturedOffer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

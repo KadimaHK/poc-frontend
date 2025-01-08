@@ -230,8 +230,14 @@ class ApiClient {
           return User.fromJson(value);
         case 'UserBenefit':
           return UserBenefit.fromJson(value);
+        case 'UserBookmark':
+          return UserBookmark.fromJson(value);
         case 'UserFeaturedOffer':
           return UserFeaturedOffer.fromJson(value);
+        case 'UserImageLike':
+          return UserImageLike.fromJson(value);
+        case 'UserReviewLike':
+          return UserReviewLike.fromJson(value);
         default:
           dynamic match;
           if (value is List && (match = _regList.firstMatch(targetType)?.group(1)) != null) {

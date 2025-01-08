@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **followingCount** | **int** |  | [optional] 
 **followerCount** | **int** |  | [optional] 
 **points** | **int** |  | [optional] 
-**pointsExpiry** | **String** |  | [optional] 
+**pointsExpiry** | **String** |  | [optional] [default to '(now() + \'1 year\'::interval)']
 **verified** | **bool** |  | [optional] [default to false]
 **createdAt** | **String** |  | [optional] [default to 'now()']
 **updatedAt** | **String** |  | [optional] [default to 'now()']

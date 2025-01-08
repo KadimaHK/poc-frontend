@@ -166,10 +166,22 @@ Class | Method | HTTP request | Description
 *UserBenefitApi* | [**userBenefitGet**](doc//UserBenefitApi.md#userbenefitget) | **GET** /user_benefit | 
 *UserBenefitApi* | [**userBenefitPatch**](doc//UserBenefitApi.md#userbenefitpatch) | **PATCH** /user_benefit | 
 *UserBenefitApi* | [**userBenefitPost**](doc//UserBenefitApi.md#userbenefitpost) | **POST** /user_benefit | 
+*UserBookmarkApi* | [**userBookmarkDelete**](doc//UserBookmarkApi.md#userbookmarkdelete) | **DELETE** /user_bookmark | 
+*UserBookmarkApi* | [**userBookmarkGet**](doc//UserBookmarkApi.md#userbookmarkget) | **GET** /user_bookmark | 
+*UserBookmarkApi* | [**userBookmarkPatch**](doc//UserBookmarkApi.md#userbookmarkpatch) | **PATCH** /user_bookmark | 
+*UserBookmarkApi* | [**userBookmarkPost**](doc//UserBookmarkApi.md#userbookmarkpost) | **POST** /user_bookmark | 
 *UserFeaturedOfferApi* | [**userFeaturedOfferDelete**](doc//UserFeaturedOfferApi.md#userfeaturedofferdelete) | **DELETE** /user_featured_offer | 
 *UserFeaturedOfferApi* | [**userFeaturedOfferGet**](doc//UserFeaturedOfferApi.md#userfeaturedofferget) | **GET** /user_featured_offer | 
 *UserFeaturedOfferApi* | [**userFeaturedOfferPatch**](doc//UserFeaturedOfferApi.md#userfeaturedofferpatch) | **PATCH** /user_featured_offer | 
 *UserFeaturedOfferApi* | [**userFeaturedOfferPost**](doc//UserFeaturedOfferApi.md#userfeaturedofferpost) | **POST** /user_featured_offer | 
+*UserImageLikeApi* | [**userImageLikeDelete**](doc//UserImageLikeApi.md#userimagelikedelete) | **DELETE** /user_image_like | 
+*UserImageLikeApi* | [**userImageLikeGet**](doc//UserImageLikeApi.md#userimagelikeget) | **GET** /user_image_like | 
+*UserImageLikeApi* | [**userImageLikePatch**](doc//UserImageLikeApi.md#userimagelikepatch) | **PATCH** /user_image_like | 
+*UserImageLikeApi* | [**userImageLikePost**](doc//UserImageLikeApi.md#userimagelikepost) | **POST** /user_image_like | 
+*UserReviewLikeApi* | [**userReviewLikeDelete**](doc//UserReviewLikeApi.md#userreviewlikedelete) | **DELETE** /user_review_like | 
+*UserReviewLikeApi* | [**userReviewLikeGet**](doc//UserReviewLikeApi.md#userreviewlikeget) | **GET** /user_review_like | 
+*UserReviewLikeApi* | [**userReviewLikePatch**](doc//UserReviewLikeApi.md#userreviewlikepatch) | **PATCH** /user_review_like | 
+*UserReviewLikeApi* | [**userReviewLikePost**](doc//UserReviewLikeApi.md#userreviewlikepost) | **POST** /user_review_like | 
 
 
 ## Documentation For Models
@@ -198,7 +210,10 @@ Class | Method | HTTP request | Description
  - [RpcSignUpPostRequest](doc//RpcSignUpPostRequest.md)
  - [User](doc//User.md)
  - [UserBenefit](doc//UserBenefit.md)
+ - [UserBookmark](doc//UserBookmark.md)
  - [UserFeaturedOffer](doc//UserFeaturedOffer.md)
+ - [UserImageLike](doc//UserImageLike.md)
+ - [UserReviewLike](doc//UserReviewLike.md)
 
 
 ## Documentation For Authorization

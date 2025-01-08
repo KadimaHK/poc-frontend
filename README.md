@@ -11,4 +11,4 @@ after the backend up
 
 ------
 
-openapi-generator generate -i http://poc-bar-app.com:3000 -o lib/api -g dart
+openapi-generator generate -i http://poc-bar-app.com/api/ -o lib/api -g dart

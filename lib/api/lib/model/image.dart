@@ -16,6 +16,7 @@ class Image {
     required this.fileName,
     this.baseUrl,
     this.imageUrl,
+    this.likes,
     this.createdAt = 'now()',
     this.updatedAt = 'now()',
   });
@@ -39,6 +40,14 @@ class Image {
   ///
   String? imageUrl;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? likes;
+
   String createdAt;
 
   String updatedAt;
@@ -48,6 +57,7 @@ class Image {
     other.fileName == fileName &&
     other.baseUrl == baseUrl &&
     other.imageUrl == imageUrl &&
+    other.likes == likes &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt;
 
@@ -57,11 +67,12 @@ class Image {
     (fileName.hashCode) +
     (baseUrl == null ? 0 : baseUrl!.hashCode) +
     (imageUrl == null ? 0 : imageUrl!.hashCode) +
+    (likes == null ? 0 : likes!.hashCode) +
     (createdAt.hashCode) +
     (updatedAt.hashCode);
 
   @override
-  String toString() => 'Image[fileName=$fileName, baseUrl=$baseUrl, imageUrl=$imageUrl, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'Image[fileName=$fileName, baseUrl=$baseUrl, imageUrl=$imageUrl, likes=$likes, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -75,6 +86,11 @@ class Image {
       json[r'image_url'] = this.imageUrl;
     } else {
       json[r'image_url'] = null;
+    }
+    if (this.likes != null) {
+      json[r'likes'] = this.likes;
+    } else {
+      json[r'likes'] = null;
     }
       json[r'created_at'] = this.createdAt;
       json[r'updated_at'] = this.updatedAt;
@@ -103,6 +119,7 @@ class Image {
         fileName: mapValueOfType<String>(json, r'file_name')!,
         baseUrl: mapValueOfType<String>(json, r'base_url'),
         imageUrl: mapValueOfType<String>(json, r'image_url'),
+        likes: mapValueOfType<int>(json, r'likes'),
         createdAt: mapValueOfType<String>(json, r'created_at') ?? 'now()',
         updatedAt: mapValueOfType<String>(json, r'updated_at') ?? 'now()',
       );

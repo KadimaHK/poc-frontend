@@ -19,14 +19,13 @@ class _UserMembershipCardState extends State<UserMembershipCard> {
     final t = AppLocalizations.of(context)!;
     return Container(
       padding: const EdgeInsets.all(16),
+      height: 200,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
             color: Colors.black,
             spreadRadius: 1,
-            blurRadius: 2,
-            offset: const Offset(0, 1),
           ),
         ],
       ),
@@ -50,7 +49,7 @@ class _UserMembershipCardState extends State<UserMembershipCard> {
             ],
           ),
           const SizedBox(height: 16),
-          const Divider(),
+          const Spacer(),
           Container(
             decoration: BoxDecoration(
               color: Colors.grey.withAlpha(100),
@@ -60,7 +59,7 @@ class _UserMembershipCardState extends State<UserMembershipCard> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 IconButton(onPressed: () {}, icon: const Icon(Icons.qr_code)),
-                Text(widget.user.uuid!, style: const TextStyle(fontSize: 14)),
+                Text(widget.user.uuid!, style: const TextStyle(fontSize: 12)),
                 IconButton(
                     onPressed: () {
                       Clipboard.setData(ClipboardData(text: widget.user.uuid!));

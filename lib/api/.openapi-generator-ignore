@@ -1,3 +1,5 @@
 lib/api/rpc*
 #lib/api.dart
 #lib/auth/api_key_auth.dart
+
+test/rpc_login_api_test.dart

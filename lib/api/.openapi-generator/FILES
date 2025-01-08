@@ -53,8 +53,14 @@ doc/User.md
 doc/UserApi.md
 doc/UserBenefit.md
 doc/UserBenefitApi.md
+doc/UserBookmark.md
+doc/UserBookmarkApi.md
 doc/UserFeaturedOffer.md
 doc/UserFeaturedOfferApi.md
+doc/UserImageLike.md
+doc/UserImageLikeApi.md
+doc/UserReviewLike.md
+doc/UserReviewLikeApi.md
 git_push.sh
 lib/api.dart
 lib/api/benefit_api.dart
@@ -81,7 +87,10 @@ lib/api/review_api.dart
 lib/api/review_image_api.dart
 lib/api/user_api.dart
 lib/api/user_benefit_api.dart
+lib/api/user_bookmark_api.dart
 lib/api/user_featured_offer_api.dart
+lib/api/user_image_like_api.dart
+lib/api/user_review_like_api.dart
 lib/api_client.dart
 lib/api_exception.dart
 lib/api_helper.dart
@@ -114,5 +123,8 @@ lib/model/review_image.dart
 lib/model/rpc_sign_up_post_request.dart
 lib/model/user.dart
 lib/model/user_benefit.dart
+lib/model/user_bookmark.dart
 lib/model/user_featured_offer.dart
+lib/model/user_image_like.dart
+lib/model/user_review_like.dart
 pubspec.yaml

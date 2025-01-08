@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **imageDelete**
-> imageDelete(fileName, baseUrl, imageUrl, createdAt, updatedAt, prefer)
+> imageDelete(fileName, baseUrl, imageUrl, likes, createdAt, updatedAt, prefer)
 
 Don't use this api to upload images, use the gin api instead
 
@@ -32,12 +32,13 @@ final api_instance = ImageApi();
 final fileName = fileName_example; // String | 
 final baseUrl = baseUrl_example; // String | 
 final imageUrl = imageUrl_example; // String | 
+final likes = likes_example; // String | 
 final createdAt = createdAt_example; // String | 
 final updatedAt = updatedAt_example; // String | 
 final prefer = prefer_example; // String | Preference
 
 try {
-    api_instance.imageDelete(fileName, baseUrl, imageUrl, createdAt, updatedAt, prefer);
+    api_instance.imageDelete(fileName, baseUrl, imageUrl, likes, createdAt, updatedAt, prefer);
 } catch (e) {
     print('Exception when calling ImageApi->imageDelete: $e\n');
 }
@@ -50,6 +51,7 @@ Name | Type | Description  | Notes
  **fileName** | **String**|  | [optional] 
  **baseUrl** | **String**|  | [optional] 
  **imageUrl** | **String**|  | [optional] 
+ **likes** | **String**|  | [optional] 
  **createdAt** | **String**|  | [optional] 
  **updatedAt** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 
@@ -70,7 +72,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **imageGet**
-> List<Image> imageGet(fileName, baseUrl, imageUrl, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer)
+> List<Image> imageGet(fileName, baseUrl, imageUrl, likes, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer)
 
 Don't use this api to upload images, use the gin api instead
 
@@ -86,6 +88,7 @@ final api_instance = ImageApi();
 final fileName = fileName_example; // String | 
 final baseUrl = baseUrl_example; // String | 
 final imageUrl = imageUrl_example; // String | 
+final likes = likes_example; // String | 
 final createdAt = createdAt_example; // String | 
 final updatedAt = updatedAt_example; // String | 
 final select = select_example; // String | Filtering Columns
@@ -97,7 +100,7 @@ final limit = limit_example; // String | Limiting and Pagination
 final prefer = prefer_example; // String | Preference
 
 try {
-    final result = api_instance.imageGet(fileName, baseUrl, imageUrl, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer);
+    final result = api_instance.imageGet(fileName, baseUrl, imageUrl, likes, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer);
     print(result);
 } catch (e) {
     print('Exception when calling ImageApi->imageGet: $e\n');
@@ -111,6 +114,7 @@ Name | Type | Description  | Notes
  **fileName** | **String**|  | [optional] 
  **baseUrl** | **String**|  | [optional] 
  **imageUrl** | **String**|  | [optional] 
+ **likes** | **String**|  | [optional] 
  **createdAt** | **String**|  | [optional] 
  **updatedAt** | **String**|  | [optional] 
  **select** | **String**| Filtering Columns | [optional] 
@@ -137,7 +141,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **imagePatch**
-> imagePatch(fileName, baseUrl, imageUrl, createdAt, updatedAt, prefer, image)
+> imagePatch(fileName, baseUrl, imageUrl, likes, createdAt, updatedAt, prefer, image)
 
 Don't use this api to upload images, use the gin api instead
 
@@ -153,13 +157,14 @@ final api_instance = ImageApi();
 final fileName = fileName_example; // String | 
 final baseUrl = baseUrl_example; // String | 
 final imageUrl = imageUrl_example; // String | 
+final likes = likes_example; // String | 
 final createdAt = createdAt_example; // String | 
 final updatedAt = updatedAt_example; // String | 
 final prefer = prefer_example; // String | Preference
 final image = Image(); // Image | image
 
 try {
-    api_instance.imagePatch(fileName, baseUrl, imageUrl, createdAt, updatedAt, prefer, image);
+    api_instance.imagePatch(fileName, baseUrl, imageUrl, likes, createdAt, updatedAt, prefer, image);
 } catch (e) {
     print('Exception when calling ImageApi->imagePatch: $e\n');
 }
@@ -172,6 +177,7 @@ Name | Type | Description  | Notes
  **fileName** | **String**|  | [optional] 
  **baseUrl** | **String**|  | [optional] 
  **imageUrl** | **String**|  | [optional] 
+ **likes** | **String**|  | [optional] 
  **createdAt** | **String**|  | [optional] 
  **updatedAt** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 

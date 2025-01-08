@@ -1,4 +1,4 @@
-# openapi.api.UserFeaturedOfferApi
+# openapi.api.UserImageLikeApi
 
 ## Load the API package
 ```dart
@@ -9,14 +9,14 @@ All URIs are relative to *http://poc-bar-app.com:80/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**userFeaturedOfferDelete**](UserFeaturedOfferApi.md#userfeaturedofferdelete) | **DELETE** /user_featured_offer | 
-[**userFeaturedOfferGet**](UserFeaturedOfferApi.md#userfeaturedofferget) | **GET** /user_featured_offer | 
-[**userFeaturedOfferPatch**](UserFeaturedOfferApi.md#userfeaturedofferpatch) | **PATCH** /user_featured_offer | 
-[**userFeaturedOfferPost**](UserFeaturedOfferApi.md#userfeaturedofferpost) | **POST** /user_featured_offer | 
+[**userImageLikeDelete**](UserImageLikeApi.md#userimagelikedelete) | **DELETE** /user_image_like | 
+[**userImageLikeGet**](UserImageLikeApi.md#userimagelikeget) | **GET** /user_image_like | 
+[**userImageLikePatch**](UserImageLikeApi.md#userimagelikepatch) | **PATCH** /user_image_like | 
+[**userImageLikePost**](UserImageLikeApi.md#userimagelikepost) | **POST** /user_image_like | 
 
 
-# **userFeaturedOfferDelete**
-> userFeaturedOfferDelete(userId, featuredOfferId, prefer)
+# **userImageLikeDelete**
+> userImageLikeDelete(userId, imageUrl, prefer)
 
 
 
@@ -28,15 +28,15 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserFeaturedOfferApi();
+final api_instance = UserImageLikeApi();
 final userId = userId_example; // String | 
-final featuredOfferId = featuredOfferId_example; // String | 
+final imageUrl = imageUrl_example; // String | 
 final prefer = prefer_example; // String | Preference
 
 try {
-    api_instance.userFeaturedOfferDelete(userId, featuredOfferId, prefer);
+    api_instance.userImageLikeDelete(userId, imageUrl, prefer);
 } catch (e) {
-    print('Exception when calling UserFeaturedOfferApi->userFeaturedOfferDelete: $e\n');
+    print('Exception when calling UserImageLikeApi->userImageLikeDelete: $e\n');
 }
 ```
 
@@ -45,7 +45,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String**|  | [optional] 
- **featuredOfferId** | **String**|  | [optional] 
+ **imageUrl** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 
 
 ### Return type
@@ -63,8 +63,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userFeaturedOfferGet**
-> List<UserFeaturedOffer> userFeaturedOfferGet(userId, featuredOfferId, select, order, range, rangeUnit, offset, limit, prefer)
+# **userImageLikeGet**
+> List<UserImageLike> userImageLikeGet(userId, imageUrl, select, order, range, rangeUnit, offset, limit, prefer)
 
 
 
@@ -76,9 +76,9 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserFeaturedOfferApi();
+final api_instance = UserImageLikeApi();
 final userId = userId_example; // String | 
-final featuredOfferId = featuredOfferId_example; // String | 
+final imageUrl = imageUrl_example; // String | 
 final select = select_example; // String | Filtering Columns
 final order = order_example; // String | Ordering
 final range = range_example; // String | Limiting and Pagination
@@ -88,10 +88,10 @@ final limit = limit_example; // String | Limiting and Pagination
 final prefer = prefer_example; // String | Preference
 
 try {
-    final result = api_instance.userFeaturedOfferGet(userId, featuredOfferId, select, order, range, rangeUnit, offset, limit, prefer);
+    final result = api_instance.userImageLikeGet(userId, imageUrl, select, order, range, rangeUnit, offset, limit, prefer);
     print(result);
 } catch (e) {
-    print('Exception when calling UserFeaturedOfferApi->userFeaturedOfferGet: $e\n');
+    print('Exception when calling UserImageLikeApi->userImageLikeGet: $e\n');
 }
 ```
 
@@ -100,7 +100,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String**|  | [optional] 
- **featuredOfferId** | **String**|  | [optional] 
+ **imageUrl** | **String**|  | [optional] 
  **select** | **String**| Filtering Columns | [optional] 
  **order** | **String**| Ordering | [optional] 
  **range** | **String**| Limiting and Pagination | [optional] 
@@ -111,7 +111,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<UserFeaturedOffer>**](UserFeaturedOffer.md)
+[**List<UserImageLike>**](UserImageLike.md)
 
 ### Authorization
 
@@ -124,8 +124,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userFeaturedOfferPatch**
-> userFeaturedOfferPatch(userId, featuredOfferId, prefer, userFeaturedOffer)
+# **userImageLikePatch**
+> userImageLikePatch(userId, imageUrl, prefer, userImageLike)
 
 
 
@@ -137,16 +137,16 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserFeaturedOfferApi();
+final api_instance = UserImageLikeApi();
 final userId = userId_example; // String | 
-final featuredOfferId = featuredOfferId_example; // String | 
+final imageUrl = imageUrl_example; // String | 
 final prefer = prefer_example; // String | Preference
-final userFeaturedOffer = UserFeaturedOffer(); // UserFeaturedOffer | user_featured_offer
+final userImageLike = UserImageLike(); // UserImageLike | user_image_like
 
 try {
-    api_instance.userFeaturedOfferPatch(userId, featuredOfferId, prefer, userFeaturedOffer);
+    api_instance.userImageLikePatch(userId, imageUrl, prefer, userImageLike);
 } catch (e) {
-    print('Exception when calling UserFeaturedOfferApi->userFeaturedOfferPatch: $e\n');
+    print('Exception when calling UserImageLikeApi->userImageLikePatch: $e\n');
 }
 ```
 
@@ -155,9 +155,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String**|  | [optional] 
- **featuredOfferId** | **String**|  | [optional] 
+ **imageUrl** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 
- **userFeaturedOffer** | [**UserFeaturedOffer**](UserFeaturedOffer.md)| user_featured_offer | [optional] 
+ **userImageLike** | [**UserImageLike**](UserImageLike.md)| user_image_like | [optional] 
 
 ### Return type
 
@@ -174,8 +174,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userFeaturedOfferPost**
-> userFeaturedOfferPost(select, prefer, userFeaturedOffer)
+# **userImageLikePost**
+> userImageLikePost(select, prefer, userImageLike)
 
 
 
@@ -187,15 +187,15 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserFeaturedOfferApi();
+final api_instance = UserImageLikeApi();
 final select = select_example; // String | Filtering Columns
 final prefer = prefer_example; // String | Preference
-final userFeaturedOffer = UserFeaturedOffer(); // UserFeaturedOffer | user_featured_offer
+final userImageLike = UserImageLike(); // UserImageLike | user_image_like
 
 try {
-    api_instance.userFeaturedOfferPost(select, prefer, userFeaturedOffer);
+    api_instance.userImageLikePost(select, prefer, userImageLike);
 } catch (e) {
-    print('Exception when calling UserFeaturedOfferApi->userFeaturedOfferPost: $e\n');
+    print('Exception when calling UserImageLikeApi->userImageLikePost: $e\n');
 }
 ```
 
@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **select** | **String**| Filtering Columns | [optional] 
  **prefer** | **String**| Preference | [optional] 
- **userFeaturedOffer** | [**UserFeaturedOffer**](UserFeaturedOffer.md)| user_featured_offer | [optional] 
+ **userImageLike** | [**UserImageLike**](UserImageLike.md)| user_image_like | [optional] 
 
 ### Return type
 

@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **reviewImageDelete**
-> reviewImageDelete(id, reviewId, imageUrl, prefer)
+> reviewImageDelete(id, reviewId, imageUrl, title, subtitle, prefer)
 
 
 
@@ -32,10 +32,12 @@ final api_instance = ReviewImageApi();
 final id = id_example; // String | 
 final reviewId = reviewId_example; // String | 
 final imageUrl = imageUrl_example; // String | 
+final title = title_example; // String | 
+final subtitle = subtitle_example; // String | 
 final prefer = prefer_example; // String | Preference
 
 try {
-    api_instance.reviewImageDelete(id, reviewId, imageUrl, prefer);
+    api_instance.reviewImageDelete(id, reviewId, imageUrl, title, subtitle, prefer);
 } catch (e) {
     print('Exception when calling ReviewImageApi->reviewImageDelete: $e\n');
 }
@@ -48,6 +50,8 @@ Name | Type | Description  | Notes
  **id** | **String**|  | [optional] 
  **reviewId** | **String**|  | [optional] 
  **imageUrl** | **String**|  | [optional] 
+ **title** | **String**|  | [optional] 
+ **subtitle** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 
 
 ### Return type
@@ -66,7 +70,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reviewImageGet**
-> List<ReviewImage> reviewImageGet(id, reviewId, imageUrl, select, order, range, rangeUnit, offset, limit, prefer)
+> List<ReviewImage> reviewImageGet(id, reviewId, imageUrl, title, subtitle, select, order, range, rangeUnit, offset, limit, prefer)
 
 
 
@@ -82,6 +86,8 @@ final api_instance = ReviewImageApi();
 final id = id_example; // String | 
 final reviewId = reviewId_example; // String | 
 final imageUrl = imageUrl_example; // String | 
+final title = title_example; // String | 
+final subtitle = subtitle_example; // String | 
 final select = select_example; // String | Filtering Columns
 final order = order_example; // String | Ordering
 final range = range_example; // String | Limiting and Pagination
@@ -91,7 +97,7 @@ final limit = limit_example; // String | Limiting and Pagination
 final prefer = prefer_example; // String | Preference
 
 try {
-    final result = api_instance.reviewImageGet(id, reviewId, imageUrl, select, order, range, rangeUnit, offset, limit, prefer);
+    final result = api_instance.reviewImageGet(id, reviewId, imageUrl, title, subtitle, select, order, range, rangeUnit, offset, limit, prefer);
     print(result);
 } catch (e) {
     print('Exception when calling ReviewImageApi->reviewImageGet: $e\n');
@@ -105,6 +111,8 @@ Name | Type | Description  | Notes
  **id** | **String**|  | [optional] 
  **reviewId** | **String**|  | [optional] 
  **imageUrl** | **String**|  | [optional] 
+ **title** | **String**|  | [optional] 
+ **subtitle** | **String**|  | [optional] 
  **select** | **String**| Filtering Columns | [optional] 
  **order** | **String**| Ordering | [optional] 
  **range** | **String**| Limiting and Pagination | [optional] 
@@ -129,7 +137,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reviewImagePatch**
-> reviewImagePatch(id, reviewId, imageUrl, prefer, reviewImage)
+> reviewImagePatch(id, reviewId, imageUrl, title, subtitle, prefer, reviewImage)
 
 
 
@@ -145,11 +153,13 @@ final api_instance = ReviewImageApi();
 final id = id_example; // String | 
 final reviewId = reviewId_example; // String | 
 final imageUrl = imageUrl_example; // String | 
+final title = title_example; // String | 
+final subtitle = subtitle_example; // String | 
 final prefer = prefer_example; // String | Preference
 final reviewImage = ReviewImage(); // ReviewImage | review_image
 
 try {
-    api_instance.reviewImagePatch(id, reviewId, imageUrl, prefer, reviewImage);
+    api_instance.reviewImagePatch(id, reviewId, imageUrl, title, subtitle, prefer, reviewImage);
 } catch (e) {
     print('Exception when calling ReviewImageApi->reviewImagePatch: $e\n');
 }
@@ -162,6 +172,8 @@ Name | Type | Description  | Notes
  **id** | **String**|  | [optional] 
  **reviewId** | **String**|  | [optional] 
  **imageUrl** | **String**|  | [optional] 
+ **title** | **String**|  | [optional] 
+ **subtitle** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 
  **reviewImage** | [**ReviewImage**](ReviewImage.md)| review_image | [optional] 
 

@@ -1,7 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:poc_frontend/api/lib/api.dart' as api;
-import 'package:poc_frontend/pages/bar_profile_page.dart';
+import 'package:poc_frontend/pages/establishment_profile_page.dart';
 
 class EstablishmentCardView extends StatefulWidget {
   const EstablishmentCardView({super.key, required this.establishment});
@@ -16,7 +17,7 @@ class _EstablishmentCardViewState extends State<EstablishmentCardView> {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
-        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => BarProfilePage())),
+        onTap: () => Navigator.of(context).pushNamed(EstablishmentProfilePage.routeName, arguments: widget.establishment),
         child: Column(
           children: [
             Stack(
@@ -25,10 +26,11 @@ class _EstablishmentCardViewState extends State<EstablishmentCardView> {
                     borderRadius: BorderRadius.circular(10),
                     child: AspectRatio(
                       aspectRatio: .75,
-                      child: Image.network(
-                        '${widget.establishment.thumbnailUrl}',
+                      child: CachedNetworkImage(
+                        imageUrl: '${widget.establishment.thumbnailUrl}',
                         fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) => Placeholder(),
+                        placeholder: (context, url) => CircularProgressIndicator(),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
                       ),
                     )),
                 Positioned(

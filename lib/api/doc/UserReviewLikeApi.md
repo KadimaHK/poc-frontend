@@ -1,4 +1,4 @@
-# openapi.api.UserFeaturedOfferApi
+# openapi.api.UserReviewLikeApi
 
 ## Load the API package
 ```dart
@@ -9,14 +9,14 @@ All URIs are relative to *http://poc-bar-app.com:80/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**userFeaturedOfferDelete**](UserFeaturedOfferApi.md#userfeaturedofferdelete) | **DELETE** /user_featured_offer | 
-[**userFeaturedOfferGet**](UserFeaturedOfferApi.md#userfeaturedofferget) | **GET** /user_featured_offer | 
-[**userFeaturedOfferPatch**](UserFeaturedOfferApi.md#userfeaturedofferpatch) | **PATCH** /user_featured_offer | 
-[**userFeaturedOfferPost**](UserFeaturedOfferApi.md#userfeaturedofferpost) | **POST** /user_featured_offer | 
+[**userReviewLikeDelete**](UserReviewLikeApi.md#userreviewlikedelete) | **DELETE** /user_review_like | 
+[**userReviewLikeGet**](UserReviewLikeApi.md#userreviewlikeget) | **GET** /user_review_like | 
+[**userReviewLikePatch**](UserReviewLikeApi.md#userreviewlikepatch) | **PATCH** /user_review_like | 
+[**userReviewLikePost**](UserReviewLikeApi.md#userreviewlikepost) | **POST** /user_review_like | 
 
 
-# **userFeaturedOfferDelete**
-> userFeaturedOfferDelete(userId, featuredOfferId, prefer)
+# **userReviewLikeDelete**
+> userReviewLikeDelete(userId, reviewId, prefer)
 
 
 
@@ -28,15 +28,15 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserFeaturedOfferApi();
+final api_instance = UserReviewLikeApi();
 final userId = userId_example; // String | 
-final featuredOfferId = featuredOfferId_example; // String | 
+final reviewId = reviewId_example; // String | 
 final prefer = prefer_example; // String | Preference
 
 try {
-    api_instance.userFeaturedOfferDelete(userId, featuredOfferId, prefer);
+    api_instance.userReviewLikeDelete(userId, reviewId, prefer);
 } catch (e) {
-    print('Exception when calling UserFeaturedOfferApi->userFeaturedOfferDelete: $e\n');
+    print('Exception when calling UserReviewLikeApi->userReviewLikeDelete: $e\n');
 }
 ```
 
@@ -45,7 +45,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String**|  | [optional] 
- **featuredOfferId** | **String**|  | [optional] 
+ **reviewId** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 
 
 ### Return type
@@ -63,8 +63,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userFeaturedOfferGet**
-> List<UserFeaturedOffer> userFeaturedOfferGet(userId, featuredOfferId, select, order, range, rangeUnit, offset, limit, prefer)
+# **userReviewLikeGet**
+> List<UserReviewLike> userReviewLikeGet(userId, reviewId, select, order, range, rangeUnit, offset, limit, prefer)
 
 
 
@@ -76,9 +76,9 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserFeaturedOfferApi();
+final api_instance = UserReviewLikeApi();
 final userId = userId_example; // String | 
-final featuredOfferId = featuredOfferId_example; // String | 
+final reviewId = reviewId_example; // String | 
 final select = select_example; // String | Filtering Columns
 final order = order_example; // String | Ordering
 final range = range_example; // String | Limiting and Pagination
@@ -88,10 +88,10 @@ final limit = limit_example; // String | Limiting and Pagination
 final prefer = prefer_example; // String | Preference
 
 try {
-    final result = api_instance.userFeaturedOfferGet(userId, featuredOfferId, select, order, range, rangeUnit, offset, limit, prefer);
+    final result = api_instance.userReviewLikeGet(userId, reviewId, select, order, range, rangeUnit, offset, limit, prefer);
     print(result);
 } catch (e) {
-    print('Exception when calling UserFeaturedOfferApi->userFeaturedOfferGet: $e\n');
+    print('Exception when calling UserReviewLikeApi->userReviewLikeGet: $e\n');
 }
 ```
 
@@ -100,7 +100,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String**|  | [optional] 
- **featuredOfferId** | **String**|  | [optional] 
+ **reviewId** | **String**|  | [optional] 
  **select** | **String**| Filtering Columns | [optional] 
  **order** | **String**| Ordering | [optional] 
  **range** | **String**| Limiting and Pagination | [optional] 
@@ -111,7 +111,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<UserFeaturedOffer>**](UserFeaturedOffer.md)
+[**List<UserReviewLike>**](UserReviewLike.md)
 
 ### Authorization
 
@@ -124,8 +124,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userFeaturedOfferPatch**
-> userFeaturedOfferPatch(userId, featuredOfferId, prefer, userFeaturedOffer)
+# **userReviewLikePatch**
+> userReviewLikePatch(userId, reviewId, prefer, userReviewLike)
 
 
 
@@ -137,16 +137,16 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserFeaturedOfferApi();
+final api_instance = UserReviewLikeApi();
 final userId = userId_example; // String | 
-final featuredOfferId = featuredOfferId_example; // String | 
+final reviewId = reviewId_example; // String | 
 final prefer = prefer_example; // String | Preference
-final userFeaturedOffer = UserFeaturedOffer(); // UserFeaturedOffer | user_featured_offer
+final userReviewLike = UserReviewLike(); // UserReviewLike | user_review_like
 
 try {
-    api_instance.userFeaturedOfferPatch(userId, featuredOfferId, prefer, userFeaturedOffer);
+    api_instance.userReviewLikePatch(userId, reviewId, prefer, userReviewLike);
 } catch (e) {
-    print('Exception when calling UserFeaturedOfferApi->userFeaturedOfferPatch: $e\n');
+    print('Exception when calling UserReviewLikeApi->userReviewLikePatch: $e\n');
 }
 ```
 
@@ -155,9 +155,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String**|  | [optional] 
- **featuredOfferId** | **String**|  | [optional] 
+ **reviewId** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 
- **userFeaturedOffer** | [**UserFeaturedOffer**](UserFeaturedOffer.md)| user_featured_offer | [optional] 
+ **userReviewLike** | [**UserReviewLike**](UserReviewLike.md)| user_review_like | [optional] 
 
 ### Return type
 
@@ -174,8 +174,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userFeaturedOfferPost**
-> userFeaturedOfferPost(select, prefer, userFeaturedOffer)
+# **userReviewLikePost**
+> userReviewLikePost(select, prefer, userReviewLike)
 
 
 
@@ -187,15 +187,15 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserFeaturedOfferApi();
+final api_instance = UserReviewLikeApi();
 final select = select_example; // String | Filtering Columns
 final prefer = prefer_example; // String | Preference
-final userFeaturedOffer = UserFeaturedOffer(); // UserFeaturedOffer | user_featured_offer
+final userReviewLike = UserReviewLike(); // UserReviewLike | user_review_like
 
 try {
-    api_instance.userFeaturedOfferPost(select, prefer, userFeaturedOffer);
+    api_instance.userReviewLikePost(select, prefer, userReviewLike);
 } catch (e) {
-    print('Exception when calling UserFeaturedOfferApi->userFeaturedOfferPost: $e\n');
+    print('Exception when calling UserReviewLikeApi->userReviewLikePost: $e\n');
 }
 ```
 
@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **select** | **String**| Filtering Columns | [optional] 
  **prefer** | **String**| Preference | [optional] 
- **userFeaturedOffer** | [**UserFeaturedOffer**](UserFeaturedOffer.md)| user_featured_offer | [optional] 
+ **userReviewLike** | [**UserReviewLike**](UserReviewLike.md)| user_review_like | [optional] 
 
 ### Return type
 

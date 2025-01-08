@@ -7,7 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:poc_frontend/api/lib/api.dart' as api;
 import 'package:poc_frontend/api/lib/api.dart';
 import 'package:poc_frontend/components/profile_drawer.dart';
-import 'package:poc_frontend/pages/bar_profile_page.dart';
+import 'package:poc_frontend/pages/establishment_profile_page.dart';
 import 'package:poc_frontend/pages/featured_detail_page.dart';
 import 'package:poc_frontend/pages/login_page.dart';
 import 'package:poc_frontend/pages/main/explore_page.dart';
@@ -17,6 +17,7 @@ import 'package:poc_frontend/pages/notification_page.dart';
 import 'package:poc_frontend/pages/main/profile_page.dart';
 import 'package:poc_frontend/pages/main/search_page.dart';
 import 'package:poc_frontend/components/app_bar.dart';
+import 'package:poc_frontend/pages/review_page.dart';
 import 'package:poc_frontend/pages/sign_up_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'pages/qr_code_scanner_page.dart';
@@ -26,10 +27,7 @@ import 'dart:developer';
 void main() {
   PlatformDispatcher.instance.onError = (error, stack) {
     if (error is api.ApiException) {
-      var messageDict = JsonDecoder().convert(error.message!);
-      if (messageDict['code'] == "P0001" && messageDict['message'] == "Invalid session token") {
-        logout();
-      }
+      apiErrorHandler(error);
       return true;
     }
     return false;
@@ -37,10 +35,13 @@ void main() {
   runApp(const MyApp());
 }
 
-void logout() {
-  MyApp.prefs!.remove('loginSessionToken');
-  MyApp.sessionApiClient = null;
-  navigatorKey.currentState!.pushNamed(LoginPage.routeName);
+void apiErrorHandler(api.ApiException error) {
+  var messageDict = JsonDecoder().convert(error.message!);
+  if (messageDict['code'] == "P0001" && messageDict['message'] == "Invalid session token") {
+    MyApp.prefs!.remove('loginSessionToken');
+    MyApp.sessionApiClient = null;
+    navigatorKey.currentState!.pushNamed(LoginPage.routeName);
+  }
 }
 
 class MyApp extends StatefulWidget {
@@ -154,12 +155,12 @@ class MyAppState extends State<MyApp> {
             backgroundColor: WidgetStatePropertyAll(const Color(0xFFFFF1D8)),
           ),
         ),
-        
         chipTheme: ChipThemeData(
           backgroundColor: primaryColor.withAlpha(200),
           labelStyle: TextStyle(color: Colors.white),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(1000), side: BorderSide(color: secondaryColor)),
         ),
+        progressIndicatorTheme: ProgressIndicatorThemeData(color: tertiaryColor, refreshBackgroundColor: secondaryColor, linearTrackColor: secondaryColor, circularTrackColor: secondaryColor),
         scaffoldBackgroundColor: primaryColor,
         iconButtonTheme: IconButtonThemeData(style: ButtonStyle(foregroundColor: WidgetStateProperty.all(Colors.white))),
         useMaterial3: true,
@@ -200,6 +201,12 @@ class MainState extends State<Main> {
             final featured = settings.arguments as api.Featured;
             return MaterialPageRoute(builder: (context) {
               return FeaturedDetailPage(featured: featured);
+            });
+          }
+          if (settings.name == ReviewPage.routeName) {
+            final review = settings.arguments as api.Review;
+            return MaterialPageRoute(builder: (context) {
+              return ReviewPage(review: review);
             });
           }
           if (settings.name == SignUpPage.routeName) {

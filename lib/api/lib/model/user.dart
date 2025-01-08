@@ -25,7 +25,7 @@ class User {
     this.followingCount,
     this.followerCount,
     this.points,
-    this.pointsExpiry,
+    this.pointsExpiry = '(now() + \'1 year\'::interval)',
     this.verified = false,
     this.createdAt = 'now()',
     this.updatedAt = 'now()',
@@ -117,13 +117,7 @@ class User {
   ///
   int? points;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? pointsExpiry;
+  String pointsExpiry;
 
   bool verified;
 
@@ -165,7 +159,7 @@ class User {
     (followingCount == null ? 0 : followingCount!.hashCode) +
     (followerCount == null ? 0 : followerCount!.hashCode) +
     (points == null ? 0 : points!.hashCode) +
-    (pointsExpiry == null ? 0 : pointsExpiry!.hashCode) +
+    (pointsExpiry.hashCode) +
     (verified.hashCode) +
     (createdAt.hashCode) +
     (updatedAt.hashCode);
@@ -227,11 +221,7 @@ class User {
     } else {
       json[r'points'] = null;
     }
-    if (this.pointsExpiry != null) {
       json[r'points_expiry'] = this.pointsExpiry;
-    } else {
-      json[r'points_expiry'] = null;
-    }
       json[r'verified'] = this.verified;
       json[r'created_at'] = this.createdAt;
       json[r'updated_at'] = this.updatedAt;
@@ -269,7 +259,7 @@ class User {
         followingCount: mapValueOfType<int>(json, r'following_count'),
         followerCount: mapValueOfType<int>(json, r'follower_count'),
         points: mapValueOfType<int>(json, r'points'),
-        pointsExpiry: mapValueOfType<String>(json, r'points_expiry'),
+        pointsExpiry: mapValueOfType<String>(json, r'points_expiry') ?? '(now() + \'1 year\'::interval)',
         verified: mapValueOfType<bool>(json, r'verified') ?? false,
         createdAt: mapValueOfType<String>(json, r'created_at') ?? 'now()',
         updatedAt: mapValueOfType<String>(json, r'updated_at') ?? 'now()',

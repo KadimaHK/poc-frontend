@@ -16,8 +16,19 @@ class Review {
     required this.id,
     this.userId,
     this.establishmentId,
-    this.rating,
+    this.title,
     this.description,
+    this.content,
+    this.rating,
+    this.tasteRating,
+    this.decorRating,
+    this.serviceRating,
+    this.hygieneRating,
+    this.valueRating,
+    this.dateVisited,
+    this.spend,
+    this.likes,
+    this.status = 'pending',
     this.createdAt = 'now()',
     this.updatedAt = 'now()',
   });
@@ -49,7 +60,7 @@ class Review {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? rating;
+  String? title;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -58,6 +69,89 @@ class Review {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? description;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? content;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? rating;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? tasteRating;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? decorRating;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? serviceRating;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? hygieneRating;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? valueRating;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? dateVisited;
+
+  /// How much did the user spend in the establishment per person
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? spend;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? likes;
+
+  String status;
 
   String createdAt;
 
@@ -68,8 +162,19 @@ class Review {
     other.id == id &&
     other.userId == userId &&
     other.establishmentId == establishmentId &&
-    other.rating == rating &&
+    other.title == title &&
     other.description == description &&
+    other.content == content &&
+    other.rating == rating &&
+    other.tasteRating == tasteRating &&
+    other.decorRating == decorRating &&
+    other.serviceRating == serviceRating &&
+    other.hygieneRating == hygieneRating &&
+    other.valueRating == valueRating &&
+    other.dateVisited == dateVisited &&
+    other.spend == spend &&
+    other.likes == likes &&
+    other.status == status &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt;
 
@@ -79,13 +184,24 @@ class Review {
     (id.hashCode) +
     (userId == null ? 0 : userId!.hashCode) +
     (establishmentId == null ? 0 : establishmentId!.hashCode) +
-    (rating == null ? 0 : rating!.hashCode) +
+    (title == null ? 0 : title!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
+    (content == null ? 0 : content!.hashCode) +
+    (rating == null ? 0 : rating!.hashCode) +
+    (tasteRating == null ? 0 : tasteRating!.hashCode) +
+    (decorRating == null ? 0 : decorRating!.hashCode) +
+    (serviceRating == null ? 0 : serviceRating!.hashCode) +
+    (hygieneRating == null ? 0 : hygieneRating!.hashCode) +
+    (valueRating == null ? 0 : valueRating!.hashCode) +
+    (dateVisited == null ? 0 : dateVisited!.hashCode) +
+    (spend == null ? 0 : spend!.hashCode) +
+    (likes == null ? 0 : likes!.hashCode) +
+    (status.hashCode) +
     (createdAt.hashCode) +
     (updatedAt.hashCode);
 
   @override
-  String toString() => 'Review[id=$id, userId=$userId, establishmentId=$establishmentId, rating=$rating, description=$description, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'Review[id=$id, userId=$userId, establishmentId=$establishmentId, title=$title, description=$description, content=$content, rating=$rating, tasteRating=$tasteRating, decorRating=$decorRating, serviceRating=$serviceRating, hygieneRating=$hygieneRating, valueRating=$valueRating, dateVisited=$dateVisited, spend=$spend, likes=$likes, status=$status, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -100,16 +216,67 @@ class Review {
     } else {
       json[r'establishment_id'] = null;
     }
-    if (this.rating != null) {
-      json[r'rating'] = this.rating;
+    if (this.title != null) {
+      json[r'title'] = this.title;
     } else {
-      json[r'rating'] = null;
+      json[r'title'] = null;
     }
     if (this.description != null) {
       json[r'description'] = this.description;
     } else {
       json[r'description'] = null;
     }
+    if (this.content != null) {
+      json[r'content'] = this.content;
+    } else {
+      json[r'content'] = null;
+    }
+    if (this.rating != null) {
+      json[r'rating'] = this.rating;
+    } else {
+      json[r'rating'] = null;
+    }
+    if (this.tasteRating != null) {
+      json[r'taste_rating'] = this.tasteRating;
+    } else {
+      json[r'taste_rating'] = null;
+    }
+    if (this.decorRating != null) {
+      json[r'decor_rating'] = this.decorRating;
+    } else {
+      json[r'decor_rating'] = null;
+    }
+    if (this.serviceRating != null) {
+      json[r'service_rating'] = this.serviceRating;
+    } else {
+      json[r'service_rating'] = null;
+    }
+    if (this.hygieneRating != null) {
+      json[r'hygiene_rating'] = this.hygieneRating;
+    } else {
+      json[r'hygiene_rating'] = null;
+    }
+    if (this.valueRating != null) {
+      json[r'value_rating'] = this.valueRating;
+    } else {
+      json[r'value_rating'] = null;
+    }
+    if (this.dateVisited != null) {
+      json[r'date_visited'] = this.dateVisited;
+    } else {
+      json[r'date_visited'] = null;
+    }
+    if (this.spend != null) {
+      json[r'spend'] = this.spend;
+    } else {
+      json[r'spend'] = null;
+    }
+    if (this.likes != null) {
+      json[r'likes'] = this.likes;
+    } else {
+      json[r'likes'] = null;
+    }
+      json[r'status'] = this.status;
       json[r'created_at'] = this.createdAt;
       json[r'updated_at'] = this.updatedAt;
     return json;
@@ -137,8 +304,19 @@ class Review {
         id: mapValueOfType<int>(json, r'id')!,
         userId: mapValueOfType<int>(json, r'user_id'),
         establishmentId: mapValueOfType<int>(json, r'establishment_id'),
-        rating: mapValueOfType<int>(json, r'rating'),
+        title: mapValueOfType<String>(json, r'title'),
         description: mapValueOfType<String>(json, r'description'),
+        content: mapValueOfType<String>(json, r'content'),
+        rating: num.parse('${json[r'rating']}'),
+        tasteRating: num.parse('${json[r'taste_rating']}'),
+        decorRating: num.parse('${json[r'decor_rating']}'),
+        serviceRating: num.parse('${json[r'service_rating']}'),
+        hygieneRating: num.parse('${json[r'hygiene_rating']}'),
+        valueRating: num.parse('${json[r'value_rating']}'),
+        dateVisited: mapValueOfType<String>(json, r'date_visited'),
+        spend: num.parse('${json[r'spend']}'),
+        likes: mapValueOfType<int>(json, r'likes'),
+        status: mapValueOfType<String>(json, r'status') ?? 'pending',
         createdAt: mapValueOfType<String>(json, r'created_at') ?? 'now()',
         updatedAt: mapValueOfType<String>(json, r'updated_at') ?? 'now()',
       );

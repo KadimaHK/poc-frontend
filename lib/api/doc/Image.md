@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **fileName** | **String** | Note: This is a Primary Key.<pk/> | 
 **baseUrl** | **String** |  | [optional] 
 **imageUrl** | **String** |  | [optional] 
+**likes** | **int** |  | [optional] 
 **createdAt** | **String** |  | [optional] [default to 'now()']
 **updatedAt** | **String** |  | [optional] [default to 'now()']
 

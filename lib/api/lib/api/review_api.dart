@@ -25,9 +25,32 @@ class ReviewApi {
   ///
   /// * [String] establishmentId:
   ///
-  /// * [String] rating:
+  /// * [String] title:
   ///
   /// * [String] description:
+  ///
+  /// * [String] content:
+  ///
+  /// * [String] rating:
+  ///
+  /// * [String] tasteRating:
+  ///
+  /// * [String] decorRating:
+  ///
+  /// * [String] serviceRating:
+  ///
+  /// * [String] hygieneRating:
+  ///
+  /// * [String] valueRating:
+  ///
+  /// * [String] dateVisited:
+  ///
+  /// * [String] spend:
+  ///   How much did the user spend in the establishment per person
+  ///
+  /// * [String] likes:
+  ///
+  /// * [String] status:
   ///
   /// * [String] createdAt:
   ///
@@ -35,7 +58,7 @@ class ReviewApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> reviewDeleteWithHttpInfo({ String? id, String? userId, String? establishmentId, String? rating, String? description, String? createdAt, String? updatedAt, String? prefer, }) async {
+  Future<Response> reviewDeleteWithHttpInfo({ String? id, String? userId, String? establishmentId, String? title, String? description, String? content, String? rating, String? tasteRating, String? decorRating, String? serviceRating, String? hygieneRating, String? valueRating, String? dateVisited, String? spend, String? likes, String? status, String? createdAt, String? updatedAt, String? prefer, }) async {
     // ignore: prefer_const_declarations
     final path = r'/review';
 
@@ -55,11 +78,44 @@ class ReviewApi {
     if (establishmentId != null) {
       queryParams.addAll(_queryParams('', 'establishment_id', establishmentId));
     }
-    if (rating != null) {
-      queryParams.addAll(_queryParams('', 'rating', rating));
+    if (title != null) {
+      queryParams.addAll(_queryParams('', 'title', title));
     }
     if (description != null) {
       queryParams.addAll(_queryParams('', 'description', description));
+    }
+    if (content != null) {
+      queryParams.addAll(_queryParams('', 'content', content));
+    }
+    if (rating != null) {
+      queryParams.addAll(_queryParams('', 'rating', rating));
+    }
+    if (tasteRating != null) {
+      queryParams.addAll(_queryParams('', 'taste_rating', tasteRating));
+    }
+    if (decorRating != null) {
+      queryParams.addAll(_queryParams('', 'decor_rating', decorRating));
+    }
+    if (serviceRating != null) {
+      queryParams.addAll(_queryParams('', 'service_rating', serviceRating));
+    }
+    if (hygieneRating != null) {
+      queryParams.addAll(_queryParams('', 'hygiene_rating', hygieneRating));
+    }
+    if (valueRating != null) {
+      queryParams.addAll(_queryParams('', 'value_rating', valueRating));
+    }
+    if (dateVisited != null) {
+      queryParams.addAll(_queryParams('', 'date_visited', dateVisited));
+    }
+    if (spend != null) {
+      queryParams.addAll(_queryParams('', 'spend', spend));
+    }
+    if (likes != null) {
+      queryParams.addAll(_queryParams('', 'likes', likes));
+    }
+    if (status != null) {
+      queryParams.addAll(_queryParams('', 'status', status));
     }
     if (createdAt != null) {
       queryParams.addAll(_queryParams('', 'created_at', createdAt));
@@ -94,9 +150,32 @@ class ReviewApi {
   ///
   /// * [String] establishmentId:
   ///
-  /// * [String] rating:
+  /// * [String] title:
   ///
   /// * [String] description:
+  ///
+  /// * [String] content:
+  ///
+  /// * [String] rating:
+  ///
+  /// * [String] tasteRating:
+  ///
+  /// * [String] decorRating:
+  ///
+  /// * [String] serviceRating:
+  ///
+  /// * [String] hygieneRating:
+  ///
+  /// * [String] valueRating:
+  ///
+  /// * [String] dateVisited:
+  ///
+  /// * [String] spend:
+  ///   How much did the user spend in the establishment per person
+  ///
+  /// * [String] likes:
+  ///
+  /// * [String] status:
   ///
   /// * [String] createdAt:
   ///
@@ -104,8 +183,8 @@ class ReviewApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> reviewDelete({ String? id, String? userId, String? establishmentId, String? rating, String? description, String? createdAt, String? updatedAt, String? prefer, }) async {
-    final response = await reviewDeleteWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, rating: rating, description: description, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, );
+  Future<void> reviewDelete({ String? id, String? userId, String? establishmentId, String? title, String? description, String? content, String? rating, String? tasteRating, String? decorRating, String? serviceRating, String? hygieneRating, String? valueRating, String? dateVisited, String? spend, String? likes, String? status, String? createdAt, String? updatedAt, String? prefer, }) async {
+    final response = await reviewDeleteWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, title: title, description: description, content: content, rating: rating, tasteRating: tasteRating, decorRating: decorRating, serviceRating: serviceRating, hygieneRating: hygieneRating, valueRating: valueRating, dateVisited: dateVisited, spend: spend, likes: likes, status: status, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -120,9 +199,32 @@ class ReviewApi {
   ///
   /// * [String] establishmentId:
   ///
-  /// * [String] rating:
+  /// * [String] title:
   ///
   /// * [String] description:
+  ///
+  /// * [String] content:
+  ///
+  /// * [String] rating:
+  ///
+  /// * [String] tasteRating:
+  ///
+  /// * [String] decorRating:
+  ///
+  /// * [String] serviceRating:
+  ///
+  /// * [String] hygieneRating:
+  ///
+  /// * [String] valueRating:
+  ///
+  /// * [String] dateVisited:
+  ///
+  /// * [String] spend:
+  ///   How much did the user spend in the establishment per person
+  ///
+  /// * [String] likes:
+  ///
+  /// * [String] status:
   ///
   /// * [String] createdAt:
   ///
@@ -148,7 +250,7 @@ class ReviewApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> reviewGetWithHttpInfo({ String? id, String? userId, String? establishmentId, String? rating, String? description, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> reviewGetWithHttpInfo({ String? id, String? userId, String? establishmentId, String? title, String? description, String? content, String? rating, String? tasteRating, String? decorRating, String? serviceRating, String? hygieneRating, String? valueRating, String? dateVisited, String? spend, String? likes, String? status, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
     // ignore: prefer_const_declarations
     final path = r'/review';
 
@@ -168,11 +270,44 @@ class ReviewApi {
     if (establishmentId != null) {
       queryParams.addAll(_queryParams('', 'establishment_id', establishmentId));
     }
-    if (rating != null) {
-      queryParams.addAll(_queryParams('', 'rating', rating));
+    if (title != null) {
+      queryParams.addAll(_queryParams('', 'title', title));
     }
     if (description != null) {
       queryParams.addAll(_queryParams('', 'description', description));
+    }
+    if (content != null) {
+      queryParams.addAll(_queryParams('', 'content', content));
+    }
+    if (rating != null) {
+      queryParams.addAll(_queryParams('', 'rating', rating));
+    }
+    if (tasteRating != null) {
+      queryParams.addAll(_queryParams('', 'taste_rating', tasteRating));
+    }
+    if (decorRating != null) {
+      queryParams.addAll(_queryParams('', 'decor_rating', decorRating));
+    }
+    if (serviceRating != null) {
+      queryParams.addAll(_queryParams('', 'service_rating', serviceRating));
+    }
+    if (hygieneRating != null) {
+      queryParams.addAll(_queryParams('', 'hygiene_rating', hygieneRating));
+    }
+    if (valueRating != null) {
+      queryParams.addAll(_queryParams('', 'value_rating', valueRating));
+    }
+    if (dateVisited != null) {
+      queryParams.addAll(_queryParams('', 'date_visited', dateVisited));
+    }
+    if (spend != null) {
+      queryParams.addAll(_queryParams('', 'spend', spend));
+    }
+    if (likes != null) {
+      queryParams.addAll(_queryParams('', 'likes', likes));
+    }
+    if (status != null) {
+      queryParams.addAll(_queryParams('', 'status', status));
     }
     if (createdAt != null) {
       queryParams.addAll(_queryParams('', 'created_at', createdAt));
@@ -225,9 +360,32 @@ class ReviewApi {
   ///
   /// * [String] establishmentId:
   ///
-  /// * [String] rating:
+  /// * [String] title:
   ///
   /// * [String] description:
+  ///
+  /// * [String] content:
+  ///
+  /// * [String] rating:
+  ///
+  /// * [String] tasteRating:
+  ///
+  /// * [String] decorRating:
+  ///
+  /// * [String] serviceRating:
+  ///
+  /// * [String] hygieneRating:
+  ///
+  /// * [String] valueRating:
+  ///
+  /// * [String] dateVisited:
+  ///
+  /// * [String] spend:
+  ///   How much did the user spend in the establishment per person
+  ///
+  /// * [String] likes:
+  ///
+  /// * [String] status:
   ///
   /// * [String] createdAt:
   ///
@@ -253,8 +411,8 @@ class ReviewApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<Review>?> reviewGet({ String? id, String? userId, String? establishmentId, String? rating, String? description, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await reviewGetWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, rating: rating, description: description, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<Review>?> reviewGet({ String? id, String? userId, String? establishmentId, String? title, String? description, String? content, String? rating, String? tasteRating, String? decorRating, String? serviceRating, String? hygieneRating, String? valueRating, String? dateVisited, String? spend, String? likes, String? status, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+    final response = await reviewGetWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, title: title, description: description, content: content, rating: rating, tasteRating: tasteRating, decorRating: decorRating, serviceRating: serviceRating, hygieneRating: hygieneRating, valueRating: valueRating, dateVisited: dateVisited, spend: spend, likes: likes, status: status, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -280,9 +438,32 @@ class ReviewApi {
   ///
   /// * [String] establishmentId:
   ///
-  /// * [String] rating:
+  /// * [String] title:
   ///
   /// * [String] description:
+  ///
+  /// * [String] content:
+  ///
+  /// * [String] rating:
+  ///
+  /// * [String] tasteRating:
+  ///
+  /// * [String] decorRating:
+  ///
+  /// * [String] serviceRating:
+  ///
+  /// * [String] hygieneRating:
+  ///
+  /// * [String] valueRating:
+  ///
+  /// * [String] dateVisited:
+  ///
+  /// * [String] spend:
+  ///   How much did the user spend in the establishment per person
+  ///
+  /// * [String] likes:
+  ///
+  /// * [String] status:
   ///
   /// * [String] createdAt:
   ///
@@ -293,7 +474,7 @@ class ReviewApi {
   ///
   /// * [Review] review:
   ///   review
-  Future<Response> reviewPatchWithHttpInfo({ String? id, String? userId, String? establishmentId, String? rating, String? description, String? createdAt, String? updatedAt, String? prefer, Review? review, }) async {
+  Future<Response> reviewPatchWithHttpInfo({ String? id, String? userId, String? establishmentId, String? title, String? description, String? content, String? rating, String? tasteRating, String? decorRating, String? serviceRating, String? hygieneRating, String? valueRating, String? dateVisited, String? spend, String? likes, String? status, String? createdAt, String? updatedAt, String? prefer, Review? review, }) async {
     // ignore: prefer_const_declarations
     final path = r'/review';
 
@@ -313,11 +494,44 @@ class ReviewApi {
     if (establishmentId != null) {
       queryParams.addAll(_queryParams('', 'establishment_id', establishmentId));
     }
-    if (rating != null) {
-      queryParams.addAll(_queryParams('', 'rating', rating));
+    if (title != null) {
+      queryParams.addAll(_queryParams('', 'title', title));
     }
     if (description != null) {
       queryParams.addAll(_queryParams('', 'description', description));
+    }
+    if (content != null) {
+      queryParams.addAll(_queryParams('', 'content', content));
+    }
+    if (rating != null) {
+      queryParams.addAll(_queryParams('', 'rating', rating));
+    }
+    if (tasteRating != null) {
+      queryParams.addAll(_queryParams('', 'taste_rating', tasteRating));
+    }
+    if (decorRating != null) {
+      queryParams.addAll(_queryParams('', 'decor_rating', decorRating));
+    }
+    if (serviceRating != null) {
+      queryParams.addAll(_queryParams('', 'service_rating', serviceRating));
+    }
+    if (hygieneRating != null) {
+      queryParams.addAll(_queryParams('', 'hygiene_rating', hygieneRating));
+    }
+    if (valueRating != null) {
+      queryParams.addAll(_queryParams('', 'value_rating', valueRating));
+    }
+    if (dateVisited != null) {
+      queryParams.addAll(_queryParams('', 'date_visited', dateVisited));
+    }
+    if (spend != null) {
+      queryParams.addAll(_queryParams('', 'spend', spend));
+    }
+    if (likes != null) {
+      queryParams.addAll(_queryParams('', 'likes', likes));
+    }
+    if (status != null) {
+      queryParams.addAll(_queryParams('', 'status', status));
     }
     if (createdAt != null) {
       queryParams.addAll(_queryParams('', 'created_at', createdAt));
@@ -352,9 +566,32 @@ class ReviewApi {
   ///
   /// * [String] establishmentId:
   ///
-  /// * [String] rating:
+  /// * [String] title:
   ///
   /// * [String] description:
+  ///
+  /// * [String] content:
+  ///
+  /// * [String] rating:
+  ///
+  /// * [String] tasteRating:
+  ///
+  /// * [String] decorRating:
+  ///
+  /// * [String] serviceRating:
+  ///
+  /// * [String] hygieneRating:
+  ///
+  /// * [String] valueRating:
+  ///
+  /// * [String] dateVisited:
+  ///
+  /// * [String] spend:
+  ///   How much did the user spend in the establishment per person
+  ///
+  /// * [String] likes:
+  ///
+  /// * [String] status:
   ///
   /// * [String] createdAt:
   ///
@@ -365,8 +602,8 @@ class ReviewApi {
   ///
   /// * [Review] review:
   ///   review
-  Future<void> reviewPatch({ String? id, String? userId, String? establishmentId, String? rating, String? description, String? createdAt, String? updatedAt, String? prefer, Review? review, }) async {
-    final response = await reviewPatchWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, rating: rating, description: description, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, review: review, );
+  Future<void> reviewPatch({ String? id, String? userId, String? establishmentId, String? title, String? description, String? content, String? rating, String? tasteRating, String? decorRating, String? serviceRating, String? hygieneRating, String? valueRating, String? dateVisited, String? spend, String? likes, String? status, String? createdAt, String? updatedAt, String? prefer, Review? review, }) async {
+    final response = await reviewPatchWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, title: title, description: description, content: content, rating: rating, tasteRating: tasteRating, decorRating: decorRating, serviceRating: serviceRating, hygieneRating: hygieneRating, valueRating: valueRating, dateVisited: dateVisited, spend: spend, likes: likes, status: status, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, review: review, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

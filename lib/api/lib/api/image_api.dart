@@ -28,13 +28,15 @@ class ImageApi {
   ///
   /// * [String] imageUrl:
   ///
+  /// * [String] likes:
+  ///
   /// * [String] createdAt:
   ///
   /// * [String] updatedAt:
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> imageDeleteWithHttpInfo({ String? fileName, String? baseUrl, String? imageUrl, String? createdAt, String? updatedAt, String? prefer, }) async {
+  Future<Response> imageDeleteWithHttpInfo({ String? fileName, String? baseUrl, String? imageUrl, String? likes, String? createdAt, String? updatedAt, String? prefer, }) async {
     // ignore: prefer_const_declarations
     final path = r'/image';
 
@@ -53,6 +55,9 @@ class ImageApi {
     }
     if (imageUrl != null) {
       queryParams.addAll(_queryParams('', 'image_url', imageUrl));
+    }
+    if (likes != null) {
+      queryParams.addAll(_queryParams('', 'likes', likes));
     }
     if (createdAt != null) {
       queryParams.addAll(_queryParams('', 'created_at', createdAt));
@@ -89,14 +94,16 @@ class ImageApi {
   ///
   /// * [String] imageUrl:
   ///
+  /// * [String] likes:
+  ///
   /// * [String] createdAt:
   ///
   /// * [String] updatedAt:
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> imageDelete({ String? fileName, String? baseUrl, String? imageUrl, String? createdAt, String? updatedAt, String? prefer, }) async {
-    final response = await imageDeleteWithHttpInfo( fileName: fileName, baseUrl: baseUrl, imageUrl: imageUrl, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, );
+  Future<void> imageDelete({ String? fileName, String? baseUrl, String? imageUrl, String? likes, String? createdAt, String? updatedAt, String? prefer, }) async {
+    final response = await imageDeleteWithHttpInfo( fileName: fileName, baseUrl: baseUrl, imageUrl: imageUrl, likes: likes, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -113,6 +120,8 @@ class ImageApi {
   /// * [String] baseUrl:
   ///
   /// * [String] imageUrl:
+  ///
+  /// * [String] likes:
   ///
   /// * [String] createdAt:
   ///
@@ -138,7 +147,7 @@ class ImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> imageGetWithHttpInfo({ String? fileName, String? baseUrl, String? imageUrl, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> imageGetWithHttpInfo({ String? fileName, String? baseUrl, String? imageUrl, String? likes, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
     // ignore: prefer_const_declarations
     final path = r'/image';
 
@@ -157,6 +166,9 @@ class ImageApi {
     }
     if (imageUrl != null) {
       queryParams.addAll(_queryParams('', 'image_url', imageUrl));
+    }
+    if (likes != null) {
+      queryParams.addAll(_queryParams('', 'likes', likes));
     }
     if (createdAt != null) {
       queryParams.addAll(_queryParams('', 'created_at', createdAt));
@@ -211,6 +223,8 @@ class ImageApi {
   ///
   /// * [String] imageUrl:
   ///
+  /// * [String] likes:
+  ///
   /// * [String] createdAt:
   ///
   /// * [String] updatedAt:
@@ -235,8 +249,8 @@ class ImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<Image>?> imageGet({ String? fileName, String? baseUrl, String? imageUrl, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await imageGetWithHttpInfo( fileName: fileName, baseUrl: baseUrl, imageUrl: imageUrl, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<Image>?> imageGet({ String? fileName, String? baseUrl, String? imageUrl, String? likes, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+    final response = await imageGetWithHttpInfo( fileName: fileName, baseUrl: baseUrl, imageUrl: imageUrl, likes: likes, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -265,6 +279,8 @@ class ImageApi {
   ///
   /// * [String] imageUrl:
   ///
+  /// * [String] likes:
+  ///
   /// * [String] createdAt:
   ///
   /// * [String] updatedAt:
@@ -274,7 +290,7 @@ class ImageApi {
   ///
   /// * [Image] image:
   ///   image
-  Future<Response> imagePatchWithHttpInfo({ String? fileName, String? baseUrl, String? imageUrl, String? createdAt, String? updatedAt, String? prefer, Image? image, }) async {
+  Future<Response> imagePatchWithHttpInfo({ String? fileName, String? baseUrl, String? imageUrl, String? likes, String? createdAt, String? updatedAt, String? prefer, Image? image, }) async {
     // ignore: prefer_const_declarations
     final path = r'/image';
 
@@ -293,6 +309,9 @@ class ImageApi {
     }
     if (imageUrl != null) {
       queryParams.addAll(_queryParams('', 'image_url', imageUrl));
+    }
+    if (likes != null) {
+      queryParams.addAll(_queryParams('', 'likes', likes));
     }
     if (createdAt != null) {
       queryParams.addAll(_queryParams('', 'created_at', createdAt));
@@ -329,6 +348,8 @@ class ImageApi {
   ///
   /// * [String] imageUrl:
   ///
+  /// * [String] likes:
+  ///
   /// * [String] createdAt:
   ///
   /// * [String] updatedAt:
@@ -338,8 +359,8 @@ class ImageApi {
   ///
   /// * [Image] image:
   ///   image
-  Future<void> imagePatch({ String? fileName, String? baseUrl, String? imageUrl, String? createdAt, String? updatedAt, String? prefer, Image? image, }) async {
-    final response = await imagePatchWithHttpInfo( fileName: fileName, baseUrl: baseUrl, imageUrl: imageUrl, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, image: image, );
+  Future<void> imagePatch({ String? fileName, String? baseUrl, String? imageUrl, String? likes, String? createdAt, String? updatedAt, String? prefer, Image? image, }) async {
+    final response = await imagePatchWithHttpInfo( fileName: fileName, baseUrl: baseUrl, imageUrl: imageUrl, likes: likes, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, image: image, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

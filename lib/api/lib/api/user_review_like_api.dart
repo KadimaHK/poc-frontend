@@ -11,29 +11,23 @@
 part of openapi.api;
 
 
-class ReviewImageApi {
-  ReviewImageApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
+class UserReviewLikeApi {
+  UserReviewLikeApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'DELETE /review_image' operation and returns the [Response].
+  /// Performs an HTTP 'DELETE /user_review_like' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [String] id:
+  /// * [String] userId:
   ///
   /// * [String] reviewId:
   ///
-  /// * [String] imageUrl:
-  ///
-  /// * [String] title:
-  ///
-  /// * [String] subtitle:
-  ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> reviewImageDeleteWithHttpInfo({ String? id, String? reviewId, String? imageUrl, String? title, String? subtitle, String? prefer, }) async {
+  Future<Response> userReviewLikeDeleteWithHttpInfo({ String? userId, String? reviewId, String? prefer, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/review_image';
+    final path = r'/user_review_like';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -42,20 +36,11 @@ class ReviewImageApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (id != null) {
-      queryParams.addAll(_queryParams('', 'id', id));
+    if (userId != null) {
+      queryParams.addAll(_queryParams('', 'user_id', userId));
     }
     if (reviewId != null) {
       queryParams.addAll(_queryParams('', 'review_id', reviewId));
-    }
-    if (imageUrl != null) {
-      queryParams.addAll(_queryParams('', 'image_url', imageUrl));
-    }
-    if (title != null) {
-      queryParams.addAll(_queryParams('', 'title', title));
-    }
-    if (subtitle != null) {
-      queryParams.addAll(_queryParams('', 'subtitle', subtitle));
     }
 
     if (prefer != null) {
@@ -78,37 +63,25 @@ class ReviewImageApi {
 
   /// Parameters:
   ///
-  /// * [String] id:
+  /// * [String] userId:
   ///
   /// * [String] reviewId:
   ///
-  /// * [String] imageUrl:
-  ///
-  /// * [String] title:
-  ///
-  /// * [String] subtitle:
-  ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> reviewImageDelete({ String? id, String? reviewId, String? imageUrl, String? title, String? subtitle, String? prefer, }) async {
-    final response = await reviewImageDeleteWithHttpInfo( id: id, reviewId: reviewId, imageUrl: imageUrl, title: title, subtitle: subtitle, prefer: prefer, );
+  Future<void> userReviewLikeDelete({ String? userId, String? reviewId, String? prefer, }) async {
+    final response = await userReviewLikeDeleteWithHttpInfo( userId: userId, reviewId: reviewId, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
   }
 
-  /// Performs an HTTP 'GET /review_image' operation and returns the [Response].
+  /// Performs an HTTP 'GET /user_review_like' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [String] id:
+  /// * [String] userId:
   ///
   /// * [String] reviewId:
-  ///
-  /// * [String] imageUrl:
-  ///
-  /// * [String] title:
-  ///
-  /// * [String] subtitle:
   ///
   /// * [String] select:
   ///   Filtering Columns
@@ -130,9 +103,9 @@ class ReviewImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> reviewImageGetWithHttpInfo({ String? id, String? reviewId, String? imageUrl, String? title, String? subtitle, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> userReviewLikeGetWithHttpInfo({ String? userId, String? reviewId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/review_image';
+    final path = r'/user_review_like';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -141,20 +114,11 @@ class ReviewImageApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (id != null) {
-      queryParams.addAll(_queryParams('', 'id', id));
+    if (userId != null) {
+      queryParams.addAll(_queryParams('', 'user_id', userId));
     }
     if (reviewId != null) {
       queryParams.addAll(_queryParams('', 'review_id', reviewId));
-    }
-    if (imageUrl != null) {
-      queryParams.addAll(_queryParams('', 'image_url', imageUrl));
-    }
-    if (title != null) {
-      queryParams.addAll(_queryParams('', 'title', title));
-    }
-    if (subtitle != null) {
-      queryParams.addAll(_queryParams('', 'subtitle', subtitle));
     }
     if (select != null) {
       queryParams.addAll(_queryParams('', 'select', select));
@@ -195,15 +159,9 @@ class ReviewImageApi {
 
   /// Parameters:
   ///
-  /// * [String] id:
+  /// * [String] userId:
   ///
   /// * [String] reviewId:
-  ///
-  /// * [String] imageUrl:
-  ///
-  /// * [String] title:
-  ///
-  /// * [String] subtitle:
   ///
   /// * [String] select:
   ///   Filtering Columns
@@ -225,8 +183,8 @@ class ReviewImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<ReviewImage>?> reviewImageGet({ String? id, String? reviewId, String? imageUrl, String? title, String? subtitle, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await reviewImageGetWithHttpInfo( id: id, reviewId: reviewId, imageUrl: imageUrl, title: title, subtitle: subtitle, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<UserReviewLike>?> userReviewLikeGet({ String? userId, String? reviewId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+    final response = await userReviewLikeGetWithHttpInfo( userId: userId, reviewId: reviewId, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -235,57 +193,42 @@ class ReviewImageApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<ReviewImage>') as List)
-        .cast<ReviewImage>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<UserReviewLike>') as List)
+        .cast<UserReviewLike>()
         .toList(growable: false);
 
     }
     return null;
   }
 
-  /// Performs an HTTP 'PATCH /review_image' operation and returns the [Response].
+  /// Performs an HTTP 'PATCH /user_review_like' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [String] id:
+  /// * [String] userId:
   ///
   /// * [String] reviewId:
-  ///
-  /// * [String] imageUrl:
-  ///
-  /// * [String] title:
-  ///
-  /// * [String] subtitle:
   ///
   /// * [String] prefer:
   ///   Preference
   ///
-  /// * [ReviewImage] reviewImage:
-  ///   review_image
-  Future<Response> reviewImagePatchWithHttpInfo({ String? id, String? reviewId, String? imageUrl, String? title, String? subtitle, String? prefer, ReviewImage? reviewImage, }) async {
+  /// * [UserReviewLike] userReviewLike:
+  ///   user_review_like
+  Future<Response> userReviewLikePatchWithHttpInfo({ String? userId, String? reviewId, String? prefer, UserReviewLike? userReviewLike, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/review_image';
+    final path = r'/user_review_like';
 
     // ignore: prefer_final_locals
-    Object? postBody = reviewImage;
+    Object? postBody = userReviewLike;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (id != null) {
-      queryParams.addAll(_queryParams('', 'id', id));
+    if (userId != null) {
+      queryParams.addAll(_queryParams('', 'user_id', userId));
     }
     if (reviewId != null) {
       queryParams.addAll(_queryParams('', 'review_id', reviewId));
-    }
-    if (imageUrl != null) {
-      queryParams.addAll(_queryParams('', 'image_url', imageUrl));
-    }
-    if (title != null) {
-      queryParams.addAll(_queryParams('', 'title', title));
-    }
-    if (subtitle != null) {
-      queryParams.addAll(_queryParams('', 'subtitle', subtitle));
     }
 
     if (prefer != null) {
@@ -308,29 +251,23 @@ class ReviewImageApi {
 
   /// Parameters:
   ///
-  /// * [String] id:
+  /// * [String] userId:
   ///
   /// * [String] reviewId:
-  ///
-  /// * [String] imageUrl:
-  ///
-  /// * [String] title:
-  ///
-  /// * [String] subtitle:
   ///
   /// * [String] prefer:
   ///   Preference
   ///
-  /// * [ReviewImage] reviewImage:
-  ///   review_image
-  Future<void> reviewImagePatch({ String? id, String? reviewId, String? imageUrl, String? title, String? subtitle, String? prefer, ReviewImage? reviewImage, }) async {
-    final response = await reviewImagePatchWithHttpInfo( id: id, reviewId: reviewId, imageUrl: imageUrl, title: title, subtitle: subtitle, prefer: prefer, reviewImage: reviewImage, );
+  /// * [UserReviewLike] userReviewLike:
+  ///   user_review_like
+  Future<void> userReviewLikePatch({ String? userId, String? reviewId, String? prefer, UserReviewLike? userReviewLike, }) async {
+    final response = await userReviewLikePatchWithHttpInfo( userId: userId, reviewId: reviewId, prefer: prefer, userReviewLike: userReviewLike, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
   }
 
-  /// Performs an HTTP 'POST /review_image' operation and returns the [Response].
+  /// Performs an HTTP 'POST /user_review_like' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] select:
@@ -339,14 +276,14 @@ class ReviewImageApi {
   /// * [String] prefer:
   ///   Preference
   ///
-  /// * [ReviewImage] reviewImage:
-  ///   review_image
-  Future<Response> reviewImagePostWithHttpInfo({ String? select, String? prefer, ReviewImage? reviewImage, }) async {
+  /// * [UserReviewLike] userReviewLike:
+  ///   user_review_like
+  Future<Response> userReviewLikePostWithHttpInfo({ String? select, String? prefer, UserReviewLike? userReviewLike, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/review_image';
+    final path = r'/user_review_like';
 
     // ignore: prefer_final_locals
-    Object? postBody = reviewImage;
+    Object? postBody = userReviewLike;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -382,10 +319,10 @@ class ReviewImageApi {
   /// * [String] prefer:
   ///   Preference
   ///
-  /// * [ReviewImage] reviewImage:
-  ///   review_image
-  Future<void> reviewImagePost({ String? select, String? prefer, ReviewImage? reviewImage, }) async {
-    final response = await reviewImagePostWithHttpInfo( select: select, prefer: prefer, reviewImage: reviewImage, );
+  /// * [UserReviewLike] userReviewLike:
+  ///   user_review_like
+  Future<void> userReviewLikePost({ String? select, String? prefer, UserReviewLike? userReviewLike, }) async {
+    final response = await userReviewLikePostWithHttpInfo( select: select, prefer: prefer, userReviewLike: userReviewLike, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

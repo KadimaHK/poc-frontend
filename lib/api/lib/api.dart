@@ -55,7 +55,10 @@ part 'api/rpc_logout_api.dart';
 part 'api/rpc_sign_up_api.dart';
 part 'api/user_api.dart';
 part 'api/user_benefit_api.dart';
+part 'api/user_bookmark_api.dart';
 part 'api/user_featured_offer_api.dart';
+part 'api/user_image_like_api.dart';
+part 'api/user_review_like_api.dart';
 
 part 'model/benefit.dart';
 part 'model/booking.dart';
@@ -81,7 +84,10 @@ part 'model/review_image.dart';
 part 'model/rpc_sign_up_post_request.dart';
 part 'model/user.dart';
 part 'model/user_benefit.dart';
+part 'model/user_bookmark.dart';
 part 'model/user_featured_offer.dart';
+part 'model/user_image_like.dart';
+part 'model/user_review_like.dart';
 
 
 /// An [ApiClient] instance that uses the default values obtained from

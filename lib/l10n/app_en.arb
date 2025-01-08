@@ -54,7 +54,7 @@
 
 
     "pick": "Pick",
-    "firdays": "Friday's",
+    "fridays": "Friday's",
 
 
     "daysLeft": "Days Left",
@@ -117,7 +117,18 @@
     "bookmarks": "Bookmarks",
     "reviews": "Reviews",
     "photos": "Photos",
+    "theAboveReviewIsThePersonalOpinionOfAUserWhichDoesNotRepresentPOCsPointOfView": "(The above review is the personal opinion of a user which does not represent POC’s point of view.)",
 
+    "dateOfVisit": "Date of Visit",
+    "spendingPerHead": "Spending per Head",
+
+    "review": "Review",
+
+    "taste": "Taste",
+    "decor": "Decor",
+    "service": "Service",
+    "hygiene": "Hygiene",
+    "value": "Value",
 
     "empty":"empty"
 }

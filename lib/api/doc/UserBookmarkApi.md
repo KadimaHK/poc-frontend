@@ -1,4 +1,4 @@
-# openapi.api.UserFeaturedOfferApi
+# openapi.api.UserBookmarkApi
 
 ## Load the API package
 ```dart
@@ -9,14 +9,14 @@ All URIs are relative to *http://poc-bar-app.com:80/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**userFeaturedOfferDelete**](UserFeaturedOfferApi.md#userfeaturedofferdelete) | **DELETE** /user_featured_offer | 
-[**userFeaturedOfferGet**](UserFeaturedOfferApi.md#userfeaturedofferget) | **GET** /user_featured_offer | 
-[**userFeaturedOfferPatch**](UserFeaturedOfferApi.md#userfeaturedofferpatch) | **PATCH** /user_featured_offer | 
-[**userFeaturedOfferPost**](UserFeaturedOfferApi.md#userfeaturedofferpost) | **POST** /user_featured_offer | 
+[**userBookmarkDelete**](UserBookmarkApi.md#userbookmarkdelete) | **DELETE** /user_bookmark | 
+[**userBookmarkGet**](UserBookmarkApi.md#userbookmarkget) | **GET** /user_bookmark | 
+[**userBookmarkPatch**](UserBookmarkApi.md#userbookmarkpatch) | **PATCH** /user_bookmark | 
+[**userBookmarkPost**](UserBookmarkApi.md#userbookmarkpost) | **POST** /user_bookmark | 
 
 
-# **userFeaturedOfferDelete**
-> userFeaturedOfferDelete(userId, featuredOfferId, prefer)
+# **userBookmarkDelete**
+> userBookmarkDelete(userId, establishmentId, createdAt, prefer)
 
 
 
@@ -28,15 +28,16 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserFeaturedOfferApi();
+final api_instance = UserBookmarkApi();
 final userId = userId_example; // String | 
-final featuredOfferId = featuredOfferId_example; // String | 
+final establishmentId = establishmentId_example; // String | 
+final createdAt = createdAt_example; // String | 
 final prefer = prefer_example; // String | Preference
 
 try {
-    api_instance.userFeaturedOfferDelete(userId, featuredOfferId, prefer);
+    api_instance.userBookmarkDelete(userId, establishmentId, createdAt, prefer);
 } catch (e) {
-    print('Exception when calling UserFeaturedOfferApi->userFeaturedOfferDelete: $e\n');
+    print('Exception when calling UserBookmarkApi->userBookmarkDelete: $e\n');
 }
 ```
 
@@ -45,7 +46,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String**|  | [optional] 
- **featuredOfferId** | **String**|  | [optional] 
+ **establishmentId** | **String**|  | [optional] 
+ **createdAt** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 
 
 ### Return type
@@ -63,8 +65,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userFeaturedOfferGet**
-> List<UserFeaturedOffer> userFeaturedOfferGet(userId, featuredOfferId, select, order, range, rangeUnit, offset, limit, prefer)
+# **userBookmarkGet**
+> List<UserBookmark> userBookmarkGet(userId, establishmentId, createdAt, select, order, range, rangeUnit, offset, limit, prefer)
 
 
 
@@ -76,9 +78,10 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserFeaturedOfferApi();
+final api_instance = UserBookmarkApi();
 final userId = userId_example; // String | 
-final featuredOfferId = featuredOfferId_example; // String | 
+final establishmentId = establishmentId_example; // String | 
+final createdAt = createdAt_example; // String | 
 final select = select_example; // String | Filtering Columns
 final order = order_example; // String | Ordering
 final range = range_example; // String | Limiting and Pagination
@@ -88,10 +91,10 @@ final limit = limit_example; // String | Limiting and Pagination
 final prefer = prefer_example; // String | Preference
 
 try {
-    final result = api_instance.userFeaturedOfferGet(userId, featuredOfferId, select, order, range, rangeUnit, offset, limit, prefer);
+    final result = api_instance.userBookmarkGet(userId, establishmentId, createdAt, select, order, range, rangeUnit, offset, limit, prefer);
     print(result);
 } catch (e) {
-    print('Exception when calling UserFeaturedOfferApi->userFeaturedOfferGet: $e\n');
+    print('Exception when calling UserBookmarkApi->userBookmarkGet: $e\n');
 }
 ```
 
@@ -100,7 +103,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String**|  | [optional] 
- **featuredOfferId** | **String**|  | [optional] 
+ **establishmentId** | **String**|  | [optional] 
+ **createdAt** | **String**|  | [optional] 
  **select** | **String**| Filtering Columns | [optional] 
  **order** | **String**| Ordering | [optional] 
  **range** | **String**| Limiting and Pagination | [optional] 
@@ -111,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<UserFeaturedOffer>**](UserFeaturedOffer.md)
+[**List<UserBookmark>**](UserBookmark.md)
 
 ### Authorization
 
@@ -124,8 +128,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userFeaturedOfferPatch**
-> userFeaturedOfferPatch(userId, featuredOfferId, prefer, userFeaturedOffer)
+# **userBookmarkPatch**
+> userBookmarkPatch(userId, establishmentId, createdAt, prefer, userBookmark)
 
 
 
@@ -137,16 +141,17 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserFeaturedOfferApi();
+final api_instance = UserBookmarkApi();
 final userId = userId_example; // String | 
-final featuredOfferId = featuredOfferId_example; // String | 
+final establishmentId = establishmentId_example; // String | 
+final createdAt = createdAt_example; // String | 
 final prefer = prefer_example; // String | Preference
-final userFeaturedOffer = UserFeaturedOffer(); // UserFeaturedOffer | user_featured_offer
+final userBookmark = UserBookmark(); // UserBookmark | user_bookmark
 
 try {
-    api_instance.userFeaturedOfferPatch(userId, featuredOfferId, prefer, userFeaturedOffer);
+    api_instance.userBookmarkPatch(userId, establishmentId, createdAt, prefer, userBookmark);
 } catch (e) {
-    print('Exception when calling UserFeaturedOfferApi->userFeaturedOfferPatch: $e\n');
+    print('Exception when calling UserBookmarkApi->userBookmarkPatch: $e\n');
 }
 ```
 
@@ -155,9 +160,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String**|  | [optional] 
- **featuredOfferId** | **String**|  | [optional] 
+ **establishmentId** | **String**|  | [optional] 
+ **createdAt** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 
- **userFeaturedOffer** | [**UserFeaturedOffer**](UserFeaturedOffer.md)| user_featured_offer | [optional] 
+ **userBookmark** | [**UserBookmark**](UserBookmark.md)| user_bookmark | [optional] 
 
 ### Return type
 
@@ -174,8 +180,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userFeaturedOfferPost**
-> userFeaturedOfferPost(select, prefer, userFeaturedOffer)
+# **userBookmarkPost**
+> userBookmarkPost(select, prefer, userBookmark)
 
 
 
@@ -187,15 +193,15 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserFeaturedOfferApi();
+final api_instance = UserBookmarkApi();
 final select = select_example; // String | Filtering Columns
 final prefer = prefer_example; // String | Preference
-final userFeaturedOffer = UserFeaturedOffer(); // UserFeaturedOffer | user_featured_offer
+final userBookmark = UserBookmark(); // UserBookmark | user_bookmark
 
 try {
-    api_instance.userFeaturedOfferPost(select, prefer, userFeaturedOffer);
+    api_instance.userBookmarkPost(select, prefer, userBookmark);
 } catch (e) {
-    print('Exception when calling UserFeaturedOfferApi->userFeaturedOfferPost: $e\n');
+    print('Exception when calling UserBookmarkApi->userBookmarkPost: $e\n');
 }
 ```
 
@@ -205,7 +211,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **select** | **String**| Filtering Columns | [optional] 
  **prefer** | **String**| Preference | [optional] 
- **userFeaturedOffer** | [**UserFeaturedOffer**](UserFeaturedOffer.md)| user_featured_offer | [optional] 
+ **userBookmark** | [**UserBookmark**](UserBookmark.md)| user_bookmark | [optional] 
 
 ### Return type
 
