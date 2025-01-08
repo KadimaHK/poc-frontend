@@ -44,3 +44,7 @@ app.*.map.json
 
 .fake
 
+/android/app/.cxx
+/linux/flutter
+/macos/Flutter
+/windows/flutter

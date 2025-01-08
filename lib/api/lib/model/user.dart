@@ -24,6 +24,9 @@ class User {
     this.description,
     this.followingCount,
     this.followerCount,
+    this.bookmarkCount,
+    this.reviewCount,
+    this.photoCount,
     this.points,
     this.pointsExpiry = '(now() + \'1 year\'::interval)',
     this.verified = false,
@@ -115,6 +118,30 @@ class User {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  int? bookmarkCount;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? reviewCount;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? photoCount;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   int? points;
 
   String pointsExpiry;
@@ -138,6 +165,9 @@ class User {
     other.description == description &&
     other.followingCount == followingCount &&
     other.followerCount == followerCount &&
+    other.bookmarkCount == bookmarkCount &&
+    other.reviewCount == reviewCount &&
+    other.photoCount == photoCount &&
     other.points == points &&
     other.pointsExpiry == pointsExpiry &&
     other.verified == verified &&
@@ -158,6 +188,9 @@ class User {
     (description == null ? 0 : description!.hashCode) +
     (followingCount == null ? 0 : followingCount!.hashCode) +
     (followerCount == null ? 0 : followerCount!.hashCode) +
+    (bookmarkCount == null ? 0 : bookmarkCount!.hashCode) +
+    (reviewCount == null ? 0 : reviewCount!.hashCode) +
+    (photoCount == null ? 0 : photoCount!.hashCode) +
     (points == null ? 0 : points!.hashCode) +
     (pointsExpiry.hashCode) +
     (verified.hashCode) +
@@ -165,7 +198,7 @@ class User {
     (updatedAt.hashCode);
 
   @override
-  String toString() => 'User[id=$id, uuid=$uuid, email=$email, name=$name, password=$password, iconUrl=$iconUrl, age=$age, gender=$gender, description=$description, followingCount=$followingCount, followerCount=$followerCount, points=$points, pointsExpiry=$pointsExpiry, verified=$verified, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'User[id=$id, uuid=$uuid, email=$email, name=$name, password=$password, iconUrl=$iconUrl, age=$age, gender=$gender, description=$description, followingCount=$followingCount, followerCount=$followerCount, bookmarkCount=$bookmarkCount, reviewCount=$reviewCount, photoCount=$photoCount, points=$points, pointsExpiry=$pointsExpiry, verified=$verified, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -216,6 +249,21 @@ class User {
     } else {
       json[r'follower_count'] = null;
     }
+    if (this.bookmarkCount != null) {
+      json[r'bookmark_count'] = this.bookmarkCount;
+    } else {
+      json[r'bookmark_count'] = null;
+    }
+    if (this.reviewCount != null) {
+      json[r'review_count'] = this.reviewCount;
+    } else {
+      json[r'review_count'] = null;
+    }
+    if (this.photoCount != null) {
+      json[r'photo_count'] = this.photoCount;
+    } else {
+      json[r'photo_count'] = null;
+    }
     if (this.points != null) {
       json[r'points'] = this.points;
     } else {
@@ -258,6 +306,9 @@ class User {
         description: mapValueOfType<String>(json, r'description'),
         followingCount: mapValueOfType<int>(json, r'following_count'),
         followerCount: mapValueOfType<int>(json, r'follower_count'),
+        bookmarkCount: mapValueOfType<int>(json, r'bookmark_count'),
+        reviewCount: mapValueOfType<int>(json, r'review_count'),
+        photoCount: mapValueOfType<int>(json, r'photo_count'),
         points: mapValueOfType<int>(json, r'points'),
         pointsExpiry: mapValueOfType<String>(json, r'points_expiry') ?? '(now() + \'1 year\'::interval)',
         verified: mapValueOfType<bool>(json, r'verified') ?? false,

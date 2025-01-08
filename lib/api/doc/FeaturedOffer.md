@@ -11,7 +11,9 @@ Name | Type | Description | Notes
 **id** | **int** | Note: This is a Primary Key.<pk/> | 
 **title** | **String** |  | [optional] 
 **voucherCode** | **String** |  | [optional] 
-**expiry** | **String** |  | [optional] 
+**startDate** | **String** |  | [optional] 
+**expiryDate** | **String** |  | [optional] 
+**percentageDiscount** | **num** |  | [optional] 
 **details** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
 **redemptionPeriod** | **String** |  | [optional] 

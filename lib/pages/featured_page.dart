@@ -39,12 +39,7 @@ class _FeaturedPageState extends State<FeaturedPage> with SingleTickerProviderSt
     return Scaffold(
       appBar: AppBar(
         title: Text(t.featured),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        leading: BackButton(),
       ),
       body: Expanded(
         child: _FeaturedGrid(featured: featured),

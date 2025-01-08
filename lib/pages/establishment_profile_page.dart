@@ -94,11 +94,7 @@ class _EstablishmentProfilePageState extends State<EstablishmentProfilePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: Icon(Icons.arrow_back)),
+                  BackButton(),
                   IconButton(onPressed: () => {}, icon: Icon(Icons.share_outlined)),
                 ],
               ),

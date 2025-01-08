@@ -31,7 +31,7 @@ class _NotificationPageState extends State<NotificationPage> with SingleTickerPr
 
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(onPressed: () => Navigator.pop(context), icon: Icon(Icons.arrow_back_ios_new)),
+        leading: BackButton(),
         title: Text(t.notification, textAlign: TextAlign.center),
       ),
       body: Column(

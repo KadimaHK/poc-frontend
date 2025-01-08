@@ -16,7 +16,9 @@ class FeaturedOffer {
     required this.id,
     this.title,
     this.voucherCode,
-    this.expiry,
+    this.startDate,
+    this.expiryDate,
+    this.percentageDiscount,
     this.details,
     this.description,
     this.redemptionPeriod,
@@ -51,7 +53,23 @@ class FeaturedOffer {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? expiry;
+  String? startDate;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? expiryDate;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? percentageDiscount;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -116,7 +134,9 @@ class FeaturedOffer {
     other.id == id &&
     other.title == title &&
     other.voucherCode == voucherCode &&
-    other.expiry == expiry &&
+    other.startDate == startDate &&
+    other.expiryDate == expiryDate &&
+    other.percentageDiscount == percentageDiscount &&
     other.details == details &&
     other.description == description &&
     other.redemptionPeriod == redemptionPeriod &&
@@ -131,7 +151,9 @@ class FeaturedOffer {
     (id.hashCode) +
     (title == null ? 0 : title!.hashCode) +
     (voucherCode == null ? 0 : voucherCode!.hashCode) +
-    (expiry == null ? 0 : expiry!.hashCode) +
+    (startDate == null ? 0 : startDate!.hashCode) +
+    (expiryDate == null ? 0 : expiryDate!.hashCode) +
+    (percentageDiscount == null ? 0 : percentageDiscount!.hashCode) +
     (details == null ? 0 : details!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (redemptionPeriod == null ? 0 : redemptionPeriod!.hashCode) +
@@ -141,7 +163,7 @@ class FeaturedOffer {
     (establishmentId == null ? 0 : establishmentId!.hashCode);
 
   @override
-  String toString() => 'FeaturedOffer[id=$id, title=$title, voucherCode=$voucherCode, expiry=$expiry, details=$details, description=$description, redemptionPeriod=$redemptionPeriod, howToRedeem=$howToRedeem, isGlobal=$isGlobal, imageUrl=$imageUrl, establishmentId=$establishmentId]';
+  String toString() => 'FeaturedOffer[id=$id, title=$title, voucherCode=$voucherCode, startDate=$startDate, expiryDate=$expiryDate, percentageDiscount=$percentageDiscount, details=$details, description=$description, redemptionPeriod=$redemptionPeriod, howToRedeem=$howToRedeem, isGlobal=$isGlobal, imageUrl=$imageUrl, establishmentId=$establishmentId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -156,10 +178,20 @@ class FeaturedOffer {
     } else {
       json[r'voucher_code'] = null;
     }
-    if (this.expiry != null) {
-      json[r'expiry'] = this.expiry;
+    if (this.startDate != null) {
+      json[r'start_date'] = this.startDate;
     } else {
-      json[r'expiry'] = null;
+      json[r'start_date'] = null;
+    }
+    if (this.expiryDate != null) {
+      json[r'expiry_date'] = this.expiryDate;
+    } else {
+      json[r'expiry_date'] = null;
+    }
+    if (this.percentageDiscount != null) {
+      json[r'percentage_discount'] = this.percentageDiscount;
+    } else {
+      json[r'percentage_discount'] = null;
     }
     if (this.details != null) {
       json[r'details'] = this.details;
@@ -221,7 +253,9 @@ class FeaturedOffer {
         id: mapValueOfType<int>(json, r'id')!,
         title: mapValueOfType<String>(json, r'title'),
         voucherCode: mapValueOfType<String>(json, r'voucher_code'),
-        expiry: mapValueOfType<String>(json, r'expiry'),
+        startDate: mapValueOfType<String>(json, r'start_date'),
+        expiryDate: mapValueOfType<String>(json, r'expiry_date'),
+        percentageDiscount: num.parse('${json[r'percentage_discount']}'),
         details: mapValueOfType<String>(json, r'details'),
         description: mapValueOfType<String>(json, r'description'),
         redemptionPeriod: mapValueOfType<String>(json, r'redemption_period'),

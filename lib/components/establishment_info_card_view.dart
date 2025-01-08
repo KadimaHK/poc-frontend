@@ -5,9 +5,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EstablishmentInfoCardView extends StatefulWidget {
   const EstablishmentInfoCardView({
-    Key? key,
+    super.key,
     required this.establishmentId,
-  }) : super(key: key);
+  });
 
   final int? establishmentId;
 
@@ -137,9 +137,9 @@ class _EstablishmentInfoCardViewState extends State<EstablishmentInfoCardView> {
 
 class EstablishmentFeaturedOfferView extends StatefulWidget {
   const EstablishmentFeaturedOfferView({
-    Key? key,
+    super.key,
     required this.establishmentId,
-  }) : super(key: key);
+  });
 
   final int? establishmentId;
 
@@ -214,7 +214,10 @@ class _EstablishmentFeaturedOfferViewState extends State<EstablishmentFeaturedOf
                   flex: 1,
                   child: TextButton(
                     onPressed: () => {},
-                    child: Text(t.buy),
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.green,
+                    ),
+                    child: Text(t.buy, style: const TextStyle(color: Colors.white)),
                   ),
                 ),
                 SizedBox(width: 10),

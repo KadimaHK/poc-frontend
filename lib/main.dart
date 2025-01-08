@@ -9,6 +9,7 @@ import 'package:poc_frontend/api/lib/api.dart';
 import 'package:poc_frontend/components/profile_drawer.dart';
 import 'package:poc_frontend/pages/establishment_profile_page.dart';
 import 'package:poc_frontend/pages/featured_detail_page.dart';
+import 'package:poc_frontend/pages/featured_offer_detail_page.dart';
 import 'package:poc_frontend/pages/login_page.dart';
 import 'package:poc_frontend/pages/main/explore_page.dart';
 import 'package:poc_frontend/pages/main/home_page.dart';
@@ -229,7 +230,12 @@ class MainState extends State<Main> {
               return SignUpPage();
             });
           }
-
+          if (settings.name == FeaturedOfferDetailPage.routeName) {
+            final featuredOffer = settings.arguments as api.FeaturedOffer;
+            return MaterialPageRoute(builder: (context) {
+              return FeaturedOfferDetailPage(featuredOffer: featuredOffer);
+            });
+          }
           if (settings.name == LoginPage.routeName) {
             return MaterialPageRoute(builder: (context) {
               return LoginPage();

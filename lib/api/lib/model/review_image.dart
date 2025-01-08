@@ -16,8 +16,8 @@ class ReviewImage {
     required this.id,
     this.reviewId,
     this.imageUrl,
-    this.title,
-    this.subtitle,
+    this.description,
+    this.type,
   });
 
   /// Note: This is a Primary Key.<pk/>
@@ -47,7 +47,7 @@ class ReviewImage {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? title;
+  String? description;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -55,15 +55,15 @@ class ReviewImage {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? subtitle;
+  String? type;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ReviewImage &&
     other.id == id &&
     other.reviewId == reviewId &&
     other.imageUrl == imageUrl &&
-    other.title == title &&
-    other.subtitle == subtitle;
+    other.description == description &&
+    other.type == type;
 
   @override
   int get hashCode =>
@@ -71,11 +71,11 @@ class ReviewImage {
     (id.hashCode) +
     (reviewId == null ? 0 : reviewId!.hashCode) +
     (imageUrl == null ? 0 : imageUrl!.hashCode) +
-    (title == null ? 0 : title!.hashCode) +
-    (subtitle == null ? 0 : subtitle!.hashCode);
+    (description == null ? 0 : description!.hashCode) +
+    (type == null ? 0 : type!.hashCode);
 
   @override
-  String toString() => 'ReviewImage[id=$id, reviewId=$reviewId, imageUrl=$imageUrl, title=$title, subtitle=$subtitle]';
+  String toString() => 'ReviewImage[id=$id, reviewId=$reviewId, imageUrl=$imageUrl, description=$description, type=$type]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -90,15 +90,15 @@ class ReviewImage {
     } else {
       json[r'image_url'] = null;
     }
-    if (this.title != null) {
-      json[r'title'] = this.title;
+    if (this.description != null) {
+      json[r'description'] = this.description;
     } else {
-      json[r'title'] = null;
+      json[r'description'] = null;
     }
-    if (this.subtitle != null) {
-      json[r'subtitle'] = this.subtitle;
+    if (this.type != null) {
+      json[r'type'] = this.type;
     } else {
-      json[r'subtitle'] = null;
+      json[r'type'] = null;
     }
     return json;
   }
@@ -125,8 +125,8 @@ class ReviewImage {
         id: mapValueOfType<int>(json, r'id')!,
         reviewId: mapValueOfType<int>(json, r'review_id'),
         imageUrl: mapValueOfType<String>(json, r'image_url'),
-        title: mapValueOfType<String>(json, r'title'),
-        subtitle: mapValueOfType<String>(json, r'subtitle'),
+        description: mapValueOfType<String>(json, r'description'),
+        type: mapValueOfType<String>(json, r'type'),
       );
     }
     return null;

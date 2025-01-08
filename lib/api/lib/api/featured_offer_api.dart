@@ -25,7 +25,11 @@ class FeaturedOfferApi {
   ///
   /// * [String] voucherCode:
   ///
-  /// * [String] expiry:
+  /// * [String] startDate:
+  ///
+  /// * [String] expiryDate:
+  ///
+  /// * [String] percentageDiscount:
   ///
   /// * [String] details:
   ///
@@ -43,7 +47,7 @@ class FeaturedOfferApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> featuredOfferDeleteWithHttpInfo({ String? id, String? title, String? voucherCode, String? expiry, String? details, String? description, String? redemptionPeriod, String? howToRedeem, String? isGlobal, String? imageUrl, String? establishmentId, String? prefer, }) async {
+  Future<Response> featuredOfferDeleteWithHttpInfo({ String? id, String? title, String? voucherCode, String? startDate, String? expiryDate, String? percentageDiscount, String? details, String? description, String? redemptionPeriod, String? howToRedeem, String? isGlobal, String? imageUrl, String? establishmentId, String? prefer, }) async {
     // ignore: prefer_const_declarations
     final path = r'/featured_offer';
 
@@ -63,8 +67,14 @@ class FeaturedOfferApi {
     if (voucherCode != null) {
       queryParams.addAll(_queryParams('', 'voucher_code', voucherCode));
     }
-    if (expiry != null) {
-      queryParams.addAll(_queryParams('', 'expiry', expiry));
+    if (startDate != null) {
+      queryParams.addAll(_queryParams('', 'start_date', startDate));
+    }
+    if (expiryDate != null) {
+      queryParams.addAll(_queryParams('', 'expiry_date', expiryDate));
+    }
+    if (percentageDiscount != null) {
+      queryParams.addAll(_queryParams('', 'percentage_discount', percentageDiscount));
     }
     if (details != null) {
       queryParams.addAll(_queryParams('', 'details', details));
@@ -114,7 +124,11 @@ class FeaturedOfferApi {
   ///
   /// * [String] voucherCode:
   ///
-  /// * [String] expiry:
+  /// * [String] startDate:
+  ///
+  /// * [String] expiryDate:
+  ///
+  /// * [String] percentageDiscount:
   ///
   /// * [String] details:
   ///
@@ -132,8 +146,8 @@ class FeaturedOfferApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> featuredOfferDelete({ String? id, String? title, String? voucherCode, String? expiry, String? details, String? description, String? redemptionPeriod, String? howToRedeem, String? isGlobal, String? imageUrl, String? establishmentId, String? prefer, }) async {
-    final response = await featuredOfferDeleteWithHttpInfo( id: id, title: title, voucherCode: voucherCode, expiry: expiry, details: details, description: description, redemptionPeriod: redemptionPeriod, howToRedeem: howToRedeem, isGlobal: isGlobal, imageUrl: imageUrl, establishmentId: establishmentId, prefer: prefer, );
+  Future<void> featuredOfferDelete({ String? id, String? title, String? voucherCode, String? startDate, String? expiryDate, String? percentageDiscount, String? details, String? description, String? redemptionPeriod, String? howToRedeem, String? isGlobal, String? imageUrl, String? establishmentId, String? prefer, }) async {
+    final response = await featuredOfferDeleteWithHttpInfo( id: id, title: title, voucherCode: voucherCode, startDate: startDate, expiryDate: expiryDate, percentageDiscount: percentageDiscount, details: details, description: description, redemptionPeriod: redemptionPeriod, howToRedeem: howToRedeem, isGlobal: isGlobal, imageUrl: imageUrl, establishmentId: establishmentId, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -148,7 +162,11 @@ class FeaturedOfferApi {
   ///
   /// * [String] voucherCode:
   ///
-  /// * [String] expiry:
+  /// * [String] startDate:
+  ///
+  /// * [String] expiryDate:
+  ///
+  /// * [String] percentageDiscount:
   ///
   /// * [String] details:
   ///
@@ -184,7 +202,7 @@ class FeaturedOfferApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> featuredOfferGetWithHttpInfo({ String? id, String? title, String? voucherCode, String? expiry, String? details, String? description, String? redemptionPeriod, String? howToRedeem, String? isGlobal, String? imageUrl, String? establishmentId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> featuredOfferGetWithHttpInfo({ String? id, String? title, String? voucherCode, String? startDate, String? expiryDate, String? percentageDiscount, String? details, String? description, String? redemptionPeriod, String? howToRedeem, String? isGlobal, String? imageUrl, String? establishmentId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
     // ignore: prefer_const_declarations
     final path = r'/featured_offer';
 
@@ -204,8 +222,14 @@ class FeaturedOfferApi {
     if (voucherCode != null) {
       queryParams.addAll(_queryParams('', 'voucher_code', voucherCode));
     }
-    if (expiry != null) {
-      queryParams.addAll(_queryParams('', 'expiry', expiry));
+    if (startDate != null) {
+      queryParams.addAll(_queryParams('', 'start_date', startDate));
+    }
+    if (expiryDate != null) {
+      queryParams.addAll(_queryParams('', 'expiry_date', expiryDate));
+    }
+    if (percentageDiscount != null) {
+      queryParams.addAll(_queryParams('', 'percentage_discount', percentageDiscount));
     }
     if (details != null) {
       queryParams.addAll(_queryParams('', 'details', details));
@@ -273,7 +297,11 @@ class FeaturedOfferApi {
   ///
   /// * [String] voucherCode:
   ///
-  /// * [String] expiry:
+  /// * [String] startDate:
+  ///
+  /// * [String] expiryDate:
+  ///
+  /// * [String] percentageDiscount:
   ///
   /// * [String] details:
   ///
@@ -309,8 +337,8 @@ class FeaturedOfferApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<FeaturedOffer>?> featuredOfferGet({ String? id, String? title, String? voucherCode, String? expiry, String? details, String? description, String? redemptionPeriod, String? howToRedeem, String? isGlobal, String? imageUrl, String? establishmentId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await featuredOfferGetWithHttpInfo( id: id, title: title, voucherCode: voucherCode, expiry: expiry, details: details, description: description, redemptionPeriod: redemptionPeriod, howToRedeem: howToRedeem, isGlobal: isGlobal, imageUrl: imageUrl, establishmentId: establishmentId, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<FeaturedOffer>?> featuredOfferGet({ String? id, String? title, String? voucherCode, String? startDate, String? expiryDate, String? percentageDiscount, String? details, String? description, String? redemptionPeriod, String? howToRedeem, String? isGlobal, String? imageUrl, String? establishmentId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+    final response = await featuredOfferGetWithHttpInfo( id: id, title: title, voucherCode: voucherCode, startDate: startDate, expiryDate: expiryDate, percentageDiscount: percentageDiscount, details: details, description: description, redemptionPeriod: redemptionPeriod, howToRedeem: howToRedeem, isGlobal: isGlobal, imageUrl: imageUrl, establishmentId: establishmentId, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -336,7 +364,11 @@ class FeaturedOfferApi {
   ///
   /// * [String] voucherCode:
   ///
-  /// * [String] expiry:
+  /// * [String] startDate:
+  ///
+  /// * [String] expiryDate:
+  ///
+  /// * [String] percentageDiscount:
   ///
   /// * [String] details:
   ///
@@ -357,7 +389,7 @@ class FeaturedOfferApi {
   ///
   /// * [FeaturedOffer] featuredOffer:
   ///   featured_offer
-  Future<Response> featuredOfferPatchWithHttpInfo({ String? id, String? title, String? voucherCode, String? expiry, String? details, String? description, String? redemptionPeriod, String? howToRedeem, String? isGlobal, String? imageUrl, String? establishmentId, String? prefer, FeaturedOffer? featuredOffer, }) async {
+  Future<Response> featuredOfferPatchWithHttpInfo({ String? id, String? title, String? voucherCode, String? startDate, String? expiryDate, String? percentageDiscount, String? details, String? description, String? redemptionPeriod, String? howToRedeem, String? isGlobal, String? imageUrl, String? establishmentId, String? prefer, FeaturedOffer? featuredOffer, }) async {
     // ignore: prefer_const_declarations
     final path = r'/featured_offer';
 
@@ -377,8 +409,14 @@ class FeaturedOfferApi {
     if (voucherCode != null) {
       queryParams.addAll(_queryParams('', 'voucher_code', voucherCode));
     }
-    if (expiry != null) {
-      queryParams.addAll(_queryParams('', 'expiry', expiry));
+    if (startDate != null) {
+      queryParams.addAll(_queryParams('', 'start_date', startDate));
+    }
+    if (expiryDate != null) {
+      queryParams.addAll(_queryParams('', 'expiry_date', expiryDate));
+    }
+    if (percentageDiscount != null) {
+      queryParams.addAll(_queryParams('', 'percentage_discount', percentageDiscount));
     }
     if (details != null) {
       queryParams.addAll(_queryParams('', 'details', details));
@@ -428,7 +466,11 @@ class FeaturedOfferApi {
   ///
   /// * [String] voucherCode:
   ///
-  /// * [String] expiry:
+  /// * [String] startDate:
+  ///
+  /// * [String] expiryDate:
+  ///
+  /// * [String] percentageDiscount:
   ///
   /// * [String] details:
   ///
@@ -449,8 +491,8 @@ class FeaturedOfferApi {
   ///
   /// * [FeaturedOffer] featuredOffer:
   ///   featured_offer
-  Future<void> featuredOfferPatch({ String? id, String? title, String? voucherCode, String? expiry, String? details, String? description, String? redemptionPeriod, String? howToRedeem, String? isGlobal, String? imageUrl, String? establishmentId, String? prefer, FeaturedOffer? featuredOffer, }) async {
-    final response = await featuredOfferPatchWithHttpInfo( id: id, title: title, voucherCode: voucherCode, expiry: expiry, details: details, description: description, redemptionPeriod: redemptionPeriod, howToRedeem: howToRedeem, isGlobal: isGlobal, imageUrl: imageUrl, establishmentId: establishmentId, prefer: prefer, featuredOffer: featuredOffer, );
+  Future<void> featuredOfferPatch({ String? id, String? title, String? voucherCode, String? startDate, String? expiryDate, String? percentageDiscount, String? details, String? description, String? redemptionPeriod, String? howToRedeem, String? isGlobal, String? imageUrl, String? establishmentId, String? prefer, FeaturedOffer? featuredOffer, }) async {
+    final response = await featuredOfferPatchWithHttpInfo( id: id, title: title, voucherCode: voucherCode, startDate: startDate, expiryDate: expiryDate, percentageDiscount: percentageDiscount, details: details, description: description, redemptionPeriod: redemptionPeriod, howToRedeem: howToRedeem, isGlobal: isGlobal, imageUrl: imageUrl, establishmentId: establishmentId, prefer: prefer, featuredOffer: featuredOffer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

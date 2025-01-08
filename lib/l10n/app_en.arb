@@ -133,5 +133,14 @@
     "open": "Open",
     "closed": "Closed",
 
+    "buyAndUseNow": "Buy and use now",
+    "expiryDate": "Expiry Date",
+    "description": "Description",
+    "howToRedeem": "How to Redeem",
+    "establishmentInfo": "Establishment Info",
+
+    "publishedAReview": "Published a review",
+    "bookmarkedItems": "Bookmarked {num} Items",
+    "viewAll": "View All",
     "empty":"empty"
 }

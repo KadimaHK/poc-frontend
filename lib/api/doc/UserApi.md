@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **userDelete**
-> userDelete(id, uuid, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, points, pointsExpiry, verified, createdAt, updatedAt, prefer)
+> userDelete(id, uuid, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, bookmarkCount, reviewCount, photoCount, points, pointsExpiry, verified, createdAt, updatedAt, prefer)
 
 
 
@@ -40,6 +40,9 @@ final gender = gender_example; // String |
 final description = description_example; // String | 
 final followingCount = followingCount_example; // String | 
 final followerCount = followerCount_example; // String | 
+final bookmarkCount = bookmarkCount_example; // String | 
+final reviewCount = reviewCount_example; // String | 
+final photoCount = photoCount_example; // String | 
 final points = points_example; // String | 
 final pointsExpiry = pointsExpiry_example; // String | 
 final verified = verified_example; // String | 
@@ -48,7 +51,7 @@ final updatedAt = updatedAt_example; // String |
 final prefer = prefer_example; // String | Preference
 
 try {
-    api_instance.userDelete(id, uuid, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, points, pointsExpiry, verified, createdAt, updatedAt, prefer);
+    api_instance.userDelete(id, uuid, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, bookmarkCount, reviewCount, photoCount, points, pointsExpiry, verified, createdAt, updatedAt, prefer);
 } catch (e) {
     print('Exception when calling UserApi->userDelete: $e\n');
 }
@@ -69,6 +72,9 @@ Name | Type | Description  | Notes
  **description** | **String**|  | [optional] 
  **followingCount** | **String**|  | [optional] 
  **followerCount** | **String**|  | [optional] 
+ **bookmarkCount** | **String**|  | [optional] 
+ **reviewCount** | **String**|  | [optional] 
+ **photoCount** | **String**|  | [optional] 
  **points** | **String**|  | [optional] 
  **pointsExpiry** | **String**|  | [optional] 
  **verified** | **String**|  | [optional] 
@@ -92,7 +98,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **userGet**
-> List<User> userGet(id, uuid, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, points, pointsExpiry, verified, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer)
+> List<User> userGet(id, uuid, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, bookmarkCount, reviewCount, photoCount, points, pointsExpiry, verified, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer)
 
 
 
@@ -116,6 +122,9 @@ final gender = gender_example; // String |
 final description = description_example; // String | 
 final followingCount = followingCount_example; // String | 
 final followerCount = followerCount_example; // String | 
+final bookmarkCount = bookmarkCount_example; // String | 
+final reviewCount = reviewCount_example; // String | 
+final photoCount = photoCount_example; // String | 
 final points = points_example; // String | 
 final pointsExpiry = pointsExpiry_example; // String | 
 final verified = verified_example; // String | 
@@ -130,7 +139,7 @@ final limit = limit_example; // String | Limiting and Pagination
 final prefer = prefer_example; // String | Preference
 
 try {
-    final result = api_instance.userGet(id, uuid, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, points, pointsExpiry, verified, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer);
+    final result = api_instance.userGet(id, uuid, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, bookmarkCount, reviewCount, photoCount, points, pointsExpiry, verified, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer);
     print(result);
 } catch (e) {
     print('Exception when calling UserApi->userGet: $e\n');
@@ -152,6 +161,9 @@ Name | Type | Description  | Notes
  **description** | **String**|  | [optional] 
  **followingCount** | **String**|  | [optional] 
  **followerCount** | **String**|  | [optional] 
+ **bookmarkCount** | **String**|  | [optional] 
+ **reviewCount** | **String**|  | [optional] 
+ **photoCount** | **String**|  | [optional] 
  **points** | **String**|  | [optional] 
  **pointsExpiry** | **String**|  | [optional] 
  **verified** | **String**|  | [optional] 
@@ -181,7 +193,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **userPatch**
-> userPatch(id, uuid, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, points, pointsExpiry, verified, createdAt, updatedAt, prefer, user)
+> userPatch(id, uuid, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, bookmarkCount, reviewCount, photoCount, points, pointsExpiry, verified, createdAt, updatedAt, prefer, user)
 
 
 
@@ -205,6 +217,9 @@ final gender = gender_example; // String |
 final description = description_example; // String | 
 final followingCount = followingCount_example; // String | 
 final followerCount = followerCount_example; // String | 
+final bookmarkCount = bookmarkCount_example; // String | 
+final reviewCount = reviewCount_example; // String | 
+final photoCount = photoCount_example; // String | 
 final points = points_example; // String | 
 final pointsExpiry = pointsExpiry_example; // String | 
 final verified = verified_example; // String | 
@@ -214,7 +229,7 @@ final prefer = prefer_example; // String | Preference
 final user = User(); // User | user
 
 try {
-    api_instance.userPatch(id, uuid, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, points, pointsExpiry, verified, createdAt, updatedAt, prefer, user);
+    api_instance.userPatch(id, uuid, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, bookmarkCount, reviewCount, photoCount, points, pointsExpiry, verified, createdAt, updatedAt, prefer, user);
 } catch (e) {
     print('Exception when calling UserApi->userPatch: $e\n');
 }
@@ -235,6 +250,9 @@ Name | Type | Description  | Notes
  **description** | **String**|  | [optional] 
  **followingCount** | **String**|  | [optional] 
  **followerCount** | **String**|  | [optional] 
+ **bookmarkCount** | **String**|  | [optional] 
+ **reviewCount** | **String**|  | [optional] 
+ **photoCount** | **String**|  | [optional] 
  **points** | **String**|  | [optional] 
  **pointsExpiry** | **String**|  | [optional] 
  **verified** | **String**|  | [optional] 

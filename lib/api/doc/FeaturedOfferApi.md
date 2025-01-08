@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **featuredOfferDelete**
-> featuredOfferDelete(id, title, voucherCode, expiry, details, description, redemptionPeriod, howToRedeem, isGlobal, imageUrl, establishmentId, prefer)
+> featuredOfferDelete(id, title, voucherCode, startDate, expiryDate, percentageDiscount, details, description, redemptionPeriod, howToRedeem, isGlobal, imageUrl, establishmentId, prefer)
 
 
 
@@ -32,7 +32,9 @@ final api_instance = FeaturedOfferApi();
 final id = id_example; // String | 
 final title = title_example; // String | 
 final voucherCode = voucherCode_example; // String | 
-final expiry = expiry_example; // String | 
+final startDate = startDate_example; // String | 
+final expiryDate = expiryDate_example; // String | 
+final percentageDiscount = percentageDiscount_example; // String | 
 final details = details_example; // String | 
 final description = description_example; // String | 
 final redemptionPeriod = redemptionPeriod_example; // String | 
@@ -43,7 +45,7 @@ final establishmentId = establishmentId_example; // String |
 final prefer = prefer_example; // String | Preference
 
 try {
-    api_instance.featuredOfferDelete(id, title, voucherCode, expiry, details, description, redemptionPeriod, howToRedeem, isGlobal, imageUrl, establishmentId, prefer);
+    api_instance.featuredOfferDelete(id, title, voucherCode, startDate, expiryDate, percentageDiscount, details, description, redemptionPeriod, howToRedeem, isGlobal, imageUrl, establishmentId, prefer);
 } catch (e) {
     print('Exception when calling FeaturedOfferApi->featuredOfferDelete: $e\n');
 }
@@ -56,7 +58,9 @@ Name | Type | Description  | Notes
  **id** | **String**|  | [optional] 
  **title** | **String**|  | [optional] 
  **voucherCode** | **String**|  | [optional] 
- **expiry** | **String**|  | [optional] 
+ **startDate** | **String**|  | [optional] 
+ **expiryDate** | **String**|  | [optional] 
+ **percentageDiscount** | **String**|  | [optional] 
  **details** | **String**|  | [optional] 
  **description** | **String**|  | [optional] 
  **redemptionPeriod** | **String**|  | [optional] 
@@ -82,7 +86,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **featuredOfferGet**
-> List<FeaturedOffer> featuredOfferGet(id, title, voucherCode, expiry, details, description, redemptionPeriod, howToRedeem, isGlobal, imageUrl, establishmentId, select, order, range, rangeUnit, offset, limit, prefer)
+> List<FeaturedOffer> featuredOfferGet(id, title, voucherCode, startDate, expiryDate, percentageDiscount, details, description, redemptionPeriod, howToRedeem, isGlobal, imageUrl, establishmentId, select, order, range, rangeUnit, offset, limit, prefer)
 
 
 
@@ -98,7 +102,9 @@ final api_instance = FeaturedOfferApi();
 final id = id_example; // String | 
 final title = title_example; // String | 
 final voucherCode = voucherCode_example; // String | 
-final expiry = expiry_example; // String | 
+final startDate = startDate_example; // String | 
+final expiryDate = expiryDate_example; // String | 
+final percentageDiscount = percentageDiscount_example; // String | 
 final details = details_example; // String | 
 final description = description_example; // String | 
 final redemptionPeriod = redemptionPeriod_example; // String | 
@@ -115,7 +121,7 @@ final limit = limit_example; // String | Limiting and Pagination
 final prefer = prefer_example; // String | Preference
 
 try {
-    final result = api_instance.featuredOfferGet(id, title, voucherCode, expiry, details, description, redemptionPeriod, howToRedeem, isGlobal, imageUrl, establishmentId, select, order, range, rangeUnit, offset, limit, prefer);
+    final result = api_instance.featuredOfferGet(id, title, voucherCode, startDate, expiryDate, percentageDiscount, details, description, redemptionPeriod, howToRedeem, isGlobal, imageUrl, establishmentId, select, order, range, rangeUnit, offset, limit, prefer);
     print(result);
 } catch (e) {
     print('Exception when calling FeaturedOfferApi->featuredOfferGet: $e\n');
@@ -129,7 +135,9 @@ Name | Type | Description  | Notes
  **id** | **String**|  | [optional] 
  **title** | **String**|  | [optional] 
  **voucherCode** | **String**|  | [optional] 
- **expiry** | **String**|  | [optional] 
+ **startDate** | **String**|  | [optional] 
+ **expiryDate** | **String**|  | [optional] 
+ **percentageDiscount** | **String**|  | [optional] 
  **details** | **String**|  | [optional] 
  **description** | **String**|  | [optional] 
  **redemptionPeriod** | **String**|  | [optional] 
@@ -161,7 +169,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **featuredOfferPatch**
-> featuredOfferPatch(id, title, voucherCode, expiry, details, description, redemptionPeriod, howToRedeem, isGlobal, imageUrl, establishmentId, prefer, featuredOffer)
+> featuredOfferPatch(id, title, voucherCode, startDate, expiryDate, percentageDiscount, details, description, redemptionPeriod, howToRedeem, isGlobal, imageUrl, establishmentId, prefer, featuredOffer)
 
 
 
@@ -177,7 +185,9 @@ final api_instance = FeaturedOfferApi();
 final id = id_example; // String | 
 final title = title_example; // String | 
 final voucherCode = voucherCode_example; // String | 
-final expiry = expiry_example; // String | 
+final startDate = startDate_example; // String | 
+final expiryDate = expiryDate_example; // String | 
+final percentageDiscount = percentageDiscount_example; // String | 
 final details = details_example; // String | 
 final description = description_example; // String | 
 final redemptionPeriod = redemptionPeriod_example; // String | 
@@ -189,7 +199,7 @@ final prefer = prefer_example; // String | Preference
 final featuredOffer = FeaturedOffer(); // FeaturedOffer | featured_offer
 
 try {
-    api_instance.featuredOfferPatch(id, title, voucherCode, expiry, details, description, redemptionPeriod, howToRedeem, isGlobal, imageUrl, establishmentId, prefer, featuredOffer);
+    api_instance.featuredOfferPatch(id, title, voucherCode, startDate, expiryDate, percentageDiscount, details, description, redemptionPeriod, howToRedeem, isGlobal, imageUrl, establishmentId, prefer, featuredOffer);
 } catch (e) {
     print('Exception when calling FeaturedOfferApi->featuredOfferPatch: $e\n');
 }
@@ -202,7 +212,9 @@ Name | Type | Description  | Notes
  **id** | **String**|  | [optional] 
  **title** | **String**|  | [optional] 
  **voucherCode** | **String**|  | [optional] 
- **expiry** | **String**|  | [optional] 
+ **startDate** | **String**|  | [optional] 
+ **expiryDate** | **String**|  | [optional] 
+ **percentageDiscount** | **String**|  | [optional] 
  **details** | **String**|  | [optional] 
  **description** | **String**|  | [optional] 
  **redemptionPeriod** | **String**|  | [optional] 

@@ -45,12 +45,7 @@ class _FeaturedOffersPageState extends State<FeaturedOffersPage> with SingleTick
     return Scaffold(
       appBar: AppBar(
         title: Text(t.featuredOffers),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        leading: BackButton(),
       ),
       body: Column(
         children: [

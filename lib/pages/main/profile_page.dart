@@ -121,7 +121,7 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
                 children: [
                   UserMembershipCard(user: user!),
                   SizedBox(height: 10),
-                  Text(t.earnPointsToRenewMembershipDesc('${user?.points!}', user?.pointsExpiry?.substring(0, 10) ?? '', '3000')),
+                  Text(t.earnPointsToRenewMembershipDesc('${user?.points!}', user?.pointsExpiry.substring(0, 10) ?? '', '3000')),
                   SizedBox(height: 10),
                   LinearProgressIndicator(
                     value: user!.points! / 3000,
@@ -130,8 +130,8 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
                   ),
                   SizedBox(height: 10),
                   Text(t.membershipRemainingDays(
-                    user!.pointsExpiry?.substring(0, 10) ?? '',
-                    DateTime.parse(user!.pointsExpiry!).difference(DateTime.now()).inDays.toString(),
+                    user!.pointsExpiry.substring(0, 10),
+                    DateTime.parse(user!.pointsExpiry).difference(DateTime.now()).inDays.toString(),
                     (3000 - user!.points!).toString(),
                   )),
                   Text(t.learnMore),
@@ -176,19 +176,19 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
                         controller: _tabController,
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),
             SizedBox(
-              height: 200,
+              height: 500,
               child: TabBarView(
                 controller: _tabController,
                 children: [
-                  Text('Overview'),
+                  _Overview(user: user),
                   _Bookmarks(),
                   _Reviews(),
-                  Text('Photos'),
+                  _Photos(),
                 ],
               ),
             )
@@ -201,7 +201,7 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
 
 class _Description extends StatelessWidget {
   final String description;
-  const _Description({required this.description, super.key});
+  const _Description({required this.description});
   @override
   Widget build(BuildContext context) {
     return Text(description);
@@ -209,7 +209,7 @@ class _Description extends StatelessWidget {
 }
 
 class _Reviews extends StatefulWidget {
-  const _Reviews({super.key});
+  const _Reviews();
   @override
   State<_Reviews> createState() => _ReviewsState();
 }
@@ -246,16 +246,15 @@ class _ReviewsState extends State<_Reviews> {
 }
 
 class _ReviewComponent extends StatefulWidget {
+  const _ReviewComponent({required this.review});
   final api.Review review;
-  const _ReviewComponent({required this.review, super.key});
+
   @override
   State<_ReviewComponent> createState() => _ReviewComponentState();
 }
 
 class _ReviewComponentState extends State<_ReviewComponent> {
   List<api.ReviewImage> images = [];
-
-  // api.Establishment? establishment;
   String? establishment;
   @override
   void initState() {
@@ -264,12 +263,16 @@ class _ReviewComponentState extends State<_ReviewComponent> {
   }
 
   void fetchData() async {
-    final images = await api.ReviewImageApi(MyApp.sessionApiClient).reviewImageGet(reviewId: 'eq.${widget.review.id}');
-    final establishment = (await api.EstablishmentApi().establishmentGet(id: 'eq.${widget.review.establishmentId}'))?[0].name ?? '';
-    setState(() {
-      this.images = images!;
-      this.establishment = establishment;
-    });
+    try {
+      final images = await api.ReviewImageApi(MyApp.sessionApiClient).reviewImageGet(reviewId: 'eq.${widget.review.id}');
+      final establishment = (await api.EstablishmentApi().establishmentGet(id: 'eq.${widget.review.establishmentId}'))?[0].name ?? '';
+      setState(() {
+        this.images = images!;
+        this.establishment = establishment;
+      });
+    } on api.ApiException catch (e) {
+      apiErrorHandler(e);
+    }
   }
 
   @override
@@ -293,18 +296,18 @@ class _ReviewComponentState extends State<_ReviewComponent> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               mainAxisSize: MainAxisSize.max,
               children: [
-                Text(widget.review.title!),
+                Text(widget.review.description ?? ''),
                 SizedBox(
                   width: 100,
                   child: LinearProgressIndicator(
-                    value: widget.review.rating! / 5,
+                    value: (widget.review.rating ?? 0) / 5,
                     minHeight: 7,
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
               ],
             ),
-            Text(widget.review.description!),
+            Text(widget.review.description ?? ''),
             SizedBox(height: 10),
             SizedBox(
               height: 100,
@@ -338,7 +341,7 @@ class _ReviewComponentState extends State<_ReviewComponent> {
 class _BookmarkComponent extends StatefulWidget {
   const _BookmarkComponent({required this.bookmark});
 
-  final api.UserEstablishmentBookmark bookmark;
+  final api.UserEstablishmentBookmark? bookmark;
 
   @override
   State<_BookmarkComponent> createState() => _BookmarkComponentState();
@@ -353,7 +356,7 @@ class _BookmarkComponentState extends State<_BookmarkComponent> {
   }
 
   void fetchData() async {
-    final establishment = (await api.EstablishmentApi().establishmentGet(id: 'eq.${widget.bookmark.establishmentId}'))?[0];
+    final establishment = (await api.EstablishmentApi().establishmentGet(id: 'eq.${widget.bookmark?.establishmentId}'))?[0];
     setState(() {
       this.establishment = establishment;
     });
@@ -364,15 +367,13 @@ class _BookmarkComponentState extends State<_BookmarkComponent> {
     return ListTile(
       title: Text(establishment?.name ?? ''),
       subtitle: Text(establishment?.description ?? ''),
-      leading: 
-      
-      CachedNetworkImage(
+      leading: CachedNetworkImage(
         imageUrl: establishment?.thumbnailUrl ?? '',
         width: 50,
         height: 50,
         errorWidget: (context, url, error) => Icon(Icons.error),
       ),
-      trailing: IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios_sharp)),
+      trailing: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward_ios_sharp)),
       onTap: () {
         Navigator.pushNamed(context, EstablishmentProfilePage.routeName, arguments: establishment);
       },
@@ -381,7 +382,7 @@ class _BookmarkComponentState extends State<_BookmarkComponent> {
 }
 
 class _Bookmarks extends StatefulWidget {
-  const _Bookmarks({super.key});
+  const _Bookmarks();
   @override
   State<_Bookmarks> createState() => _BookmarksState();
 }
@@ -413,6 +414,105 @@ class _BookmarksState extends State<_Bookmarks> {
         );
       },
       itemCount: bookmarks.length,
+    );
+  }
+}
+
+class _Overview extends StatefulWidget {
+  const _Overview({required this.user});
+  final api.User? user;
+  @override
+  State<_Overview> createState() => _OverviewState();
+}
+
+class _OverviewState extends State<_Overview> {
+  api.UserEstablishmentBookmark? bookmark;
+
+  api.Review? review;
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  void fetchData() async {
+    final bookmarks = await api.UserEstablishmentBookmarkApi(MyApp.sessionApiClient).userEstablishmentBookmarkGet(order: 'created_at.desc', limit: '1');
+    final reviews = await api.ReviewApi(MyApp.sessionApiClient).reviewGet(order: 'created_at.desc', limit: '1');
+    setState(() {
+      bookmark = bookmarks?[0];
+      review = reviews?[0];
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Text(t.publishedAReview),
+            Text(bookmark?.createdAt.substring(0, 10) ?? ''),
+          ],
+        ),
+        if (review != null) _ReviewComponent(review: review!),
+        if (bookmark != null)
+          Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(t.bookmarkedItems(widget.user?.bookmarkCount ?? 0)),
+                  Text(bookmark?.createdAt.substring(0, 10) ?? ''),
+                ],
+              ),
+              ListView(
+                children: [
+                  _BookmarkComponent(bookmark: bookmark),
+                ],
+              ),
+              TextButtonNoBackground(text: t.viewAll, onPressed: () {}),
+            ],
+          )
+      ],
+    );
+  }
+}
+
+class _Photos extends StatefulWidget {
+  const _Photos();
+  @override
+  State<_Photos> createState() => _PhotosState();
+}
+
+class _PhotosState extends State<_Photos> {
+  List<api.ReviewImage> images = [];
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  void fetchData() async {
+    final images = await api.ReviewImageApi(MyApp.sessionApiClient).reviewImageGet();
+    setState(() {
+      this.images = images!;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+      ),
+      itemBuilder: (context, index) {
+        return Image.network(images[index].imageUrl!);
+      },
+      itemCount: images.length,
     );
   }
 }
