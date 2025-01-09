@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **reviewId** | **int** | Note: This is a Foreign Key to `review.id`.<fk table='review' column='id'/> | [optional] 
 **imageUrl** | **String** | Note: This is a Foreign Key to `image.image_url`.<fk table='image' column='image_url'/> | [optional] 
 **description** | **String** |  | [optional] 
+**itemName** | **String** |  | [optional] 
 **price** | **num** |  | [optional] 
 **type** | **String** |  | [optional] 
 

@@ -153,7 +153,7 @@ class EstablishmentMenu {
         id: mapValueOfType<int>(json, r'id')!,
         name: mapValueOfType<String>(json, r'name'),
         description: mapValueOfType<String>(json, r'description'),
-        price: num.parse('${json[r'price']}'),
+        price: num.tryParse('${json[r'price']}'),
         establishmentId: mapValueOfType<int>(json, r'establishment_id'),
         menuCategoryId: mapValueOfType<int>(json, r'menu_category_id'),
         createdAt: mapValueOfType<String>(json, r'created_at') ?? 'now()',

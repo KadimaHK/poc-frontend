@@ -27,13 +27,15 @@ class ReviewImageApi {
   ///
   /// * [String] description:
   ///
+  /// * [String] itemName:
+  ///
   /// * [String] price:
   ///
   /// * [String] type:
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> reviewImageDeleteWithHttpInfo({ String? id, String? reviewId, String? imageUrl, String? description, String? price, String? type, String? prefer, }) async {
+  Future<Response> reviewImageDeleteWithHttpInfo({ String? id, String? reviewId, String? imageUrl, String? description, String? itemName, String? price, String? type, String? prefer, }) async {
     // ignore: prefer_const_declarations
     final path = r'/review_image';
 
@@ -55,6 +57,9 @@ class ReviewImageApi {
     }
     if (description != null) {
       queryParams.addAll(_queryParams('', 'description', description));
+    }
+    if (itemName != null) {
+      queryParams.addAll(_queryParams('', 'item_name', itemName));
     }
     if (price != null) {
       queryParams.addAll(_queryParams('', 'price', price));
@@ -91,14 +96,16 @@ class ReviewImageApi {
   ///
   /// * [String] description:
   ///
+  /// * [String] itemName:
+  ///
   /// * [String] price:
   ///
   /// * [String] type:
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> reviewImageDelete({ String? id, String? reviewId, String? imageUrl, String? description, String? price, String? type, String? prefer, }) async {
-    final response = await reviewImageDeleteWithHttpInfo( id: id, reviewId: reviewId, imageUrl: imageUrl, description: description, price: price, type: type, prefer: prefer, );
+  Future<void> reviewImageDelete({ String? id, String? reviewId, String? imageUrl, String? description, String? itemName, String? price, String? type, String? prefer, }) async {
+    final response = await reviewImageDeleteWithHttpInfo( id: id, reviewId: reviewId, imageUrl: imageUrl, description: description, itemName: itemName, price: price, type: type, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -114,6 +121,8 @@ class ReviewImageApi {
   /// * [String] imageUrl:
   ///
   /// * [String] description:
+  ///
+  /// * [String] itemName:
   ///
   /// * [String] price:
   ///
@@ -139,7 +148,7 @@ class ReviewImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> reviewImageGetWithHttpInfo({ String? id, String? reviewId, String? imageUrl, String? description, String? price, String? type, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> reviewImageGetWithHttpInfo({ String? id, String? reviewId, String? imageUrl, String? description, String? itemName, String? price, String? type, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
     // ignore: prefer_const_declarations
     final path = r'/review_image';
 
@@ -161,6 +170,9 @@ class ReviewImageApi {
     }
     if (description != null) {
       queryParams.addAll(_queryParams('', 'description', description));
+    }
+    if (itemName != null) {
+      queryParams.addAll(_queryParams('', 'item_name', itemName));
     }
     if (price != null) {
       queryParams.addAll(_queryParams('', 'price', price));
@@ -215,6 +227,8 @@ class ReviewImageApi {
   ///
   /// * [String] description:
   ///
+  /// * [String] itemName:
+  ///
   /// * [String] price:
   ///
   /// * [String] type:
@@ -239,8 +253,8 @@ class ReviewImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<ReviewImage>?> reviewImageGet({ String? id, String? reviewId, String? imageUrl, String? description, String? price, String? type, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await reviewImageGetWithHttpInfo( id: id, reviewId: reviewId, imageUrl: imageUrl, description: description, price: price, type: type, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<ReviewImage>?> reviewImageGet({ String? id, String? reviewId, String? imageUrl, String? description, String? itemName, String? price, String? type, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+    final response = await reviewImageGetWithHttpInfo( id: id, reviewId: reviewId, imageUrl: imageUrl, description: description, itemName: itemName, price: price, type: type, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -268,6 +282,8 @@ class ReviewImageApi {
   ///
   /// * [String] description:
   ///
+  /// * [String] itemName:
+  ///
   /// * [String] price:
   ///
   /// * [String] type:
@@ -277,7 +293,7 @@ class ReviewImageApi {
   ///
   /// * [ReviewImage] reviewImage:
   ///   review_image
-  Future<Response> reviewImagePatchWithHttpInfo({ String? id, String? reviewId, String? imageUrl, String? description, String? price, String? type, String? prefer, ReviewImage? reviewImage, }) async {
+  Future<Response> reviewImagePatchWithHttpInfo({ String? id, String? reviewId, String? imageUrl, String? description, String? itemName, String? price, String? type, String? prefer, ReviewImage? reviewImage, }) async {
     // ignore: prefer_const_declarations
     final path = r'/review_image';
 
@@ -299,6 +315,9 @@ class ReviewImageApi {
     }
     if (description != null) {
       queryParams.addAll(_queryParams('', 'description', description));
+    }
+    if (itemName != null) {
+      queryParams.addAll(_queryParams('', 'item_name', itemName));
     }
     if (price != null) {
       queryParams.addAll(_queryParams('', 'price', price));
@@ -335,6 +354,8 @@ class ReviewImageApi {
   ///
   /// * [String] description:
   ///
+  /// * [String] itemName:
+  ///
   /// * [String] price:
   ///
   /// * [String] type:
@@ -344,8 +365,8 @@ class ReviewImageApi {
   ///
   /// * [ReviewImage] reviewImage:
   ///   review_image
-  Future<void> reviewImagePatch({ String? id, String? reviewId, String? imageUrl, String? description, String? price, String? type, String? prefer, ReviewImage? reviewImage, }) async {
-    final response = await reviewImagePatchWithHttpInfo( id: id, reviewId: reviewId, imageUrl: imageUrl, description: description, price: price, type: type, prefer: prefer, reviewImage: reviewImage, );
+  Future<void> reviewImagePatch({ String? id, String? reviewId, String? imageUrl, String? description, String? itemName, String? price, String? type, String? prefer, ReviewImage? reviewImage, }) async {
+    final response = await reviewImagePatchWithHttpInfo( id: id, reviewId: reviewId, imageUrl: imageUrl, description: description, itemName: itemName, price: price, type: type, prefer: prefer, reviewImage: reviewImage, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

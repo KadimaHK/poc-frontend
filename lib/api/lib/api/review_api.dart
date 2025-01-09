@@ -421,7 +421,7 @@ class ReviewApi {
   ///   Limiting and Pagination
   ///
   /// * [String] limit:
-  ///   Limiting and Pagination 
+  ///   Limiting and Pagination
   ///
   /// * [String] prefer:
   ///   Preference

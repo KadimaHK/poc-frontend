@@ -255,7 +255,7 @@ class FeaturedOffer {
         voucherCode: mapValueOfType<String>(json, r'voucher_code'),
         startDate: mapValueOfType<String>(json, r'start_date'),
         expiryDate: mapValueOfType<String>(json, r'expiry_date'),
-        percentageDiscount: num.parse('${json[r'percentage_discount']}'),
+        percentageDiscount: num.tryParse('${json[r'percentage_discount']}'),
         details: mapValueOfType<String>(json, r'details'),
         description: mapValueOfType<String>(json, r'description'),
         redemptionPeriod: mapValueOfType<String>(json, r'redemption_period'),
