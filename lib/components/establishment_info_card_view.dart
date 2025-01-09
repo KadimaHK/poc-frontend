@@ -78,7 +78,7 @@ class _EstablishmentInfoCardViewState extends State<EstablishmentInfoCardView> {
                     Text(" ${establishment!.bookingPoints}"),
                     Text(" ${t.pointsPerSeat}"),
                     Spacer(),
-                    TextButton(onPressed: () => {}, child: Text(t.booking)),
+                    TextButton(onPressed: () => {}, child: Text(t.booking(''))),
                   ],
                 ),
               ],

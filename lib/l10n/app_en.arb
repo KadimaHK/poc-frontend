@@ -8,11 +8,15 @@
     "setting": "Setting",
     "logout": "Logout",
 
-    "bookings": "Bookings",
+    "booking": "{isPlural, select, s {Bookings} other {Booking}}",
+    "bookings": "{number, plural, =0 {No bookings} =1 {1 booking} other {{number} bookings}}",
     "showAllReservations": "Show all reservations.",
-    "storedLiqueurs": "Stored Liqueurs",
+    "storedLiqueur": "{isPlural, select, s {Stored Liqueurs} other {Stored Liqueur}}",
+    "storedLiqueurs": "{number, plural, =0 {No stored liqueurs} =1 {1 stored liqueur} other {{number} stored liqueurs}}",
     "recordAndShowDetailsOfYourStoredLiqueurs": "Record and show details of your stored liqueurs.",
-    "vouchers": "Vouchers",
+    "voucher": "{isPlural, select, s {Vouchers} other {Voucher}}",
+    "vouchers": "{number, plural, =0 {No vouchers} =1 {1 voucher} other {{number} vouchers}}",
+
     "showAllVouchers": "Show all vouchers.",
 
     "browsingHistory": "Browsing History",
@@ -32,22 +36,25 @@
 
     "order": "Order",
     "menu": "Menu",
-    "booking": "Booking",
     "contact": "Contact",
 
     "notice": "Notice",
-    "benefit": "Benefit",
-    "benefits": "Benefits",
-    "photos": "Photos",
+    "benefit": "{isPlural, select, s {Benefits} other {Benefit}}",
+    "benefits": "{number, plural, =0 {No benefits} =1 {1 benefit} other {{number} benefits}}",
+    "photos": "{isPlural, select, s {Photos} other {Photo}}",
+    "photos": "{number, plural, =0 {No photos} =1 {1 photo} other {{number} photos}}",
     "about": "About",
-    "ratings": "Ratings",
+    "rating": "{isPlural, select, s {Ratings} other {Rating}}",
+    "ratings": "{number, plural, =0 {No ratings} =1 {1 rating} other {{number} ratings}}",
     "relatedNews": "Related News",
     "suggestedBars": "Suggested Bars",
 
     "distance": "Distance",
     "location": "Location",
     "theme": "Theme",
-    "facilities": "Facilities",
+    "facility": "{isPlural, select, s {Facilities} other {Facility}}",
+    "facilities": "{number, plural, =0 {No facilities} =1 {1 facility} other {{number} facilities}}",
+
 
     "nearby": "Nearby",
     "featured": "Featured",
@@ -59,8 +66,8 @@
 
     "daysLeft": "Days Left",
     "dayLeft": "Day Left",
-
-    "featuredOffers": "Featured Offers",
+    "featuredOffer": "{isPlural, select, s {Featured Offers} other {Featured Offer}}",
+    "featuredOffers": "{number, plural, =0 {No featured offers} =1 {1 featured offer} other {{number} featured offers}}",
     "restaurantInfo": "Restaurant Info",
     "buy": "Buy",
     "earn": "Earn",
@@ -94,7 +101,8 @@
     "emailAlreadyInUse": "Email is already in use",
 
     "pleaseLoginToShowMoreFeatures": "Please log in to access additional features",
-    "followers": "Followers",
+    "follower": "{isPlural, select, s {Followers} other {Follower}}",
+    "followers": "{number, plural, =0 {No followers} =1 {1 follower} other {{number} followers}}",
     "following": "Following",
 
     "edit": "Edit",
@@ -103,7 +111,7 @@
     "pointExpiredDate": "Point Expired Date: {date}",
     "viewSummary": "View Summary",
     "earnPointsToRenewMembershipDesc": "Earn {currentPoints} / {requiredPoints} points by {expirationDate} to renew your membership",
-    "membershipRemainingDays": "{days} days remaining in membership. Earn {points} points by {date} through using various services to extend membership.",
+    "membershipRemainingDays": "{days,plural, =0 {0 day} =1 {1 day} other {{days} days}} remaining in membership. Earn {points} points by {date} through using various services to extend membership.",
     
     
     
@@ -114,15 +122,17 @@
     "exclusiveBenefit": "Exclusive Benefit",
 
     "overview": "Overview",
-    "bookmarks": "Bookmarks",
-    "reviews": "Reviews",
-    "photos": "Photos",
+    "bookmark": "{isPlural, select, s {Bookmarks} other {Bookmark}}",
+    "bookmarks": "{number, plural, =0 {No bookmarks} =1 {1 bookmark} other {{number} bookmarks}}",
+    "review": "{isPlural, select, s {Reviews} other {Review}}",
+    "reviews": "{number, plural, =0 {No reviews} =1 {1 review} other {{number} reviews}}",
+    "photo": "{isPlural, select, s {Photos} other {Photo}}",
+    "photos": "{number, plural, =0 {No photos} =1 {1 photo} other {{number} photos}}",
     "theAboveReviewIsThePersonalOpinionOfAUserWhichDoesNotRepresentPOCsPointOfView": "(The above review is the personal opinion of a user which does not represent POC’s point of view.)",
 
     "dateOfVisit": "Date of Visit",
     "spendingPerHead": "Spending per Head",
 
-    "review": "Review",
 
     "taste": "Taste",
     "decor": "Decor",
@@ -140,7 +150,7 @@
     "establishmentInfo": "Establishment Info",
 
     "publishedAReview": "Published a review",
-    "bookmarkedItems": "Bookmarked {num} Items",
+    "bookmarkedItems": "{number, plural, =0{No bookmarked items} =1{Bookmarked {number} item} other{Bookmarked {number} items}}",
     "viewAll": "View All",
 
     "myExclusiveBenefit": "My Exclusive Benefit",

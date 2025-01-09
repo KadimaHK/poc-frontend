@@ -46,7 +46,7 @@ class _FeaturedOffersPageState extends State<FeaturedOffersPage> with SingleTick
     final t = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: Text(t.featuredOffers),
+        title: Text(t.featuredOffer('s')),
         leading: BackButton(),
       ),
       body: Column(

@@ -78,17 +78,17 @@ class _HomePageState extends State<HomePage> {
                     ),
                     LabeledIconButton(
                       assetImagePath: 'assets/images/icon_menu_booking.png',
-                      label: t.bookings,
+                      label: t.booking('s'),
                       onPressed: () => {},
                     ),
                     LabeledIconButton(
                       assetImagePath: 'assets/images/icon_menu_benefit.png',
-                      label: t.benefit,
+                      label: t.benefit(''),
                       onPressed: () => {},
                     ),
                     LabeledIconButton(
                       assetImagePath: 'assets/images/icon_menu_store.png',
-                      label: t.storedLiqueurs,
+                      label: t.storedLiqueur('s'),
                       onPressed: () => {},
                     ),
                   ],
@@ -115,7 +115,7 @@ class _HomePageState extends State<HomePage> {
 
                 // Featured Offers
                 ListTile(
-                  title: Text(t.featuredOffers),
+                  title: Text(t.featuredOffer('s')),
                   trailing: Icon(Icons.arrow_forward_ios, size: 10),
                   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => FeaturedOffersPage())),
                 ),

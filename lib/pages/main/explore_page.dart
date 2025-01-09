@@ -61,7 +61,7 @@ class _ExplorePageState extends State<ExplorePage> {
                 onPressed: () => {},
               ),
               RawChip(
-                label: Text(t.facilities),
+                label: Text(t.facility('s')),
                 avatar: Icon(
                   Icons.arrow_drop_down,
                 ),

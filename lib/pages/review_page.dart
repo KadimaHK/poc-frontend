@@ -36,7 +36,7 @@ class _ReviewPageState extends State<ReviewPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(t.review),
+        title: Text(t.review('')),
         actions: [
           IconButton(
             icon: const Icon(Icons.share),

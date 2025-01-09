@@ -162,7 +162,7 @@ class _EstablishmentProfilePageState extends State<EstablishmentProfilePage> {
             children: [
               _EstablishmentIconButton(icon: Icons.qr_code_scanner, onPressed: () {}, label: t.order),
               _EstablishmentIconButton(icon: Icons.wine_bar_outlined, onPressed: () {}, label: t.menu),
-              _EstablishmentIconButton(icon: Icons.table_bar_outlined, onPressed: () {}, label: t.booking),
+              _EstablishmentIconButton(icon: Icons.table_bar_outlined, onPressed: () {}, label: t.booking('')),
               _EstablishmentIconButton(icon: Icons.phone_outlined, onPressed: () {}, label: t.contact),
             ],
           ),
@@ -202,7 +202,7 @@ class _EstablishmentProfilePageState extends State<EstablishmentProfilePage> {
         ),
 
         ListTile(
-          title: Text(t.benefits),
+          title: Text(t.benefit('s')),
           trailing: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
         ),
         Container(
@@ -220,7 +220,7 @@ class _EstablishmentProfilePageState extends State<EstablishmentProfilePage> {
         ),
         // Photos
         ListTile(
-          title: Text(t.photos),
+          title: Text(t.photo('s')),
           trailing: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
         ),
         Container(
@@ -283,7 +283,7 @@ class _EstablishmentProfilePageState extends State<EstablishmentProfilePage> {
         ),
         // Ratings
         ListTile(
-          title: Text(t.ratings),
+          title: Text(t.rating('s')),
           trailing: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
         ),
         Rating(rating: widget.establishment.rank!),

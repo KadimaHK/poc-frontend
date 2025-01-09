@@ -133,7 +133,7 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
                   SizedBox(height: 10),
                   Text(t.membershipRemainingDays(
                     user!.pointsExpiry.substring(0, 10),
-                    DateTime.parse(user!.pointsExpiry).difference(DateTime.now()).inDays.toString(),
+                    DateTime.parse(user!.pointsExpiry).difference(DateTime.now()).inDays,
                     (3000 - user!.points!).toString(),
                   )),
                   Text(t.learnMore),
@@ -145,12 +145,12 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
                       LabeledIconButton(
                         size: 50,
                         assetImagePath: 'assets/images/icon_menu_voucher.png',
-                        label: t.vouchers,
+                        label: t.voucher('s'),
                         onPressed: () {},
                       ),
                       LabeledIconButton(
                         assetImagePath: 'assets/images/icon_menu_booking.png',
-                        label: t.bookings,
+                        label: t.booking('s'),
                         onPressed: () {},
                       ),
                       LabeledIconButton(
@@ -160,7 +160,7 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
                       ),
                       LabeledIconButton(
                         assetImagePath: 'assets/images/icon_menu_store.png',
-                        label: t.storedLiqueurs,
+                        label: t.storedLiqueur('s'),
                         onPressed: () {},
                       ),
                     ],
@@ -171,9 +171,9 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
                       TabBar(
                         tabs: [
                           Tab(text: t.overview),
-                          Tab(text: t.bookmarks),
-                          Tab(text: t.reviews),
-                          Tab(text: t.photos),
+                          Tab(text: t.bookmark('s')),
+                          Tab(text: t.review('s')),
+                          Tab(text: t.photo('s')),
                         ],
                         controller: _tabController,
                       ),
