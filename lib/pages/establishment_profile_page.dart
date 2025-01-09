@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
 import 'package:poc_frontend/api/lib/api.dart' as api;
+import 'package:poc_frontend/pages/featured_detail_page.dart';
+import 'package:poc_frontend/pages/featured_offer_detail_page.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class EstablishmentProfilePage extends StatefulWidget {
@@ -18,9 +20,11 @@ class EstablishmentProfilePage extends StatefulWidget {
 class _EstablishmentProfilePageState extends State<EstablishmentProfilePage> {
   bool isOpening = false;
   api.EstablishmentOpeningHours? openingHours;
-  List<api.Benefit> benefits = [];
+  List<api.FeaturedOffer> benefits = [];
   List<api.EstablishmentImage> images = [];
   List<api.Review> reviews = [];
+
+  static const numOfReviews = 3;
 
   @override
   initState() {
@@ -28,43 +32,37 @@ class _EstablishmentProfilePageState extends State<EstablishmentProfilePage> {
     fetchIsOpen();
     fetchBenefits();
     fetchImages();
-    fetchReviews(1);
+    fetchReviews(numOfReviews);
   }
 
   void fetchReviews(int limit) async {
-    final reviews = (await api.ReviewApi().reviewGet(establishmentId: 'eq.${widget.establishment.id}', limit: limit.toString())) ?? [];
-    setState(() {
-      this.reviews = reviews;
-    });
+    reviews = (await api.ReviewApi().reviewGet(establishmentId: 'eq.${widget.establishment.id}', limit: limit.toString())) ?? [];
+    setState(() {});
   }
 
   void fetchImages() async {
-    final images = (await api.EstablishmentImageApi().establishmentImageGet(establishmentId: 'eq.${widget.establishment.id}')) ?? [];
-    setState(() {
-      this.images = images;
-    });
+    images = (await api.EstablishmentImageApi().establishmentImageGet(establishmentId: 'eq.${widget.establishment.id}')) ?? [];
+    setState(() {});
   }
 
   void fetchBenefits() async {
-    final establishmentBenefits = (await api.EstablishmentBenefitApi().establishmentBenefitGet(establishmentId: 'eq.${widget.establishment.id}')) ?? [];
-    final benefits = (await api.BenefitApi().benefitGet(id: 'in.(${establishmentBenefits.map((e) => e.benefitId).join(',')})')) ?? [];
-    setState(() {
-      this.benefits = benefits;
-    });
+    benefits = (await api.FeaturedOfferApi().featuredOfferGet(establishmentId: 'eq.${widget.establishment.id}')) ?? [];
+    setState(() {});
   }
 
   void fetchIsOpen() async {
     String day = DateFormat('EEEE').format(DateTime.now());
     final openingHoursRes = (await api.EstablishmentOpeningHoursApi().establishmentOpeningHoursGet(establishmentId: 'eq.${widget.establishment.id}', day: 'eq.${day.toLowerCase()}'));
     if (openingHoursRes == null || openingHoursRes.isEmpty) return;
-    setState(() {
-      // time format "23:59:59"
-      openingHours = openingHoursRes[0];
-      String currentTime = '${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}';
-      if (openingHours!.openTime!.compareTo(currentTime) <= 0 && openingHours!.closeTime!.compareTo(currentTime) >= 0) {
-        isOpening = true;
-      }
-    });
+
+    // time format "23:59:59"
+    openingHours = openingHoursRes.firstOrNull;
+    String currentTime = '${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}';
+    if (openingHours!.openTime!.compareTo(currentTime) <= 0 && openingHours!.closeTime!.compareTo(currentTime) >= 0) {
+      isOpening = true;
+    }
+
+    setState(() {});
   }
 
   @override
@@ -204,14 +202,13 @@ class _EstablishmentProfilePageState extends State<EstablishmentProfilePage> {
           child: ListView.separated(
             itemBuilder: (context, index) => SizedBox(
               width: 300,
-              child: _BenefitCard(benefit: benefits[index]),
+              child: BenefitCard(benefit: benefits[index]),
             ),
             separatorBuilder: (context, index) => const SizedBox(width: 10),
             itemCount: benefits.length,
             scrollDirection: Axis.horizontal,
           ),
         ),
-
         // Photos
         ListTile(
           title: Text(t.photos),
@@ -291,9 +288,6 @@ class _EstablishmentProfilePageState extends State<EstablishmentProfilePage> {
               ),
             )),
 
-
-
-
         ListTile(
           title: Text(t.relatedNews),
           trailing: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
@@ -343,59 +337,64 @@ class _EstablishmentIconButton extends StatelessWidget {
   }
 }
 
-class _BenefitCard extends StatelessWidget {
-  const _BenefitCard({required this.benefit});
-  final api.Benefit benefit;
+// TODO: is benefit card the same as featured offer card?
+class BenefitCard extends StatelessWidget {
+  const BenefitCard({super.key, required this.benefit});
+  final api.FeaturedOffer benefit;
+
   @override
   Widget build(BuildContext context) {
-    // return Text(benefit.name ?? '');
     final t = AppLocalizations.of(context)!;
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: GestureDetector(
-        onTap: () => {},
-        child: Card(
-          color: Colors.white,
-          child: Padding(
-            padding: const EdgeInsets.all(12),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Flexible(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.network(
-                      benefit.thumbnailUrl!,
-                      width: 100,
-                      height: 60,
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) => Placeholder(),
+    return SizedBox(
+        height: 100,
+        width: 300,
+        child: MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: GestureDetector(
+            onTap: () => Navigator.of(context).pushNamed(FeaturedOfferDetailPage.routeName, arguments: benefit),
+            child: Card(
+              color: Colors.white,
+              child: Padding(
+                padding: const EdgeInsets.all(12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Flexible(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.network(
+                          // benefit.thumbnailUrl!,
+                          benefit.imageUrl!,
+                          width: 100,
+                          height: 60,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) => Placeholder(),
+                        ),
+                      ),
                     ),
-                  ),
+                    SizedBox(width: 10),
+                    Flexible(
+                      flex: 2,
+                      child: Column(
+                        children: [
+                          Text(benefit.title ?? '', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
+                          Text(benefit.description ?? '', style: TextStyle(color: Colors.black)),
+                        ],
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Flexible(
+                      child: TextButton(
+                        onPressed: () {},
+                        style: ButtonStyle(backgroundColor: WidgetStateProperty.all(Colors.green)),
+                        child: Text(t.buy, style: TextStyle(color: Colors.white)),
+                      ),
+                    ),
+                  ],
                 ),
-                SizedBox(width: 10),
-                Flexible(
-                  flex: 2,
-                  child: Column(
-                    children: [
-                      Text(benefit.name ?? '', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
-                      Text(benefit.description ?? '', style: TextStyle(color: Colors.black)),
-                    ],
-                  ),
-                ),
-                SizedBox(width: 10),
-                Flexible(
-                  child: TextButton(
-                    onPressed: () {},
-                    style: ButtonStyle(backgroundColor: WidgetStateProperty.all(Colors.green)),
-                    child: Text(t.buy, style: TextStyle(color: Colors.white)),
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

@@ -16,6 +16,7 @@ import 'package:poc_frontend/pages/establishment_profile_page.dart';
 import 'package:poc_frontend/pages/login_page.dart';
 import 'package:poc_frontend/api/lib/api.dart' as api;
 import 'package:http/src/client.dart';
+import 'package:poc_frontend/pages/my_exclusive_benefit_page.dart';
 import 'package:poc_frontend/pages/review_page.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -52,10 +53,8 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
   void fetchUser() async {
     try {
       final users = await api.UserApi(MyApp.sessionApiClient).userGet();
-      final user = users != null && users.isNotEmpty ? users[0] : null;
-      setState(() {
-        this.user = user;
-      });
+      user = users!.firstOrNull;
+      setState(() {});
     } on api.ApiException catch (e) {
       apiErrorHandler(e);
     }
@@ -154,7 +153,7 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
                       LabeledIconButton(
                         assetImagePath: 'assets/images/icon_menu_benefit.png',
                         label: t.exclusiveBenefit,
-                        onPressed: () {},
+                        onPressed: () => Navigator.pushNamed(context, MyExclusiveBenefitPage.routeName, arguments: user!),
                       ),
                       LabeledIconButton(
                         assetImagePath: 'assets/images/icon_menu_store.png',
@@ -223,10 +222,8 @@ class _ReviewsState extends State<_Reviews> {
   }
 
   void fetchData() async {
-    final reviews = await api.ReviewApi(MyApp.sessionApiClient).reviewGet();
-    setState(() {
-      this.reviews = reviews!;
-    });
+    reviews = (await api.ReviewApi(MyApp.sessionApiClient).reviewGet())!;
+    setState(() {});
   }
 
   @override
@@ -264,12 +261,9 @@ class _ReviewComponentState extends State<_ReviewComponent> {
 
   void fetchData() async {
     try {
-      final images = await api.ReviewImageApi(MyApp.sessionApiClient).reviewImageGet(reviewId: 'eq.${widget.review.id}');
-      final establishment = (await api.EstablishmentApi().establishmentGet(id: 'eq.${widget.review.establishmentId}'))?[0].name ?? '';
-      setState(() {
-        this.images = images!;
-        this.establishment = establishment;
-      });
+      images = (await api.ReviewImageApi(MyApp.sessionApiClient).reviewImageGet(reviewId: 'eq.${widget.review.id}'))!;
+      establishment = (await api.EstablishmentApi().establishmentGet(id: 'eq.${widget.review.establishmentId}'))?.firstOrNull?.name ?? '';
+      setState(() {});
     } on api.ApiException catch (e) {
       apiErrorHandler(e);
     }
@@ -356,10 +350,8 @@ class _BookmarkComponentState extends State<_BookmarkComponent> {
   }
 
   void fetchData() async {
-    final establishment = (await api.EstablishmentApi().establishmentGet(id: 'eq.${widget.bookmark?.establishmentId}'))?[0];
-    setState(() {
-      this.establishment = establishment;
-    });
+    establishment = (await api.EstablishmentApi().establishmentGet(id: 'eq.${widget.bookmark?.establishmentId}'))!.firstOrNull;
+    setState(() {});
   }
 
   @override
@@ -396,10 +388,8 @@ class _BookmarksState extends State<_Bookmarks> {
   }
 
   void fetchData() async {
-    final bookmarks = await api.UserEstablishmentBookmarkApi(MyApp.sessionApiClient).userEstablishmentBookmarkGet();
-    setState(() {
-      this.bookmarks = bookmarks!;
-    });
+    bookmarks = (await api.UserEstablishmentBookmarkApi(MyApp.sessionApiClient).userEstablishmentBookmarkGet())!;
+    setState(() {});
   }
 
   @override
@@ -438,10 +428,15 @@ class _OverviewState extends State<_Overview> {
   void fetchData() async {
     final bookmarks = await api.UserEstablishmentBookmarkApi(MyApp.sessionApiClient).userEstablishmentBookmarkGet(order: 'created_at.desc', limit: '1');
     final reviews = await api.ReviewApi(MyApp.sessionApiClient).reviewGet(order: 'created_at.desc', limit: '1');
-    setState(() {
-      bookmark = bookmarks?[0];
-      review = reviews?[0];
-    });
+
+    if (bookmarks!.isEmpty || reviews!.isEmpty) {
+      return;
+    }
+
+    bookmark = bookmarks.firstOrNull;
+    review = reviews.firstOrNull;
+
+    setState(() {});
   }
 
   @override
@@ -467,11 +462,7 @@ class _OverviewState extends State<_Overview> {
                   Text(bookmark?.createdAt.substring(0, 10) ?? ''),
                 ],
               ),
-              ListView(
-                children: [
-                  _BookmarkComponent(bookmark: bookmark),
-                ],
-              ),
+              _BookmarkComponent(bookmark: bookmark),
               TextButtonNoBackground(text: t.viewAll, onPressed: () {}),
             ],
           )
@@ -495,10 +486,8 @@ class _PhotosState extends State<_Photos> {
   }
 
   void fetchData() async {
-    final images = await api.ReviewImageApi(MyApp.sessionApiClient).reviewImageGet();
-    setState(() {
-      this.images = images!;
-    });
+    images = (await api.ReviewImageApi(MyApp.sessionApiClient).reviewImageGet())!;
+    setState(() {});
   }
 
   @override

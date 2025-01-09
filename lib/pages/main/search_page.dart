@@ -65,21 +65,22 @@ class SearchCategoryButton extends StatelessWidget {
         gradient: LinearGradient(colors: [Colors.blue, Colors.blue.shade100], begin: Alignment.topCenter, end: Alignment.bottomCenter),
       ),
       child: ElevatedButton(
-          onPressed: () {
-            print(type);
-          },
-          style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)), backgroundColor: Colors.transparent, padding: EdgeInsets.all(20)),
-          child: Align(
-            alignment: Alignment.bottomLeft,
-            child: Text(
-              type,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+        onPressed: () {
+          print(type);
+        },
+        style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)), backgroundColor: Colors.transparent, padding: EdgeInsets.all(20)),
+        child: Align(
+          alignment: Alignment.bottomLeft,
+          child: Text(
+            type,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }

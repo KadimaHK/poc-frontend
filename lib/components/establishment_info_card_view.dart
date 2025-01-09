@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:poc_frontend/api/lib/api.dart' as api;
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:poc_frontend/pages/establishment_profile_page.dart';
 
 class EstablishmentInfoCardView extends StatefulWidget {
   const EstablishmentInfoCardView({
@@ -53,50 +56,7 @@ class _EstablishmentInfoCardViewState extends State<EstablishmentInfoCardView> {
                 //title
                 Text(establishment!.name ?? '', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
 
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.network(
-                        "${establishment!.thumbnailUrl}",
-                        height: 140,
-                        width: 150,
-                        fit: BoxFit.cover,
-                        loadingBuilder: (context, child, loadingProgress) => loadingProgress == null ? child : CircularProgressIndicator(),
-                        errorBuilder: (context, error, stackTrace) => Placeholder(fallbackHeight: 140, fallbackWidth: 150),
-                      ),
-                    ),
-                    SizedBox(width: 10),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('${establishment!.address} ・ ${1234}km', style: const TextStyle(fontSize: 15)),
-                        Text('${establishment!.category}', style: const TextStyle(fontSize: 15)),
-                        Text('★ ${establishment!.rank}', style: const TextStyle(fontSize: 15)),
-                        SizedBox(
-                          height: 60,
-                          width: 200,
-                          child: ListView.separated(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: establishmentImages!.length,
-                            separatorBuilder: (context, index) => const SizedBox(width: 10),
-                            itemBuilder: (context, index) {
-                              return Image.network(
-                                "${establishmentImages![index].imageUrl}",
-                                height: 50,
-                                width: 100,
-                                fit: BoxFit.cover,
-                                loadingBuilder: (context, child, loadingProgress) => loadingProgress == null ? child : CircularProgressIndicator(),
-                                errorBuilder: (context, error, stackTrace) => Placeholder(fallbackHeight: 50, fallbackWidth: 100),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                EstablishmentInfoRow(establishment: establishment, establishmentImages: establishmentImages),
                 SizedBox(height: 10),
                 SizedBox(
                   height: 100,
@@ -135,6 +95,65 @@ class _EstablishmentInfoCardViewState extends State<EstablishmentInfoCardView> {
   }
 }
 
+class EstablishmentInfoRow extends StatelessWidget {
+  const EstablishmentInfoRow({
+    super.key,
+    required this.establishment,
+    required this.establishmentImages,
+  });
+
+  final api.Establishment? establishment;
+  final List<api.EstablishmentImage>? establishmentImages;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: Image.network(
+            "${establishment!.thumbnailUrl}",
+            height: 140,
+            width: 150,
+            fit: BoxFit.cover,
+            loadingBuilder: (context, child, loadingProgress) => loadingProgress == null ? child : CircularProgressIndicator(),
+            errorBuilder: (context, error, stackTrace) => Placeholder(fallbackHeight: 140, fallbackWidth: 150),
+          ),
+        ),
+        SizedBox(width: 10),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('${establishment!.address} ・ ${1234}km', style: const TextStyle(fontSize: 15)),
+            Text('${establishment!.category}', style: const TextStyle(fontSize: 15)),
+            Text('★ ${establishment!.rank}', style: const TextStyle(fontSize: 15)),
+            SizedBox(
+              height: 60,
+              width: 200,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemCount: establishmentImages!.length,
+                separatorBuilder: (context, index) => const SizedBox(width: 10),
+                itemBuilder: (context, index) {
+                  return Image.network(
+                    "${establishmentImages![index].imageUrl}",
+                    height: 50,
+                    width: 100,
+                    fit: BoxFit.cover,
+                    loadingBuilder: (context, child, loadingProgress) => loadingProgress == null ? child : CircularProgressIndicator(),
+                    errorBuilder: (context, error, stackTrace) => Placeholder(fallbackHeight: 50, fallbackWidth: 100),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
 class EstablishmentFeaturedOfferView extends StatefulWidget {
   const EstablishmentFeaturedOfferView({
     super.key,
@@ -151,8 +170,8 @@ class _EstablishmentFeaturedOfferViewState extends State<EstablishmentFeaturedOf
   List<api.FeaturedOffer>? featuredOffers;
   @override
   void initState() {
-    fetchData();
     super.initState();
+    fetchData();
   }
 
   void fetchData() async {
@@ -171,60 +190,7 @@ class _EstablishmentFeaturedOfferViewState extends State<EstablishmentFeaturedOf
       itemCount: featuredOffers!.length,
       separatorBuilder: (context, index) => const SizedBox(width: 10),
       itemBuilder: (context, index) {
-        return ClipRRect(
-          borderRadius: BorderRadius.circular(8),
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-            ),
-            height: 100,
-            width: 350,
-            child: Row(
-              children: [
-                SizedBox(width: 10),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.network(
-                    "${featuredOffers![index].imageUrl}",
-                    height: 80,
-                    width: 80,
-                    fit: BoxFit.cover,
-                    loadingBuilder: (context, child, loadingProgress) => loadingProgress == null ? child : CircularProgressIndicator(),
-                    errorBuilder: (context, error, stackTrace) => Placeholder(fallbackHeight: 80, fallbackWidth: 80),
-                  ),
-                ),
-                SizedBox(width: 10),
-                Expanded(
-                  flex: 3,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SizedBox(height: 10),
-                      Text(
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 2,
-                        featuredOffers![index].description ?? '',
-                        style: const TextStyle(fontSize: 15, color: Colors.black),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(width: 10),
-                Expanded(
-                  flex: 1,
-                  child: TextButton(
-                    onPressed: () => {},
-                    style: TextButton.styleFrom(
-                      backgroundColor: Colors.green,
-                    ),
-                    child: Text(t.buy, style: const TextStyle(color: Colors.white)),
-                  ),
-                ),
-                SizedBox(width: 10),
-              ],
-            ),
-          ),
-        );
+        return BenefitCard(benefit: featuredOffers![index]);
       },
     );
   }

@@ -142,5 +142,19 @@
     "publishedAReview": "Published a review",
     "bookmarkedItems": "Bookmarked {num} Items",
     "viewAll": "View All",
+
+    "myExclusiveBenefit": "My Exclusive Benefit",
+    "myVoucher": "My Voucher",
+
+    "filters": "{name, select, distance {Distance} location {Location} theme {Theme} facilities {Facilities} other {Other}}",
+    "result": "{number, plural, =0 {No results} =1 {1 result} other {{number} results}}",
+
+    "newWord": "New",
+    "expiryOn": "Expiry on {date}",
+
+    "viewDetails": "View Details",
+    "redeemNow": "Redeem Now",
+
+
     "empty":"empty"
 }

@@ -14,6 +14,7 @@ import 'package:poc_frontend/pages/login_page.dart';
 import 'package:poc_frontend/pages/main/explore_page.dart';
 import 'package:poc_frontend/pages/main/home_page.dart';
 import 'package:poc_frontend/pages/main/message_page.dart';
+import 'package:poc_frontend/pages/my_exclusive_benefit_page.dart';
 import 'package:poc_frontend/pages/notification_page.dart';
 import 'package:poc_frontend/pages/main/profile_page.dart';
 import 'package:poc_frontend/pages/main/search_page.dart';
@@ -22,7 +23,7 @@ import 'package:poc_frontend/pages/review_page.dart';
 import 'package:poc_frontend/pages/sign_up_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'pages/qr_code_scanner_page.dart';
-import 'enums.dart';
+import 'consts.dart';
 import 'dart:developer';
 
 void main() {
@@ -48,7 +49,7 @@ bool apiErrorHandler(api.ApiException error) {
         }
         return false;
       }
-      case 503:
+    case 503:
       {
         log('Service Unavailable');
         return true;
@@ -143,6 +144,13 @@ class MyAppState extends State<MyApp> {
         drawerTheme: DrawerThemeData(
           backgroundColor: primaryColor,
         ),
+        
+        cardTheme: CardTheme(
+          color: secondaryColor,
+          elevation: 5,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        ),
+        iconTheme: IconThemeData(color: Colors.white),
         listTileTheme: ListTileThemeData(
           tileColor: primaryColor,
           iconColor: Colors.white,
@@ -163,6 +171,13 @@ class MyAppState extends State<MyApp> {
           backgroundColor: WidgetStatePropertyAll(Colors.white),
           textStyle: WidgetStatePropertyAll(TextStyle(color: Colors.grey)),
           shape: WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+        ),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: ButtonStyle(
+            shape: WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+            foregroundColor: WidgetStatePropertyAll(Colors.white),
+            backgroundColor: WidgetStatePropertyAll(Colors.transparent),
+          ),
         ),
         textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
@@ -208,6 +223,12 @@ class MainState extends State<Main> {
       body: Navigator(
         key: navigatorKey,
         onGenerateRoute: (settings) {
+          if (settings.name == MyExclusiveBenefitPage.routeName) {
+            final user = settings.arguments as api.User;
+            return MaterialPageRoute(builder: (context) {
+              return MyExclusiveBenefitPage(user: user);
+            });
+          }
           if (settings.name == NotificationPage.routeName) {
             return MaterialPageRoute(builder: (context) {
               return NotificationPage();

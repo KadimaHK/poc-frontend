@@ -23,16 +23,17 @@ class _EstablishmentCardViewState extends State<EstablishmentCardView> {
             Stack(
               children: [
                 ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: AspectRatio(
-                      aspectRatio: .75,
-                      child: CachedNetworkImage(
-                        imageUrl: '${widget.establishment.thumbnailUrl}',
-                        fit: BoxFit.cover,
-                        placeholder: (context, url) => CircularProgressIndicator(),
-                        errorWidget: (context, url, error) => Icon(Icons.error),
-                      ),
-                    )),
+                  borderRadius: BorderRadius.circular(10),
+                  child: AspectRatio(
+                    aspectRatio: .75,
+                    child: CachedNetworkImage(
+                      imageUrl: '${widget.establishment.thumbnailUrl}',
+                      fit: BoxFit.cover,
+                      placeholder: (context, url) => CircularProgressIndicator(),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                    ),
+                  ),
+                ),
                 Positioned(
                     right: 15,
                     top: 15,

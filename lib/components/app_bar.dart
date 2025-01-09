@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:poc_frontend/main.dart';
-import 'package:poc_frontend/enums.dart';
+import 'package:poc_frontend/consts.dart';
 import 'package:poc_frontend/pages/notification_page.dart';
 import 'package:poc_frontend/pages/qr_code_scanner_page.dart';
 

@@ -23,7 +23,7 @@ class _MainSearchBarState extends State<MainSearchBar> {
       },
       controller: searchController,
       hintText: t.search,
-      leading: Icon(Icons.search),
+      leading: Icon(Icons.search, color: Colors.black),
       trailing: [
         _isShowClearBtn
             ? IconButton(

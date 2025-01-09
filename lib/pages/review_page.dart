@@ -23,7 +23,6 @@ class _ReviewPageState extends State<ReviewPage> {
 
   void fetchReviewImages() async {
     reviewImages = await api.ReviewImageApi().reviewImageGet(reviewId: 'eq.${widget.review.id}');
-    log(reviewImages.toString());
     setState(() {});
   }
 

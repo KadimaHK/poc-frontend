@@ -26,7 +26,7 @@ class _ProfileDrawerState extends State<ProfileDrawer> {
       return;
     }
     
-    user = (await api.UserApi(MyApp.sessionApiClient).userGet())?[0];
+    user = (await api.UserApi(MyApp.sessionApiClient).userGet())!.firstOrNull;
     setState(() {});
   }
 
