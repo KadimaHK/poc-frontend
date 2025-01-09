@@ -19,11 +19,12 @@ class _SearchPageState extends State<SearchPage> {
     super.initState();
     _fetchCategories();
   }
-
+  
   Future<void> _fetchCategories() async {
     categories = (await EstablishmentCategoryApi().establishmentCategoryGet())!;
-    print(categories);
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   @override

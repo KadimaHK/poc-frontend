@@ -22,12 +22,16 @@ class _ProfileDrawerState extends State<ProfileDrawer> {
   fetchData() async {
     if (!loggedIn) {
       user = null;
+      if(mounted) {
       setState(() {});
+    }
       return;
     }
     
     user = (await api.UserApi(MyApp.sessionApiClient).userGet())!.firstOrNull;
-    setState(() {});
+    if(mounted) {
+      setState(() {});
+    }
   }
 
   @override

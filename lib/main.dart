@@ -92,6 +92,8 @@ class MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     SharedPreferences.getInstance().then((value) {
+      //DebugOnly: 
+      value.setString('loginSessionToken', 'tokenKiu');
       MyApp.prefs = value;
       final String? languageCode = value.getString('languageCode');
       final String? countryCode = value.getString('countryCode');
@@ -271,7 +273,9 @@ class MainState extends State<Main> {
 
           if (settings.name == ProfilePage.routeName) {
             _selectedIndex = 4;
-            setState(() {});
+            if(mounted) {
+      setState(() {});
+    }
           }
 
           // for the main pages without transition animation

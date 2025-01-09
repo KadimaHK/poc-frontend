@@ -5,6 +5,8 @@ import 'package:poc_frontend/components/establishment_info_card_view.dart';
 
 import 'dart:developer';
 
+import 'package:poc_frontend/components/rating.dart';
+
 class ReviewPage extends StatefulWidget {
   const ReviewPage({super.key, required this.review});
   static const routeName = '/review';
@@ -23,7 +25,9 @@ class _ReviewPageState extends State<ReviewPage> {
 
   void fetchReviewImages() async {
     reviewImages = await api.ReviewImageApi().reviewImageGet(reviewId: 'eq.${widget.review.id}');
-    setState(() {});
+    if(mounted) {
+      setState(() {});
+    }
   }
 
   @override
@@ -51,7 +55,7 @@ class _ReviewPageState extends State<ReviewPage> {
                 children: [
                   Text(widget.review.title!, style: Theme.of(context).textTheme.headlineSmall),
                   SizedBox(height: 25),
-                  LinearProgressIndicator(value: widget.review.rating! / 5),
+                  Rating(rating: widget.review.rating!),
                 ],
               ),
             ),
@@ -108,11 +112,10 @@ class _ReviewPageState extends State<ReviewPage> {
               ],
             ),
             Divider(height: 50),
-
             ListTile(
-              leading:  IconButton(onPressed: (){}, icon: Icon(Icons.thumb_up_alt_outlined)),
+              leading: IconButton(onPressed: () {}, icon: Icon(Icons.thumb_up_alt_outlined)),
               title: Text(widget.review.likes.toString()),
-              trailing: IconButton(onPressed: (){}, icon: Icon(Icons.more_horiz)),
+              trailing: IconButton(onPressed: () {}, icon: Icon(Icons.more_horiz)),
             ),
             SizedBox(height: 50),
           ],
@@ -143,7 +146,7 @@ class _RatingState extends State<_Rating> {
             Icon(widget.icon, size: 30),
             Text(widget.label),
             SizedBox(height: 10),
-            LinearProgressIndicator(value: widget.rating / 5),
+            Rating(rating: widget.rating),
           ],
         ),
       ),

@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
 import 'package:poc_frontend/api/lib/api.dart' as api;
+import 'package:poc_frontend/components/rating.dart';
 import 'package:poc_frontend/pages/featured_detail_page.dart';
 import 'package:poc_frontend/pages/featured_offer_detail_page.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -37,17 +38,23 @@ class _EstablishmentProfilePageState extends State<EstablishmentProfilePage> {
 
   void fetchReviews(int limit) async {
     reviews = (await api.ReviewApi().reviewGet(establishmentId: 'eq.${widget.establishment.id}', limit: limit.toString())) ?? [];
-    setState(() {});
+    if(mounted) {
+      setState(() {});
+    }
   }
 
   void fetchImages() async {
     images = (await api.EstablishmentImageApi().establishmentImageGet(establishmentId: 'eq.${widget.establishment.id}')) ?? [];
-    setState(() {});
+    if(mounted) {
+      setState(() {});
+    }
   }
 
   void fetchBenefits() async {
     benefits = (await api.FeaturedOfferApi().featuredOfferGet(establishmentId: 'eq.${widget.establishment.id}')) ?? [];
-    setState(() {});
+    if(mounted) {
+      setState(() {});
+    }
   }
 
   void fetchIsOpen() async {
@@ -62,7 +69,9 @@ class _EstablishmentProfilePageState extends State<EstablishmentProfilePage> {
       isOpening = true;
     }
 
-    setState(() {});
+    if(mounted) {
+      setState(() {});
+    }
   }
 
   @override
@@ -277,7 +286,7 @@ class _EstablishmentProfilePageState extends State<EstablishmentProfilePage> {
           title: Text(t.ratings),
           trailing: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
         ),
-        LinearProgressIndicator(value: widget.establishment.rank! / 5),
+        Rating(rating: widget.establishment.rank!),
         ...reviews.map((review) => ListTile(
               title: Text(review.title ?? ''),
               subtitle: Row(

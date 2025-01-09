@@ -24,7 +24,9 @@ class _ExplorePageState extends State<ExplorePage> {
 
   void _fetchData() async {
     establishments = (await api.EstablishmentApi().establishmentGet()) ?? [];
-    setState(() {});
+    if(mounted) {
+      setState(() {});
+    }
   }
 
   @override

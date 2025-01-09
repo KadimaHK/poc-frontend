@@ -8,6 +8,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:poc_frontend/components/app_bar.dart';
 import 'package:poc_frontend/components/establishment_card_view.dart';
 import 'package:poc_frontend/components/icon_button_label.dart';
+import 'package:poc_frontend/components/rating.dart';
 import 'package:poc_frontend/components/textbutton_no_background.dart';
 import 'package:poc_frontend/components/textbutton_secondary.dart';
 import 'package:poc_frontend/components/user_membership_card.dart';
@@ -54,7 +55,9 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
     try {
       final users = await api.UserApi(MyApp.sessionApiClient).userGet();
       user = users!.firstOrNull;
+      if(mounted) {
       setState(() {});
+    }
     } on api.ApiException catch (e) {
       apiErrorHandler(e);
     }
@@ -223,7 +226,9 @@ class _ReviewsState extends State<_Reviews> {
 
   void fetchData() async {
     reviews = (await api.ReviewApi(MyApp.sessionApiClient).reviewGet())!;
-    setState(() {});
+    if(mounted) {
+      setState(() {});
+    }
   }
 
   @override
@@ -263,7 +268,9 @@ class _ReviewComponentState extends State<_ReviewComponent> {
     try {
       images = (await api.ReviewImageApi(MyApp.sessionApiClient).reviewImageGet(reviewId: 'eq.${widget.review.id}'))!;
       establishment = (await api.EstablishmentApi().establishmentGet(id: 'eq.${widget.review.establishmentId}'))?.firstOrNull?.name ?? '';
+      if(mounted) {
       setState(() {});
+    }
     } on api.ApiException catch (e) {
       apiErrorHandler(e);
     }
@@ -289,17 +296,7 @@ class _ReviewComponentState extends State<_ReviewComponent> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               mainAxisSize: MainAxisSize.max,
-              children: [
-                Text(widget.review.description ?? ''),
-                SizedBox(
-                  width: 100,
-                  child: LinearProgressIndicator(
-                    value: (widget.review.rating ?? 0) / 5,
-                    minHeight: 7,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-              ],
+              children: [Text(widget.review.description ?? ''), Rating(rating: widget.review.rating!)],
             ),
             Text(widget.review.description ?? ''),
             SizedBox(height: 10),
@@ -351,7 +348,9 @@ class _BookmarkComponentState extends State<_BookmarkComponent> {
 
   void fetchData() async {
     establishment = (await api.EstablishmentApi().establishmentGet(id: 'eq.${widget.bookmark?.establishmentId}'))!.firstOrNull;
-    setState(() {});
+    if(mounted) {
+      setState(() {});
+    }
   }
 
   @override
@@ -389,7 +388,9 @@ class _BookmarksState extends State<_Bookmarks> {
 
   void fetchData() async {
     bookmarks = (await api.UserEstablishmentBookmarkApi(MyApp.sessionApiClient).userEstablishmentBookmarkGet())!;
-    setState(() {});
+    if(mounted) {
+      setState(() {});
+    }
   }
 
   @override
@@ -436,7 +437,9 @@ class _OverviewState extends State<_Overview> {
     bookmark = bookmarks.firstOrNull;
     review = reviews.firstOrNull;
 
-    setState(() {});
+    if(mounted) {
+      setState(() {});
+    }
   }
 
   @override
@@ -487,7 +490,9 @@ class _PhotosState extends State<_Photos> {
 
   void fetchData() async {
     images = (await api.ReviewImageApi(MyApp.sessionApiClient).reviewImageGet())!;
-    setState(() {});
+    if(mounted) {
+      setState(() {});
+    }
   }
 
   @override

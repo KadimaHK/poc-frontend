@@ -36,7 +36,9 @@ class _FeaturedOffersPageState extends State<FeaturedOffersPage> with SingleTick
     featuredOffersGlobal = featuredOffers.where((element) => element.isGlobal == true).toList();
     featuredOffersExclusive = featuredOffers.where((element) => element.isGlobal == false).toList();
 
-    setState(() {});
+    if(mounted) {
+      setState(() {});
+    }
   }
 
   @override

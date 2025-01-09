@@ -30,7 +30,9 @@ class _FeaturedPageState extends State<FeaturedPage> with SingleTickerProviderSt
 
   void _fetchData() async {
     featured = (await api.FeaturedApi().featuredGet()) ?? [];
-    setState(() {});
+    if(mounted) {
+      setState(() {});
+    }
   }
 
   @override

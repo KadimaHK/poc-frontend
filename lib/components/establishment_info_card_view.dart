@@ -30,7 +30,9 @@ class _EstablishmentInfoCardViewState extends State<EstablishmentInfoCardView> {
   void fetchData() async {
     establishment = (await api.EstablishmentApi().establishmentGet(id: "eq.${widget.establishmentId?.toString()}"))?.firstOrNull;
     establishmentImages = await api.EstablishmentImageApi().establishmentImageGet(establishmentId: "eq.${widget.establishmentId?.toString()}");
-    setState(() {});
+    if(mounted) {
+      setState(() {});
+    }
   }
 
   @override
@@ -176,7 +178,9 @@ class _EstablishmentFeaturedOfferViewState extends State<EstablishmentFeaturedOf
 
   void fetchData() async {
     featuredOffers = await api.FeaturedOfferApi().featuredOfferGet(establishmentId: "eq.${widget.establishmentId?.toString()}");
-    setState(() {});
+    if(mounted) {
+      setState(() {});
+    }
   }
 
   @override

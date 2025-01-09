@@ -28,7 +28,9 @@ class _MyExclusiveBenefitPageState extends State<MyExclusiveBenefitPage> {
 
   void fetchData() async {
     benefits = (await api.FeaturedOfferApi().featuredOfferGet())!;
-    setState(() {});
+    if(mounted) {
+      setState(() {});
+    }
   }
 
   @override

@@ -26,7 +26,9 @@ class _FeaturedOfferCardViewState extends State<FeaturedOfferCardView> {
 
   void fetchData() async {
     establishment = (await api.EstablishmentApi().establishmentGet(id: "eq.${widget.featuredOffer.establishmentId?.toString()}"))?.firstOrNull;
-    setState(() {});
+    if(mounted) {
+      setState(() {});
+    }
   }
 
   @override

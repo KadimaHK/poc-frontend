@@ -17,6 +17,7 @@ class ReviewImage {
     this.reviewId,
     this.imageUrl,
     this.description,
+    this.price,
     this.type,
   });
 
@@ -55,6 +56,14 @@ class ReviewImage {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  num? price;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? type;
 
   @override
@@ -63,6 +72,7 @@ class ReviewImage {
     other.reviewId == reviewId &&
     other.imageUrl == imageUrl &&
     other.description == description &&
+    other.price == price &&
     other.type == type;
 
   @override
@@ -72,10 +82,11 @@ class ReviewImage {
     (reviewId == null ? 0 : reviewId!.hashCode) +
     (imageUrl == null ? 0 : imageUrl!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
+    (price == null ? 0 : price!.hashCode) +
     (type == null ? 0 : type!.hashCode);
 
   @override
-  String toString() => 'ReviewImage[id=$id, reviewId=$reviewId, imageUrl=$imageUrl, description=$description, type=$type]';
+  String toString() => 'ReviewImage[id=$id, reviewId=$reviewId, imageUrl=$imageUrl, description=$description, price=$price, type=$type]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -94,6 +105,11 @@ class ReviewImage {
       json[r'description'] = this.description;
     } else {
       json[r'description'] = null;
+    }
+    if (this.price != null) {
+      json[r'price'] = this.price;
+    } else {
+      json[r'price'] = null;
     }
     if (this.type != null) {
       json[r'type'] = this.type;
@@ -126,6 +142,7 @@ class ReviewImage {
         reviewId: mapValueOfType<int>(json, r'review_id'),
         imageUrl: mapValueOfType<String>(json, r'image_url'),
         description: mapValueOfType<String>(json, r'description'),
+        price: num.parse('${json[r'price']}'),
         type: mapValueOfType<String>(json, r'type'),
       );
     }

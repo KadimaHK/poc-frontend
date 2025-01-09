@@ -33,7 +33,9 @@ class _HomePageState extends State<HomePage> {
     picks = await api.PickApi().pickGet() ?? [];
     featured = await api.FeaturedApi().featuredGet(limit: '4') ?? [];
     featuredOffers = await api.FeaturedOfferApi().featuredOfferGet(limit: '8') ?? [];
-    setState(() {});
+    if(mounted) {
+      setState(() {});
+    }
   }
 
   @override
