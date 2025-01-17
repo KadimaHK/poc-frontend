@@ -11,29 +11,31 @@
 part of openapi.api;
 
 
-class MessageApi {
-  MessageApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
+class StoredLiqueurTransferApi {
+  StoredLiqueurTransferApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'DELETE /message' operation and returns the [Response].
+  /// Performs an HTTP 'DELETE /stored_liqueur_transfer' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [String] uuid:
+  /// * [String] id:
   ///
-  /// * [String] time:
+  /// * [String] storedLiqueurId:
   ///
   /// * [String] fromUserId:
   ///
   /// * [String] toUserId:
   ///
-  /// * [String] body:
+  /// * [String] isAccepted:
+  ///
+  /// * [String] createdAt:
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> messageDeleteWithHttpInfo({ String? uuid, String? time, String? fromUserId, String? toUserId, String? body, String? prefer, }) async {
+  Future<Response> storedLiqueurTransferDeleteWithHttpInfo({ String? id, String? storedLiqueurId, String? fromUserId, String? toUserId, String? isAccepted, String? createdAt, String? prefer, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/message';
+    final path = r'/stored_liqueur_transfer';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -42,11 +44,11 @@ class MessageApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (uuid != null) {
-      queryParams.addAll(_queryParams('', 'uuid', uuid));
+    if (id != null) {
+      queryParams.addAll(_queryParams('', 'id', id));
     }
-    if (time != null) {
-      queryParams.addAll(_queryParams('', 'time', time));
+    if (storedLiqueurId != null) {
+      queryParams.addAll(_queryParams('', 'stored_liqueur_id', storedLiqueurId));
     }
     if (fromUserId != null) {
       queryParams.addAll(_queryParams('', 'from_user_id', fromUserId));
@@ -54,8 +56,11 @@ class MessageApi {
     if (toUserId != null) {
       queryParams.addAll(_queryParams('', 'to_user_id', toUserId));
     }
-    if (body != null) {
-      queryParams.addAll(_queryParams('', 'body', body));
+    if (isAccepted != null) {
+      queryParams.addAll(_queryParams('', 'is_accepted', isAccepted));
+    }
+    if (createdAt != null) {
+      queryParams.addAll(_queryParams('', 'created_at', createdAt));
     }
 
     if (prefer != null) {
@@ -78,37 +83,41 @@ class MessageApi {
 
   /// Parameters:
   ///
-  /// * [String] uuid:
+  /// * [String] id:
   ///
-  /// * [String] time:
+  /// * [String] storedLiqueurId:
   ///
   /// * [String] fromUserId:
   ///
   /// * [String] toUserId:
   ///
-  /// * [String] body:
+  /// * [String] isAccepted:
+  ///
+  /// * [String] createdAt:
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> messageDelete({ String? uuid, String? time, String? fromUserId, String? toUserId, String? body, String? prefer, }) async {
-    final response = await messageDeleteWithHttpInfo( uuid: uuid, time: time, fromUserId: fromUserId, toUserId: toUserId, body: body, prefer: prefer, );
+  Future<void> storedLiqueurTransferDelete({ String? id, String? storedLiqueurId, String? fromUserId, String? toUserId, String? isAccepted, String? createdAt, String? prefer, }) async {
+    final response = await storedLiqueurTransferDeleteWithHttpInfo( id: id, storedLiqueurId: storedLiqueurId, fromUserId: fromUserId, toUserId: toUserId, isAccepted: isAccepted, createdAt: createdAt, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
   }
 
-  /// Performs an HTTP 'GET /message' operation and returns the [Response].
+  /// Performs an HTTP 'GET /stored_liqueur_transfer' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [String] uuid:
+  /// * [String] id:
   ///
-  /// * [String] time:
+  /// * [String] storedLiqueurId:
   ///
   /// * [String] fromUserId:
   ///
   /// * [String] toUserId:
   ///
-  /// * [String] body:
+  /// * [String] isAccepted:
+  ///
+  /// * [String] createdAt:
   ///
   /// * [String] select:
   ///   Filtering Columns
@@ -130,9 +139,9 @@ class MessageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> messageGetWithHttpInfo({ String? uuid, String? time, String? fromUserId, String? toUserId, String? body, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> storedLiqueurTransferGetWithHttpInfo({ String? id, String? storedLiqueurId, String? fromUserId, String? toUserId, String? isAccepted, String? createdAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/message';
+    final path = r'/stored_liqueur_transfer';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -141,11 +150,11 @@ class MessageApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (uuid != null) {
-      queryParams.addAll(_queryParams('', 'uuid', uuid));
+    if (id != null) {
+      queryParams.addAll(_queryParams('', 'id', id));
     }
-    if (time != null) {
-      queryParams.addAll(_queryParams('', 'time', time));
+    if (storedLiqueurId != null) {
+      queryParams.addAll(_queryParams('', 'stored_liqueur_id', storedLiqueurId));
     }
     if (fromUserId != null) {
       queryParams.addAll(_queryParams('', 'from_user_id', fromUserId));
@@ -153,8 +162,11 @@ class MessageApi {
     if (toUserId != null) {
       queryParams.addAll(_queryParams('', 'to_user_id', toUserId));
     }
-    if (body != null) {
-      queryParams.addAll(_queryParams('', 'body', body));
+    if (isAccepted != null) {
+      queryParams.addAll(_queryParams('', 'is_accepted', isAccepted));
+    }
+    if (createdAt != null) {
+      queryParams.addAll(_queryParams('', 'created_at', createdAt));
     }
     if (select != null) {
       queryParams.addAll(_queryParams('', 'select', select));
@@ -195,15 +207,17 @@ class MessageApi {
 
   /// Parameters:
   ///
-  /// * [String] uuid:
+  /// * [String] id:
   ///
-  /// * [String] time:
+  /// * [String] storedLiqueurId:
   ///
   /// * [String] fromUserId:
   ///
   /// * [String] toUserId:
   ///
-  /// * [String] body:
+  /// * [String] isAccepted:
+  ///
+  /// * [String] createdAt:
   ///
   /// * [String] select:
   ///   Filtering Columns
@@ -225,8 +239,8 @@ class MessageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<Message>?> messageGet({ String? uuid, String? time, String? fromUserId, String? toUserId, String? body, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await messageGetWithHttpInfo( uuid: uuid, time: time, fromUserId: fromUserId, toUserId: toUserId, body: body, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<StoredLiqueurTransfer>?> storedLiqueurTransferGet({ String? id, String? storedLiqueurId, String? fromUserId, String? toUserId, String? isAccepted, String? createdAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+    final response = await storedLiqueurTransferGetWithHttpInfo( id: id, storedLiqueurId: storedLiqueurId, fromUserId: fromUserId, toUserId: toUserId, isAccepted: isAccepted, createdAt: createdAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -235,48 +249,50 @@ class MessageApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<Message>') as List)
-        .cast<Message>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<StoredLiqueurTransfer>') as List)
+        .cast<StoredLiqueurTransfer>()
         .toList(growable: false);
 
     }
     return null;
   }
 
-  /// Performs an HTTP 'PATCH /message' operation and returns the [Response].
+  /// Performs an HTTP 'PATCH /stored_liqueur_transfer' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [String] uuid:
+  /// * [String] id:
   ///
-  /// * [String] time:
+  /// * [String] storedLiqueurId:
   ///
   /// * [String] fromUserId:
   ///
   /// * [String] toUserId:
   ///
-  /// * [String] body:
+  /// * [String] isAccepted:
+  ///
+  /// * [String] createdAt:
   ///
   /// * [String] prefer:
   ///   Preference
   ///
-  /// * [Message] message:
-  ///   message
-  Future<Response> messagePatchWithHttpInfo({ String? uuid, String? time, String? fromUserId, String? toUserId, String? body, String? prefer, Message? message, }) async {
+  /// * [StoredLiqueurTransfer] storedLiqueurTransfer:
+  ///   stored_liqueur_transfer
+  Future<Response> storedLiqueurTransferPatchWithHttpInfo({ String? id, String? storedLiqueurId, String? fromUserId, String? toUserId, String? isAccepted, String? createdAt, String? prefer, StoredLiqueurTransfer? storedLiqueurTransfer, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/message';
+    final path = r'/stored_liqueur_transfer';
 
     // ignore: prefer_final_locals
-    Object? postBody = message;
+    Object? postBody = storedLiqueurTransfer;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (uuid != null) {
-      queryParams.addAll(_queryParams('', 'uuid', uuid));
+    if (id != null) {
+      queryParams.addAll(_queryParams('', 'id', id));
     }
-    if (time != null) {
-      queryParams.addAll(_queryParams('', 'time', time));
+    if (storedLiqueurId != null) {
+      queryParams.addAll(_queryParams('', 'stored_liqueur_id', storedLiqueurId));
     }
     if (fromUserId != null) {
       queryParams.addAll(_queryParams('', 'from_user_id', fromUserId));
@@ -284,8 +300,11 @@ class MessageApi {
     if (toUserId != null) {
       queryParams.addAll(_queryParams('', 'to_user_id', toUserId));
     }
-    if (body != null) {
-      queryParams.addAll(_queryParams('', 'body', body));
+    if (isAccepted != null) {
+      queryParams.addAll(_queryParams('', 'is_accepted', isAccepted));
+    }
+    if (createdAt != null) {
+      queryParams.addAll(_queryParams('', 'created_at', createdAt));
     }
 
     if (prefer != null) {
@@ -308,29 +327,31 @@ class MessageApi {
 
   /// Parameters:
   ///
-  /// * [String] uuid:
+  /// * [String] id:
   ///
-  /// * [String] time:
+  /// * [String] storedLiqueurId:
   ///
   /// * [String] fromUserId:
   ///
   /// * [String] toUserId:
   ///
-  /// * [String] body:
+  /// * [String] isAccepted:
+  ///
+  /// * [String] createdAt:
   ///
   /// * [String] prefer:
   ///   Preference
   ///
-  /// * [Message] message:
-  ///   message
-  Future<void> messagePatch({ String? uuid, String? time, String? fromUserId, String? toUserId, String? body, String? prefer, Message? message, }) async {
-    final response = await messagePatchWithHttpInfo( uuid: uuid, time: time, fromUserId: fromUserId, toUserId: toUserId, body: body, prefer: prefer, message: message, );
+  /// * [StoredLiqueurTransfer] storedLiqueurTransfer:
+  ///   stored_liqueur_transfer
+  Future<void> storedLiqueurTransferPatch({ String? id, String? storedLiqueurId, String? fromUserId, String? toUserId, String? isAccepted, String? createdAt, String? prefer, StoredLiqueurTransfer? storedLiqueurTransfer, }) async {
+    final response = await storedLiqueurTransferPatchWithHttpInfo( id: id, storedLiqueurId: storedLiqueurId, fromUserId: fromUserId, toUserId: toUserId, isAccepted: isAccepted, createdAt: createdAt, prefer: prefer, storedLiqueurTransfer: storedLiqueurTransfer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
   }
 
-  /// Performs an HTTP 'POST /message' operation and returns the [Response].
+  /// Performs an HTTP 'POST /stored_liqueur_transfer' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] select:
@@ -339,14 +360,14 @@ class MessageApi {
   /// * [String] prefer:
   ///   Preference
   ///
-  /// * [Message] message:
-  ///   message
-  Future<Response> messagePostWithHttpInfo({ String? select, String? prefer, Message? message, }) async {
+  /// * [StoredLiqueurTransfer] storedLiqueurTransfer:
+  ///   stored_liqueur_transfer
+  Future<Response> storedLiqueurTransferPostWithHttpInfo({ String? select, String? prefer, StoredLiqueurTransfer? storedLiqueurTransfer, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/message';
+    final path = r'/stored_liqueur_transfer';
 
     // ignore: prefer_final_locals
-    Object? postBody = message;
+    Object? postBody = storedLiqueurTransfer;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -382,10 +403,10 @@ class MessageApi {
   /// * [String] prefer:
   ///   Preference
   ///
-  /// * [Message] message:
-  ///   message
-  Future<void> messagePost({ String? select, String? prefer, Message? message, }) async {
-    final response = await messagePostWithHttpInfo( select: select, prefer: prefer, message: message, );
+  /// * [StoredLiqueurTransfer] storedLiqueurTransfer:
+  ///   stored_liqueur_transfer
+  Future<void> storedLiqueurTransferPost({ String? select, String? prefer, StoredLiqueurTransfer? storedLiqueurTransfer, }) async {
+    final response = await storedLiqueurTransferPostWithHttpInfo( select: select, prefer: prefer, storedLiqueurTransfer: storedLiqueurTransfer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

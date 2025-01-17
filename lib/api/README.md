@@ -45,19 +45,20 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = BenefitApi();
+final api_instance = BookingApi();
 final id = id_example; // String | 
-final name = name_example; // String | 
-final description = description_example; // String | 
-final thumbnailUrl = thumbnailUrl_example; // String | 
+final userId = userId_example; // String | 
+final establishmentId = establishmentId_example; // String | 
+final reservationStart = reservationStart_example; // String | 
+final reservationEnd = reservationEnd_example; // String | 
 final createdAt = createdAt_example; // String | 
 final updatedAt = updatedAt_example; // String | 
 final prefer = prefer_example; // String | Preference
 
 try {
-    api_instance.benefitDelete(id, name, description, thumbnailUrl, createdAt, updatedAt, prefer);
+    api_instance.bookingDelete(id, userId, establishmentId, reservationStart, reservationEnd, createdAt, updatedAt, prefer);
 } catch (e) {
-    print('Exception when calling BenefitApi->benefitDelete: $e\n');
+    print('Exception when calling BookingApi->bookingDelete: $e\n');
 }
 
 ```
@@ -68,10 +69,6 @@ All URIs are relative to *http://poc-bar-app.com:80/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*BenefitApi* | [**benefitDelete**](doc//BenefitApi.md#benefitdelete) | **DELETE** /benefit | 
-*BenefitApi* | [**benefitGet**](doc//BenefitApi.md#benefitget) | **GET** /benefit | 
-*BenefitApi* | [**benefitPatch**](doc//BenefitApi.md#benefitpatch) | **PATCH** /benefit | 
-*BenefitApi* | [**benefitPost**](doc//BenefitApi.md#benefitpost) | **POST** /benefit | 
 *BookingApi* | [**bookingDelete**](doc//BookingApi.md#bookingdelete) | **DELETE** /booking | 
 *BookingApi* | [**bookingGet**](doc//BookingApi.md#bookingget) | **GET** /booking | 
 *BookingApi* | [**bookingPatch**](doc//BookingApi.md#bookingpatch) | **PATCH** /booking | 
@@ -80,10 +77,6 @@ Class | Method | HTTP request | Description
 *EstablishmentApi* | [**establishmentGet**](doc//EstablishmentApi.md#establishmentget) | **GET** /establishment | 
 *EstablishmentApi* | [**establishmentPatch**](doc//EstablishmentApi.md#establishmentpatch) | **PATCH** /establishment | 
 *EstablishmentApi* | [**establishmentPost**](doc//EstablishmentApi.md#establishmentpost) | **POST** /establishment | 
-*EstablishmentBenefitApi* | [**establishmentBenefitDelete**](doc//EstablishmentBenefitApi.md#establishmentbenefitdelete) | **DELETE** /establishment_benefit | 
-*EstablishmentBenefitApi* | [**establishmentBenefitGet**](doc//EstablishmentBenefitApi.md#establishmentbenefitget) | **GET** /establishment_benefit | 
-*EstablishmentBenefitApi* | [**establishmentBenefitPatch**](doc//EstablishmentBenefitApi.md#establishmentbenefitpatch) | **PATCH** /establishment_benefit | 
-*EstablishmentBenefitApi* | [**establishmentBenefitPost**](doc//EstablishmentBenefitApi.md#establishmentbenefitpost) | **POST** /establishment_benefit | 
 *EstablishmentCategoryApi* | [**establishmentCategoryDelete**](doc//EstablishmentCategoryApi.md#establishmentcategorydelete) | **DELETE** /establishment_category | 
 *EstablishmentCategoryApi* | [**establishmentCategoryGet**](doc//EstablishmentCategoryApi.md#establishmentcategoryget) | **GET** /establishment_category | 
 *EstablishmentCategoryApi* | [**establishmentCategoryPatch**](doc//EstablishmentCategoryApi.md#establishmentcategorypatch) | **PATCH** /establishment_category | 
@@ -120,6 +113,10 @@ Class | Method | HTTP request | Description
 *FollowApi* | [**followGet**](doc//FollowApi.md#followget) | **GET** /follow | 
 *FollowApi* | [**followPatch**](doc//FollowApi.md#followpatch) | **PATCH** /follow | 
 *FollowApi* | [**followPost**](doc//FollowApi.md#followpost) | **POST** /follow | 
+*FriendApi* | [**friendDelete**](doc//FriendApi.md#frienddelete) | **DELETE** /friend | 
+*FriendApi* | [**friendGet**](doc//FriendApi.md#friendget) | **GET** /friend | 
+*FriendApi* | [**friendPatch**](doc//FriendApi.md#friendpatch) | **PATCH** /friend | 
+*FriendApi* | [**friendPost**](doc//FriendApi.md#friendpost) | **POST** /friend | 
 *ImageApi* | [**imageDelete**](doc//ImageApi.md#imagedelete) | **DELETE** /image | Don't use this api to upload images, use the gin api instead
 *ImageApi* | [**imageGet**](doc//ImageApi.md#imageget) | **GET** /image | Don't use this api to upload images, use the gin api instead
 *ImageApi* | [**imagePatch**](doc//ImageApi.md#imagepatch) | **PATCH** /image | Don't use this api to upload images, use the gin api instead
@@ -167,14 +164,22 @@ Class | Method | HTTP request | Description
 *RpcLogoutApi* | [**rpcLogoutPost**](doc//RpcLogoutApi.md#rpclogoutpost) | **POST** /rpc/logout | Don't use this function with GET method, use POST method instead
 *RpcSignUpApi* | [**rpcSignUpGet**](doc//RpcSignUpApi.md#rpcsignupget) | **GET** /rpc/sign_up | Don't use this function with GET method, use POST method instead
 *RpcSignUpApi* | [**rpcSignUpPost**](doc//RpcSignUpApi.md#rpcsignuppost) | **POST** /rpc/sign_up | Don't use this function with GET method, use POST method instead
+*StoredLiqueurApi* | [**storedLiqueurDelete**](doc//StoredLiqueurApi.md#storedliqueurdelete) | **DELETE** /stored_liqueur | 
+*StoredLiqueurApi* | [**storedLiqueurGet**](doc//StoredLiqueurApi.md#storedliqueurget) | **GET** /stored_liqueur | 
+*StoredLiqueurApi* | [**storedLiqueurPatch**](doc//StoredLiqueurApi.md#storedliqueurpatch) | **PATCH** /stored_liqueur | 
+*StoredLiqueurApi* | [**storedLiqueurPost**](doc//StoredLiqueurApi.md#storedliqueurpost) | **POST** /stored_liqueur | 
+*StoredLiqueurImageApi* | [**storedLiqueurImageDelete**](doc//StoredLiqueurImageApi.md#storedliqueurimagedelete) | **DELETE** /stored_liqueur_image | 
+*StoredLiqueurImageApi* | [**storedLiqueurImageGet**](doc//StoredLiqueurImageApi.md#storedliqueurimageget) | **GET** /stored_liqueur_image | 
+*StoredLiqueurImageApi* | [**storedLiqueurImagePatch**](doc//StoredLiqueurImageApi.md#storedliqueurimagepatch) | **PATCH** /stored_liqueur_image | 
+*StoredLiqueurImageApi* | [**storedLiqueurImagePost**](doc//StoredLiqueurImageApi.md#storedliqueurimagepost) | **POST** /stored_liqueur_image | 
+*StoredLiqueurTransferApi* | [**storedLiqueurTransferDelete**](doc//StoredLiqueurTransferApi.md#storedliqueurtransferdelete) | **DELETE** /stored_liqueur_transfer | 
+*StoredLiqueurTransferApi* | [**storedLiqueurTransferGet**](doc//StoredLiqueurTransferApi.md#storedliqueurtransferget) | **GET** /stored_liqueur_transfer | 
+*StoredLiqueurTransferApi* | [**storedLiqueurTransferPatch**](doc//StoredLiqueurTransferApi.md#storedliqueurtransferpatch) | **PATCH** /stored_liqueur_transfer | 
+*StoredLiqueurTransferApi* | [**storedLiqueurTransferPost**](doc//StoredLiqueurTransferApi.md#storedliqueurtransferpost) | **POST** /stored_liqueur_transfer | 
 *UserApi* | [**userDelete**](doc//UserApi.md#userdelete) | **DELETE** /user | 
 *UserApi* | [**userGet**](doc//UserApi.md#userget) | **GET** /user | 
 *UserApi* | [**userPatch**](doc//UserApi.md#userpatch) | **PATCH** /user | 
 *UserApi* | [**userPost**](doc//UserApi.md#userpost) | **POST** /user | 
-*UserBenefitApi* | [**userBenefitDelete**](doc//UserBenefitApi.md#userbenefitdelete) | **DELETE** /user_benefit | 
-*UserBenefitApi* | [**userBenefitGet**](doc//UserBenefitApi.md#userbenefitget) | **GET** /user_benefit | 
-*UserBenefitApi* | [**userBenefitPatch**](doc//UserBenefitApi.md#userbenefitpatch) | **PATCH** /user_benefit | 
-*UserBenefitApi* | [**userBenefitPost**](doc//UserBenefitApi.md#userbenefitpost) | **POST** /user_benefit | 
 *UserEstablishmentBookmarkApi* | [**userEstablishmentBookmarkDelete**](doc//UserEstablishmentBookmarkApi.md#userestablishmentbookmarkdelete) | **DELETE** /user_establishment_bookmark | 
 *UserEstablishmentBookmarkApi* | [**userEstablishmentBookmarkGet**](doc//UserEstablishmentBookmarkApi.md#userestablishmentbookmarkget) | **GET** /user_establishment_bookmark | 
 *UserEstablishmentBookmarkApi* | [**userEstablishmentBookmarkPatch**](doc//UserEstablishmentBookmarkApi.md#userestablishmentbookmarkpatch) | **PATCH** /user_establishment_bookmark | 
@@ -195,10 +200,8 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Benefit](doc//Benefit.md)
  - [Booking](doc//Booking.md)
  - [Establishment](doc//Establishment.md)
- - [EstablishmentBenefit](doc//EstablishmentBenefit.md)
  - [EstablishmentCategory](doc//EstablishmentCategory.md)
  - [EstablishmentImage](doc//EstablishmentImage.md)
  - [EstablishmentMenu](doc//EstablishmentMenu.md)
@@ -208,6 +211,7 @@ Class | Method | HTTP request | Description
  - [Featured](doc//Featured.md)
  - [FeaturedOffer](doc//FeaturedOffer.md)
  - [Follow](doc//Follow.md)
+ - [Friend](doc//Friend.md)
  - [Image](doc//Image.md)
  - [MenuCategory](doc//MenuCategory.md)
  - [Message](doc//Message.md)
@@ -219,8 +223,10 @@ Class | Method | HTTP request | Description
  - [Review](doc//Review.md)
  - [ReviewImage](doc//ReviewImage.md)
  - [RpcSignUpPostRequest](doc//RpcSignUpPostRequest.md)
+ - [StoredLiqueur](doc//StoredLiqueur.md)
+ - [StoredLiqueurImage](doc//StoredLiqueurImage.md)
+ - [StoredLiqueurTransfer](doc//StoredLiqueurTransfer.md)
  - [User](doc//User.md)
- - [UserBenefit](doc//UserBenefit.md)
  - [UserEstablishmentBookmark](doc//UserEstablishmentBookmark.md)
  - [UserFeaturedOffer](doc//UserFeaturedOffer.md)
  - [UserImageLike](doc//UserImageLike.md)

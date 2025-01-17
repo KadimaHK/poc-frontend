@@ -23,9 +23,15 @@ class UserFeaturedOfferApi {
   ///
   /// * [String] featuredOfferId:
   ///
+  /// * [String] isRedeemed:
+  ///
+  /// * [String] redeemCode:
+  ///
+  /// * [String] redeemedAt:
+  ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> userFeaturedOfferDeleteWithHttpInfo({ String? userId, String? featuredOfferId, String? prefer, }) async {
+  Future<Response> userFeaturedOfferDeleteWithHttpInfo({ String? userId, String? featuredOfferId, String? isRedeemed, String? redeemCode, String? redeemedAt, String? prefer, }) async {
     // ignore: prefer_const_declarations
     final path = r'/user_featured_offer';
 
@@ -41,6 +47,15 @@ class UserFeaturedOfferApi {
     }
     if (featuredOfferId != null) {
       queryParams.addAll(_queryParams('', 'featured_offer_id', featuredOfferId));
+    }
+    if (isRedeemed != null) {
+      queryParams.addAll(_queryParams('', 'is_redeemed', isRedeemed));
+    }
+    if (redeemCode != null) {
+      queryParams.addAll(_queryParams('', 'redeem_code', redeemCode));
+    }
+    if (redeemedAt != null) {
+      queryParams.addAll(_queryParams('', 'redeemed_at', redeemedAt));
     }
 
     if (prefer != null) {
@@ -67,10 +82,16 @@ class UserFeaturedOfferApi {
   ///
   /// * [String] featuredOfferId:
   ///
+  /// * [String] isRedeemed:
+  ///
+  /// * [String] redeemCode:
+  ///
+  /// * [String] redeemedAt:
+  ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> userFeaturedOfferDelete({ String? userId, String? featuredOfferId, String? prefer, }) async {
-    final response = await userFeaturedOfferDeleteWithHttpInfo( userId: userId, featuredOfferId: featuredOfferId, prefer: prefer, );
+  Future<void> userFeaturedOfferDelete({ String? userId, String? featuredOfferId, String? isRedeemed, String? redeemCode, String? redeemedAt, String? prefer, }) async {
+    final response = await userFeaturedOfferDeleteWithHttpInfo( userId: userId, featuredOfferId: featuredOfferId, isRedeemed: isRedeemed, redeemCode: redeemCode, redeemedAt: redeemedAt, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -82,6 +103,12 @@ class UserFeaturedOfferApi {
   /// * [String] userId:
   ///
   /// * [String] featuredOfferId:
+  ///
+  /// * [String] isRedeemed:
+  ///
+  /// * [String] redeemCode:
+  ///
+  /// * [String] redeemedAt:
   ///
   /// * [String] select:
   ///   Filtering Columns
@@ -103,7 +130,7 @@ class UserFeaturedOfferApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> userFeaturedOfferGetWithHttpInfo({ String? userId, String? featuredOfferId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> userFeaturedOfferGetWithHttpInfo({ String? userId, String? featuredOfferId, String? isRedeemed, String? redeemCode, String? redeemedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
     // ignore: prefer_const_declarations
     final path = r'/user_featured_offer';
 
@@ -119,6 +146,15 @@ class UserFeaturedOfferApi {
     }
     if (featuredOfferId != null) {
       queryParams.addAll(_queryParams('', 'featured_offer_id', featuredOfferId));
+    }
+    if (isRedeemed != null) {
+      queryParams.addAll(_queryParams('', 'is_redeemed', isRedeemed));
+    }
+    if (redeemCode != null) {
+      queryParams.addAll(_queryParams('', 'redeem_code', redeemCode));
+    }
+    if (redeemedAt != null) {
+      queryParams.addAll(_queryParams('', 'redeemed_at', redeemedAt));
     }
     if (select != null) {
       queryParams.addAll(_queryParams('', 'select', select));
@@ -163,6 +199,12 @@ class UserFeaturedOfferApi {
   ///
   /// * [String] featuredOfferId:
   ///
+  /// * [String] isRedeemed:
+  ///
+  /// * [String] redeemCode:
+  ///
+  /// * [String] redeemedAt:
+  ///
   /// * [String] select:
   ///   Filtering Columns
   ///
@@ -183,8 +225,8 @@ class UserFeaturedOfferApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<UserFeaturedOffer>?> userFeaturedOfferGet({ String? userId, String? featuredOfferId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await userFeaturedOfferGetWithHttpInfo( userId: userId, featuredOfferId: featuredOfferId, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<UserFeaturedOffer>?> userFeaturedOfferGet({ String? userId, String? featuredOfferId, String? isRedeemed, String? redeemCode, String? redeemedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+    final response = await userFeaturedOfferGetWithHttpInfo( userId: userId, featuredOfferId: featuredOfferId, isRedeemed: isRedeemed, redeemCode: redeemCode, redeemedAt: redeemedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -208,12 +250,18 @@ class UserFeaturedOfferApi {
   ///
   /// * [String] featuredOfferId:
   ///
+  /// * [String] isRedeemed:
+  ///
+  /// * [String] redeemCode:
+  ///
+  /// * [String] redeemedAt:
+  ///
   /// * [String] prefer:
   ///   Preference
   ///
   /// * [UserFeaturedOffer] userFeaturedOffer:
   ///   user_featured_offer
-  Future<Response> userFeaturedOfferPatchWithHttpInfo({ String? userId, String? featuredOfferId, String? prefer, UserFeaturedOffer? userFeaturedOffer, }) async {
+  Future<Response> userFeaturedOfferPatchWithHttpInfo({ String? userId, String? featuredOfferId, String? isRedeemed, String? redeemCode, String? redeemedAt, String? prefer, UserFeaturedOffer? userFeaturedOffer, }) async {
     // ignore: prefer_const_declarations
     final path = r'/user_featured_offer';
 
@@ -229,6 +277,15 @@ class UserFeaturedOfferApi {
     }
     if (featuredOfferId != null) {
       queryParams.addAll(_queryParams('', 'featured_offer_id', featuredOfferId));
+    }
+    if (isRedeemed != null) {
+      queryParams.addAll(_queryParams('', 'is_redeemed', isRedeemed));
+    }
+    if (redeemCode != null) {
+      queryParams.addAll(_queryParams('', 'redeem_code', redeemCode));
+    }
+    if (redeemedAt != null) {
+      queryParams.addAll(_queryParams('', 'redeemed_at', redeemedAt));
     }
 
     if (prefer != null) {
@@ -255,13 +312,19 @@ class UserFeaturedOfferApi {
   ///
   /// * [String] featuredOfferId:
   ///
+  /// * [String] isRedeemed:
+  ///
+  /// * [String] redeemCode:
+  ///
+  /// * [String] redeemedAt:
+  ///
   /// * [String] prefer:
   ///   Preference
   ///
   /// * [UserFeaturedOffer] userFeaturedOffer:
   ///   user_featured_offer
-  Future<void> userFeaturedOfferPatch({ String? userId, String? featuredOfferId, String? prefer, UserFeaturedOffer? userFeaturedOffer, }) async {
-    final response = await userFeaturedOfferPatchWithHttpInfo( userId: userId, featuredOfferId: featuredOfferId, prefer: prefer, userFeaturedOffer: userFeaturedOffer, );
+  Future<void> userFeaturedOfferPatch({ String? userId, String? featuredOfferId, String? isRedeemed, String? redeemCode, String? redeemedAt, String? prefer, UserFeaturedOffer? userFeaturedOffer, }) async {
+    final response = await userFeaturedOfferPatchWithHttpInfo( userId: userId, featuredOfferId: featuredOfferId, isRedeemed: isRedeemed, redeemCode: redeemCode, redeemedAt: redeemedAt, prefer: prefer, userFeaturedOffer: userFeaturedOffer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -11,29 +11,23 @@
 part of openapi.api;
 
 
-class MessageApi {
-  MessageApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
+class FriendApi {
+  FriendApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'DELETE /message' operation and returns the [Response].
+  /// Performs an HTTP 'DELETE /friend' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [String] uuid:
+  /// * [String] userId:
   ///
-  /// * [String] time:
-  ///
-  /// * [String] fromUserId:
-  ///
-  /// * [String] toUserId:
-  ///
-  /// * [String] body:
+  /// * [String] friendId:
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> messageDeleteWithHttpInfo({ String? uuid, String? time, String? fromUserId, String? toUserId, String? body, String? prefer, }) async {
+  Future<Response> friendDeleteWithHttpInfo({ String? userId, String? friendId, String? prefer, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/message';
+    final path = r'/friend';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -42,20 +36,11 @@ class MessageApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (uuid != null) {
-      queryParams.addAll(_queryParams('', 'uuid', uuid));
+    if (userId != null) {
+      queryParams.addAll(_queryParams('', 'user_id', userId));
     }
-    if (time != null) {
-      queryParams.addAll(_queryParams('', 'time', time));
-    }
-    if (fromUserId != null) {
-      queryParams.addAll(_queryParams('', 'from_user_id', fromUserId));
-    }
-    if (toUserId != null) {
-      queryParams.addAll(_queryParams('', 'to_user_id', toUserId));
-    }
-    if (body != null) {
-      queryParams.addAll(_queryParams('', 'body', body));
+    if (friendId != null) {
+      queryParams.addAll(_queryParams('', 'friend_id', friendId));
     }
 
     if (prefer != null) {
@@ -78,37 +63,25 @@ class MessageApi {
 
   /// Parameters:
   ///
-  /// * [String] uuid:
+  /// * [String] userId:
   ///
-  /// * [String] time:
-  ///
-  /// * [String] fromUserId:
-  ///
-  /// * [String] toUserId:
-  ///
-  /// * [String] body:
+  /// * [String] friendId:
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> messageDelete({ String? uuid, String? time, String? fromUserId, String? toUserId, String? body, String? prefer, }) async {
-    final response = await messageDeleteWithHttpInfo( uuid: uuid, time: time, fromUserId: fromUserId, toUserId: toUserId, body: body, prefer: prefer, );
+  Future<void> friendDelete({ String? userId, String? friendId, String? prefer, }) async {
+    final response = await friendDeleteWithHttpInfo( userId: userId, friendId: friendId, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
   }
 
-  /// Performs an HTTP 'GET /message' operation and returns the [Response].
+  /// Performs an HTTP 'GET /friend' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [String] uuid:
+  /// * [String] userId:
   ///
-  /// * [String] time:
-  ///
-  /// * [String] fromUserId:
-  ///
-  /// * [String] toUserId:
-  ///
-  /// * [String] body:
+  /// * [String] friendId:
   ///
   /// * [String] select:
   ///   Filtering Columns
@@ -130,9 +103,9 @@ class MessageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> messageGetWithHttpInfo({ String? uuid, String? time, String? fromUserId, String? toUserId, String? body, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> friendGetWithHttpInfo({ String? userId, String? friendId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/message';
+    final path = r'/friend';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -141,20 +114,11 @@ class MessageApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (uuid != null) {
-      queryParams.addAll(_queryParams('', 'uuid', uuid));
+    if (userId != null) {
+      queryParams.addAll(_queryParams('', 'user_id', userId));
     }
-    if (time != null) {
-      queryParams.addAll(_queryParams('', 'time', time));
-    }
-    if (fromUserId != null) {
-      queryParams.addAll(_queryParams('', 'from_user_id', fromUserId));
-    }
-    if (toUserId != null) {
-      queryParams.addAll(_queryParams('', 'to_user_id', toUserId));
-    }
-    if (body != null) {
-      queryParams.addAll(_queryParams('', 'body', body));
+    if (friendId != null) {
+      queryParams.addAll(_queryParams('', 'friend_id', friendId));
     }
     if (select != null) {
       queryParams.addAll(_queryParams('', 'select', select));
@@ -195,15 +159,9 @@ class MessageApi {
 
   /// Parameters:
   ///
-  /// * [String] uuid:
+  /// * [String] userId:
   ///
-  /// * [String] time:
-  ///
-  /// * [String] fromUserId:
-  ///
-  /// * [String] toUserId:
-  ///
-  /// * [String] body:
+  /// * [String] friendId:
   ///
   /// * [String] select:
   ///   Filtering Columns
@@ -225,8 +183,8 @@ class MessageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<Message>?> messageGet({ String? uuid, String? time, String? fromUserId, String? toUserId, String? body, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await messageGetWithHttpInfo( uuid: uuid, time: time, fromUserId: fromUserId, toUserId: toUserId, body: body, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<Friend>?> friendGet({ String? userId, String? friendId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+    final response = await friendGetWithHttpInfo( userId: userId, friendId: friendId, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -235,57 +193,42 @@ class MessageApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<Message>') as List)
-        .cast<Message>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<Friend>') as List)
+        .cast<Friend>()
         .toList(growable: false);
 
     }
     return null;
   }
 
-  /// Performs an HTTP 'PATCH /message' operation and returns the [Response].
+  /// Performs an HTTP 'PATCH /friend' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [String] uuid:
+  /// * [String] userId:
   ///
-  /// * [String] time:
-  ///
-  /// * [String] fromUserId:
-  ///
-  /// * [String] toUserId:
-  ///
-  /// * [String] body:
+  /// * [String] friendId:
   ///
   /// * [String] prefer:
   ///   Preference
   ///
-  /// * [Message] message:
-  ///   message
-  Future<Response> messagePatchWithHttpInfo({ String? uuid, String? time, String? fromUserId, String? toUserId, String? body, String? prefer, Message? message, }) async {
+  /// * [Friend] friend:
+  ///   friend
+  Future<Response> friendPatchWithHttpInfo({ String? userId, String? friendId, String? prefer, Friend? friend, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/message';
+    final path = r'/friend';
 
     // ignore: prefer_final_locals
-    Object? postBody = message;
+    Object? postBody = friend;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (uuid != null) {
-      queryParams.addAll(_queryParams('', 'uuid', uuid));
+    if (userId != null) {
+      queryParams.addAll(_queryParams('', 'user_id', userId));
     }
-    if (time != null) {
-      queryParams.addAll(_queryParams('', 'time', time));
-    }
-    if (fromUserId != null) {
-      queryParams.addAll(_queryParams('', 'from_user_id', fromUserId));
-    }
-    if (toUserId != null) {
-      queryParams.addAll(_queryParams('', 'to_user_id', toUserId));
-    }
-    if (body != null) {
-      queryParams.addAll(_queryParams('', 'body', body));
+    if (friendId != null) {
+      queryParams.addAll(_queryParams('', 'friend_id', friendId));
     }
 
     if (prefer != null) {
@@ -308,29 +251,23 @@ class MessageApi {
 
   /// Parameters:
   ///
-  /// * [String] uuid:
+  /// * [String] userId:
   ///
-  /// * [String] time:
-  ///
-  /// * [String] fromUserId:
-  ///
-  /// * [String] toUserId:
-  ///
-  /// * [String] body:
+  /// * [String] friendId:
   ///
   /// * [String] prefer:
   ///   Preference
   ///
-  /// * [Message] message:
-  ///   message
-  Future<void> messagePatch({ String? uuid, String? time, String? fromUserId, String? toUserId, String? body, String? prefer, Message? message, }) async {
-    final response = await messagePatchWithHttpInfo( uuid: uuid, time: time, fromUserId: fromUserId, toUserId: toUserId, body: body, prefer: prefer, message: message, );
+  /// * [Friend] friend:
+  ///   friend
+  Future<void> friendPatch({ String? userId, String? friendId, String? prefer, Friend? friend, }) async {
+    final response = await friendPatchWithHttpInfo( userId: userId, friendId: friendId, prefer: prefer, friend: friend, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
   }
 
-  /// Performs an HTTP 'POST /message' operation and returns the [Response].
+  /// Performs an HTTP 'POST /friend' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] select:
@@ -339,14 +276,14 @@ class MessageApi {
   /// * [String] prefer:
   ///   Preference
   ///
-  /// * [Message] message:
-  ///   message
-  Future<Response> messagePostWithHttpInfo({ String? select, String? prefer, Message? message, }) async {
+  /// * [Friend] friend:
+  ///   friend
+  Future<Response> friendPostWithHttpInfo({ String? select, String? prefer, Friend? friend, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/message';
+    final path = r'/friend';
 
     // ignore: prefer_final_locals
-    Object? postBody = message;
+    Object? postBody = friend;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -382,10 +319,10 @@ class MessageApi {
   /// * [String] prefer:
   ///   Preference
   ///
-  /// * [Message] message:
-  ///   message
-  Future<void> messagePost({ String? select, String? prefer, Message? message, }) async {
-    final response = await messagePostWithHttpInfo( select: select, prefer: prefer, message: message, );
+  /// * [Friend] friend:
+  ///   friend
+  Future<void> friendPost({ String? select, String? prefer, Friend? friend, }) async {
+    final response = await friendPostWithHttpInfo( select: select, prefer: prefer, friend: friend, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -182,14 +182,10 @@ class ApiClient {
           return valueString == 'true' || valueString == '1';
         case 'DateTime':
           return value is DateTime ? value : DateTime.tryParse(value);
-        case 'Benefit':
-          return Benefit.fromJson(value);
         case 'Booking':
           return Booking.fromJson(value);
         case 'Establishment':
           return Establishment.fromJson(value);
-        case 'EstablishmentBenefit':
-          return EstablishmentBenefit.fromJson(value);
         case 'EstablishmentCategory':
           return EstablishmentCategory.fromJson(value);
         case 'EstablishmentImage':
@@ -208,6 +204,8 @@ class ApiClient {
           return FeaturedOffer.fromJson(value);
         case 'Follow':
           return Follow.fromJson(value);
+        case 'Friend':
+          return Friend.fromJson(value);
         case 'Image':
           return Image.fromJson(value);
         case 'MenuCategory':
@@ -230,10 +228,14 @@ class ApiClient {
           return ReviewImage.fromJson(value);
         case 'RpcSignUpPostRequest':
           return RpcSignUpPostRequest.fromJson(value);
+        case 'StoredLiqueur':
+          return StoredLiqueur.fromJson(value);
+        case 'StoredLiqueurImage':
+          return StoredLiqueurImage.fromJson(value);
+        case 'StoredLiqueurTransfer':
+          return StoredLiqueurTransfer.fromJson(value);
         case 'User':
           return User.fromJson(value);
-        case 'UserBenefit':
-          return UserBenefit.fromJson(value);
         case 'UserEstablishmentBookmark':
           return UserEstablishmentBookmark.fromJson(value);
         case 'UserFeaturedOffer':

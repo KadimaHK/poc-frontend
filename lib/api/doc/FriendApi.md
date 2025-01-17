@@ -1,4 +1,4 @@
-# openapi.api.UserFeaturedOfferApi
+# openapi.api.FriendApi
 
 ## Load the API package
 ```dart
@@ -9,14 +9,14 @@ All URIs are relative to *http://poc-bar-app.com:80/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**userFeaturedOfferDelete**](UserFeaturedOfferApi.md#userfeaturedofferdelete) | **DELETE** /user_featured_offer | 
-[**userFeaturedOfferGet**](UserFeaturedOfferApi.md#userfeaturedofferget) | **GET** /user_featured_offer | 
-[**userFeaturedOfferPatch**](UserFeaturedOfferApi.md#userfeaturedofferpatch) | **PATCH** /user_featured_offer | 
-[**userFeaturedOfferPost**](UserFeaturedOfferApi.md#userfeaturedofferpost) | **POST** /user_featured_offer | 
+[**friendDelete**](FriendApi.md#frienddelete) | **DELETE** /friend | 
+[**friendGet**](FriendApi.md#friendget) | **GET** /friend | 
+[**friendPatch**](FriendApi.md#friendpatch) | **PATCH** /friend | 
+[**friendPost**](FriendApi.md#friendpost) | **POST** /friend | 
 
 
-# **userFeaturedOfferDelete**
-> userFeaturedOfferDelete(userId, featuredOfferId, isRedeemed, redeemCode, redeemedAt, prefer)
+# **friendDelete**
+> friendDelete(userId, friendId, prefer)
 
 
 
@@ -28,18 +28,15 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserFeaturedOfferApi();
+final api_instance = FriendApi();
 final userId = userId_example; // String | 
-final featuredOfferId = featuredOfferId_example; // String | 
-final isRedeemed = isRedeemed_example; // String | 
-final redeemCode = redeemCode_example; // String | 
-final redeemedAt = redeemedAt_example; // String | 
+final friendId = friendId_example; // String | 
 final prefer = prefer_example; // String | Preference
 
 try {
-    api_instance.userFeaturedOfferDelete(userId, featuredOfferId, isRedeemed, redeemCode, redeemedAt, prefer);
+    api_instance.friendDelete(userId, friendId, prefer);
 } catch (e) {
-    print('Exception when calling UserFeaturedOfferApi->userFeaturedOfferDelete: $e\n');
+    print('Exception when calling FriendApi->friendDelete: $e\n');
 }
 ```
 
@@ -48,10 +45,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String**|  | [optional] 
- **featuredOfferId** | **String**|  | [optional] 
- **isRedeemed** | **String**|  | [optional] 
- **redeemCode** | **String**|  | [optional] 
- **redeemedAt** | **String**|  | [optional] 
+ **friendId** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 
 
 ### Return type
@@ -69,8 +63,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userFeaturedOfferGet**
-> List<UserFeaturedOffer> userFeaturedOfferGet(userId, featuredOfferId, isRedeemed, redeemCode, redeemedAt, select, order, range, rangeUnit, offset, limit, prefer)
+# **friendGet**
+> List<Friend> friendGet(userId, friendId, select, order, range, rangeUnit, offset, limit, prefer)
 
 
 
@@ -82,12 +76,9 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserFeaturedOfferApi();
+final api_instance = FriendApi();
 final userId = userId_example; // String | 
-final featuredOfferId = featuredOfferId_example; // String | 
-final isRedeemed = isRedeemed_example; // String | 
-final redeemCode = redeemCode_example; // String | 
-final redeemedAt = redeemedAt_example; // String | 
+final friendId = friendId_example; // String | 
 final select = select_example; // String | Filtering Columns
 final order = order_example; // String | Ordering
 final range = range_example; // String | Limiting and Pagination
@@ -97,10 +88,10 @@ final limit = limit_example; // String | Limiting and Pagination
 final prefer = prefer_example; // String | Preference
 
 try {
-    final result = api_instance.userFeaturedOfferGet(userId, featuredOfferId, isRedeemed, redeemCode, redeemedAt, select, order, range, rangeUnit, offset, limit, prefer);
+    final result = api_instance.friendGet(userId, friendId, select, order, range, rangeUnit, offset, limit, prefer);
     print(result);
 } catch (e) {
-    print('Exception when calling UserFeaturedOfferApi->userFeaturedOfferGet: $e\n');
+    print('Exception when calling FriendApi->friendGet: $e\n');
 }
 ```
 
@@ -109,10 +100,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String**|  | [optional] 
- **featuredOfferId** | **String**|  | [optional] 
- **isRedeemed** | **String**|  | [optional] 
- **redeemCode** | **String**|  | [optional] 
- **redeemedAt** | **String**|  | [optional] 
+ **friendId** | **String**|  | [optional] 
  **select** | **String**| Filtering Columns | [optional] 
  **order** | **String**| Ordering | [optional] 
  **range** | **String**| Limiting and Pagination | [optional] 
@@ -123,7 +111,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<UserFeaturedOffer>**](UserFeaturedOffer.md)
+[**List<Friend>**](Friend.md)
 
 ### Authorization
 
@@ -136,8 +124,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userFeaturedOfferPatch**
-> userFeaturedOfferPatch(userId, featuredOfferId, isRedeemed, redeemCode, redeemedAt, prefer, userFeaturedOffer)
+# **friendPatch**
+> friendPatch(userId, friendId, prefer, friend)
 
 
 
@@ -149,19 +137,16 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserFeaturedOfferApi();
+final api_instance = FriendApi();
 final userId = userId_example; // String | 
-final featuredOfferId = featuredOfferId_example; // String | 
-final isRedeemed = isRedeemed_example; // String | 
-final redeemCode = redeemCode_example; // String | 
-final redeemedAt = redeemedAt_example; // String | 
+final friendId = friendId_example; // String | 
 final prefer = prefer_example; // String | Preference
-final userFeaturedOffer = UserFeaturedOffer(); // UserFeaturedOffer | user_featured_offer
+final friend = Friend(); // Friend | friend
 
 try {
-    api_instance.userFeaturedOfferPatch(userId, featuredOfferId, isRedeemed, redeemCode, redeemedAt, prefer, userFeaturedOffer);
+    api_instance.friendPatch(userId, friendId, prefer, friend);
 } catch (e) {
-    print('Exception when calling UserFeaturedOfferApi->userFeaturedOfferPatch: $e\n');
+    print('Exception when calling FriendApi->friendPatch: $e\n');
 }
 ```
 
@@ -170,12 +155,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String**|  | [optional] 
- **featuredOfferId** | **String**|  | [optional] 
- **isRedeemed** | **String**|  | [optional] 
- **redeemCode** | **String**|  | [optional] 
- **redeemedAt** | **String**|  | [optional] 
+ **friendId** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 
- **userFeaturedOffer** | [**UserFeaturedOffer**](UserFeaturedOffer.md)| user_featured_offer | [optional] 
+ **friend** | [**Friend**](Friend.md)| friend | [optional] 
 
 ### Return type
 
@@ -192,8 +174,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userFeaturedOfferPost**
-> userFeaturedOfferPost(select, prefer, userFeaturedOffer)
+# **friendPost**
+> friendPost(select, prefer, friend)
 
 
 
@@ -205,15 +187,15 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserFeaturedOfferApi();
+final api_instance = FriendApi();
 final select = select_example; // String | Filtering Columns
 final prefer = prefer_example; // String | Preference
-final userFeaturedOffer = UserFeaturedOffer(); // UserFeaturedOffer | user_featured_offer
+final friend = Friend(); // Friend | friend
 
 try {
-    api_instance.userFeaturedOfferPost(select, prefer, userFeaturedOffer);
+    api_instance.friendPost(select, prefer, friend);
 } catch (e) {
-    print('Exception when calling UserFeaturedOfferApi->userFeaturedOfferPost: $e\n');
+    print('Exception when calling FriendApi->friendPost: $e\n');
 }
 ```
 
@@ -223,7 +205,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **select** | **String**| Filtering Columns | [optional] 
  **prefer** | **String**| Preference | [optional] 
- **userFeaturedOffer** | [**UserFeaturedOffer**](UserFeaturedOffer.md)| user_featured_offer | [optional] 
+ **friend** | [**Friend**](Friend.md)| friend | [optional] 
 
 ### Return type
 

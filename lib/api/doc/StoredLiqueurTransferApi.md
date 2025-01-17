@@ -1,4 +1,4 @@
-# openapi.api.UserFeaturedOfferApi
+# openapi.api.StoredLiqueurTransferApi
 
 ## Load the API package
 ```dart
@@ -9,14 +9,14 @@ All URIs are relative to *http://poc-bar-app.com:80/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**userFeaturedOfferDelete**](UserFeaturedOfferApi.md#userfeaturedofferdelete) | **DELETE** /user_featured_offer | 
-[**userFeaturedOfferGet**](UserFeaturedOfferApi.md#userfeaturedofferget) | **GET** /user_featured_offer | 
-[**userFeaturedOfferPatch**](UserFeaturedOfferApi.md#userfeaturedofferpatch) | **PATCH** /user_featured_offer | 
-[**userFeaturedOfferPost**](UserFeaturedOfferApi.md#userfeaturedofferpost) | **POST** /user_featured_offer | 
+[**storedLiqueurTransferDelete**](StoredLiqueurTransferApi.md#storedliqueurtransferdelete) | **DELETE** /stored_liqueur_transfer | 
+[**storedLiqueurTransferGet**](StoredLiqueurTransferApi.md#storedliqueurtransferget) | **GET** /stored_liqueur_transfer | 
+[**storedLiqueurTransferPatch**](StoredLiqueurTransferApi.md#storedliqueurtransferpatch) | **PATCH** /stored_liqueur_transfer | 
+[**storedLiqueurTransferPost**](StoredLiqueurTransferApi.md#storedliqueurtransferpost) | **POST** /stored_liqueur_transfer | 
 
 
-# **userFeaturedOfferDelete**
-> userFeaturedOfferDelete(userId, featuredOfferId, isRedeemed, redeemCode, redeemedAt, prefer)
+# **storedLiqueurTransferDelete**
+> storedLiqueurTransferDelete(id, storedLiqueurId, fromUserId, toUserId, isAccepted, createdAt, prefer)
 
 
 
@@ -28,18 +28,19 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserFeaturedOfferApi();
-final userId = userId_example; // String | 
-final featuredOfferId = featuredOfferId_example; // String | 
-final isRedeemed = isRedeemed_example; // String | 
-final redeemCode = redeemCode_example; // String | 
-final redeemedAt = redeemedAt_example; // String | 
+final api_instance = StoredLiqueurTransferApi();
+final id = id_example; // String | 
+final storedLiqueurId = storedLiqueurId_example; // String | 
+final fromUserId = fromUserId_example; // String | 
+final toUserId = toUserId_example; // String | 
+final isAccepted = isAccepted_example; // String | 
+final createdAt = createdAt_example; // String | 
 final prefer = prefer_example; // String | Preference
 
 try {
-    api_instance.userFeaturedOfferDelete(userId, featuredOfferId, isRedeemed, redeemCode, redeemedAt, prefer);
+    api_instance.storedLiqueurTransferDelete(id, storedLiqueurId, fromUserId, toUserId, isAccepted, createdAt, prefer);
 } catch (e) {
-    print('Exception when calling UserFeaturedOfferApi->userFeaturedOfferDelete: $e\n');
+    print('Exception when calling StoredLiqueurTransferApi->storedLiqueurTransferDelete: $e\n');
 }
 ```
 
@@ -47,11 +48,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **String**|  | [optional] 
- **featuredOfferId** | **String**|  | [optional] 
- **isRedeemed** | **String**|  | [optional] 
- **redeemCode** | **String**|  | [optional] 
- **redeemedAt** | **String**|  | [optional] 
+ **id** | **String**|  | [optional] 
+ **storedLiqueurId** | **String**|  | [optional] 
+ **fromUserId** | **String**|  | [optional] 
+ **toUserId** | **String**|  | [optional] 
+ **isAccepted** | **String**|  | [optional] 
+ **createdAt** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 
 
 ### Return type
@@ -69,8 +71,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userFeaturedOfferGet**
-> List<UserFeaturedOffer> userFeaturedOfferGet(userId, featuredOfferId, isRedeemed, redeemCode, redeemedAt, select, order, range, rangeUnit, offset, limit, prefer)
+# **storedLiqueurTransferGet**
+> List<StoredLiqueurTransfer> storedLiqueurTransferGet(id, storedLiqueurId, fromUserId, toUserId, isAccepted, createdAt, select, order, range, rangeUnit, offset, limit, prefer)
 
 
 
@@ -82,12 +84,13 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserFeaturedOfferApi();
-final userId = userId_example; // String | 
-final featuredOfferId = featuredOfferId_example; // String | 
-final isRedeemed = isRedeemed_example; // String | 
-final redeemCode = redeemCode_example; // String | 
-final redeemedAt = redeemedAt_example; // String | 
+final api_instance = StoredLiqueurTransferApi();
+final id = id_example; // String | 
+final storedLiqueurId = storedLiqueurId_example; // String | 
+final fromUserId = fromUserId_example; // String | 
+final toUserId = toUserId_example; // String | 
+final isAccepted = isAccepted_example; // String | 
+final createdAt = createdAt_example; // String | 
 final select = select_example; // String | Filtering Columns
 final order = order_example; // String | Ordering
 final range = range_example; // String | Limiting and Pagination
@@ -97,10 +100,10 @@ final limit = limit_example; // String | Limiting and Pagination
 final prefer = prefer_example; // String | Preference
 
 try {
-    final result = api_instance.userFeaturedOfferGet(userId, featuredOfferId, isRedeemed, redeemCode, redeemedAt, select, order, range, rangeUnit, offset, limit, prefer);
+    final result = api_instance.storedLiqueurTransferGet(id, storedLiqueurId, fromUserId, toUserId, isAccepted, createdAt, select, order, range, rangeUnit, offset, limit, prefer);
     print(result);
 } catch (e) {
-    print('Exception when calling UserFeaturedOfferApi->userFeaturedOfferGet: $e\n');
+    print('Exception when calling StoredLiqueurTransferApi->storedLiqueurTransferGet: $e\n');
 }
 ```
 
@@ -108,11 +111,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **String**|  | [optional] 
- **featuredOfferId** | **String**|  | [optional] 
- **isRedeemed** | **String**|  | [optional] 
- **redeemCode** | **String**|  | [optional] 
- **redeemedAt** | **String**|  | [optional] 
+ **id** | **String**|  | [optional] 
+ **storedLiqueurId** | **String**|  | [optional] 
+ **fromUserId** | **String**|  | [optional] 
+ **toUserId** | **String**|  | [optional] 
+ **isAccepted** | **String**|  | [optional] 
+ **createdAt** | **String**|  | [optional] 
  **select** | **String**| Filtering Columns | [optional] 
  **order** | **String**| Ordering | [optional] 
  **range** | **String**| Limiting and Pagination | [optional] 
@@ -123,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<UserFeaturedOffer>**](UserFeaturedOffer.md)
+[**List<StoredLiqueurTransfer>**](StoredLiqueurTransfer.md)
 
 ### Authorization
 
@@ -136,8 +140,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userFeaturedOfferPatch**
-> userFeaturedOfferPatch(userId, featuredOfferId, isRedeemed, redeemCode, redeemedAt, prefer, userFeaturedOffer)
+# **storedLiqueurTransferPatch**
+> storedLiqueurTransferPatch(id, storedLiqueurId, fromUserId, toUserId, isAccepted, createdAt, prefer, storedLiqueurTransfer)
 
 
 
@@ -149,19 +153,20 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserFeaturedOfferApi();
-final userId = userId_example; // String | 
-final featuredOfferId = featuredOfferId_example; // String | 
-final isRedeemed = isRedeemed_example; // String | 
-final redeemCode = redeemCode_example; // String | 
-final redeemedAt = redeemedAt_example; // String | 
+final api_instance = StoredLiqueurTransferApi();
+final id = id_example; // String | 
+final storedLiqueurId = storedLiqueurId_example; // String | 
+final fromUserId = fromUserId_example; // String | 
+final toUserId = toUserId_example; // String | 
+final isAccepted = isAccepted_example; // String | 
+final createdAt = createdAt_example; // String | 
 final prefer = prefer_example; // String | Preference
-final userFeaturedOffer = UserFeaturedOffer(); // UserFeaturedOffer | user_featured_offer
+final storedLiqueurTransfer = StoredLiqueurTransfer(); // StoredLiqueurTransfer | stored_liqueur_transfer
 
 try {
-    api_instance.userFeaturedOfferPatch(userId, featuredOfferId, isRedeemed, redeemCode, redeemedAt, prefer, userFeaturedOffer);
+    api_instance.storedLiqueurTransferPatch(id, storedLiqueurId, fromUserId, toUserId, isAccepted, createdAt, prefer, storedLiqueurTransfer);
 } catch (e) {
-    print('Exception when calling UserFeaturedOfferApi->userFeaturedOfferPatch: $e\n');
+    print('Exception when calling StoredLiqueurTransferApi->storedLiqueurTransferPatch: $e\n');
 }
 ```
 
@@ -169,13 +174,14 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **String**|  | [optional] 
- **featuredOfferId** | **String**|  | [optional] 
- **isRedeemed** | **String**|  | [optional] 
- **redeemCode** | **String**|  | [optional] 
- **redeemedAt** | **String**|  | [optional] 
+ **id** | **String**|  | [optional] 
+ **storedLiqueurId** | **String**|  | [optional] 
+ **fromUserId** | **String**|  | [optional] 
+ **toUserId** | **String**|  | [optional] 
+ **isAccepted** | **String**|  | [optional] 
+ **createdAt** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 
- **userFeaturedOffer** | [**UserFeaturedOffer**](UserFeaturedOffer.md)| user_featured_offer | [optional] 
+ **storedLiqueurTransfer** | [**StoredLiqueurTransfer**](StoredLiqueurTransfer.md)| stored_liqueur_transfer | [optional] 
 
 ### Return type
 
@@ -192,8 +198,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userFeaturedOfferPost**
-> userFeaturedOfferPost(select, prefer, userFeaturedOffer)
+# **storedLiqueurTransferPost**
+> storedLiqueurTransferPost(select, prefer, storedLiqueurTransfer)
 
 
 
@@ -205,15 +211,15 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserFeaturedOfferApi();
+final api_instance = StoredLiqueurTransferApi();
 final select = select_example; // String | Filtering Columns
 final prefer = prefer_example; // String | Preference
-final userFeaturedOffer = UserFeaturedOffer(); // UserFeaturedOffer | user_featured_offer
+final storedLiqueurTransfer = StoredLiqueurTransfer(); // StoredLiqueurTransfer | stored_liqueur_transfer
 
 try {
-    api_instance.userFeaturedOfferPost(select, prefer, userFeaturedOffer);
+    api_instance.storedLiqueurTransferPost(select, prefer, storedLiqueurTransfer);
 } catch (e) {
-    print('Exception when calling UserFeaturedOfferApi->userFeaturedOfferPost: $e\n');
+    print('Exception when calling StoredLiqueurTransferApi->storedLiqueurTransferPost: $e\n');
 }
 ```
 
@@ -223,7 +229,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **select** | **String**| Filtering Columns | [optional] 
  **prefer** | **String**| Preference | [optional] 
- **userFeaturedOffer** | [**UserFeaturedOffer**](UserFeaturedOffer.md)| user_featured_offer | [optional] 
+ **storedLiqueurTransfer** | [**StoredLiqueurTransfer**](StoredLiqueurTransfer.md)| stored_liqueur_transfer | [optional] 
 
 ### Return type
 

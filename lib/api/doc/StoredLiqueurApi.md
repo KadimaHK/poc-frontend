@@ -1,4 +1,4 @@
-# openapi.api.UserFeaturedOfferApi
+# openapi.api.StoredLiqueurApi
 
 ## Load the API package
 ```dart
@@ -9,14 +9,14 @@ All URIs are relative to *http://poc-bar-app.com:80/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**userFeaturedOfferDelete**](UserFeaturedOfferApi.md#userfeaturedofferdelete) | **DELETE** /user_featured_offer | 
-[**userFeaturedOfferGet**](UserFeaturedOfferApi.md#userfeaturedofferget) | **GET** /user_featured_offer | 
-[**userFeaturedOfferPatch**](UserFeaturedOfferApi.md#userfeaturedofferpatch) | **PATCH** /user_featured_offer | 
-[**userFeaturedOfferPost**](UserFeaturedOfferApi.md#userfeaturedofferpost) | **POST** /user_featured_offer | 
+[**storedLiqueurDelete**](StoredLiqueurApi.md#storedliqueurdelete) | **DELETE** /stored_liqueur | 
+[**storedLiqueurGet**](StoredLiqueurApi.md#storedliqueurget) | **GET** /stored_liqueur | 
+[**storedLiqueurPatch**](StoredLiqueurApi.md#storedliqueurpatch) | **PATCH** /stored_liqueur | 
+[**storedLiqueurPost**](StoredLiqueurApi.md#storedliqueurpost) | **POST** /stored_liqueur | 
 
 
-# **userFeaturedOfferDelete**
-> userFeaturedOfferDelete(userId, featuredOfferId, isRedeemed, redeemCode, redeemedAt, prefer)
+# **storedLiqueurDelete**
+> storedLiqueurDelete(id, name, description, imageUrl, storedDate, expiryDate, establishmentId, isRedeemed, userId, createdAt, updatedAt, prefer)
 
 
 
@@ -28,18 +28,24 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserFeaturedOfferApi();
-final userId = userId_example; // String | 
-final featuredOfferId = featuredOfferId_example; // String | 
+final api_instance = StoredLiqueurApi();
+final id = id_example; // String | 
+final name = name_example; // String | 
+final description = description_example; // String | 
+final imageUrl = imageUrl_example; // String | 
+final storedDate = storedDate_example; // String | 
+final expiryDate = expiryDate_example; // String | 
+final establishmentId = establishmentId_example; // String | 
 final isRedeemed = isRedeemed_example; // String | 
-final redeemCode = redeemCode_example; // String | 
-final redeemedAt = redeemedAt_example; // String | 
+final userId = userId_example; // String | 
+final createdAt = createdAt_example; // String | 
+final updatedAt = updatedAt_example; // String | 
 final prefer = prefer_example; // String | Preference
 
 try {
-    api_instance.userFeaturedOfferDelete(userId, featuredOfferId, isRedeemed, redeemCode, redeemedAt, prefer);
+    api_instance.storedLiqueurDelete(id, name, description, imageUrl, storedDate, expiryDate, establishmentId, isRedeemed, userId, createdAt, updatedAt, prefer);
 } catch (e) {
-    print('Exception when calling UserFeaturedOfferApi->userFeaturedOfferDelete: $e\n');
+    print('Exception when calling StoredLiqueurApi->storedLiqueurDelete: $e\n');
 }
 ```
 
@@ -47,11 +53,17 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **String**|  | [optional] 
- **featuredOfferId** | **String**|  | [optional] 
+ **id** | **String**|  | [optional] 
+ **name** | **String**|  | [optional] 
+ **description** | **String**|  | [optional] 
+ **imageUrl** | **String**|  | [optional] 
+ **storedDate** | **String**|  | [optional] 
+ **expiryDate** | **String**|  | [optional] 
+ **establishmentId** | **String**|  | [optional] 
  **isRedeemed** | **String**|  | [optional] 
- **redeemCode** | **String**|  | [optional] 
- **redeemedAt** | **String**|  | [optional] 
+ **userId** | **String**|  | [optional] 
+ **createdAt** | **String**|  | [optional] 
+ **updatedAt** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 
 
 ### Return type
@@ -69,8 +81,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userFeaturedOfferGet**
-> List<UserFeaturedOffer> userFeaturedOfferGet(userId, featuredOfferId, isRedeemed, redeemCode, redeemedAt, select, order, range, rangeUnit, offset, limit, prefer)
+# **storedLiqueurGet**
+> List<StoredLiqueur> storedLiqueurGet(id, name, description, imageUrl, storedDate, expiryDate, establishmentId, isRedeemed, userId, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer)
 
 
 
@@ -82,12 +94,18 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserFeaturedOfferApi();
-final userId = userId_example; // String | 
-final featuredOfferId = featuredOfferId_example; // String | 
+final api_instance = StoredLiqueurApi();
+final id = id_example; // String | 
+final name = name_example; // String | 
+final description = description_example; // String | 
+final imageUrl = imageUrl_example; // String | 
+final storedDate = storedDate_example; // String | 
+final expiryDate = expiryDate_example; // String | 
+final establishmentId = establishmentId_example; // String | 
 final isRedeemed = isRedeemed_example; // String | 
-final redeemCode = redeemCode_example; // String | 
-final redeemedAt = redeemedAt_example; // String | 
+final userId = userId_example; // String | 
+final createdAt = createdAt_example; // String | 
+final updatedAt = updatedAt_example; // String | 
 final select = select_example; // String | Filtering Columns
 final order = order_example; // String | Ordering
 final range = range_example; // String | Limiting and Pagination
@@ -97,10 +115,10 @@ final limit = limit_example; // String | Limiting and Pagination
 final prefer = prefer_example; // String | Preference
 
 try {
-    final result = api_instance.userFeaturedOfferGet(userId, featuredOfferId, isRedeemed, redeemCode, redeemedAt, select, order, range, rangeUnit, offset, limit, prefer);
+    final result = api_instance.storedLiqueurGet(id, name, description, imageUrl, storedDate, expiryDate, establishmentId, isRedeemed, userId, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer);
     print(result);
 } catch (e) {
-    print('Exception when calling UserFeaturedOfferApi->userFeaturedOfferGet: $e\n');
+    print('Exception when calling StoredLiqueurApi->storedLiqueurGet: $e\n');
 }
 ```
 
@@ -108,11 +126,17 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **String**|  | [optional] 
- **featuredOfferId** | **String**|  | [optional] 
+ **id** | **String**|  | [optional] 
+ **name** | **String**|  | [optional] 
+ **description** | **String**|  | [optional] 
+ **imageUrl** | **String**|  | [optional] 
+ **storedDate** | **String**|  | [optional] 
+ **expiryDate** | **String**|  | [optional] 
+ **establishmentId** | **String**|  | [optional] 
  **isRedeemed** | **String**|  | [optional] 
- **redeemCode** | **String**|  | [optional] 
- **redeemedAt** | **String**|  | [optional] 
+ **userId** | **String**|  | [optional] 
+ **createdAt** | **String**|  | [optional] 
+ **updatedAt** | **String**|  | [optional] 
  **select** | **String**| Filtering Columns | [optional] 
  **order** | **String**| Ordering | [optional] 
  **range** | **String**| Limiting and Pagination | [optional] 
@@ -123,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<UserFeaturedOffer>**](UserFeaturedOffer.md)
+[**List<StoredLiqueur>**](StoredLiqueur.md)
 
 ### Authorization
 
@@ -136,8 +160,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userFeaturedOfferPatch**
-> userFeaturedOfferPatch(userId, featuredOfferId, isRedeemed, redeemCode, redeemedAt, prefer, userFeaturedOffer)
+# **storedLiqueurPatch**
+> storedLiqueurPatch(id, name, description, imageUrl, storedDate, expiryDate, establishmentId, isRedeemed, userId, createdAt, updatedAt, prefer, storedLiqueur)
 
 
 
@@ -149,19 +173,25 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserFeaturedOfferApi();
-final userId = userId_example; // String | 
-final featuredOfferId = featuredOfferId_example; // String | 
+final api_instance = StoredLiqueurApi();
+final id = id_example; // String | 
+final name = name_example; // String | 
+final description = description_example; // String | 
+final imageUrl = imageUrl_example; // String | 
+final storedDate = storedDate_example; // String | 
+final expiryDate = expiryDate_example; // String | 
+final establishmentId = establishmentId_example; // String | 
 final isRedeemed = isRedeemed_example; // String | 
-final redeemCode = redeemCode_example; // String | 
-final redeemedAt = redeemedAt_example; // String | 
+final userId = userId_example; // String | 
+final createdAt = createdAt_example; // String | 
+final updatedAt = updatedAt_example; // String | 
 final prefer = prefer_example; // String | Preference
-final userFeaturedOffer = UserFeaturedOffer(); // UserFeaturedOffer | user_featured_offer
+final storedLiqueur = StoredLiqueur(); // StoredLiqueur | stored_liqueur
 
 try {
-    api_instance.userFeaturedOfferPatch(userId, featuredOfferId, isRedeemed, redeemCode, redeemedAt, prefer, userFeaturedOffer);
+    api_instance.storedLiqueurPatch(id, name, description, imageUrl, storedDate, expiryDate, establishmentId, isRedeemed, userId, createdAt, updatedAt, prefer, storedLiqueur);
 } catch (e) {
-    print('Exception when calling UserFeaturedOfferApi->userFeaturedOfferPatch: $e\n');
+    print('Exception when calling StoredLiqueurApi->storedLiqueurPatch: $e\n');
 }
 ```
 
@@ -169,13 +199,19 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **String**|  | [optional] 
- **featuredOfferId** | **String**|  | [optional] 
+ **id** | **String**|  | [optional] 
+ **name** | **String**|  | [optional] 
+ **description** | **String**|  | [optional] 
+ **imageUrl** | **String**|  | [optional] 
+ **storedDate** | **String**|  | [optional] 
+ **expiryDate** | **String**|  | [optional] 
+ **establishmentId** | **String**|  | [optional] 
  **isRedeemed** | **String**|  | [optional] 
- **redeemCode** | **String**|  | [optional] 
- **redeemedAt** | **String**|  | [optional] 
+ **userId** | **String**|  | [optional] 
+ **createdAt** | **String**|  | [optional] 
+ **updatedAt** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 
- **userFeaturedOffer** | [**UserFeaturedOffer**](UserFeaturedOffer.md)| user_featured_offer | [optional] 
+ **storedLiqueur** | [**StoredLiqueur**](StoredLiqueur.md)| stored_liqueur | [optional] 
 
 ### Return type
 
@@ -192,8 +228,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userFeaturedOfferPost**
-> userFeaturedOfferPost(select, prefer, userFeaturedOffer)
+# **storedLiqueurPost**
+> storedLiqueurPost(select, prefer, storedLiqueur)
 
 
 
@@ -205,15 +241,15 @@ import 'package:openapi/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
-final api_instance = UserFeaturedOfferApi();
+final api_instance = StoredLiqueurApi();
 final select = select_example; // String | Filtering Columns
 final prefer = prefer_example; // String | Preference
-final userFeaturedOffer = UserFeaturedOffer(); // UserFeaturedOffer | user_featured_offer
+final storedLiqueur = StoredLiqueur(); // StoredLiqueur | stored_liqueur
 
 try {
-    api_instance.userFeaturedOfferPost(select, prefer, userFeaturedOffer);
+    api_instance.storedLiqueurPost(select, prefer, storedLiqueur);
 } catch (e) {
-    print('Exception when calling UserFeaturedOfferApi->userFeaturedOfferPost: $e\n');
+    print('Exception when calling StoredLiqueurApi->storedLiqueurPost: $e\n');
 }
 ```
 
@@ -223,7 +259,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **select** | **String**| Filtering Columns | [optional] 
  **prefer** | **String**| Preference | [optional] 
- **userFeaturedOffer** | [**UserFeaturedOffer**](UserFeaturedOffer.md)| user_featured_offer | [optional] 
+ **storedLiqueur** | [**StoredLiqueur**](StoredLiqueur.md)| stored_liqueur | [optional] 
 
 ### Return type
 

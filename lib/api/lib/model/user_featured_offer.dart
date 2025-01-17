@@ -15,6 +15,9 @@ class UserFeaturedOffer {
   UserFeaturedOffer({
     required this.userId,
     required this.featuredOfferId,
+    this.isRedeemed = false,
+    this.redeemCode,
+    this.redeemedAt,
   });
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
@@ -23,24 +26,59 @@ class UserFeaturedOffer {
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `featured_offer.id`.<fk table='featured_offer' column='id'/>
   int featuredOfferId;
 
+  bool isRedeemed;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? redeemCode;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? redeemedAt;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserFeaturedOffer &&
     other.userId == userId &&
-    other.featuredOfferId == featuredOfferId;
+    other.featuredOfferId == featuredOfferId &&
+    other.isRedeemed == isRedeemed &&
+    other.redeemCode == redeemCode &&
+    other.redeemedAt == redeemedAt;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (userId.hashCode) +
-    (featuredOfferId.hashCode);
+    (featuredOfferId.hashCode) +
+    (isRedeemed.hashCode) +
+    (redeemCode == null ? 0 : redeemCode!.hashCode) +
+    (redeemedAt == null ? 0 : redeemedAt!.hashCode);
 
   @override
-  String toString() => 'UserFeaturedOffer[userId=$userId, featuredOfferId=$featuredOfferId]';
+  String toString() => 'UserFeaturedOffer[userId=$userId, featuredOfferId=$featuredOfferId, isRedeemed=$isRedeemed, redeemCode=$redeemCode, redeemedAt=$redeemedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'user_id'] = this.userId;
       json[r'featured_offer_id'] = this.featuredOfferId;
+      json[r'is_redeemed'] = this.isRedeemed;
+    if (this.redeemCode != null) {
+      json[r'redeem_code'] = this.redeemCode;
+    } else {
+      json[r'redeem_code'] = null;
+    }
+    if (this.redeemedAt != null) {
+      json[r'redeemed_at'] = this.redeemedAt;
+    } else {
+      json[r'redeemed_at'] = null;
+    }
     return json;
   }
 
@@ -65,6 +103,9 @@ class UserFeaturedOffer {
       return UserFeaturedOffer(
         userId: mapValueOfType<int>(json, r'user_id')!,
         featuredOfferId: mapValueOfType<int>(json, r'featured_offer_id')!,
+        isRedeemed: mapValueOfType<bool>(json, r'is_redeemed') ?? false,
+        redeemCode: mapValueOfType<String>(json, r'redeem_code'),
+        redeemedAt: mapValueOfType<String>(json, r'redeemed_at'),
       );
     }
     return null;

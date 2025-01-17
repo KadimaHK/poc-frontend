@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **uuid** | **String** | Note: This is a Primary Key.<pk/> | 
 **time** | **String** |  | [default to 'now()']
-**from** | **String** |  | [default to 'CURRENT_USER']
-**to** | **String** | Note: This is a Foreign Key to `user.email`.<fk table='user' column='email'/> | 
+**fromUserId** | **int** | Note: This is a Foreign Key to `user.id`.<fk table='user' column='id'/> | 
+**toUserId** | **int** | Note: This is a Foreign Key to `user.id`.<fk table='user' column='id'/> | 
 **body** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **messageDelete**
-> messageDelete(uuid, time, from, to, body, prefer)
+> messageDelete(uuid, time, fromUserId, toUserId, body, prefer)
 
 
 
@@ -31,13 +31,13 @@ import 'package:openapi/api.dart';
 final api_instance = MessageApi();
 final uuid = uuid_example; // String | 
 final time = time_example; // String | 
-final from = from_example; // String | 
-final to = to_example; // String | 
+final fromUserId = fromUserId_example; // String | 
+final toUserId = toUserId_example; // String | 
 final body = body_example; // String | 
 final prefer = prefer_example; // String | Preference
 
 try {
-    api_instance.messageDelete(uuid, time, from, to, body, prefer);
+    api_instance.messageDelete(uuid, time, fromUserId, toUserId, body, prefer);
 } catch (e) {
     print('Exception when calling MessageApi->messageDelete: $e\n');
 }
@@ -49,8 +49,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **uuid** | **String**|  | [optional] 
  **time** | **String**|  | [optional] 
- **from** | **String**|  | [optional] 
- **to** | **String**|  | [optional] 
+ **fromUserId** | **String**|  | [optional] 
+ **toUserId** | **String**|  | [optional] 
  **body** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 
 
@@ -70,7 +70,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **messageGet**
-> List<Message> messageGet(uuid, time, from, to, body, select, order, range, rangeUnit, offset, limit, prefer)
+> List<Message> messageGet(uuid, time, fromUserId, toUserId, body, select, order, range, rangeUnit, offset, limit, prefer)
 
 
 
@@ -85,8 +85,8 @@ import 'package:openapi/api.dart';
 final api_instance = MessageApi();
 final uuid = uuid_example; // String | 
 final time = time_example; // String | 
-final from = from_example; // String | 
-final to = to_example; // String | 
+final fromUserId = fromUserId_example; // String | 
+final toUserId = toUserId_example; // String | 
 final body = body_example; // String | 
 final select = select_example; // String | Filtering Columns
 final order = order_example; // String | Ordering
@@ -97,7 +97,7 @@ final limit = limit_example; // String | Limiting and Pagination
 final prefer = prefer_example; // String | Preference
 
 try {
-    final result = api_instance.messageGet(uuid, time, from, to, body, select, order, range, rangeUnit, offset, limit, prefer);
+    final result = api_instance.messageGet(uuid, time, fromUserId, toUserId, body, select, order, range, rangeUnit, offset, limit, prefer);
     print(result);
 } catch (e) {
     print('Exception when calling MessageApi->messageGet: $e\n');
@@ -110,8 +110,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **uuid** | **String**|  | [optional] 
  **time** | **String**|  | [optional] 
- **from** | **String**|  | [optional] 
- **to** | **String**|  | [optional] 
+ **fromUserId** | **String**|  | [optional] 
+ **toUserId** | **String**|  | [optional] 
  **body** | **String**|  | [optional] 
  **select** | **String**| Filtering Columns | [optional] 
  **order** | **String**| Ordering | [optional] 
@@ -137,7 +137,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **messagePatch**
-> messagePatch(uuid, time, from, to, body, prefer, message)
+> messagePatch(uuid, time, fromUserId, toUserId, body, prefer, message)
 
 
 
@@ -152,14 +152,14 @@ import 'package:openapi/api.dart';
 final api_instance = MessageApi();
 final uuid = uuid_example; // String | 
 final time = time_example; // String | 
-final from = from_example; // String | 
-final to = to_example; // String | 
+final fromUserId = fromUserId_example; // String | 
+final toUserId = toUserId_example; // String | 
 final body = body_example; // String | 
 final prefer = prefer_example; // String | Preference
 final message = Message(); // Message | message
 
 try {
-    api_instance.messagePatch(uuid, time, from, to, body, prefer, message);
+    api_instance.messagePatch(uuid, time, fromUserId, toUserId, body, prefer, message);
 } catch (e) {
     print('Exception when calling MessageApi->messagePatch: $e\n');
 }
@@ -171,8 +171,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **uuid** | **String**|  | [optional] 
  **time** | **String**|  | [optional] 
- **from** | **String**|  | [optional] 
- **to** | **String**|  | [optional] 
+ **fromUserId** | **String**|  | [optional] 
+ **toUserId** | **String**|  | [optional] 
  **body** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 
  **message** | [**Message**](Message.md)| message | [optional] 

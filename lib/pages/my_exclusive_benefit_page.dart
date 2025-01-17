@@ -1,11 +1,8 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:poc_frontend/api/lib/api.dart' as api;
 import 'package:poc_frontend/components/establishment_info_card_view.dart';
-import 'package:poc_frontend/components/featured_offer_card_view.dart';
 import 'package:poc_frontend/components/search_bar.dart';
-import 'package:poc_frontend/components/textbutton_secondary.dart';
 import 'package:poc_frontend/consts.dart';
 import 'package:poc_frontend/pages/featured_offer_detail_page.dart';
 
@@ -39,7 +36,7 @@ class _MyExclusiveBenefitPageState extends State<MyExclusiveBenefitPage> {
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(),
-        title: Text(AppLocalizations.of(context)!.myExclusiveBenefit),
+        title: Text(t.myExclusiveBenefit),
       ),
       body: Column(
         children: [
@@ -201,13 +198,3 @@ class _ExclusiveBenefitCardLargeState extends State<ExclusiveBenefitCardLarge> {
     );
   }
 }
-
-// only for testing
-
-api.FeaturedOffer dummyBenefit = api.FeaturedOffer(
-  id: 1,
-  title: 'dummy title',
-  description: 'dummy description',
-  imageUrl: 'https://dummyimage.com/600x400/000/fff',
-  establishmentId: 1,
-);

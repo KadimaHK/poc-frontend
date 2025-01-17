@@ -15,12 +15,14 @@ import 'package:poc_frontend/pages/main/explore_page.dart';
 import 'package:poc_frontend/pages/main/home_page.dart';
 import 'package:poc_frontend/pages/main/message_page.dart';
 import 'package:poc_frontend/pages/my_exclusive_benefit_page.dart';
+import 'package:poc_frontend/pages/my_voucher_page.dart';
 import 'package:poc_frontend/pages/notification_page.dart';
 import 'package:poc_frontend/pages/main/profile_page.dart';
 import 'package:poc_frontend/pages/main/search_page.dart';
 import 'package:poc_frontend/components/app_bar.dart';
 import 'package:poc_frontend/pages/review_page.dart';
 import 'package:poc_frontend/pages/sign_up_page.dart';
+import 'package:poc_frontend/pages/stored_liqueur_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'pages/qr_code_scanner_page.dart';
 import 'consts.dart';
@@ -92,7 +94,7 @@ class MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     SharedPreferences.getInstance().then((value) {
-      //DebugOnly: 
+      //DebugOnly:
       value.setString('loginSessionToken', 'tokenKiu');
       MyApp.prefs = value;
       final String? languageCode = value.getString('languageCode');
@@ -146,7 +148,6 @@ class MyAppState extends State<MyApp> {
         drawerTheme: DrawerThemeData(
           backgroundColor: primaryColor,
         ),
-        
         cardTheme: CardTheme(
           color: secondaryColor,
           elevation: 5,
@@ -225,67 +226,34 @@ class MainState extends State<Main> {
       body: Navigator(
         key: navigatorKey,
         onGenerateRoute: (settings) {
-          if (settings.name == MyExclusiveBenefitPage.routeName) {
-            final user = settings.arguments as api.User;
-            return MaterialPageRoute(builder: (context) {
-              return MyExclusiveBenefitPage(user: user);
-            });
+          switch (settings.name) {
+            case MyExclusiveBenefitPage.routeName:
+              return MaterialPageRoute(builder: (_) => MyExclusiveBenefitPage(user: settings.arguments as api.User));
+            case StoredLiqueurPage.routeName:
+              return MaterialPageRoute(builder: (_) => StoredLiqueurPage(user: settings.arguments as api.User));
+            case MyVoucherPage.routeName:
+              return MaterialPageRoute(builder: (_) => MyVoucherPage(user: settings.arguments as api.User));
+            case NotificationPage.routeName:
+              return MaterialPageRoute(builder: (_) => NotificationPage());
+            case FeaturedDetailPage.routeName:
+              return MaterialPageRoute(builder: (_) => FeaturedDetailPage(featured: settings.arguments as api.Featured));
+            case ReviewPage.routeName:
+              return MaterialPageRoute(builder: (_) => ReviewPage(review: settings.arguments as api.Review));
+            case SignUpPage.routeName:
+              return MaterialPageRoute(builder: (_) => SignUpPage());
+            case FeaturedOfferDetailPage.routeName:
+              return MaterialPageRoute(builder: (_) => FeaturedOfferDetailPage(featuredOffer: settings.arguments as api.FeaturedOffer));
+            case LoginPage.routeName:
+              return MaterialPageRoute(builder: (_) => LoginPage());
+            case EstablishmentProfilePage.routeName:
+              return MaterialPageRoute(builder: (_) => EstablishmentProfilePage(establishment: settings.arguments as api.Establishment));
+            default:
+              return PageRouteBuilder(
+          pageBuilder: (_, __, ___) => _list[_selectedIndex],
+          transitionDuration: Duration.zero,
+          reverseTransitionDuration: Duration.zero,
+              );
           }
-          if (settings.name == NotificationPage.routeName) {
-            return MaterialPageRoute(builder: (context) {
-              return NotificationPage();
-            });
-          }
-          if (settings.name == FeaturedDetailPage.routeName) {
-            final featured = settings.arguments as api.Featured;
-            return MaterialPageRoute(builder: (context) {
-              return FeaturedDetailPage(featured: featured);
-            });
-          }
-          if (settings.name == ReviewPage.routeName) {
-            final review = settings.arguments as api.Review;
-            return MaterialPageRoute(builder: (context) {
-              return ReviewPage(review: review);
-            });
-          }
-          if (settings.name == SignUpPage.routeName) {
-            return MaterialPageRoute(builder: (context) {
-              return SignUpPage();
-            });
-          }
-          if (settings.name == FeaturedOfferDetailPage.routeName) {
-            final featuredOffer = settings.arguments as api.FeaturedOffer;
-            return MaterialPageRoute(builder: (context) {
-              return FeaturedOfferDetailPage(featuredOffer: featuredOffer);
-            });
-          }
-          if (settings.name == LoginPage.routeName) {
-            return MaterialPageRoute(builder: (context) {
-              return LoginPage();
-            });
-          }
-          if (settings.name == EstablishmentProfilePage.routeName) {
-            final establishment = settings.arguments as api.Establishment;
-            return MaterialPageRoute(builder: (context) {
-              return EstablishmentProfilePage(establishment: establishment);
-            });
-          }
-
-          if (settings.name == ProfilePage.routeName) {
-            _selectedIndex = 4;
-            if(mounted) {
-      setState(() {});
-    }
-          }
-
-          // for the main pages without transition animation
-          return PageRouteBuilder(
-            pageBuilder: (context, animation, secondaryAnimation) {
-              return _list[_selectedIndex];
-            },
-            transitionDuration: Duration.zero,
-            reverseTransitionDuration: Duration.zero,
-          );
         },
       ),
       bottomNavigationBar: BottomNavigationBar(

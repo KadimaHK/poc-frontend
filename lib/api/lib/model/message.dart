@@ -15,8 +15,8 @@ class Message {
   Message({
     required this.uuid,
     this.time = 'now()',
-    this.from = 'CURRENT_USER',
-    required this.to,
+    required this.fromUserId,
+    required this.toUserId,
     this.body,
   });
 
@@ -25,10 +25,11 @@ class Message {
 
   String time;
 
-  String from;
+  /// Note: This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
+  int fromUserId;
 
-  /// Note: This is a Foreign Key to `user.email`.<fk table='user' column='email'/>
-  String to;
+  /// Note: This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
+  int toUserId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -42,8 +43,8 @@ class Message {
   bool operator ==(Object other) => identical(this, other) || other is Message &&
     other.uuid == uuid &&
     other.time == time &&
-    other.from == from &&
-    other.to == to &&
+    other.fromUserId == fromUserId &&
+    other.toUserId == toUserId &&
     other.body == body;
 
   @override
@@ -51,19 +52,19 @@ class Message {
     // ignore: unnecessary_parenthesis
     (uuid.hashCode) +
     (time.hashCode) +
-    (from.hashCode) +
-    (to.hashCode) +
+    (fromUserId.hashCode) +
+    (toUserId.hashCode) +
     (body == null ? 0 : body!.hashCode);
 
   @override
-  String toString() => 'Message[uuid=$uuid, time=$time, from=$from, to=$to, body=$body]';
+  String toString() => 'Message[uuid=$uuid, time=$time, fromUserId=$fromUserId, toUserId=$toUserId, body=$body]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'uuid'] = this.uuid;
       json[r'time'] = this.time;
-      json[r'from'] = this.from;
-      json[r'to'] = this.to;
+      json[r'from_user_id'] = this.fromUserId;
+      json[r'to_user_id'] = this.toUserId;
     if (this.body != null) {
       json[r'body'] = this.body;
     } else {
@@ -93,8 +94,8 @@ class Message {
       return Message(
         uuid: mapValueOfType<String>(json, r'uuid')!,
         time: mapValueOfType<String>(json, r'time')!,
-        from: mapValueOfType<String>(json, r'from')!,
-        to: mapValueOfType<String>(json, r'to')!,
+        fromUserId: mapValueOfType<int>(json, r'from_user_id')!,
+        toUserId: mapValueOfType<int>(json, r'to_user_id')!,
         body: mapValueOfType<String>(json, r'body'),
       );
     }
@@ -145,8 +146,8 @@ class Message {
   static const requiredKeys = <String>{
     'uuid',
     'time',
-    'from',
-    'to',
+    'from_user_id',
+    'to_user_id',
   };
 }
 

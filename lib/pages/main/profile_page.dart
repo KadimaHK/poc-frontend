@@ -18,7 +18,9 @@ import 'package:poc_frontend/pages/login_page.dart';
 import 'package:poc_frontend/api/lib/api.dart' as api;
 import 'package:http/src/client.dart';
 import 'package:poc_frontend/pages/my_exclusive_benefit_page.dart';
+import 'package:poc_frontend/pages/my_voucher_page.dart';
 import 'package:poc_frontend/pages/review_page.dart';
+import 'package:poc_frontend/pages/stored_liqueur_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -101,7 +103,7 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
                     children: [
                       TextButtonNoBackground(
                         onPressed: () {},
-                        text: '${user!.followerCount}\n${t.followers}',
+                        text: '${user!.followerCount}\n${t.follower('s')}',
                       ),
                       TextButtonNoBackground(
                         onPressed: () {},
@@ -146,7 +148,7 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
                         size: 50,
                         assetImagePath: 'assets/images/icon_menu_voucher.png',
                         label: t.voucher('s'),
-                        onPressed: () {},
+                        onPressed: () =>Navigator.pushNamed(context, MyVoucherPage.routeName, arguments: user!),
                       ),
                       LabeledIconButton(
                         assetImagePath: 'assets/images/icon_menu_booking.png',
@@ -161,7 +163,7 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
                       LabeledIconButton(
                         assetImagePath: 'assets/images/icon_menu_store.png',
                         label: t.storedLiqueur('s'),
-                        onPressed: () {},
+                        onPressed: () => Navigator.pushNamed(context, StoredLiqueurPage.routeName, arguments: user!),
                       ),
                     ],
                   ),

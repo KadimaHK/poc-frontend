@@ -156,6 +156,10 @@
     "myExclusiveBenefit": "My Exclusive Benefit",
     "myVoucher": "My Voucher",
 
+    "available": "Available",
+    "redeemed": "Redeemed",
+    "expired": "Expired",
+
     "filters": "{name, select, distance {Distance} location {Location} theme {Theme} facilities {Facilities} other {Other}}",
     "result": "{number, plural, =0 {No results} =1 {1 result} other {{number} results}}",
 
@@ -164,6 +168,11 @@
 
     "viewDetails": "View Details",
     "redeemNow": "Redeem Now",
+
+    "stored": "Stored",
+    "transferred": "Transferred",
+    "pending": "Pending",
+    "storedLiqueurDetails": "Stored Liqueur Details",
 
 
     "empty":"empty"
