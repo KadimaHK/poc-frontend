@@ -10,9 +10,11 @@ class EstablishmentInfoCardView extends StatefulWidget {
   const EstablishmentInfoCardView({
     super.key,
     required this.establishmentId,
+    this.establishment,
   });
 
   final int? establishmentId;
+  final api.Establishment? establishment;
 
   @override
   State<EstablishmentInfoCardView> createState() => _EstablishmentInfoCardViewState();
@@ -28,9 +30,9 @@ class _EstablishmentInfoCardViewState extends State<EstablishmentInfoCardView> {
   }
 
   void fetchData() async {
-    establishment = (await api.EstablishmentApi().establishmentGet(id: "eq.${widget.establishmentId?.toString()}"))?.firstOrNull;
+    establishment = widget.establishment ?? (await api.EstablishmentApi().establishmentGet(id: "eq.${widget.establishmentId?.toString()}"))?.firstOrNull;
     establishmentImages = await api.EstablishmentImageApi().establishmentImageGet(establishmentId: "eq.${widget.establishmentId?.toString()}");
-    if(mounted) {
+    if (mounted) {
       setState(() {});
     }
   }
@@ -42,7 +44,7 @@ class _EstablishmentInfoCardViewState extends State<EstablishmentInfoCardView> {
       return CircularProgressIndicator();
     }
     return ClipRRect(
-      borderRadius: BorderRadius.circular(30),
+      borderRadius: BorderRadius.circular(20),
       child: Stack(
         fit: StackFit.passthrough,
         children: [
@@ -50,7 +52,8 @@ class _EstablishmentInfoCardViewState extends State<EstablishmentInfoCardView> {
             width: 400,
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primary,
+              // color: Theme.of(context).colorScheme.primary,
+              color: Colors.black,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -178,7 +181,7 @@ class _EstablishmentFeaturedOfferViewState extends State<EstablishmentFeaturedOf
 
   void fetchData() async {
     featuredOffers = await api.FeaturedOfferApi().featuredOfferGet(establishmentId: "eq.${widget.establishmentId?.toString()}");
-    if(mounted) {
+    if (mounted) {
       setState(() {});
     }
   }

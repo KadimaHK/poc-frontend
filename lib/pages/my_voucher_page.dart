@@ -1,16 +1,12 @@
 import 'dart:developer';
-import 'package:flutter/gestures.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:poc_frontend/api/lib/api.dart' as api;
-import 'package:poc_frontend/components/establishment_info_card_view.dart';
-import 'package:poc_frontend/components/featured_offer_card_view.dart';
-import 'package:poc_frontend/components/search_bar.dart';
 import 'package:poc_frontend/components/status_tag.dart';
-import 'package:poc_frontend/components/textbutton_secondary.dart';
 import 'package:poc_frontend/consts.dart';
 import 'package:poc_frontend/main.dart';
-import 'package:poc_frontend/pages/featured_offer_detail_page.dart';
+import 'package:poc_frontend/pages/voucher_detail_page.dart';
 
 class MyVoucherPage extends StatefulWidget {
   const MyVoucherPage({super.key, required this.user});
@@ -111,11 +107,11 @@ class _MyVoucherPageState extends State<MyVoucherPage> with SingleTickerProvider
 }
 
 class _VoucherWidget extends StatelessWidget {
-  _VoucherWidget({required this.userFeaturedOffer, required this.featuredOffer, this.isRedeemed = false, this.isExpired = false});
+  const _VoucherWidget({required this.userFeaturedOffer, required this.featuredOffer, this.isRedeemed = false, this.isExpired = false});
   final api.UserFeaturedOffer userFeaturedOffer;
   final api.FeaturedOffer featuredOffer;
-  bool isRedeemed = false;
-  bool isExpired = false;
+  final bool isRedeemed;
+  final bool isExpired;
 
   Status get status {
     if (isRedeemed) return Status.redeemed;
@@ -135,6 +131,7 @@ class _VoucherWidget extends StatelessWidget {
       ),
       subtitle: Text(featuredOffer.description ?? ''),
       trailing: Icon(Icons.chevron_right_outlined),
+      onTap: () => Navigator.of(context).pushNamed(VoucherDetailPage.routeName, arguments: userFeaturedOffer),
     );
   }
 }

@@ -7,6 +7,7 @@ import 'package:poc_frontend/api/lib/api.dart' as api;
 import 'package:poc_frontend/components/status_tag.dart';
 import 'package:poc_frontend/consts.dart';
 import 'package:poc_frontend/main.dart';
+import 'package:poc_frontend/pages/stored_liqueur_detail_page.dart';
 
 class StoredLiqueurPage extends StatefulWidget {
   const StoredLiqueurPage({super.key, required this.user});
@@ -133,6 +134,7 @@ class _StoredLiqueurWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: () => Navigator.pushNamed(context, StoredLiqueurDetailPage.routeName, arguments: item),
       leading: SizedBox(
         width: size * 1.5,
         height: size * 1.5,

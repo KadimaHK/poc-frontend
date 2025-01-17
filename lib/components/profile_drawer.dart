@@ -7,6 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:poc_frontend/pages/login_page.dart';
 import 'package:poc_frontend/pages/main/home_page.dart';
 import 'package:poc_frontend/pages/main/profile_page.dart';
+import 'package:poc_frontend/pages/my_voucher_page.dart';
 
 class ProfileDrawer extends StatefulWidget {
   const ProfileDrawer({super.key});
@@ -22,14 +23,14 @@ class _ProfileDrawerState extends State<ProfileDrawer> {
   fetchData() async {
     if (!loggedIn) {
       user = null;
-      if(mounted) {
-      setState(() {});
-    }
+      if (mounted) {
+        setState(() {});
+      }
       return;
     }
-    
+
     user = (await api.UserApi(MyApp.sessionApiClient).userGet())!.firstOrNull;
-    if(mounted) {
+    if (mounted) {
       setState(() {});
     }
   }
@@ -89,7 +90,7 @@ class _ProfileDrawerState extends State<ProfileDrawer> {
             leading: Icon(Icons.confirmation_num_outlined),
             title: Text('Vouchers'),
             subtitle: Text('Show all vouchers'),
-            onTap: () {},
+            onTap: () => {Navigator.pop(context), navigatorKey.currentState?.pushNamed(MyVoucherPage.routeName, arguments: user)},
           ),
           //split line
           const Divider(),

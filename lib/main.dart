@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:io';
+import 'dart:developer';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -14,19 +14,17 @@ import 'package:poc_frontend/pages/login_page.dart';
 import 'package:poc_frontend/pages/main/explore_page.dart';
 import 'package:poc_frontend/pages/main/home_page.dart';
 import 'package:poc_frontend/pages/main/message_page.dart';
+import 'package:poc_frontend/pages/main/profile_page.dart';
+import 'package:poc_frontend/pages/main/search_page.dart';
 import 'package:poc_frontend/pages/my_exclusive_benefit_page.dart';
 import 'package:poc_frontend/pages/my_voucher_page.dart';
 import 'package:poc_frontend/pages/notification_page.dart';
-import 'package:poc_frontend/pages/main/profile_page.dart';
-import 'package:poc_frontend/pages/main/search_page.dart';
-import 'package:poc_frontend/components/app_bar.dart';
 import 'package:poc_frontend/pages/review_page.dart';
 import 'package:poc_frontend/pages/sign_up_page.dart';
+import 'package:poc_frontend/pages/stored_liqueur_detail_page.dart';
 import 'package:poc_frontend/pages/stored_liqueur_page.dart';
+import 'package:poc_frontend/pages/voucher_detail_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'pages/qr_code_scanner_page.dart';
-import 'consts.dart';
-import 'dart:developer';
 
 void main() {
   PlatformDispatcher.instance.onError = (error, stack) {
@@ -227,8 +225,12 @@ class MainState extends State<Main> {
         key: navigatorKey,
         onGenerateRoute: (settings) {
           switch (settings.name) {
+            case StoredLiqueurDetailPage.routeName:
+              return MaterialPageRoute(builder: (_) => StoredLiqueurDetailPage(storedLiqueur: settings.arguments as api.StoredLiqueur));
             case MyExclusiveBenefitPage.routeName:
               return MaterialPageRoute(builder: (_) => MyExclusiveBenefitPage(user: settings.arguments as api.User));
+            case VoucherDetailPage.routeName:
+              return MaterialPageRoute(builder: (_) => VoucherDetailPage(userVoucher: settings.arguments as api.UserFeaturedOffer));
             case StoredLiqueurPage.routeName:
               return MaterialPageRoute(builder: (_) => StoredLiqueurPage(user: settings.arguments as api.User));
             case MyVoucherPage.routeName:

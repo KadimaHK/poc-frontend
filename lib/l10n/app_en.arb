@@ -17,6 +17,8 @@
     "voucher": "{isPlural, select, s {Vouchers} other {Voucher}}",
     "vouchers": "{number, plural, =0 {No vouchers} =1 {1 voucher} other {{number} vouchers}}",
 
+    "voucherDetails": "Voucher Details",
+
     "showAllVouchers": "Show all vouchers.",
 
     "browsingHistory": "Browsing History",
@@ -174,6 +176,11 @@
     "pending": "Pending",
     "storedLiqueurDetails": "Stored Liqueur Details",
 
+    "showTheQRCodeToTheCashier": "Show the QR code to the cashier",
+
+    "storedDate": "Stored Date",
+    "transfer": "Transfer",
+    "redeem": "Redeem",
 
     "empty":"empty"
 }

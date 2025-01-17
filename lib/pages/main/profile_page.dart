@@ -57,9 +57,9 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
     try {
       final users = await api.UserApi(MyApp.sessionApiClient).userGet();
       user = users!.firstOrNull;
-      if(mounted) {
-      setState(() {});
-    }
+      if (mounted) {
+        setState(() {});
+      }
     } on api.ApiException catch (e) {
       apiErrorHandler(e);
     }
@@ -148,7 +148,7 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
                         size: 50,
                         assetImagePath: 'assets/images/icon_menu_voucher.png',
                         label: t.voucher('s'),
-                        onPressed: () =>Navigator.pushNamed(context, MyVoucherPage.routeName, arguments: user!),
+                        onPressed: () => Navigator.pushNamed(context, MyVoucherPage.routeName, arguments: user!),
                       ),
                       LabeledIconButton(
                         assetImagePath: 'assets/images/icon_menu_booking.png',
@@ -228,7 +228,7 @@ class _ReviewsState extends State<_Reviews> {
 
   void fetchData() async {
     reviews = (await api.ReviewApi(MyApp.sessionApiClient).reviewGet())!;
-    if(mounted) {
+    if (mounted) {
       setState(() {});
     }
   }
@@ -270,9 +270,9 @@ class _ReviewComponentState extends State<_ReviewComponent> {
     try {
       images = (await api.ReviewImageApi(MyApp.sessionApiClient).reviewImageGet(reviewId: 'eq.${widget.review.id}'))!;
       establishment = (await api.EstablishmentApi().establishmentGet(id: 'eq.${widget.review.establishmentId}'))?.firstOrNull?.name ?? '';
-      if(mounted) {
-      setState(() {});
-    }
+      if (mounted) {
+        setState(() {});
+      }
     } on api.ApiException catch (e) {
       apiErrorHandler(e);
     }
@@ -350,7 +350,7 @@ class _BookmarkComponentState extends State<_BookmarkComponent> {
 
   void fetchData() async {
     establishment = (await api.EstablishmentApi().establishmentGet(id: 'eq.${widget.bookmark?.establishmentId}'))!.firstOrNull;
-    if(mounted) {
+    if (mounted) {
       setState(() {});
     }
   }
@@ -390,7 +390,7 @@ class _BookmarksState extends State<_Bookmarks> {
 
   void fetchData() async {
     bookmarks = (await api.UserEstablishmentBookmarkApi(MyApp.sessionApiClient).userEstablishmentBookmarkGet())!;
-    if(mounted) {
+    if (mounted) {
       setState(() {});
     }
   }
@@ -439,7 +439,7 @@ class _OverviewState extends State<_Overview> {
     bookmark = bookmarks.firstOrNull;
     review = reviews.firstOrNull;
 
-    if(mounted) {
+    if (mounted) {
       setState(() {});
     }
   }
@@ -492,7 +492,7 @@ class _PhotosState extends State<_Photos> {
 
   void fetchData() async {
     images = (await api.ReviewImageApi(MyApp.sessionApiClient).reviewImageGet())!;
-    if(mounted) {
+    if (mounted) {
       setState(() {});
     }
   }
@@ -506,7 +506,10 @@ class _PhotosState extends State<_Photos> {
         mainAxisSpacing: 10,
       ),
       itemBuilder: (context, index) {
-        return Image.network(images[index].imageUrl!);
+        return Image.network(
+          images[index].imageUrl!,
+          fit: BoxFit.cover,
+        );
       },
       itemCount: images.length,
     );
