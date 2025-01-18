@@ -13,15 +13,15 @@ part of openapi.api;
 class StoredLiqueurImage {
   /// Returns a new [StoredLiqueurImage] instance.
   StoredLiqueurImage({
-    required this.storedLiqueurId,
-    required this.imageUrl,
+    this.storedLiqueurId,
+    this.imageUrl,
   });
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `stored_liqueur.id`.<fk table='stored_liqueur' column='id'/>
-  int storedLiqueurId;
+  int? storedLiqueurId;
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `image.image_url`.<fk table='image' column='image_url'/>
-  String imageUrl;
+  String? imageUrl;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is StoredLiqueurImage &&

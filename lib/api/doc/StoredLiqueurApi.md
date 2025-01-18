@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **storedLiqueurDelete**
-> storedLiqueurDelete(id, name, description, imageUrl, storedDate, expiryDate, establishmentId, isRedeemed, userId, createdAt, updatedAt, prefer)
+> storedLiqueurDelete(id, userId, establishmentId, imageUrl, name, description, storedDate, expiryDate, isRedeemed, redeemCode, createdAt, updatedAt, prefer)
 
 
 
@@ -30,20 +30,21 @@ import 'package:openapi/api.dart';
 
 final api_instance = StoredLiqueurApi();
 final id = id_example; // String | 
+final userId = userId_example; // String | 
+final establishmentId = establishmentId_example; // String | 
+final imageUrl = imageUrl_example; // String | 
 final name = name_example; // String | 
 final description = description_example; // String | 
-final imageUrl = imageUrl_example; // String | 
 final storedDate = storedDate_example; // String | 
 final expiryDate = expiryDate_example; // String | 
-final establishmentId = establishmentId_example; // String | 
 final isRedeemed = isRedeemed_example; // String | 
-final userId = userId_example; // String | 
+final redeemCode = redeemCode_example; // String | 
 final createdAt = createdAt_example; // String | 
 final updatedAt = updatedAt_example; // String | 
 final prefer = prefer_example; // String | Preference
 
 try {
-    api_instance.storedLiqueurDelete(id, name, description, imageUrl, storedDate, expiryDate, establishmentId, isRedeemed, userId, createdAt, updatedAt, prefer);
+    api_instance.storedLiqueurDelete(id, userId, establishmentId, imageUrl, name, description, storedDate, expiryDate, isRedeemed, redeemCode, createdAt, updatedAt, prefer);
 } catch (e) {
     print('Exception when calling StoredLiqueurApi->storedLiqueurDelete: $e\n');
 }
@@ -54,14 +55,15 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | [optional] 
+ **userId** | **String**|  | [optional] 
+ **establishmentId** | **String**|  | [optional] 
+ **imageUrl** | **String**|  | [optional] 
  **name** | **String**|  | [optional] 
  **description** | **String**|  | [optional] 
- **imageUrl** | **String**|  | [optional] 
  **storedDate** | **String**|  | [optional] 
  **expiryDate** | **String**|  | [optional] 
- **establishmentId** | **String**|  | [optional] 
  **isRedeemed** | **String**|  | [optional] 
- **userId** | **String**|  | [optional] 
+ **redeemCode** | **String**|  | [optional] 
  **createdAt** | **String**|  | [optional] 
  **updatedAt** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 
@@ -82,7 +84,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **storedLiqueurGet**
-> List<StoredLiqueur> storedLiqueurGet(id, name, description, imageUrl, storedDate, expiryDate, establishmentId, isRedeemed, userId, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer)
+> List<StoredLiqueur> storedLiqueurGet(id, userId, establishmentId, imageUrl, name, description, storedDate, expiryDate, isRedeemed, redeemCode, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer)
 
 
 
@@ -96,14 +98,15 @@ import 'package:openapi/api.dart';
 
 final api_instance = StoredLiqueurApi();
 final id = id_example; // String | 
+final userId = userId_example; // String | 
+final establishmentId = establishmentId_example; // String | 
+final imageUrl = imageUrl_example; // String | 
 final name = name_example; // String | 
 final description = description_example; // String | 
-final imageUrl = imageUrl_example; // String | 
 final storedDate = storedDate_example; // String | 
 final expiryDate = expiryDate_example; // String | 
-final establishmentId = establishmentId_example; // String | 
 final isRedeemed = isRedeemed_example; // String | 
-final userId = userId_example; // String | 
+final redeemCode = redeemCode_example; // String | 
 final createdAt = createdAt_example; // String | 
 final updatedAt = updatedAt_example; // String | 
 final select = select_example; // String | Filtering Columns
@@ -115,7 +118,7 @@ final limit = limit_example; // String | Limiting and Pagination
 final prefer = prefer_example; // String | Preference
 
 try {
-    final result = api_instance.storedLiqueurGet(id, name, description, imageUrl, storedDate, expiryDate, establishmentId, isRedeemed, userId, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer);
+    final result = api_instance.storedLiqueurGet(id, userId, establishmentId, imageUrl, name, description, storedDate, expiryDate, isRedeemed, redeemCode, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer);
     print(result);
 } catch (e) {
     print('Exception when calling StoredLiqueurApi->storedLiqueurGet: $e\n');
@@ -127,14 +130,15 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | [optional] 
+ **userId** | **String**|  | [optional] 
+ **establishmentId** | **String**|  | [optional] 
+ **imageUrl** | **String**|  | [optional] 
  **name** | **String**|  | [optional] 
  **description** | **String**|  | [optional] 
- **imageUrl** | **String**|  | [optional] 
  **storedDate** | **String**|  | [optional] 
  **expiryDate** | **String**|  | [optional] 
- **establishmentId** | **String**|  | [optional] 
  **isRedeemed** | **String**|  | [optional] 
- **userId** | **String**|  | [optional] 
+ **redeemCode** | **String**|  | [optional] 
  **createdAt** | **String**|  | [optional] 
  **updatedAt** | **String**|  | [optional] 
  **select** | **String**| Filtering Columns | [optional] 
@@ -161,7 +165,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **storedLiqueurPatch**
-> storedLiqueurPatch(id, name, description, imageUrl, storedDate, expiryDate, establishmentId, isRedeemed, userId, createdAt, updatedAt, prefer, storedLiqueur)
+> storedLiqueurPatch(id, userId, establishmentId, imageUrl, name, description, storedDate, expiryDate, isRedeemed, redeemCode, createdAt, updatedAt, prefer, storedLiqueur)
 
 
 
@@ -175,21 +179,22 @@ import 'package:openapi/api.dart';
 
 final api_instance = StoredLiqueurApi();
 final id = id_example; // String | 
+final userId = userId_example; // String | 
+final establishmentId = establishmentId_example; // String | 
+final imageUrl = imageUrl_example; // String | 
 final name = name_example; // String | 
 final description = description_example; // String | 
-final imageUrl = imageUrl_example; // String | 
 final storedDate = storedDate_example; // String | 
 final expiryDate = expiryDate_example; // String | 
-final establishmentId = establishmentId_example; // String | 
 final isRedeemed = isRedeemed_example; // String | 
-final userId = userId_example; // String | 
+final redeemCode = redeemCode_example; // String | 
 final createdAt = createdAt_example; // String | 
 final updatedAt = updatedAt_example; // String | 
 final prefer = prefer_example; // String | Preference
 final storedLiqueur = StoredLiqueur(); // StoredLiqueur | stored_liqueur
 
 try {
-    api_instance.storedLiqueurPatch(id, name, description, imageUrl, storedDate, expiryDate, establishmentId, isRedeemed, userId, createdAt, updatedAt, prefer, storedLiqueur);
+    api_instance.storedLiqueurPatch(id, userId, establishmentId, imageUrl, name, description, storedDate, expiryDate, isRedeemed, redeemCode, createdAt, updatedAt, prefer, storedLiqueur);
 } catch (e) {
     print('Exception when calling StoredLiqueurApi->storedLiqueurPatch: $e\n');
 }
@@ -200,14 +205,15 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | [optional] 
+ **userId** | **String**|  | [optional] 
+ **establishmentId** | **String**|  | [optional] 
+ **imageUrl** | **String**|  | [optional] 
  **name** | **String**|  | [optional] 
  **description** | **String**|  | [optional] 
- **imageUrl** | **String**|  | [optional] 
  **storedDate** | **String**|  | [optional] 
  **expiryDate** | **String**|  | [optional] 
- **establishmentId** | **String**|  | [optional] 
  **isRedeemed** | **String**|  | [optional] 
- **userId** | **String**|  | [optional] 
+ **redeemCode** | **String**|  | [optional] 
  **createdAt** | **String**|  | [optional] 
  **updatedAt** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 

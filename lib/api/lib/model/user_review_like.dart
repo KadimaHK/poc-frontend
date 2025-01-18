@@ -13,15 +13,15 @@ part of openapi.api;
 class UserReviewLike {
   /// Returns a new [UserReviewLike] instance.
   UserReviewLike({
-    required this.userId,
-    required this.reviewId,
+    this.userId,
+    this.reviewId,
   });
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
-  int userId;
+  int? userId;
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `review.id`.<fk table='review' column='id'/>
-  int reviewId;
+  int? reviewId;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserReviewLike &&

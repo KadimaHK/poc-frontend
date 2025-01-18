@@ -13,16 +13,16 @@ part of openapi.api;
 class RpcSignUpPostRequest {
   /// Returns a new [RpcSignUpPostRequest] instance.
   RpcSignUpPostRequest({
-    required this.email,
-    required this.name,
-    required this.password,
+    this.email,
+    this.name,
+    this.password,
   });
 
-  String email;
+  String? email;
 
-  String name;
+  String? name;
 
-  String password;
+  String? password;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is RpcSignUpPostRequest &&

@@ -13,20 +13,20 @@ part of openapi.api;
 class UserFeaturedOffer {
   /// Returns a new [UserFeaturedOffer] instance.
   UserFeaturedOffer({
-    required this.userId,
-    required this.featuredOfferId,
+    this.userId,
+    this.featuredOfferId,
     this.isRedeemed = false,
     this.redeemCode,
     this.redeemedAt,
   });
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
-  int userId;
+  int? userId;
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `featured_offer.id`.<fk table='featured_offer' column='id'/>
-  int featuredOfferId;
+  int? featuredOfferId;
 
-  bool isRedeemed;
+  bool? isRedeemed;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file

@@ -13,7 +13,7 @@ part of openapi.api;
 class StoredLiqueurTransfer {
   /// Returns a new [StoredLiqueurTransfer] instance.
   StoredLiqueurTransfer({
-    required this.id,
+    this.id,
     this.storedLiqueurId,
     this.fromUserId,
     this.toUserId,
@@ -22,7 +22,7 @@ class StoredLiqueurTransfer {
   });
 
   /// Note: This is a Primary Key.<pk/>
-  int id;
+  int? id;
 
   /// Note: This is a Foreign Key to `stored_liqueur.id`.<fk table='stored_liqueur' column='id'/>
   ///
@@ -51,9 +51,9 @@ class StoredLiqueurTransfer {
   ///
   int? toUserId;
 
-  bool isAccepted;
+  bool? isAccepted;
 
-  String createdAt;
+  String? createdAt;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is StoredLiqueurTransfer &&

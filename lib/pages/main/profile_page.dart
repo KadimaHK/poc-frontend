@@ -125,7 +125,7 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
                 children: [
                   UserMembershipCard(user: user!),
                   SizedBox(height: 10),
-                  Text(t.earnPointsToRenewMembershipDesc('${user?.points!}', user?.pointsExpiry.substring(0, 10) ?? '', '3000')),
+                  Text(t.earnPointsToRenewMembershipDesc('${user?.points!}', user?.pointsExpiry!.substring(0, 10) ?? '', '3000')),
                   SizedBox(height: 10),
                   LinearProgressIndicator(
                     value: user!.points! / 3000,
@@ -134,8 +134,8 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
                   ),
                   SizedBox(height: 10),
                   Text(t.membershipRemainingDays(
-                    user!.pointsExpiry.substring(0, 10),
-                    DateTime.parse(user!.pointsExpiry).difference(DateTime.now()).inDays,
+                    user!.pointsExpiry!.substring(0, 10),
+                    DateTime.parse(user!.pointsExpiry!).difference(DateTime.now()).inDays,
                     (3000 - user!.points!).toString(),
                   )),
                   Text(t.learnMore),
@@ -321,7 +321,7 @@ class _ReviewComponentState extends State<_ReviewComponent> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(establishment ?? ''),
-                Text(widget.review.createdAt.substring(0, 10)),
+                Text(widget.review.createdAt!.substring(0, 10)),
               ],
             )
           ],
@@ -453,7 +453,7 @@ class _OverviewState extends State<_Overview> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Text(t.publishedAReview),
-            Text(bookmark?.createdAt.substring(0, 10) ?? ''),
+            Text(bookmark?.createdAt!.substring(0, 10) ?? ''),
           ],
         ),
         if (review != null) _ReviewComponent(review: review!),
@@ -464,7 +464,7 @@ class _OverviewState extends State<_Overview> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(t.bookmarkedItems(widget.user?.bookmarkCount ?? 0)),
-                  Text(bookmark?.createdAt.substring(0, 10) ?? ''),
+                  Text(bookmark?.createdAt!.substring(0, 10) ?? ''),
                 ],
               ),
               _BookmarkComponent(bookmark: bookmark),

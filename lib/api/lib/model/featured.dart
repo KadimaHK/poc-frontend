@@ -13,7 +13,7 @@ part of openapi.api;
 class Featured {
   /// Returns a new [Featured] instance.
   Featured({
-    required this.id,
+    this.id,
     this.title,
     this.description,
     this.imageUrl,
@@ -24,7 +24,7 @@ class Featured {
   });
 
   /// Note: This is a Primary Key.<pk/>
-  int id;
+  int? id;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -68,9 +68,9 @@ class Featured {
   ///
   int? establishmentId;
 
-  String createdAt;
+  String? createdAt;
 
-  String updatedAt;
+  String? updatedAt;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Featured &&

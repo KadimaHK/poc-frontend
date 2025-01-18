@@ -13,7 +13,7 @@ part of openapi.api;
 class Booking {
   /// Returns a new [Booking] instance.
   Booking({
-    required this.id,
+    this.id,
     this.userId,
     this.establishmentId,
     this.reservationStart,
@@ -23,7 +23,7 @@ class Booking {
   });
 
   /// Note: This is a Primary Key.<pk/>
-  int id;
+  int? id;
 
   /// Note: This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
   ///
@@ -59,9 +59,9 @@ class Booking {
   ///
   String? reservationEnd;
 
-  String createdAt;
+  String? createdAt;
 
-  String updatedAt;
+  String? updatedAt;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Booking &&

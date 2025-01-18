@@ -233,7 +233,7 @@ class _EstablishmentProfilePageState extends State<EstablishmentProfilePage> {
                 width: 100,
                 height: 100,
                 fit: BoxFit.cover,
-                images[index].imageUrl,
+                images[index].imageUrl!,
                 errorBuilder: (context, error, stackTrace) => Placeholder(),
               ),
             ),

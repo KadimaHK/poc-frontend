@@ -13,15 +13,15 @@ part of openapi.api;
 class UserImageLike {
   /// Returns a new [UserImageLike] instance.
   UserImageLike({
-    required this.userId,
-    required this.imageUrl,
+    this.userId,
+    this.imageUrl,
   });
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
-  int userId;
+  int? userId;
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `image.image_url`.<fk table='image' column='image_url'/>
-  String imageUrl;
+  String? imageUrl;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserImageLike &&

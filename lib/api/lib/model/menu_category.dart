@@ -13,7 +13,7 @@ part of openapi.api;
 class MenuCategory {
   /// Returns a new [MenuCategory] instance.
   MenuCategory({
-    required this.id,
+    this.id,
     this.name,
     this.description,
     this.createdAt = 'now()',
@@ -21,7 +21,7 @@ class MenuCategory {
   });
 
   /// Note: This is a Primary Key.<pk/>
-  int id;
+  int? id;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -39,9 +39,9 @@ class MenuCategory {
   ///
   String? description;
 
-  String createdAt;
+  String? createdAt;
 
-  String updatedAt;
+  String? updatedAt;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is MenuCategory &&

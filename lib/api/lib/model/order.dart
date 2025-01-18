@@ -13,7 +13,7 @@ part of openapi.api;
 class Order {
   /// Returns a new [Order] instance.
   Order({
-    required this.id,
+    this.id,
     this.userId,
     this.establishmentMenuId,
     this.createdAt = 'now()',
@@ -21,7 +21,7 @@ class Order {
   });
 
   /// Note: This is a Primary Key.<pk/>
-  int id;
+  int? id;
 
   /// Note: This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
   ///
@@ -41,9 +41,9 @@ class Order {
   ///
   int? establishmentMenuId;
 
-  String createdAt;
+  String? createdAt;
 
-  String updatedAt;
+  String? updatedAt;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Order &&

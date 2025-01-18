@@ -13,15 +13,15 @@ part of openapi.api;
 class Friend {
   /// Returns a new [Friend] instance.
   Friend({
-    required this.userId,
-    required this.friendId,
+    this.userId,
+    this.friendId,
   });
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
-  int userId;
+  int? userId;
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
-  int friendId;
+  int? friendId;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Friend &&

@@ -13,18 +13,18 @@ part of openapi.api;
 class UserEstablishmentBookmark {
   /// Returns a new [UserEstablishmentBookmark] instance.
   UserEstablishmentBookmark({
-    required this.userId,
-    required this.establishmentId,
+    this.userId,
+    this.establishmentId,
     this.createdAt = 'now()',
   });
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
-  int userId;
+  int? userId;
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `establishment.id`.<fk table='establishment' column='id'/>
-  int establishmentId;
+  int? establishmentId;
 
-  String createdAt;
+  String? createdAt;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserEstablishmentBookmark &&

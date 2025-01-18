@@ -13,16 +13,16 @@ part of openapi.api;
 class EstablishmentRank {
   /// Returns a new [EstablishmentRank] instance.
   EstablishmentRank({
-    required this.establishmentId,
-    required this.userId,
+    this.establishmentId,
+    this.userId,
     this.rank,
   });
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `establishment.id`.<fk table='establishment' column='id'/>
-  int establishmentId;
+  int? establishmentId;
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
-  int userId;
+  int? userId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file

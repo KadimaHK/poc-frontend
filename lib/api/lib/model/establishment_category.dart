@@ -13,11 +13,11 @@ part of openapi.api;
 class EstablishmentCategory {
   /// Returns a new [EstablishmentCategory] instance.
   EstablishmentCategory({
-    required this.category,
+    this.category,
   });
 
   /// Note: This is a Primary Key.<pk/>
-  String category;
+  String? category;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is EstablishmentCategory &&

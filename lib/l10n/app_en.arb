@@ -181,6 +181,20 @@
     "storedDate": "Stored Date",
     "transfer": "Transfer",
     "redeem": "Redeem",
+    "whoWouldYouLikeToTransfer": "Who would you like to transfer?",
+    "yourFollowing": "Your Following",
+
+    "idNumber": "ID Number",
+    "cancel": "Cancel",
+    "next": "Next",
+    "confirm": "Confirm",
+    "sendRequest": "Send Request",
+    "back": "Back",
+    "confirmation": "Confirmation",
+    "to": "To",
+    "liqueurName": "Liqueur Name",
+    "amount": "Amount",
+
 
     "empty":"empty"
 }

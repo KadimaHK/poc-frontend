@@ -13,7 +13,7 @@ part of openapi.api;
 class EstablishmentMenu {
   /// Returns a new [EstablishmentMenu] instance.
   EstablishmentMenu({
-    required this.id,
+    this.id,
     this.name,
     this.description,
     this.price,
@@ -24,7 +24,7 @@ class EstablishmentMenu {
   });
 
   /// Note: This is a Primary Key.<pk/>
-  int id;
+  int? id;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -68,9 +68,9 @@ class EstablishmentMenu {
   ///
   int? menuCategoryId;
 
-  String createdAt;
+  String? createdAt;
 
-  String updatedAt;
+  String? updatedAt;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is EstablishmentMenu &&

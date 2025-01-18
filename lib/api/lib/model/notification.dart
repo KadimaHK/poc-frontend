@@ -13,7 +13,7 @@ part of openapi.api;
 class Notification {
   /// Returns a new [Notification] instance.
   Notification({
-    required this.id,
+    this.id,
     this.userId,
     this.message,
     this.type,
@@ -22,7 +22,7 @@ class Notification {
   });
 
   /// Note: This is a Primary Key.<pk/>
-  int id;
+  int? id;
 
   /// Note: This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
   ///
@@ -50,9 +50,9 @@ class Notification {
   ///
   String? type;
 
-  String createdAt;
+  String? createdAt;
 
-  String updatedAt;
+  String? updatedAt;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Notification &&

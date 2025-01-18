@@ -13,15 +13,15 @@ part of openapi.api;
 class PickEstablishment {
   /// Returns a new [PickEstablishment] instance.
   PickEstablishment({
-    required this.pickId,
-    required this.establishmentId,
+    this.pickId,
+    this.establishmentId,
   });
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `pick.id`.<fk table='pick' column='id'/>
-  int pickId;
+  int? pickId;
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `establishment.id`.<fk table='establishment' column='id'/>
-  int establishmentId;
+  int? establishmentId;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is PickEstablishment &&

@@ -9,14 +9,15 @@ import 'package:openapi/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | Note: This is a Primary Key.<pk/> | 
+**userId** | **int** | Note: This is a Foreign Key to `user.id`.<fk table='user' column='id'/> | [optional] 
+**establishmentId** | **int** | Note: This is a Foreign Key to `establishment.id`.<fk table='establishment' column='id'/> | [optional] 
+**imageUrl** | **String** | Note: This is a Foreign Key to `image.image_url`.<fk table='image' column='image_url'/> | [optional] 
 **name** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
-**imageUrl** | **String** | Note: This is a Foreign Key to `image.image_url`.<fk table='image' column='image_url'/> | [optional] 
 **storedDate** | **String** |  | [optional] 
 **expiryDate** | **String** |  | [optional] 
-**establishmentId** | **int** | Note: This is a Foreign Key to `establishment.id`.<fk table='establishment' column='id'/> | [optional] 
 **isRedeemed** | **bool** |  | [optional] [default to false]
-**userId** | **int** | Note: This is a Foreign Key to `user.id`.<fk table='user' column='id'/> | [optional] 
+**redeemCode** | **String** |  | [optional] 
 **createdAt** | **String** |  | [optional] [default to 'now()']
 **updatedAt** | **String** |  | [optional] [default to 'now()']
 

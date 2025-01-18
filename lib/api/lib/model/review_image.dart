@@ -13,7 +13,7 @@ part of openapi.api;
 class ReviewImage {
   /// Returns a new [ReviewImage] instance.
   ReviewImage({
-    required this.id,
+    this.id,
     this.reviewId,
     this.imageUrl,
     this.description,
@@ -23,7 +23,7 @@ class ReviewImage {
   });
 
   /// Note: This is a Primary Key.<pk/>
-  int id;
+  int? id;
 
   /// Note: This is a Foreign Key to `review.id`.<fk table='review' column='id'/>
   ///

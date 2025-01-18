@@ -41,8 +41,8 @@ class _StoredLiqueurPageState extends State<StoredLiqueurPage> with SingleTicker
     {
       List<api.StoredLiqueur>? storedLiqueur = (await api.StoredLiqueurApi(MyApp.sessionApiClient).storedLiqueurGet(userId: 'eq.${widget.user.id}'))!;
       for (var item in storedLiqueur) {
-        final isRedeemed = item.isRedeemed;
-        final isExpired = DateTime.parse(item.expiryDate!).isBefore(DateTime.now());
+        final bool isRedeemed = item.isRedeemed!;
+        final bool isExpired = DateTime.parse(item.expiryDate!).isBefore(DateTime.now());
         _StoredLiqueurWidget tmp = _StoredLiqueurWidget(
           item: item,
         );
@@ -64,7 +64,7 @@ class _StoredLiqueurPageState extends State<StoredLiqueurPage> with SingleTicker
         api.StoredLiqueur storedLiqueur = (await api.StoredLiqueurApi(MyApp.sessionApiClient).storedLiqueurGet(id: 'eq.${item.storedLiqueurId}'))!.first;
         transferred.add(_StoredLiqueurWidget(
           item: storedLiqueur,
-          status: item.isAccepted ? Status.transferred : Status.pending,
+          status: item.isAccepted! ? Status.transferred : Status.pending,
         ));
       }
     }

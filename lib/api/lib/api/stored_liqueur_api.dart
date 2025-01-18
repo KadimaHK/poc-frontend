@@ -21,21 +21,23 @@ class StoredLiqueurApi {
   ///
   /// * [String] id:
   ///
+  /// * [String] userId:
+  ///
+  /// * [String] establishmentId:
+  ///
+  /// * [String] imageUrl:
+  ///
   /// * [String] name:
   ///
   /// * [String] description:
-  ///
-  /// * [String] imageUrl:
   ///
   /// * [String] storedDate:
   ///
   /// * [String] expiryDate:
   ///
-  /// * [String] establishmentId:
-  ///
   /// * [String] isRedeemed:
   ///
-  /// * [String] userId:
+  /// * [String] redeemCode:
   ///
   /// * [String] createdAt:
   ///
@@ -43,7 +45,7 @@ class StoredLiqueurApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> storedLiqueurDeleteWithHttpInfo({ String? id, String? name, String? description, String? imageUrl, String? storedDate, String? expiryDate, String? establishmentId, String? isRedeemed, String? userId, String? createdAt, String? updatedAt, String? prefer, }) async {
+  Future<Response> storedLiqueurDeleteWithHttpInfo({ String? id, String? userId, String? establishmentId, String? imageUrl, String? name, String? description, String? storedDate, String? expiryDate, String? isRedeemed, String? redeemCode, String? createdAt, String? updatedAt, String? prefer, }) async {
     // ignore: prefer_const_declarations
     final path = r'/stored_liqueur';
 
@@ -57,14 +59,20 @@ class StoredLiqueurApi {
     if (id != null) {
       queryParams.addAll(_queryParams('', 'id', id));
     }
+    if (userId != null) {
+      queryParams.addAll(_queryParams('', 'user_id', userId));
+    }
+    if (establishmentId != null) {
+      queryParams.addAll(_queryParams('', 'establishment_id', establishmentId));
+    }
+    if (imageUrl != null) {
+      queryParams.addAll(_queryParams('', 'image_url', imageUrl));
+    }
     if (name != null) {
       queryParams.addAll(_queryParams('', 'name', name));
     }
     if (description != null) {
       queryParams.addAll(_queryParams('', 'description', description));
-    }
-    if (imageUrl != null) {
-      queryParams.addAll(_queryParams('', 'image_url', imageUrl));
     }
     if (storedDate != null) {
       queryParams.addAll(_queryParams('', 'stored_date', storedDate));
@@ -72,14 +80,11 @@ class StoredLiqueurApi {
     if (expiryDate != null) {
       queryParams.addAll(_queryParams('', 'expiry_date', expiryDate));
     }
-    if (establishmentId != null) {
-      queryParams.addAll(_queryParams('', 'establishment_id', establishmentId));
-    }
     if (isRedeemed != null) {
       queryParams.addAll(_queryParams('', 'is_redeemed', isRedeemed));
     }
-    if (userId != null) {
-      queryParams.addAll(_queryParams('', 'user_id', userId));
+    if (redeemCode != null) {
+      queryParams.addAll(_queryParams('', 'redeem_code', redeemCode));
     }
     if (createdAt != null) {
       queryParams.addAll(_queryParams('', 'created_at', createdAt));
@@ -110,21 +115,23 @@ class StoredLiqueurApi {
   ///
   /// * [String] id:
   ///
+  /// * [String] userId:
+  ///
+  /// * [String] establishmentId:
+  ///
+  /// * [String] imageUrl:
+  ///
   /// * [String] name:
   ///
   /// * [String] description:
-  ///
-  /// * [String] imageUrl:
   ///
   /// * [String] storedDate:
   ///
   /// * [String] expiryDate:
   ///
-  /// * [String] establishmentId:
-  ///
   /// * [String] isRedeemed:
   ///
-  /// * [String] userId:
+  /// * [String] redeemCode:
   ///
   /// * [String] createdAt:
   ///
@@ -132,8 +139,8 @@ class StoredLiqueurApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> storedLiqueurDelete({ String? id, String? name, String? description, String? imageUrl, String? storedDate, String? expiryDate, String? establishmentId, String? isRedeemed, String? userId, String? createdAt, String? updatedAt, String? prefer, }) async {
-    final response = await storedLiqueurDeleteWithHttpInfo( id: id, name: name, description: description, imageUrl: imageUrl, storedDate: storedDate, expiryDate: expiryDate, establishmentId: establishmentId, isRedeemed: isRedeemed, userId: userId, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, );
+  Future<void> storedLiqueurDelete({ String? id, String? userId, String? establishmentId, String? imageUrl, String? name, String? description, String? storedDate, String? expiryDate, String? isRedeemed, String? redeemCode, String? createdAt, String? updatedAt, String? prefer, }) async {
+    final response = await storedLiqueurDeleteWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, imageUrl: imageUrl, name: name, description: description, storedDate: storedDate, expiryDate: expiryDate, isRedeemed: isRedeemed, redeemCode: redeemCode, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -144,21 +151,23 @@ class StoredLiqueurApi {
   ///
   /// * [String] id:
   ///
+  /// * [String] userId:
+  ///
+  /// * [String] establishmentId:
+  ///
+  /// * [String] imageUrl:
+  ///
   /// * [String] name:
   ///
   /// * [String] description:
-  ///
-  /// * [String] imageUrl:
   ///
   /// * [String] storedDate:
   ///
   /// * [String] expiryDate:
   ///
-  /// * [String] establishmentId:
-  ///
   /// * [String] isRedeemed:
   ///
-  /// * [String] userId:
+  /// * [String] redeemCode:
   ///
   /// * [String] createdAt:
   ///
@@ -184,7 +193,7 @@ class StoredLiqueurApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> storedLiqueurGetWithHttpInfo({ String? id, String? name, String? description, String? imageUrl, String? storedDate, String? expiryDate, String? establishmentId, String? isRedeemed, String? userId, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> storedLiqueurGetWithHttpInfo({ String? id, String? userId, String? establishmentId, String? imageUrl, String? name, String? description, String? storedDate, String? expiryDate, String? isRedeemed, String? redeemCode, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
     // ignore: prefer_const_declarations
     final path = r'/stored_liqueur';
 
@@ -198,14 +207,20 @@ class StoredLiqueurApi {
     if (id != null) {
       queryParams.addAll(_queryParams('', 'id', id));
     }
+    if (userId != null) {
+      queryParams.addAll(_queryParams('', 'user_id', userId));
+    }
+    if (establishmentId != null) {
+      queryParams.addAll(_queryParams('', 'establishment_id', establishmentId));
+    }
+    if (imageUrl != null) {
+      queryParams.addAll(_queryParams('', 'image_url', imageUrl));
+    }
     if (name != null) {
       queryParams.addAll(_queryParams('', 'name', name));
     }
     if (description != null) {
       queryParams.addAll(_queryParams('', 'description', description));
-    }
-    if (imageUrl != null) {
-      queryParams.addAll(_queryParams('', 'image_url', imageUrl));
     }
     if (storedDate != null) {
       queryParams.addAll(_queryParams('', 'stored_date', storedDate));
@@ -213,14 +228,11 @@ class StoredLiqueurApi {
     if (expiryDate != null) {
       queryParams.addAll(_queryParams('', 'expiry_date', expiryDate));
     }
-    if (establishmentId != null) {
-      queryParams.addAll(_queryParams('', 'establishment_id', establishmentId));
-    }
     if (isRedeemed != null) {
       queryParams.addAll(_queryParams('', 'is_redeemed', isRedeemed));
     }
-    if (userId != null) {
-      queryParams.addAll(_queryParams('', 'user_id', userId));
+    if (redeemCode != null) {
+      queryParams.addAll(_queryParams('', 'redeem_code', redeemCode));
     }
     if (createdAt != null) {
       queryParams.addAll(_queryParams('', 'created_at', createdAt));
@@ -269,21 +281,23 @@ class StoredLiqueurApi {
   ///
   /// * [String] id:
   ///
+  /// * [String] userId:
+  ///
+  /// * [String] establishmentId:
+  ///
+  /// * [String] imageUrl:
+  ///
   /// * [String] name:
   ///
   /// * [String] description:
-  ///
-  /// * [String] imageUrl:
   ///
   /// * [String] storedDate:
   ///
   /// * [String] expiryDate:
   ///
-  /// * [String] establishmentId:
-  ///
   /// * [String] isRedeemed:
   ///
-  /// * [String] userId:
+  /// * [String] redeemCode:
   ///
   /// * [String] createdAt:
   ///
@@ -309,8 +323,8 @@ class StoredLiqueurApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<StoredLiqueur>?> storedLiqueurGet({ String? id, String? name, String? description, String? imageUrl, String? storedDate, String? expiryDate, String? establishmentId, String? isRedeemed, String? userId, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await storedLiqueurGetWithHttpInfo( id: id, name: name, description: description, imageUrl: imageUrl, storedDate: storedDate, expiryDate: expiryDate, establishmentId: establishmentId, isRedeemed: isRedeemed, userId: userId, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<StoredLiqueur>?> storedLiqueurGet({ String? id, String? userId, String? establishmentId, String? imageUrl, String? name, String? description, String? storedDate, String? expiryDate, String? isRedeemed, String? redeemCode, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+    final response = await storedLiqueurGetWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, imageUrl: imageUrl, name: name, description: description, storedDate: storedDate, expiryDate: expiryDate, isRedeemed: isRedeemed, redeemCode: redeemCode, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -332,21 +346,23 @@ class StoredLiqueurApi {
   ///
   /// * [String] id:
   ///
+  /// * [String] userId:
+  ///
+  /// * [String] establishmentId:
+  ///
+  /// * [String] imageUrl:
+  ///
   /// * [String] name:
   ///
   /// * [String] description:
-  ///
-  /// * [String] imageUrl:
   ///
   /// * [String] storedDate:
   ///
   /// * [String] expiryDate:
   ///
-  /// * [String] establishmentId:
-  ///
   /// * [String] isRedeemed:
   ///
-  /// * [String] userId:
+  /// * [String] redeemCode:
   ///
   /// * [String] createdAt:
   ///
@@ -357,7 +373,7 @@ class StoredLiqueurApi {
   ///
   /// * [StoredLiqueur] storedLiqueur:
   ///   stored_liqueur
-  Future<Response> storedLiqueurPatchWithHttpInfo({ String? id, String? name, String? description, String? imageUrl, String? storedDate, String? expiryDate, String? establishmentId, String? isRedeemed, String? userId, String? createdAt, String? updatedAt, String? prefer, StoredLiqueur? storedLiqueur, }) async {
+  Future<Response> storedLiqueurPatchWithHttpInfo({ String? id, String? userId, String? establishmentId, String? imageUrl, String? name, String? description, String? storedDate, String? expiryDate, String? isRedeemed, String? redeemCode, String? createdAt, String? updatedAt, String? prefer, StoredLiqueur? storedLiqueur, }) async {
     // ignore: prefer_const_declarations
     final path = r'/stored_liqueur';
 
@@ -371,14 +387,20 @@ class StoredLiqueurApi {
     if (id != null) {
       queryParams.addAll(_queryParams('', 'id', id));
     }
+    if (userId != null) {
+      queryParams.addAll(_queryParams('', 'user_id', userId));
+    }
+    if (establishmentId != null) {
+      queryParams.addAll(_queryParams('', 'establishment_id', establishmentId));
+    }
+    if (imageUrl != null) {
+      queryParams.addAll(_queryParams('', 'image_url', imageUrl));
+    }
     if (name != null) {
       queryParams.addAll(_queryParams('', 'name', name));
     }
     if (description != null) {
       queryParams.addAll(_queryParams('', 'description', description));
-    }
-    if (imageUrl != null) {
-      queryParams.addAll(_queryParams('', 'image_url', imageUrl));
     }
     if (storedDate != null) {
       queryParams.addAll(_queryParams('', 'stored_date', storedDate));
@@ -386,14 +408,11 @@ class StoredLiqueurApi {
     if (expiryDate != null) {
       queryParams.addAll(_queryParams('', 'expiry_date', expiryDate));
     }
-    if (establishmentId != null) {
-      queryParams.addAll(_queryParams('', 'establishment_id', establishmentId));
-    }
     if (isRedeemed != null) {
       queryParams.addAll(_queryParams('', 'is_redeemed', isRedeemed));
     }
-    if (userId != null) {
-      queryParams.addAll(_queryParams('', 'user_id', userId));
+    if (redeemCode != null) {
+      queryParams.addAll(_queryParams('', 'redeem_code', redeemCode));
     }
     if (createdAt != null) {
       queryParams.addAll(_queryParams('', 'created_at', createdAt));
@@ -424,21 +443,23 @@ class StoredLiqueurApi {
   ///
   /// * [String] id:
   ///
+  /// * [String] userId:
+  ///
+  /// * [String] establishmentId:
+  ///
+  /// * [String] imageUrl:
+  ///
   /// * [String] name:
   ///
   /// * [String] description:
-  ///
-  /// * [String] imageUrl:
   ///
   /// * [String] storedDate:
   ///
   /// * [String] expiryDate:
   ///
-  /// * [String] establishmentId:
-  ///
   /// * [String] isRedeemed:
   ///
-  /// * [String] userId:
+  /// * [String] redeemCode:
   ///
   /// * [String] createdAt:
   ///
@@ -449,8 +470,8 @@ class StoredLiqueurApi {
   ///
   /// * [StoredLiqueur] storedLiqueur:
   ///   stored_liqueur
-  Future<void> storedLiqueurPatch({ String? id, String? name, String? description, String? imageUrl, String? storedDate, String? expiryDate, String? establishmentId, String? isRedeemed, String? userId, String? createdAt, String? updatedAt, String? prefer, StoredLiqueur? storedLiqueur, }) async {
-    final response = await storedLiqueurPatchWithHttpInfo( id: id, name: name, description: description, imageUrl: imageUrl, storedDate: storedDate, expiryDate: expiryDate, establishmentId: establishmentId, isRedeemed: isRedeemed, userId: userId, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, storedLiqueur: storedLiqueur, );
+  Future<void> storedLiqueurPatch({ String? id, String? userId, String? establishmentId, String? imageUrl, String? name, String? description, String? storedDate, String? expiryDate, String? isRedeemed, String? redeemCode, String? createdAt, String? updatedAt, String? prefer, StoredLiqueur? storedLiqueur, }) async {
+    final response = await storedLiqueurPatchWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, imageUrl: imageUrl, name: name, description: description, storedDate: storedDate, expiryDate: expiryDate, isRedeemed: isRedeemed, redeemCode: redeemCode, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, storedLiqueur: storedLiqueur, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

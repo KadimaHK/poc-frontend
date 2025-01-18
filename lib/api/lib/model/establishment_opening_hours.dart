@@ -13,18 +13,18 @@ part of openapi.api;
 class EstablishmentOpeningHours {
   /// Returns a new [EstablishmentOpeningHours] instance.
   EstablishmentOpeningHours({
-    required this.establishmentId,
-    required this.day,
+    this.establishmentId,
+    this.day,
     this.openTime,
     this.closeTime,
     this.isOvernight = false,
   });
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `establishment.id`.<fk table='establishment' column='id'/>
-  int establishmentId;
+  int? establishmentId;
 
   /// Note: This is a Primary Key.<pk/>
-  String day;
+  String? day;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -42,7 +42,7 @@ class EstablishmentOpeningHours {
   ///
   String? closeTime;
 
-  bool isOvernight;
+  bool? isOvernight;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is EstablishmentOpeningHours &&

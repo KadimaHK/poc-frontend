@@ -13,7 +13,7 @@ part of openapi.api;
 class Pick {
   /// Returns a new [Pick] instance.
   Pick({
-    required this.id,
+    this.id,
     this.message,
     this.expiry,
     this.imageUrl,
@@ -22,7 +22,7 @@ class Pick {
   });
 
   /// Note: This is a Primary Key.<pk/>
-  int id;
+  int? id;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -49,9 +49,9 @@ class Pick {
   ///
   String? imageUrl;
 
-  String createdAt;
+  String? createdAt;
 
-  String updatedAt;
+  String? updatedAt;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Pick &&

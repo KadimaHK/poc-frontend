@@ -13,7 +13,7 @@ part of openapi.api;
 class Establishment {
   /// Returns a new [Establishment] instance.
   Establishment({
-    required this.id,
+    this.id,
     this.name,
     this.description,
     this.notice,
@@ -33,7 +33,7 @@ class Establishment {
   });
 
   /// Note: This is a Primary Key.<pk/>
-  int id;
+  int? id;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -151,9 +151,9 @@ class Establishment {
   ///
   int? bookmarkCount;
 
-  String createdAt;
+  String? createdAt;
 
-  String updatedAt;
+  String? updatedAt;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Establishment &&

@@ -13,15 +13,15 @@ part of openapi.api;
 class Follow {
   /// Returns a new [Follow] instance.
   Follow({
-    required this.follower,
-    required this.following,
+    this.follower,
+    this.following,
   });
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
-  int follower;
+  int? follower;
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
-  int following;
+  int? following;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Follow &&

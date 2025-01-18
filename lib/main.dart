@@ -23,6 +23,7 @@ import 'package:poc_frontend/pages/review_page.dart';
 import 'package:poc_frontend/pages/sign_up_page.dart';
 import 'package:poc_frontend/pages/stored_liqueur_detail_page.dart';
 import 'package:poc_frontend/pages/stored_liqueur_page.dart';
+import 'package:poc_frontend/pages/stored_liqueur_transfer_page.dart';
 import 'package:poc_frontend/pages/voucher_detail_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -123,6 +124,11 @@ class MyAppState extends State<MyApp> {
           titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
           actionsIconTheme: IconThemeData(color: Colors.white),
           iconTheme: IconThemeData(color: Colors.white),
+        ),
+        dialogTheme: DialogTheme(
+          backgroundColor: primaryColor,
+          titleTextStyle: TextStyle(color: Colors.white),
+          contentTextStyle: TextStyle(color: Colors.white),
         ),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: primaryColor,
@@ -225,6 +231,8 @@ class MainState extends State<Main> {
         key: navigatorKey,
         onGenerateRoute: (settings) {
           switch (settings.name) {
+            case StoredLiqueurTransferPage.routeName:
+              return MaterialPageRoute(builder: (_) => StoredLiqueurTransferPage(storedLiqueur: settings.arguments as api.StoredLiqueur));
             case StoredLiqueurDetailPage.routeName:
               return MaterialPageRoute(builder: (_) => StoredLiqueurDetailPage(storedLiqueur: settings.arguments as api.StoredLiqueur));
             case MyExclusiveBenefitPage.routeName:

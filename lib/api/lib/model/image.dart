@@ -13,7 +13,7 @@ part of openapi.api;
 class Image {
   /// Returns a new [Image] instance.
   Image({
-    required this.fileName,
+    this.fileName,
     this.baseUrl,
     this.imageUrl,
     this.likes,
@@ -22,7 +22,7 @@ class Image {
   });
 
   /// Note: This is a Primary Key.<pk/>
-  String fileName;
+  String? fileName;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -48,9 +48,9 @@ class Image {
   ///
   int? likes;
 
-  String createdAt;
+  String? createdAt;
 
-  String updatedAt;
+  String? updatedAt;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Image &&

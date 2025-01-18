@@ -42,10 +42,10 @@ class _MyVoucherPageState extends State<MyVoucherPage> with SingleTickerProvider
       final featuredOffer = (await api.FeaturedOfferApi(MyApp.sessionApiClient).featuredOfferGet(id: 'eq.${offer.featuredOfferId}'))!.firstOrNull;
       if (featuredOffer == null) continue;
 
-      final isRedeemed = offer.isRedeemed;
+      final isRedeemed = offer.isRedeemed ?? false;
       final isExpired = DateTime.parse(featuredOffer!.expiryDate!).isBefore(DateTime.now());
 
-      if (offer.isRedeemed || isExpired) {
+      if (isRedeemed || isExpired) {
         invalidVoucher.add(_VoucherWidget(
           userFeaturedOffer: offer,
           featuredOffer: featuredOffer,

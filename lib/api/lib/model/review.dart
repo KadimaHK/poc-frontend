@@ -13,7 +13,7 @@ part of openapi.api;
 class Review {
   /// Returns a new [Review] instance.
   Review({
-    required this.id,
+    this.id,
     this.userId,
     this.establishmentId,
     this.title,
@@ -35,7 +35,7 @@ class Review {
   });
 
   /// Note: This is a Primary Key.<pk/>
-  int id;
+  int? id;
 
   /// Note: This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
   ///
@@ -79,7 +79,7 @@ class Review {
   ///
   String? content;
 
-  bool isApproved;
+  bool? isApproved;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -154,11 +154,11 @@ class Review {
   ///
   int? likes;
 
-  String status;
+  String? status;
 
-  String createdAt;
+  String? createdAt;
 
-  String updatedAt;
+  String? updatedAt;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Review &&

@@ -5,12 +5,14 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:poc_frontend/api/lib/api.dart' as api;
 import 'package:poc_frontend/components/establishment_info_card_view.dart';
 import 'package:poc_frontend/main.dart';
+import 'package:poc_frontend/pages/stored_liqueur_transfer_page.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class StoredLiqueurDetailPage extends StatefulWidget {
   const StoredLiqueurDetailPage({super.key, required this.storedLiqueur});
   static const routeName = '/stored_liqueur_detail';
   final api.StoredLiqueur storedLiqueur;
+
   @override
   State<StoredLiqueurDetailPage> createState() => _StoredLiqueurDetailPageState();
 }
@@ -91,7 +93,7 @@ class _StoredLiqueurDetailPageState extends State<StoredLiqueurDetailPage> {
                           separatorBuilder: (context, index) => const SizedBox(width: 10),
                           itemBuilder: (context, index) {
                             return Image.network(
-                              storedLiqueurImage![index].imageUrl,
+                              storedLiqueurImage![index].imageUrl ?? '',
                               height: 50,
                               width: 100,
                               fit: BoxFit.cover,
@@ -115,7 +117,7 @@ class _StoredLiqueurDetailPageState extends State<StoredLiqueurDetailPage> {
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                    child: OutlinedButton(onPressed: () {}, child: Text(t.transfer)),
+                    child: OutlinedButton(onPressed: () => Navigator.pushNamed(context, StoredLiqueurTransferPage.routeName, arguments: widget.storedLiqueur), child: Text(t.transfer)),
                   ),
                 ),
                 Expanded(
@@ -135,7 +137,7 @@ class _StoredLiqueurDetailPageState extends State<StoredLiqueurDetailPage> {
                                   child: QrImageView(
                                     backgroundColor: Colors.white,
                                     padding: const EdgeInsets.all(20),
-                                    data: 'stored_liqueur_id=${widget.storedLiqueur.id}',
+                                    data: 'stored_liqueur_id=${widget.storedLiqueur.redeemCode}',
                                     version: QrVersions.auto,
                                     size: MediaQuery.of(context).size.width * 0.75,
                                   ),

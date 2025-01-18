@@ -13,11 +13,11 @@ part of openapi.api;
 class NotificationType {
   /// Returns a new [NotificationType] instance.
   NotificationType({
-    required this.type,
+    this.type,
   });
 
   /// Note: This is a Primary Key.<pk/>
-  String type;
+  String? type;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is NotificationType &&

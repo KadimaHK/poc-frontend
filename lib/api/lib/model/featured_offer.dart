@@ -13,7 +13,7 @@ part of openapi.api;
 class FeaturedOffer {
   /// Returns a new [FeaturedOffer] instance.
   FeaturedOffer({
-    required this.id,
+    this.id,
     this.title,
     this.voucherCode,
     this.startDate,
@@ -29,7 +29,7 @@ class FeaturedOffer {
   });
 
   /// Note: This is a Primary Key.<pk/>
-  int id;
+  int? id;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file

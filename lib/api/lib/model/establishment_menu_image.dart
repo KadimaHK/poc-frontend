@@ -13,15 +13,15 @@ part of openapi.api;
 class EstablishmentMenuImage {
   /// Returns a new [EstablishmentMenuImage] instance.
   EstablishmentMenuImage({
-    required this.establishmentMenuId,
-    required this.imageUrl,
+    this.establishmentMenuId,
+    this.imageUrl,
   });
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `establishment_menu.id`.<fk table='establishment_menu' column='id'/>
-  int establishmentMenuId;
+  int? establishmentMenuId;
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `image.image_url`.<fk table='image' column='image_url'/>
-  String imageUrl;
+  String? imageUrl;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is EstablishmentMenuImage &&

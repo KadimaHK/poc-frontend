@@ -13,9 +13,9 @@ part of openapi.api;
 class User {
   /// Returns a new [User] instance.
   User({
-    required this.id,
+    this.id,
     this.uuid,
-    required this.email,
+    this.email,
     this.name,
     this.password,
     this.iconUrl,
@@ -35,7 +35,7 @@ class User {
   });
 
   /// Note: This is a Primary Key.<pk/>
-  int id;
+  int? id;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -45,7 +45,7 @@ class User {
   ///
   String? uuid;
 
-  String email;
+  String? email;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -144,13 +144,13 @@ class User {
   ///
   int? points;
 
-  String pointsExpiry;
+  String? pointsExpiry;
 
-  bool verified;
+  bool? verified;
 
-  String createdAt;
+  String? createdAt;
 
-  String updatedAt;
+  String? updatedAt;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is User &&

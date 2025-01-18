@@ -13,23 +13,23 @@ part of openapi.api;
 class Message {
   /// Returns a new [Message] instance.
   Message({
-    required this.uuid,
+    this.uuid,
     this.time = 'now()',
-    required this.fromUserId,
-    required this.toUserId,
+    this.fromUserId,
+    this.toUserId,
     this.body,
   });
 
   /// Note: This is a Primary Key.<pk/>
-  String uuid;
+  String? uuid;
 
-  String time;
-
-  /// Note: This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
-  int fromUserId;
+  String? time;
 
   /// Note: This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
-  int toUserId;
+  int? fromUserId;
+
+  /// Note: This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
+  int? toUserId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file

@@ -13,21 +13,49 @@ part of openapi.api;
 class StoredLiqueur {
   /// Returns a new [StoredLiqueur] instance.
   StoredLiqueur({
-    required this.id,
+    this.id,
+    this.userId,
+    this.establishmentId,
+    this.imageUrl,
     this.name,
     this.description,
-    this.imageUrl,
     this.storedDate,
     this.expiryDate,
-    this.establishmentId,
     this.isRedeemed = false,
-    this.userId,
+    this.redeemCode,
     this.createdAt = 'now()',
     this.updatedAt = 'now()',
   });
 
   /// Note: This is a Primary Key.<pk/>
-  int id;
+  int? id;
+
+  /// Note: This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? userId;
+
+  /// Note: This is a Foreign Key to `establishment.id`.<fk table='establishment' column='id'/>
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? establishmentId;
+
+  /// Note: This is a Foreign Key to `image.image_url`.<fk table='image' column='image_url'/>
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? imageUrl;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -45,15 +73,6 @@ class StoredLiqueur {
   ///
   String? description;
 
-  /// Note: This is a Foreign Key to `image.image_url`.<fk table='image' column='image_url'/>
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? imageUrl;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -70,41 +89,32 @@ class StoredLiqueur {
   ///
   String? expiryDate;
 
-  /// Note: This is a Foreign Key to `establishment.id`.<fk table='establishment' column='id'/>
+  bool? isRedeemed;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? establishmentId;
+  String? redeemCode;
 
-  bool isRedeemed;
+  String? createdAt;
 
-  /// Note: This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? userId;
-
-  String createdAt;
-
-  String updatedAt;
+  String? updatedAt;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is StoredLiqueur &&
     other.id == id &&
+    other.userId == userId &&
+    other.establishmentId == establishmentId &&
+    other.imageUrl == imageUrl &&
     other.name == name &&
     other.description == description &&
-    other.imageUrl == imageUrl &&
     other.storedDate == storedDate &&
     other.expiryDate == expiryDate &&
-    other.establishmentId == establishmentId &&
     other.isRedeemed == isRedeemed &&
-    other.userId == userId &&
+    other.redeemCode == redeemCode &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt;
 
@@ -112,23 +122,39 @@ class StoredLiqueur {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id.hashCode) +
+    (userId == null ? 0 : userId!.hashCode) +
+    (establishmentId == null ? 0 : establishmentId!.hashCode) +
+    (imageUrl == null ? 0 : imageUrl!.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
-    (imageUrl == null ? 0 : imageUrl!.hashCode) +
     (storedDate == null ? 0 : storedDate!.hashCode) +
     (expiryDate == null ? 0 : expiryDate!.hashCode) +
-    (establishmentId == null ? 0 : establishmentId!.hashCode) +
     (isRedeemed.hashCode) +
-    (userId == null ? 0 : userId!.hashCode) +
+    (redeemCode == null ? 0 : redeemCode!.hashCode) +
     (createdAt.hashCode) +
     (updatedAt.hashCode);
 
   @override
-  String toString() => 'StoredLiqueur[id=$id, name=$name, description=$description, imageUrl=$imageUrl, storedDate=$storedDate, expiryDate=$expiryDate, establishmentId=$establishmentId, isRedeemed=$isRedeemed, userId=$userId, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'StoredLiqueur[id=$id, userId=$userId, establishmentId=$establishmentId, imageUrl=$imageUrl, name=$name, description=$description, storedDate=$storedDate, expiryDate=$expiryDate, isRedeemed=$isRedeemed, redeemCode=$redeemCode, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'id'] = this.id;
+    if (this.userId != null) {
+      json[r'user_id'] = this.userId;
+    } else {
+      json[r'user_id'] = null;
+    }
+    if (this.establishmentId != null) {
+      json[r'establishment_id'] = this.establishmentId;
+    } else {
+      json[r'establishment_id'] = null;
+    }
+    if (this.imageUrl != null) {
+      json[r'image_url'] = this.imageUrl;
+    } else {
+      json[r'image_url'] = null;
+    }
     if (this.name != null) {
       json[r'name'] = this.name;
     } else {
@@ -138,11 +164,6 @@ class StoredLiqueur {
       json[r'description'] = this.description;
     } else {
       json[r'description'] = null;
-    }
-    if (this.imageUrl != null) {
-      json[r'image_url'] = this.imageUrl;
-    } else {
-      json[r'image_url'] = null;
     }
     if (this.storedDate != null) {
       json[r'stored_date'] = this.storedDate;
@@ -154,16 +175,11 @@ class StoredLiqueur {
     } else {
       json[r'expiry_date'] = null;
     }
-    if (this.establishmentId != null) {
-      json[r'establishment_id'] = this.establishmentId;
-    } else {
-      json[r'establishment_id'] = null;
-    }
       json[r'is_redeemed'] = this.isRedeemed;
-    if (this.userId != null) {
-      json[r'user_id'] = this.userId;
+    if (this.redeemCode != null) {
+      json[r'redeem_code'] = this.redeemCode;
     } else {
-      json[r'user_id'] = null;
+      json[r'redeem_code'] = null;
     }
       json[r'created_at'] = this.createdAt;
       json[r'updated_at'] = this.updatedAt;
@@ -190,14 +206,15 @@ class StoredLiqueur {
 
       return StoredLiqueur(
         id: mapValueOfType<int>(json, r'id')!,
+        userId: mapValueOfType<int>(json, r'user_id'),
+        establishmentId: mapValueOfType<int>(json, r'establishment_id'),
+        imageUrl: mapValueOfType<String>(json, r'image_url'),
         name: mapValueOfType<String>(json, r'name'),
         description: mapValueOfType<String>(json, r'description'),
-        imageUrl: mapValueOfType<String>(json, r'image_url'),
         storedDate: mapValueOfType<String>(json, r'stored_date'),
         expiryDate: mapValueOfType<String>(json, r'expiry_date'),
-        establishmentId: mapValueOfType<int>(json, r'establishment_id'),
         isRedeemed: mapValueOfType<bool>(json, r'is_redeemed') ?? false,
-        userId: mapValueOfType<int>(json, r'user_id'),
+        redeemCode: mapValueOfType<String>(json, r'redeem_code'),
         createdAt: mapValueOfType<String>(json, r'created_at') ?? 'now()',
         updatedAt: mapValueOfType<String>(json, r'updated_at') ?? 'now()',
       );
