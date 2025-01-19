@@ -7,6 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:poc_frontend/api/lib/api.dart' as api;
 import 'package:poc_frontend/api/lib/api.dart';
 import 'package:poc_frontend/components/profile_drawer.dart';
+import 'package:poc_frontend/pages/chat_page.dart';
 import 'package:poc_frontend/pages/establishment_profile_page.dart';
 import 'package:poc_frontend/pages/featured_detail_page.dart';
 import 'package:poc_frontend/pages/featured_offer_detail_page.dart';
@@ -152,6 +153,7 @@ class MyAppState extends State<MyApp> {
           secondary: secondaryColor,
           surface: tertiaryColor,
         ),
+        primaryColorLight: secondaryColor,
         textTheme: Theme.of(context).textTheme.apply(
               bodyColor: Colors.white,
               displayColor: Colors.white,
@@ -242,6 +244,8 @@ class MainState extends State<Main> {
         key: navigatorKey,
         onGenerateRoute: (settings) {
           switch (settings.name) {
+            case ChatPage.routeName:
+              return MaterialPageRoute(builder: (_) => ChatPage(toUser: settings.arguments as api.User));
             case UserSearchPage.routeName:
               return MaterialPageRoute(builder: (_) => UserSearchPage());
             case StoredLiqueurTransferPage.routeName:

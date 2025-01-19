@@ -7,6 +7,7 @@ import 'package:poc_frontend/api/lib/api.dart' as api;
 import 'package:poc_frontend/components/app_bar.dart';
 import 'package:poc_frontend/consts.dart';
 import 'package:poc_frontend/main.dart';
+import 'package:poc_frontend/pages/chat_page.dart';
 import 'package:poc_frontend/pages/main/profile_page.dart';
 import 'package:poc_frontend/pages/user_search_page.dart';
 
@@ -111,8 +112,8 @@ class _MessagePageState extends State<MessagePage> {
                     ),
                   ),
                   title: Text(friends?[index].name ?? ''),
-                  subtitle: Text('Hello'),
-                  onTap: () => {},
+                  subtitle: Text(friends?[index].uuid ?? ''),
+                  onTap: () => Navigator.pushNamed(context, ChatPage.routeName, arguments: friends?[index]),
                 ),
                 separatorBuilder: (context, index) {
                   return SizedBox(width: 10);
