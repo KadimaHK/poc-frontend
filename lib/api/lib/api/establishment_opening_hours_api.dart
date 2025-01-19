@@ -31,7 +31,7 @@ class EstablishmentOpeningHoursApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> establishmentOpeningHoursDeleteWithHttpInfo({ String? establishmentId, String? day, String? openTime, String? closeTime, String? isOvernight, String? prefer, }) async {
+  Future<Response> establishmentOpeningHoursDeleteWithHttpInfo({ String? establishmentId, String? day, String? openTime, String? closeTime, String? isOvernight, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment_opening_hours';
 
@@ -58,11 +58,16 @@ class EstablishmentOpeningHoursApi {
       queryParams.addAll(_queryParams('', 'is_overnight', isOvernight));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -71,8 +76,7 @@ class EstablishmentOpeningHoursApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -90,8 +94,8 @@ class EstablishmentOpeningHoursApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> establishmentOpeningHoursDelete({ String? establishmentId, String? day, String? openTime, String? closeTime, String? isOvernight, String? prefer, }) async {
-    final response = await establishmentOpeningHoursDeleteWithHttpInfo( establishmentId: establishmentId, day: day, openTime: openTime, closeTime: closeTime, isOvernight: isOvernight, prefer: prefer, );
+  Future<void> establishmentOpeningHoursDelete({ String? establishmentId, String? day, String? openTime, String? closeTime, String? isOvernight, String? prefer, Map<String, String>? other}) async {
+    final response = await establishmentOpeningHoursDeleteWithHttpInfo( establishmentId: establishmentId, day: day, openTime: openTime, closeTime: closeTime, isOvernight: isOvernight, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -130,7 +134,7 @@ class EstablishmentOpeningHoursApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> establishmentOpeningHoursGetWithHttpInfo({ String? establishmentId, String? day, String? openTime, String? closeTime, String? isOvernight, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> establishmentOpeningHoursGetWithHttpInfo({ String? establishmentId, String? day, String? openTime, String? closeTime, String? isOvernight, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment_opening_hours';
 
@@ -169,6 +173,12 @@ class EstablishmentOpeningHoursApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -179,7 +189,6 @@ class EstablishmentOpeningHoursApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -188,8 +197,7 @@ class EstablishmentOpeningHoursApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -225,8 +233,8 @@ class EstablishmentOpeningHoursApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<EstablishmentOpeningHours>?> establishmentOpeningHoursGet({ String? establishmentId, String? day, String? openTime, String? closeTime, String? isOvernight, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await establishmentOpeningHoursGetWithHttpInfo( establishmentId: establishmentId, day: day, openTime: openTime, closeTime: closeTime, isOvernight: isOvernight, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<EstablishmentOpeningHours>?> establishmentOpeningHoursGet({ String? establishmentId, String? day, String? openTime, String? closeTime, String? isOvernight, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await establishmentOpeningHoursGetWithHttpInfo( establishmentId: establishmentId, day: day, openTime: openTime, closeTime: closeTime, isOvernight: isOvernight, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -261,7 +269,7 @@ class EstablishmentOpeningHoursApi {
   ///
   /// * [EstablishmentOpeningHours] establishmentOpeningHours:
   ///   establishment_opening_hours
-  Future<Response> establishmentOpeningHoursPatchWithHttpInfo({ String? establishmentId, String? day, String? openTime, String? closeTime, String? isOvernight, String? prefer, EstablishmentOpeningHours? establishmentOpeningHours, }) async {
+  Future<Response> establishmentOpeningHoursPatchWithHttpInfo({ String? establishmentId, String? day, String? openTime, String? closeTime, String? isOvernight, String? prefer, EstablishmentOpeningHours? establishmentOpeningHours, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment_opening_hours';
 
@@ -288,11 +296,16 @@ class EstablishmentOpeningHoursApi {
       queryParams.addAll(_queryParams('', 'is_overnight', isOvernight));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -301,8 +314,7 @@ class EstablishmentOpeningHoursApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -323,8 +335,8 @@ class EstablishmentOpeningHoursApi {
   ///
   /// * [EstablishmentOpeningHours] establishmentOpeningHours:
   ///   establishment_opening_hours
-  Future<void> establishmentOpeningHoursPatch({ String? establishmentId, String? day, String? openTime, String? closeTime, String? isOvernight, String? prefer, EstablishmentOpeningHours? establishmentOpeningHours, }) async {
-    final response = await establishmentOpeningHoursPatchWithHttpInfo( establishmentId: establishmentId, day: day, openTime: openTime, closeTime: closeTime, isOvernight: isOvernight, prefer: prefer, establishmentOpeningHours: establishmentOpeningHours, );
+  Future<void> establishmentOpeningHoursPatch({ String? establishmentId, String? day, String? openTime, String? closeTime, String? isOvernight, String? prefer, EstablishmentOpeningHours? establishmentOpeningHours, Map<String, String>? other}) async {
+    final response = await establishmentOpeningHoursPatchWithHttpInfo( establishmentId: establishmentId, day: day, openTime: openTime, closeTime: closeTime, isOvernight: isOvernight, prefer: prefer, establishmentOpeningHours: establishmentOpeningHours, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -341,7 +353,7 @@ class EstablishmentOpeningHoursApi {
   ///
   /// * [EstablishmentOpeningHours] establishmentOpeningHours:
   ///   establishment_opening_hours
-  Future<Response> establishmentOpeningHoursPostWithHttpInfo({ String? select, String? prefer, EstablishmentOpeningHours? establishmentOpeningHours, }) async {
+  Future<Response> establishmentOpeningHoursPostWithHttpInfo({ String? select, String? prefer, EstablishmentOpeningHours? establishmentOpeningHours, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment_opening_hours';
 
@@ -356,11 +368,16 @@ class EstablishmentOpeningHoursApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -369,8 +386,7 @@ class EstablishmentOpeningHoursApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -384,8 +400,8 @@ class EstablishmentOpeningHoursApi {
   ///
   /// * [EstablishmentOpeningHours] establishmentOpeningHours:
   ///   establishment_opening_hours
-  Future<void> establishmentOpeningHoursPost({ String? select, String? prefer, EstablishmentOpeningHours? establishmentOpeningHours, }) async {
-    final response = await establishmentOpeningHoursPostWithHttpInfo( select: select, prefer: prefer, establishmentOpeningHours: establishmentOpeningHours, );
+  Future<void> establishmentOpeningHoursPost({ String? select, String? prefer, EstablishmentOpeningHours? establishmentOpeningHours, Map<String, String>? other}) async {
+    final response = await establishmentOpeningHoursPostWithHttpInfo( select: select, prefer: prefer, establishmentOpeningHours: establishmentOpeningHours, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

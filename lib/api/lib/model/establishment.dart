@@ -28,8 +28,8 @@ class Establishment {
     this.rank,
     this.bookingPoints,
     this.bookmarkCount,
-    this.createdAt = 'now()',
-    this.updatedAt = 'now()',
+    this.createdAt,
+    this.updatedAt,
   });
 
   /// Note: This is a Primary Key.<pk/>
@@ -201,78 +201,39 @@ class Establishment {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.id != null)
       json[r'id'] = this.id;
-    if (this.name != null) {
+    if (this.name != null)
       json[r'name'] = this.name;
-    } else {
-      json[r'name'] = null;
-    }
-    if (this.description != null) {
+    if (this.description != null)
       json[r'description'] = this.description;
-    } else {
-      json[r'description'] = null;
-    }
-    if (this.notice != null) {
+    if (this.notice != null)
       json[r'notice'] = this.notice;
-    } else {
-      json[r'notice'] = null;
-    }
-    if (this.address != null) {
+    if (this.address != null)
       json[r'address'] = this.address;
-    } else {
-      json[r'address'] = null;
-    }
-    if (this.cordX != null) {
+    if (this.cordX != null)
       json[r'cord_x'] = this.cordX;
-    } else {
-      json[r'cord_x'] = null;
-    }
-    if (this.cordY != null) {
+    if (this.cordY != null)
       json[r'cord_y'] = this.cordY;
-    } else {
-      json[r'cord_y'] = null;
-    }
-    if (this.phone != null) {
+    if (this.phone != null)
       json[r'phone'] = this.phone;
-    } else {
-      json[r'phone'] = null;
-    }
-    if (this.email != null) {
+    if (this.email != null)
       json[r'email'] = this.email;
-    } else {
-      json[r'email'] = null;
-    }
-    if (this.website != null) {
+    if (this.website != null)
       json[r'website'] = this.website;
-    } else {
-      json[r'website'] = null;
-    }
-    if (this.category != null) {
+    if (this.category != null)
       json[r'category'] = this.category;
-    } else {
-      json[r'category'] = null;
-    }
-    if (this.thumbnailUrl != null) {
+    if (this.thumbnailUrl != null)
       json[r'thumbnail_url'] = this.thumbnailUrl;
-    } else {
-      json[r'thumbnail_url'] = null;
-    }
-    if (this.rank != null) {
+    if (this.rank != null)
       json[r'rank'] = this.rank;
-    } else {
-      json[r'rank'] = null;
-    }
-    if (this.bookingPoints != null) {
+    if (this.bookingPoints != null)
       json[r'booking_points'] = this.bookingPoints;
-    } else {
-      json[r'booking_points'] = null;
-    }
-    if (this.bookmarkCount != null) {
+    if (this.bookmarkCount != null)
       json[r'bookmark_count'] = this.bookmarkCount;
-    } else {
-      json[r'bookmark_count'] = null;
-    }
+    if (this.createdAt != null)
       json[r'created_at'] = this.createdAt;
+    if (this.updatedAt != null)
       json[r'updated_at'] = this.updatedAt;
     return json;
   }
@@ -284,19 +245,8 @@ class Establishment {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
-      // Ensure that the map contains the required keys.
-      // Note 1: the values aren't checked for validity beyond being non-null.
-      // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Establishment[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Establishment[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
-
       return Establishment(
-        id: mapValueOfType<int>(json, r'id')!,
+        id: mapValueOfType<int>(json, r'id'),
         name: mapValueOfType<String>(json, r'name'),
         description: mapValueOfType<String>(json, r'description'),
         notice: mapValueOfType<String>(json, r'notice'),
@@ -358,9 +308,6 @@ class Establishment {
     return map;
   }
 
-  /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-    'id',
-  };
+
 }
 

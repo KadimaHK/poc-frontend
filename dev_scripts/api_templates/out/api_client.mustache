@@ -34,7 +34,7 @@ class ApiClient {
     Object? body,
     Map<String, String> headerParams,
     Map<String, String> formParams,
-    String? contentType,
+    {String? contentType = "application/json"}
   ) async {
     await authentication?.applyToParams(queryParams, headerParams);
 

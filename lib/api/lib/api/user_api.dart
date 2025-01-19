@@ -59,7 +59,7 @@ class UserApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> userDeleteWithHttpInfo({ String? id, String? uuid, String? email, String? name, String? password, String? iconUrl, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? bookmarkCount, String? reviewCount, String? photoCount, String? points, String? pointsExpiry, String? verified, String? createdAt, String? updatedAt, String? prefer, }) async {
+  Future<Response> userDeleteWithHttpInfo({ String? id, String? uuid, String? email, String? name, String? password, String? iconUrl, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? bookmarkCount, String? reviewCount, String? photoCount, String? points, String? pointsExpiry, String? verified, String? createdAt, String? updatedAt, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/user';
 
@@ -128,11 +128,16 @@ class UserApi {
       queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -141,8 +146,7 @@ class UserApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -188,8 +192,8 @@ class UserApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> userDelete({ String? id, String? uuid, String? email, String? name, String? password, String? iconUrl, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? bookmarkCount, String? reviewCount, String? photoCount, String? points, String? pointsExpiry, String? verified, String? createdAt, String? updatedAt, String? prefer, }) async {
-    final response = await userDeleteWithHttpInfo( id: id, uuid: uuid, email: email, name: name, password: password, iconUrl: iconUrl, age: age, gender: gender, description: description, followingCount: followingCount, followerCount: followerCount, bookmarkCount: bookmarkCount, reviewCount: reviewCount, photoCount: photoCount, points: points, pointsExpiry: pointsExpiry, verified: verified, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, );
+  Future<void> userDelete({ String? id, String? uuid, String? email, String? name, String? password, String? iconUrl, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? bookmarkCount, String? reviewCount, String? photoCount, String? points, String? pointsExpiry, String? verified, String? createdAt, String? updatedAt, String? prefer, Map<String, String>? other}) async {
+    final response = await userDeleteWithHttpInfo( id: id, uuid: uuid, email: email, name: name, password: password, iconUrl: iconUrl, age: age, gender: gender, description: description, followingCount: followingCount, followerCount: followerCount, bookmarkCount: bookmarkCount, reviewCount: reviewCount, photoCount: photoCount, points: points, pointsExpiry: pointsExpiry, verified: verified, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -256,7 +260,7 @@ class UserApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> userGetWithHttpInfo({ String? id, String? uuid, String? email, String? name, String? password, String? iconUrl, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? bookmarkCount, String? reviewCount, String? photoCount, String? points, String? pointsExpiry, String? verified, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> userGetWithHttpInfo({ String? id, String? uuid, String? email, String? name, String? password, String? iconUrl, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? bookmarkCount, String? reviewCount, String? photoCount, String? points, String? pointsExpiry, String? verified, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/user';
 
@@ -337,6 +341,12 @@ class UserApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -347,7 +357,6 @@ class UserApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -356,8 +365,7 @@ class UserApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -421,8 +429,8 @@ class UserApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<User>?> userGet({ String? id, String? uuid, String? email, String? name, String? password, String? iconUrl, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? bookmarkCount, String? reviewCount, String? photoCount, String? points, String? pointsExpiry, String? verified, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await userGetWithHttpInfo( id: id, uuid: uuid, email: email, name: name, password: password, iconUrl: iconUrl, age: age, gender: gender, description: description, followingCount: followingCount, followerCount: followerCount, bookmarkCount: bookmarkCount, reviewCount: reviewCount, photoCount: photoCount, points: points, pointsExpiry: pointsExpiry, verified: verified, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<User>?> userGet({ String? id, String? uuid, String? email, String? name, String? password, String? iconUrl, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? bookmarkCount, String? reviewCount, String? photoCount, String? points, String? pointsExpiry, String? verified, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await userGetWithHttpInfo( id: id, uuid: uuid, email: email, name: name, password: password, iconUrl: iconUrl, age: age, gender: gender, description: description, followingCount: followingCount, followerCount: followerCount, bookmarkCount: bookmarkCount, reviewCount: reviewCount, photoCount: photoCount, points: points, pointsExpiry: pointsExpiry, verified: verified, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -485,7 +493,7 @@ class UserApi {
   ///
   /// * [User] user:
   ///   user
-  Future<Response> userPatchWithHttpInfo({ String? id, String? uuid, String? email, String? name, String? password, String? iconUrl, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? bookmarkCount, String? reviewCount, String? photoCount, String? points, String? pointsExpiry, String? verified, String? createdAt, String? updatedAt, String? prefer, User? user, }) async {
+  Future<Response> userPatchWithHttpInfo({ String? id, String? uuid, String? email, String? name, String? password, String? iconUrl, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? bookmarkCount, String? reviewCount, String? photoCount, String? points, String? pointsExpiry, String? verified, String? createdAt, String? updatedAt, String? prefer, User? user, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/user';
 
@@ -554,11 +562,16 @@ class UserApi {
       queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -567,8 +580,7 @@ class UserApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -617,8 +629,8 @@ class UserApi {
   ///
   /// * [User] user:
   ///   user
-  Future<void> userPatch({ String? id, String? uuid, String? email, String? name, String? password, String? iconUrl, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? bookmarkCount, String? reviewCount, String? photoCount, String? points, String? pointsExpiry, String? verified, String? createdAt, String? updatedAt, String? prefer, User? user, }) async {
-    final response = await userPatchWithHttpInfo( id: id, uuid: uuid, email: email, name: name, password: password, iconUrl: iconUrl, age: age, gender: gender, description: description, followingCount: followingCount, followerCount: followerCount, bookmarkCount: bookmarkCount, reviewCount: reviewCount, photoCount: photoCount, points: points, pointsExpiry: pointsExpiry, verified: verified, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, user: user, );
+  Future<void> userPatch({ String? id, String? uuid, String? email, String? name, String? password, String? iconUrl, String? age, String? gender, String? description, String? followingCount, String? followerCount, String? bookmarkCount, String? reviewCount, String? photoCount, String? points, String? pointsExpiry, String? verified, String? createdAt, String? updatedAt, String? prefer, User? user, Map<String, String>? other}) async {
+    final response = await userPatchWithHttpInfo( id: id, uuid: uuid, email: email, name: name, password: password, iconUrl: iconUrl, age: age, gender: gender, description: description, followingCount: followingCount, followerCount: followerCount, bookmarkCount: bookmarkCount, reviewCount: reviewCount, photoCount: photoCount, points: points, pointsExpiry: pointsExpiry, verified: verified, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, user: user, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -635,7 +647,7 @@ class UserApi {
   ///
   /// * [User] user:
   ///   user
-  Future<Response> userPostWithHttpInfo({ String? select, String? prefer, User? user, }) async {
+  Future<Response> userPostWithHttpInfo({ String? select, String? prefer, User? user, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/user';
 
@@ -650,11 +662,16 @@ class UserApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -663,8 +680,7 @@ class UserApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -678,8 +694,8 @@ class UserApi {
   ///
   /// * [User] user:
   ///   user
-  Future<void> userPost({ String? select, String? prefer, User? user, }) async {
-    final response = await userPostWithHttpInfo( select: select, prefer: prefer, user: user, );
+  Future<void> userPost({ String? select, String? prefer, User? user, Map<String, String>? other}) async {
+    final response = await userPostWithHttpInfo( select: select, prefer: prefer, user: user, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

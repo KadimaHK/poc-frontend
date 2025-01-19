@@ -17,8 +17,8 @@ class Pick {
     this.message,
     this.expiry,
     this.imageUrl,
-    this.createdAt = 'now()',
-    this.updatedAt = 'now()',
+    this.createdAt,
+    this.updatedAt,
   });
 
   /// Note: This is a Primary Key.<pk/>
@@ -77,23 +77,17 @@ class Pick {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.id != null)
       json[r'id'] = this.id;
-    if (this.message != null) {
+    if (this.message != null)
       json[r'message'] = this.message;
-    } else {
-      json[r'message'] = null;
-    }
-    if (this.expiry != null) {
+    if (this.expiry != null)
       json[r'expiry'] = this.expiry;
-    } else {
-      json[r'expiry'] = null;
-    }
-    if (this.imageUrl != null) {
+    if (this.imageUrl != null)
       json[r'image_url'] = this.imageUrl;
-    } else {
-      json[r'image_url'] = null;
-    }
+    if (this.createdAt != null)
       json[r'created_at'] = this.createdAt;
+    if (this.updatedAt != null)
       json[r'updated_at'] = this.updatedAt;
     return json;
   }
@@ -105,19 +99,8 @@ class Pick {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
-      // Ensure that the map contains the required keys.
-      // Note 1: the values aren't checked for validity beyond being non-null.
-      // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Pick[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Pick[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
-
       return Pick(
-        id: mapValueOfType<int>(json, r'id')!,
+        id: mapValueOfType<int>(json, r'id'),
         message: mapValueOfType<String>(json, r'message'),
         expiry: mapValueOfType<String>(json, r'expiry'),
         imageUrl: mapValueOfType<String>(json, r'image_url'),
@@ -168,9 +151,6 @@ class Pick {
     return map;
   }
 
-  /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-    'id',
-  };
+
 }
 

@@ -14,7 +14,7 @@ class Message {
   /// Returns a new [Message] instance.
   Message({
     this.uuid,
-    this.time = 'now()',
+    this.time,
     this.fromUserId,
     this.toUserId,
     this.body,
@@ -61,15 +61,16 @@ class Message {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.uuid != null)
       json[r'uuid'] = this.uuid;
+    if (this.time != null)
       json[r'time'] = this.time;
+    if (this.fromUserId != null)
       json[r'from_user_id'] = this.fromUserId;
+    if (this.toUserId != null)
       json[r'to_user_id'] = this.toUserId;
-    if (this.body != null) {
+    if (this.body != null)
       json[r'body'] = this.body;
-    } else {
-      json[r'body'] = null;
-    }
     return json;
   }
 
@@ -80,22 +81,11 @@ class Message {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
-      // Ensure that the map contains the required keys.
-      // Note 1: the values aren't checked for validity beyond being non-null.
-      // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Message[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Message[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
-
       return Message(
-        uuid: mapValueOfType<String>(json, r'uuid')!,
-        time: mapValueOfType<String>(json, r'time')!,
-        fromUserId: mapValueOfType<int>(json, r'from_user_id')!,
-        toUserId: mapValueOfType<int>(json, r'to_user_id')!,
+        uuid: mapValueOfType<String>(json, r'uuid'),
+        time: mapValueOfType<String>(json, r'time'),
+        fromUserId: mapValueOfType<int>(json, r'from_user_id'),
+        toUserId: mapValueOfType<int>(json, r'to_user_id'),
         body: mapValueOfType<String>(json, r'body'),
       );
     }
@@ -142,12 +132,6 @@ class Message {
     return map;
   }
 
-  /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-    'uuid',
-    'time',
-    'from_user_id',
-    'to_user_id',
-  };
+
 }
 

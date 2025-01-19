@@ -23,7 +23,7 @@ class NotificationTypeApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> notificationTypeDeleteWithHttpInfo({ String? type, String? prefer, }) async {
+  Future<Response> notificationTypeDeleteWithHttpInfo({ String? type, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/notification_type';
 
@@ -38,11 +38,16 @@ class NotificationTypeApi {
       queryParams.addAll(_queryParams('', 'type', type));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -51,8 +56,7 @@ class NotificationTypeApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -62,8 +66,8 @@ class NotificationTypeApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> notificationTypeDelete({ String? type, String? prefer, }) async {
-    final response = await notificationTypeDeleteWithHttpInfo( type: type, prefer: prefer, );
+  Future<void> notificationTypeDelete({ String? type, String? prefer, Map<String, String>? other}) async {
+    final response = await notificationTypeDeleteWithHttpInfo( type: type, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -94,7 +98,7 @@ class NotificationTypeApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> notificationTypeGetWithHttpInfo({ String? type, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> notificationTypeGetWithHttpInfo({ String? type, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/notification_type';
 
@@ -121,6 +125,12 @@ class NotificationTypeApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -131,7 +141,6 @@ class NotificationTypeApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -140,8 +149,7 @@ class NotificationTypeApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -169,8 +177,8 @@ class NotificationTypeApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<NotificationType>?> notificationTypeGet({ String? type, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await notificationTypeGetWithHttpInfo( type: type, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<NotificationType>?> notificationTypeGet({ String? type, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await notificationTypeGetWithHttpInfo( type: type, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -197,7 +205,7 @@ class NotificationTypeApi {
   ///
   /// * [NotificationType] notificationType:
   ///   notification_type
-  Future<Response> notificationTypePatchWithHttpInfo({ String? type, String? prefer, NotificationType? notificationType, }) async {
+  Future<Response> notificationTypePatchWithHttpInfo({ String? type, String? prefer, NotificationType? notificationType, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/notification_type';
 
@@ -212,11 +220,16 @@ class NotificationTypeApi {
       queryParams.addAll(_queryParams('', 'type', type));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -225,8 +238,7 @@ class NotificationTypeApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -239,8 +251,8 @@ class NotificationTypeApi {
   ///
   /// * [NotificationType] notificationType:
   ///   notification_type
-  Future<void> notificationTypePatch({ String? type, String? prefer, NotificationType? notificationType, }) async {
-    final response = await notificationTypePatchWithHttpInfo( type: type, prefer: prefer, notificationType: notificationType, );
+  Future<void> notificationTypePatch({ String? type, String? prefer, NotificationType? notificationType, Map<String, String>? other}) async {
+    final response = await notificationTypePatchWithHttpInfo( type: type, prefer: prefer, notificationType: notificationType, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -257,7 +269,7 @@ class NotificationTypeApi {
   ///
   /// * [NotificationType] notificationType:
   ///   notification_type
-  Future<Response> notificationTypePostWithHttpInfo({ String? select, String? prefer, NotificationType? notificationType, }) async {
+  Future<Response> notificationTypePostWithHttpInfo({ String? select, String? prefer, NotificationType? notificationType, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/notification_type';
 
@@ -272,11 +284,16 @@ class NotificationTypeApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -285,8 +302,7 @@ class NotificationTypeApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -300,8 +316,8 @@ class NotificationTypeApi {
   ///
   /// * [NotificationType] notificationType:
   ///   notification_type
-  Future<void> notificationTypePost({ String? select, String? prefer, NotificationType? notificationType, }) async {
-    final response = await notificationTypePostWithHttpInfo( select: select, prefer: prefer, notificationType: notificationType, );
+  Future<void> notificationTypePost({ String? select, String? prefer, NotificationType? notificationType, Map<String, String>? other}) async {
+    final response = await notificationTypePostWithHttpInfo( select: select, prefer: prefer, notificationType: notificationType, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

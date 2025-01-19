@@ -101,37 +101,20 @@ class ReviewImage {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.id != null)
       json[r'id'] = this.id;
-    if (this.reviewId != null) {
+    if (this.reviewId != null)
       json[r'review_id'] = this.reviewId;
-    } else {
-      json[r'review_id'] = null;
-    }
-    if (this.imageUrl != null) {
+    if (this.imageUrl != null)
       json[r'image_url'] = this.imageUrl;
-    } else {
-      json[r'image_url'] = null;
-    }
-    if (this.description != null) {
+    if (this.description != null)
       json[r'description'] = this.description;
-    } else {
-      json[r'description'] = null;
-    }
-    if (this.itemName != null) {
+    if (this.itemName != null)
       json[r'item_name'] = this.itemName;
-    } else {
-      json[r'item_name'] = null;
-    }
-    if (this.price != null) {
+    if (this.price != null)
       json[r'price'] = this.price;
-    } else {
-      json[r'price'] = null;
-    }
-    if (this.type != null) {
+    if (this.type != null)
       json[r'type'] = this.type;
-    } else {
-      json[r'type'] = null;
-    }
     return json;
   }
 
@@ -142,19 +125,8 @@ class ReviewImage {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
-      // Ensure that the map contains the required keys.
-      // Note 1: the values aren't checked for validity beyond being non-null.
-      // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ReviewImage[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ReviewImage[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
-
       return ReviewImage(
-        id: mapValueOfType<int>(json, r'id')!,
+        id: mapValueOfType<int>(json, r'id'),
         reviewId: mapValueOfType<int>(json, r'review_id'),
         imageUrl: mapValueOfType<String>(json, r'image_url'),
         description: mapValueOfType<String>(json, r'description'),
@@ -206,9 +178,6 @@ class ReviewImage {
     return map;
   }
 
-  /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-    'id',
-  };
+
 }
 

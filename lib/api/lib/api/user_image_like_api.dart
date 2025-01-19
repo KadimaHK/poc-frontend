@@ -25,7 +25,7 @@ class UserImageLikeApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> userImageLikeDeleteWithHttpInfo({ String? userId, String? imageUrl, String? prefer, }) async {
+  Future<Response> userImageLikeDeleteWithHttpInfo({ String? userId, String? imageUrl, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/user_image_like';
 
@@ -43,11 +43,16 @@ class UserImageLikeApi {
       queryParams.addAll(_queryParams('', 'image_url', imageUrl));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -56,8 +61,7 @@ class UserImageLikeApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -69,8 +73,8 @@ class UserImageLikeApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> userImageLikeDelete({ String? userId, String? imageUrl, String? prefer, }) async {
-    final response = await userImageLikeDeleteWithHttpInfo( userId: userId, imageUrl: imageUrl, prefer: prefer, );
+  Future<void> userImageLikeDelete({ String? userId, String? imageUrl, String? prefer, Map<String, String>? other}) async {
+    final response = await userImageLikeDeleteWithHttpInfo( userId: userId, imageUrl: imageUrl, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -103,7 +107,7 @@ class UserImageLikeApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> userImageLikeGetWithHttpInfo({ String? userId, String? imageUrl, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> userImageLikeGetWithHttpInfo({ String? userId, String? imageUrl, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/user_image_like';
 
@@ -133,6 +137,12 @@ class UserImageLikeApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -143,7 +153,6 @@ class UserImageLikeApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -152,8 +161,7 @@ class UserImageLikeApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -183,8 +191,8 @@ class UserImageLikeApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<UserImageLike>?> userImageLikeGet({ String? userId, String? imageUrl, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await userImageLikeGetWithHttpInfo( userId: userId, imageUrl: imageUrl, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<UserImageLike>?> userImageLikeGet({ String? userId, String? imageUrl, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await userImageLikeGetWithHttpInfo( userId: userId, imageUrl: imageUrl, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -213,7 +221,7 @@ class UserImageLikeApi {
   ///
   /// * [UserImageLike] userImageLike:
   ///   user_image_like
-  Future<Response> userImageLikePatchWithHttpInfo({ String? userId, String? imageUrl, String? prefer, UserImageLike? userImageLike, }) async {
+  Future<Response> userImageLikePatchWithHttpInfo({ String? userId, String? imageUrl, String? prefer, UserImageLike? userImageLike, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/user_image_like';
 
@@ -231,11 +239,16 @@ class UserImageLikeApi {
       queryParams.addAll(_queryParams('', 'image_url', imageUrl));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -244,8 +257,7 @@ class UserImageLikeApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -260,8 +272,8 @@ class UserImageLikeApi {
   ///
   /// * [UserImageLike] userImageLike:
   ///   user_image_like
-  Future<void> userImageLikePatch({ String? userId, String? imageUrl, String? prefer, UserImageLike? userImageLike, }) async {
-    final response = await userImageLikePatchWithHttpInfo( userId: userId, imageUrl: imageUrl, prefer: prefer, userImageLike: userImageLike, );
+  Future<void> userImageLikePatch({ String? userId, String? imageUrl, String? prefer, UserImageLike? userImageLike, Map<String, String>? other}) async {
+    final response = await userImageLikePatchWithHttpInfo( userId: userId, imageUrl: imageUrl, prefer: prefer, userImageLike: userImageLike, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -278,7 +290,7 @@ class UserImageLikeApi {
   ///
   /// * [UserImageLike] userImageLike:
   ///   user_image_like
-  Future<Response> userImageLikePostWithHttpInfo({ String? select, String? prefer, UserImageLike? userImageLike, }) async {
+  Future<Response> userImageLikePostWithHttpInfo({ String? select, String? prefer, UserImageLike? userImageLike, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/user_image_like';
 
@@ -293,11 +305,16 @@ class UserImageLikeApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -306,8 +323,7 @@ class UserImageLikeApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -321,8 +337,8 @@ class UserImageLikeApi {
   ///
   /// * [UserImageLike] userImageLike:
   ///   user_image_like
-  Future<void> userImageLikePost({ String? select, String? prefer, UserImageLike? userImageLike, }) async {
-    final response = await userImageLikePostWithHttpInfo( select: select, prefer: prefer, userImageLike: userImageLike, );
+  Future<void> userImageLikePost({ String? select, String? prefer, UserImageLike? userImageLike, Map<String, String>? other}) async {
+    final response = await userImageLikePostWithHttpInfo( select: select, prefer: prefer, userImageLike: userImageLike, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -19,8 +19,8 @@ class Featured {
     this.imageUrl,
     this.content,
     this.establishmentId,
-    this.createdAt = 'now()',
-    this.updatedAt = 'now()',
+    this.createdAt,
+    this.updatedAt,
   });
 
   /// Note: This is a Primary Key.<pk/>
@@ -100,33 +100,21 @@ class Featured {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.id != null)
       json[r'id'] = this.id;
-    if (this.title != null) {
+    if (this.title != null)
       json[r'title'] = this.title;
-    } else {
-      json[r'title'] = null;
-    }
-    if (this.description != null) {
+    if (this.description != null)
       json[r'description'] = this.description;
-    } else {
-      json[r'description'] = null;
-    }
-    if (this.imageUrl != null) {
+    if (this.imageUrl != null)
       json[r'image_url'] = this.imageUrl;
-    } else {
-      json[r'image_url'] = null;
-    }
-    if (this.content != null) {
+    if (this.content != null)
       json[r'content'] = this.content;
-    } else {
-      json[r'content'] = null;
-    }
-    if (this.establishmentId != null) {
+    if (this.establishmentId != null)
       json[r'establishment_id'] = this.establishmentId;
-    } else {
-      json[r'establishment_id'] = null;
-    }
+    if (this.createdAt != null)
       json[r'created_at'] = this.createdAt;
+    if (this.updatedAt != null)
       json[r'updated_at'] = this.updatedAt;
     return json;
   }
@@ -138,19 +126,8 @@ class Featured {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
-      // Ensure that the map contains the required keys.
-      // Note 1: the values aren't checked for validity beyond being non-null.
-      // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Featured[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Featured[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
-
       return Featured(
-        id: mapValueOfType<int>(json, r'id')!,
+        id: mapValueOfType<int>(json, r'id'),
         title: mapValueOfType<String>(json, r'title'),
         description: mapValueOfType<String>(json, r'description'),
         imageUrl: mapValueOfType<String>(json, r'image_url'),
@@ -203,9 +180,6 @@ class Featured {
     return map;
   }
 
-  /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-    'id',
-  };
+
 }
 

@@ -25,7 +25,7 @@ class UserReviewLikeApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> userReviewLikeDeleteWithHttpInfo({ String? userId, String? reviewId, String? prefer, }) async {
+  Future<Response> userReviewLikeDeleteWithHttpInfo({ String? userId, String? reviewId, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/user_review_like';
 
@@ -43,11 +43,16 @@ class UserReviewLikeApi {
       queryParams.addAll(_queryParams('', 'review_id', reviewId));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -56,8 +61,7 @@ class UserReviewLikeApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -69,8 +73,8 @@ class UserReviewLikeApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> userReviewLikeDelete({ String? userId, String? reviewId, String? prefer, }) async {
-    final response = await userReviewLikeDeleteWithHttpInfo( userId: userId, reviewId: reviewId, prefer: prefer, );
+  Future<void> userReviewLikeDelete({ String? userId, String? reviewId, String? prefer, Map<String, String>? other}) async {
+    final response = await userReviewLikeDeleteWithHttpInfo( userId: userId, reviewId: reviewId, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -103,7 +107,7 @@ class UserReviewLikeApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> userReviewLikeGetWithHttpInfo({ String? userId, String? reviewId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> userReviewLikeGetWithHttpInfo({ String? userId, String? reviewId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/user_review_like';
 
@@ -133,6 +137,12 @@ class UserReviewLikeApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -143,7 +153,6 @@ class UserReviewLikeApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -152,8 +161,7 @@ class UserReviewLikeApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -183,8 +191,8 @@ class UserReviewLikeApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<UserReviewLike>?> userReviewLikeGet({ String? userId, String? reviewId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await userReviewLikeGetWithHttpInfo( userId: userId, reviewId: reviewId, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<UserReviewLike>?> userReviewLikeGet({ String? userId, String? reviewId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await userReviewLikeGetWithHttpInfo( userId: userId, reviewId: reviewId, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -213,7 +221,7 @@ class UserReviewLikeApi {
   ///
   /// * [UserReviewLike] userReviewLike:
   ///   user_review_like
-  Future<Response> userReviewLikePatchWithHttpInfo({ String? userId, String? reviewId, String? prefer, UserReviewLike? userReviewLike, }) async {
+  Future<Response> userReviewLikePatchWithHttpInfo({ String? userId, String? reviewId, String? prefer, UserReviewLike? userReviewLike, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/user_review_like';
 
@@ -231,11 +239,16 @@ class UserReviewLikeApi {
       queryParams.addAll(_queryParams('', 'review_id', reviewId));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -244,8 +257,7 @@ class UserReviewLikeApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -260,8 +272,8 @@ class UserReviewLikeApi {
   ///
   /// * [UserReviewLike] userReviewLike:
   ///   user_review_like
-  Future<void> userReviewLikePatch({ String? userId, String? reviewId, String? prefer, UserReviewLike? userReviewLike, }) async {
-    final response = await userReviewLikePatchWithHttpInfo( userId: userId, reviewId: reviewId, prefer: prefer, userReviewLike: userReviewLike, );
+  Future<void> userReviewLikePatch({ String? userId, String? reviewId, String? prefer, UserReviewLike? userReviewLike, Map<String, String>? other}) async {
+    final response = await userReviewLikePatchWithHttpInfo( userId: userId, reviewId: reviewId, prefer: prefer, userReviewLike: userReviewLike, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -278,7 +290,7 @@ class UserReviewLikeApi {
   ///
   /// * [UserReviewLike] userReviewLike:
   ///   user_review_like
-  Future<Response> userReviewLikePostWithHttpInfo({ String? select, String? prefer, UserReviewLike? userReviewLike, }) async {
+  Future<Response> userReviewLikePostWithHttpInfo({ String? select, String? prefer, UserReviewLike? userReviewLike, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/user_review_like';
 
@@ -293,11 +305,16 @@ class UserReviewLikeApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -306,8 +323,7 @@ class UserReviewLikeApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -321,8 +337,8 @@ class UserReviewLikeApi {
   ///
   /// * [UserReviewLike] userReviewLike:
   ///   user_review_like
-  Future<void> userReviewLikePost({ String? select, String? prefer, UserReviewLike? userReviewLike, }) async {
-    final response = await userReviewLikePostWithHttpInfo( select: select, prefer: prefer, userReviewLike: userReviewLike, );
+  Future<void> userReviewLikePost({ String? select, String? prefer, UserReviewLike? userReviewLike, Map<String, String>? other}) async {
+    final response = await userReviewLikePostWithHttpInfo( select: select, prefer: prefer, userReviewLike: userReviewLike, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

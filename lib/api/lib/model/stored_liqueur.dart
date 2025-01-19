@@ -21,10 +21,10 @@ class StoredLiqueur {
     this.description,
     this.storedDate,
     this.expiryDate,
-    this.isRedeemed = false,
+    this.isRedeemed,
     this.redeemCode,
-    this.createdAt = 'now()',
-    this.updatedAt = 'now()',
+    this.createdAt,
+    this.updatedAt,
   });
 
   /// Note: This is a Primary Key.<pk/>
@@ -139,49 +139,29 @@ class StoredLiqueur {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.id != null)
       json[r'id'] = this.id;
-    if (this.userId != null) {
+    if (this.userId != null)
       json[r'user_id'] = this.userId;
-    } else {
-      json[r'user_id'] = null;
-    }
-    if (this.establishmentId != null) {
+    if (this.establishmentId != null)
       json[r'establishment_id'] = this.establishmentId;
-    } else {
-      json[r'establishment_id'] = null;
-    }
-    if (this.imageUrl != null) {
+    if (this.imageUrl != null)
       json[r'image_url'] = this.imageUrl;
-    } else {
-      json[r'image_url'] = null;
-    }
-    if (this.name != null) {
+    if (this.name != null)
       json[r'name'] = this.name;
-    } else {
-      json[r'name'] = null;
-    }
-    if (this.description != null) {
+    if (this.description != null)
       json[r'description'] = this.description;
-    } else {
-      json[r'description'] = null;
-    }
-    if (this.storedDate != null) {
+    if (this.storedDate != null)
       json[r'stored_date'] = this.storedDate;
-    } else {
-      json[r'stored_date'] = null;
-    }
-    if (this.expiryDate != null) {
+    if (this.expiryDate != null)
       json[r'expiry_date'] = this.expiryDate;
-    } else {
-      json[r'expiry_date'] = null;
-    }
+    if (this.isRedeemed != null)
       json[r'is_redeemed'] = this.isRedeemed;
-    if (this.redeemCode != null) {
+    if (this.redeemCode != null)
       json[r'redeem_code'] = this.redeemCode;
-    } else {
-      json[r'redeem_code'] = null;
-    }
+    if (this.createdAt != null)
       json[r'created_at'] = this.createdAt;
+    if (this.updatedAt != null)
       json[r'updated_at'] = this.updatedAt;
     return json;
   }
@@ -193,19 +173,8 @@ class StoredLiqueur {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
-      // Ensure that the map contains the required keys.
-      // Note 1: the values aren't checked for validity beyond being non-null.
-      // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "StoredLiqueur[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "StoredLiqueur[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
-
       return StoredLiqueur(
-        id: mapValueOfType<int>(json, r'id')!,
+        id: mapValueOfType<int>(json, r'id'),
         userId: mapValueOfType<int>(json, r'user_id'),
         establishmentId: mapValueOfType<int>(json, r'establishment_id'),
         imageUrl: mapValueOfType<String>(json, r'image_url'),
@@ -262,9 +231,6 @@ class StoredLiqueur {
     return map;
   }
 
-  /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-    'id',
-  };
+
 }
 

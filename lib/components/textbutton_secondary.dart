@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 class TextButtonSecondary extends StatelessWidget {
   const TextButtonSecondary({
     super.key,
-    required this.text,
+    this.text,
     required this.onPressed,
+    this.child,
   });
 
-  final String text;
+  final String? text;
   final void Function() onPressed;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
@@ -17,13 +19,14 @@ class TextButtonSecondary extends StatelessWidget {
         backgroundColor: WidgetStateProperty.all(Theme.of(context).colorScheme.secondary),
       ),
       onPressed: onPressed,
-      child: Text(
-        text,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 16,
-        ),
-      ),
+      child: child ??
+          Text(
+            text ?? '',
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+            ),
+          ),
     );
   }
 }

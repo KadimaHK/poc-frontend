@@ -36,7 +36,7 @@ class ImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> imageDeleteWithHttpInfo({ String? fileName, String? baseUrl, String? imageUrl, String? likes, String? createdAt, String? updatedAt, String? prefer, }) async {
+  Future<Response> imageDeleteWithHttpInfo({ String? fileName, String? baseUrl, String? imageUrl, String? likes, String? createdAt, String? updatedAt, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/image';
 
@@ -66,11 +66,16 @@ class ImageApi {
       queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -79,8 +84,7 @@ class ImageApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -102,8 +106,8 @@ class ImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> imageDelete({ String? fileName, String? baseUrl, String? imageUrl, String? likes, String? createdAt, String? updatedAt, String? prefer, }) async {
-    final response = await imageDeleteWithHttpInfo( fileName: fileName, baseUrl: baseUrl, imageUrl: imageUrl, likes: likes, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, );
+  Future<void> imageDelete({ String? fileName, String? baseUrl, String? imageUrl, String? likes, String? createdAt, String? updatedAt, String? prefer, Map<String, String>? other}) async {
+    final response = await imageDeleteWithHttpInfo( fileName: fileName, baseUrl: baseUrl, imageUrl: imageUrl, likes: likes, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -147,7 +151,7 @@ class ImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> imageGetWithHttpInfo({ String? fileName, String? baseUrl, String? imageUrl, String? likes, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> imageGetWithHttpInfo({ String? fileName, String? baseUrl, String? imageUrl, String? likes, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/image';
 
@@ -189,6 +193,12 @@ class ImageApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -199,7 +209,6 @@ class ImageApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -208,8 +217,7 @@ class ImageApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -249,8 +257,8 @@ class ImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<Image>?> imageGet({ String? fileName, String? baseUrl, String? imageUrl, String? likes, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await imageGetWithHttpInfo( fileName: fileName, baseUrl: baseUrl, imageUrl: imageUrl, likes: likes, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<Image>?> imageGet({ String? fileName, String? baseUrl, String? imageUrl, String? likes, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await imageGetWithHttpInfo( fileName: fileName, baseUrl: baseUrl, imageUrl: imageUrl, likes: likes, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -290,7 +298,7 @@ class ImageApi {
   ///
   /// * [Image] image:
   ///   image
-  Future<Response> imagePatchWithHttpInfo({ String? fileName, String? baseUrl, String? imageUrl, String? likes, String? createdAt, String? updatedAt, String? prefer, Image? image, }) async {
+  Future<Response> imagePatchWithHttpInfo({ String? fileName, String? baseUrl, String? imageUrl, String? likes, String? createdAt, String? updatedAt, String? prefer, Image? image, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/image';
 
@@ -320,11 +328,16 @@ class ImageApi {
       queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -333,8 +346,7 @@ class ImageApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -359,8 +371,8 @@ class ImageApi {
   ///
   /// * [Image] image:
   ///   image
-  Future<void> imagePatch({ String? fileName, String? baseUrl, String? imageUrl, String? likes, String? createdAt, String? updatedAt, String? prefer, Image? image, }) async {
-    final response = await imagePatchWithHttpInfo( fileName: fileName, baseUrl: baseUrl, imageUrl: imageUrl, likes: likes, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, image: image, );
+  Future<void> imagePatch({ String? fileName, String? baseUrl, String? imageUrl, String? likes, String? createdAt, String? updatedAt, String? prefer, Image? image, Map<String, String>? other}) async {
+    final response = await imagePatchWithHttpInfo( fileName: fileName, baseUrl: baseUrl, imageUrl: imageUrl, likes: likes, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, image: image, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -380,7 +392,7 @@ class ImageApi {
   ///
   /// * [Image] image:
   ///   image
-  Future<Response> imagePostWithHttpInfo({ String? select, String? prefer, Image? image, }) async {
+  Future<Response> imagePostWithHttpInfo({ String? select, String? prefer, Image? image, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/image';
 
@@ -395,11 +407,16 @@ class ImageApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -408,8 +425,7 @@ class ImageApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -425,8 +441,8 @@ class ImageApi {
   ///
   /// * [Image] image:
   ///   image
-  Future<void> imagePost({ String? select, String? prefer, Image? image, }) async {
-    final response = await imagePostWithHttpInfo( select: select, prefer: prefer, image: image, );
+  Future<void> imagePost({ String? select, String? prefer, Image? image, Map<String, String>? other}) async {
+    final response = await imagePostWithHttpInfo( select: select, prefer: prefer, image: image, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

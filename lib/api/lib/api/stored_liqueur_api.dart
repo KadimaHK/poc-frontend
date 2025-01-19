@@ -45,7 +45,7 @@ class StoredLiqueurApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> storedLiqueurDeleteWithHttpInfo({ String? id, String? userId, String? establishmentId, String? imageUrl, String? name, String? description, String? storedDate, String? expiryDate, String? isRedeemed, String? redeemCode, String? createdAt, String? updatedAt, String? prefer, }) async {
+  Future<Response> storedLiqueurDeleteWithHttpInfo({ String? id, String? userId, String? establishmentId, String? imageUrl, String? name, String? description, String? storedDate, String? expiryDate, String? isRedeemed, String? redeemCode, String? createdAt, String? updatedAt, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/stored_liqueur';
 
@@ -93,11 +93,16 @@ class StoredLiqueurApi {
       queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -106,8 +111,7 @@ class StoredLiqueurApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -139,8 +143,8 @@ class StoredLiqueurApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> storedLiqueurDelete({ String? id, String? userId, String? establishmentId, String? imageUrl, String? name, String? description, String? storedDate, String? expiryDate, String? isRedeemed, String? redeemCode, String? createdAt, String? updatedAt, String? prefer, }) async {
-    final response = await storedLiqueurDeleteWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, imageUrl: imageUrl, name: name, description: description, storedDate: storedDate, expiryDate: expiryDate, isRedeemed: isRedeemed, redeemCode: redeemCode, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, );
+  Future<void> storedLiqueurDelete({ String? id, String? userId, String? establishmentId, String? imageUrl, String? name, String? description, String? storedDate, String? expiryDate, String? isRedeemed, String? redeemCode, String? createdAt, String? updatedAt, String? prefer, Map<String, String>? other}) async {
+    final response = await storedLiqueurDeleteWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, imageUrl: imageUrl, name: name, description: description, storedDate: storedDate, expiryDate: expiryDate, isRedeemed: isRedeemed, redeemCode: redeemCode, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -193,7 +197,7 @@ class StoredLiqueurApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> storedLiqueurGetWithHttpInfo({ String? id, String? userId, String? establishmentId, String? imageUrl, String? name, String? description, String? storedDate, String? expiryDate, String? isRedeemed, String? redeemCode, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> storedLiqueurGetWithHttpInfo({ String? id, String? userId, String? establishmentId, String? imageUrl, String? name, String? description, String? storedDate, String? expiryDate, String? isRedeemed, String? redeemCode, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/stored_liqueur';
 
@@ -253,6 +257,12 @@ class StoredLiqueurApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -263,7 +273,6 @@ class StoredLiqueurApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -272,8 +281,7 @@ class StoredLiqueurApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -323,8 +331,8 @@ class StoredLiqueurApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<StoredLiqueur>?> storedLiqueurGet({ String? id, String? userId, String? establishmentId, String? imageUrl, String? name, String? description, String? storedDate, String? expiryDate, String? isRedeemed, String? redeemCode, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await storedLiqueurGetWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, imageUrl: imageUrl, name: name, description: description, storedDate: storedDate, expiryDate: expiryDate, isRedeemed: isRedeemed, redeemCode: redeemCode, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<StoredLiqueur>?> storedLiqueurGet({ String? id, String? userId, String? establishmentId, String? imageUrl, String? name, String? description, String? storedDate, String? expiryDate, String? isRedeemed, String? redeemCode, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await storedLiqueurGetWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, imageUrl: imageUrl, name: name, description: description, storedDate: storedDate, expiryDate: expiryDate, isRedeemed: isRedeemed, redeemCode: redeemCode, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -373,7 +381,7 @@ class StoredLiqueurApi {
   ///
   /// * [StoredLiqueur] storedLiqueur:
   ///   stored_liqueur
-  Future<Response> storedLiqueurPatchWithHttpInfo({ String? id, String? userId, String? establishmentId, String? imageUrl, String? name, String? description, String? storedDate, String? expiryDate, String? isRedeemed, String? redeemCode, String? createdAt, String? updatedAt, String? prefer, StoredLiqueur? storedLiqueur, }) async {
+  Future<Response> storedLiqueurPatchWithHttpInfo({ String? id, String? userId, String? establishmentId, String? imageUrl, String? name, String? description, String? storedDate, String? expiryDate, String? isRedeemed, String? redeemCode, String? createdAt, String? updatedAt, String? prefer, StoredLiqueur? storedLiqueur, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/stored_liqueur';
 
@@ -421,11 +429,16 @@ class StoredLiqueurApi {
       queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -434,8 +447,7 @@ class StoredLiqueurApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -470,8 +482,8 @@ class StoredLiqueurApi {
   ///
   /// * [StoredLiqueur] storedLiqueur:
   ///   stored_liqueur
-  Future<void> storedLiqueurPatch({ String? id, String? userId, String? establishmentId, String? imageUrl, String? name, String? description, String? storedDate, String? expiryDate, String? isRedeemed, String? redeemCode, String? createdAt, String? updatedAt, String? prefer, StoredLiqueur? storedLiqueur, }) async {
-    final response = await storedLiqueurPatchWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, imageUrl: imageUrl, name: name, description: description, storedDate: storedDate, expiryDate: expiryDate, isRedeemed: isRedeemed, redeemCode: redeemCode, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, storedLiqueur: storedLiqueur, );
+  Future<void> storedLiqueurPatch({ String? id, String? userId, String? establishmentId, String? imageUrl, String? name, String? description, String? storedDate, String? expiryDate, String? isRedeemed, String? redeemCode, String? createdAt, String? updatedAt, String? prefer, StoredLiqueur? storedLiqueur, Map<String, String>? other}) async {
+    final response = await storedLiqueurPatchWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, imageUrl: imageUrl, name: name, description: description, storedDate: storedDate, expiryDate: expiryDate, isRedeemed: isRedeemed, redeemCode: redeemCode, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, storedLiqueur: storedLiqueur, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -488,7 +500,7 @@ class StoredLiqueurApi {
   ///
   /// * [StoredLiqueur] storedLiqueur:
   ///   stored_liqueur
-  Future<Response> storedLiqueurPostWithHttpInfo({ String? select, String? prefer, StoredLiqueur? storedLiqueur, }) async {
+  Future<Response> storedLiqueurPostWithHttpInfo({ String? select, String? prefer, StoredLiqueur? storedLiqueur, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/stored_liqueur';
 
@@ -503,11 +515,16 @@ class StoredLiqueurApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -516,8 +533,7 @@ class StoredLiqueurApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -531,8 +547,8 @@ class StoredLiqueurApi {
   ///
   /// * [StoredLiqueur] storedLiqueur:
   ///   stored_liqueur
-  Future<void> storedLiqueurPost({ String? select, String? prefer, StoredLiqueur? storedLiqueur, }) async {
-    final response = await storedLiqueurPostWithHttpInfo( select: select, prefer: prefer, storedLiqueur: storedLiqueur, );
+  Future<void> storedLiqueurPost({ String? select, String? prefer, StoredLiqueur? storedLiqueur, Map<String, String>? other}) async {
+    final response = await storedLiqueurPostWithHttpInfo( select: select, prefer: prefer, storedLiqueur: storedLiqueur, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

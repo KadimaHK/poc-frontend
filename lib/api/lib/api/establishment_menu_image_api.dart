@@ -25,7 +25,7 @@ class EstablishmentMenuImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> establishmentMenuImageDeleteWithHttpInfo({ String? establishmentMenuId, String? imageUrl, String? prefer, }) async {
+  Future<Response> establishmentMenuImageDeleteWithHttpInfo({ String? establishmentMenuId, String? imageUrl, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment_menu_image';
 
@@ -43,11 +43,16 @@ class EstablishmentMenuImageApi {
       queryParams.addAll(_queryParams('', 'image_url', imageUrl));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -56,8 +61,7 @@ class EstablishmentMenuImageApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -69,8 +73,8 @@ class EstablishmentMenuImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> establishmentMenuImageDelete({ String? establishmentMenuId, String? imageUrl, String? prefer, }) async {
-    final response = await establishmentMenuImageDeleteWithHttpInfo( establishmentMenuId: establishmentMenuId, imageUrl: imageUrl, prefer: prefer, );
+  Future<void> establishmentMenuImageDelete({ String? establishmentMenuId, String? imageUrl, String? prefer, Map<String, String>? other}) async {
+    final response = await establishmentMenuImageDeleteWithHttpInfo( establishmentMenuId: establishmentMenuId, imageUrl: imageUrl, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -103,7 +107,7 @@ class EstablishmentMenuImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> establishmentMenuImageGetWithHttpInfo({ String? establishmentMenuId, String? imageUrl, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> establishmentMenuImageGetWithHttpInfo({ String? establishmentMenuId, String? imageUrl, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment_menu_image';
 
@@ -133,6 +137,12 @@ class EstablishmentMenuImageApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -143,7 +153,6 @@ class EstablishmentMenuImageApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -152,8 +161,7 @@ class EstablishmentMenuImageApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -183,8 +191,8 @@ class EstablishmentMenuImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<EstablishmentMenuImage>?> establishmentMenuImageGet({ String? establishmentMenuId, String? imageUrl, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await establishmentMenuImageGetWithHttpInfo( establishmentMenuId: establishmentMenuId, imageUrl: imageUrl, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<EstablishmentMenuImage>?> establishmentMenuImageGet({ String? establishmentMenuId, String? imageUrl, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await establishmentMenuImageGetWithHttpInfo( establishmentMenuId: establishmentMenuId, imageUrl: imageUrl, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -213,7 +221,7 @@ class EstablishmentMenuImageApi {
   ///
   /// * [EstablishmentMenuImage] establishmentMenuImage:
   ///   establishment_menu_image
-  Future<Response> establishmentMenuImagePatchWithHttpInfo({ String? establishmentMenuId, String? imageUrl, String? prefer, EstablishmentMenuImage? establishmentMenuImage, }) async {
+  Future<Response> establishmentMenuImagePatchWithHttpInfo({ String? establishmentMenuId, String? imageUrl, String? prefer, EstablishmentMenuImage? establishmentMenuImage, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment_menu_image';
 
@@ -231,11 +239,16 @@ class EstablishmentMenuImageApi {
       queryParams.addAll(_queryParams('', 'image_url', imageUrl));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -244,8 +257,7 @@ class EstablishmentMenuImageApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -260,8 +272,8 @@ class EstablishmentMenuImageApi {
   ///
   /// * [EstablishmentMenuImage] establishmentMenuImage:
   ///   establishment_menu_image
-  Future<void> establishmentMenuImagePatch({ String? establishmentMenuId, String? imageUrl, String? prefer, EstablishmentMenuImage? establishmentMenuImage, }) async {
-    final response = await establishmentMenuImagePatchWithHttpInfo( establishmentMenuId: establishmentMenuId, imageUrl: imageUrl, prefer: prefer, establishmentMenuImage: establishmentMenuImage, );
+  Future<void> establishmentMenuImagePatch({ String? establishmentMenuId, String? imageUrl, String? prefer, EstablishmentMenuImage? establishmentMenuImage, Map<String, String>? other}) async {
+    final response = await establishmentMenuImagePatchWithHttpInfo( establishmentMenuId: establishmentMenuId, imageUrl: imageUrl, prefer: prefer, establishmentMenuImage: establishmentMenuImage, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -278,7 +290,7 @@ class EstablishmentMenuImageApi {
   ///
   /// * [EstablishmentMenuImage] establishmentMenuImage:
   ///   establishment_menu_image
-  Future<Response> establishmentMenuImagePostWithHttpInfo({ String? select, String? prefer, EstablishmentMenuImage? establishmentMenuImage, }) async {
+  Future<Response> establishmentMenuImagePostWithHttpInfo({ String? select, String? prefer, EstablishmentMenuImage? establishmentMenuImage, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment_menu_image';
 
@@ -293,11 +305,16 @@ class EstablishmentMenuImageApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -306,8 +323,7 @@ class EstablishmentMenuImageApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -321,8 +337,8 @@ class EstablishmentMenuImageApi {
   ///
   /// * [EstablishmentMenuImage] establishmentMenuImage:
   ///   establishment_menu_image
-  Future<void> establishmentMenuImagePost({ String? select, String? prefer, EstablishmentMenuImage? establishmentMenuImage, }) async {
-    final response = await establishmentMenuImagePostWithHttpInfo( select: select, prefer: prefer, establishmentMenuImage: establishmentMenuImage, );
+  Future<void> establishmentMenuImagePost({ String? select, String? prefer, EstablishmentMenuImage? establishmentMenuImage, Map<String, String>? other}) async {
+    final response = await establishmentMenuImagePostWithHttpInfo( select: select, prefer: prefer, establishmentMenuImage: establishmentMenuImage, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -25,7 +25,7 @@ class StoredLiqueurImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> storedLiqueurImageDeleteWithHttpInfo({ String? storedLiqueurId, String? imageUrl, String? prefer, }) async {
+  Future<Response> storedLiqueurImageDeleteWithHttpInfo({ String? storedLiqueurId, String? imageUrl, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/stored_liqueur_image';
 
@@ -43,11 +43,16 @@ class StoredLiqueurImageApi {
       queryParams.addAll(_queryParams('', 'image_url', imageUrl));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -56,8 +61,7 @@ class StoredLiqueurImageApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -69,8 +73,8 @@ class StoredLiqueurImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> storedLiqueurImageDelete({ String? storedLiqueurId, String? imageUrl, String? prefer, }) async {
-    final response = await storedLiqueurImageDeleteWithHttpInfo( storedLiqueurId: storedLiqueurId, imageUrl: imageUrl, prefer: prefer, );
+  Future<void> storedLiqueurImageDelete({ String? storedLiqueurId, String? imageUrl, String? prefer, Map<String, String>? other}) async {
+    final response = await storedLiqueurImageDeleteWithHttpInfo( storedLiqueurId: storedLiqueurId, imageUrl: imageUrl, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -103,7 +107,7 @@ class StoredLiqueurImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> storedLiqueurImageGetWithHttpInfo({ String? storedLiqueurId, String? imageUrl, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> storedLiqueurImageGetWithHttpInfo({ String? storedLiqueurId, String? imageUrl, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/stored_liqueur_image';
 
@@ -133,6 +137,12 @@ class StoredLiqueurImageApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -143,7 +153,6 @@ class StoredLiqueurImageApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -152,8 +161,7 @@ class StoredLiqueurImageApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -183,8 +191,8 @@ class StoredLiqueurImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<StoredLiqueurImage>?> storedLiqueurImageGet({ String? storedLiqueurId, String? imageUrl, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await storedLiqueurImageGetWithHttpInfo( storedLiqueurId: storedLiqueurId, imageUrl: imageUrl, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<StoredLiqueurImage>?> storedLiqueurImageGet({ String? storedLiqueurId, String? imageUrl, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await storedLiqueurImageGetWithHttpInfo( storedLiqueurId: storedLiqueurId, imageUrl: imageUrl, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -213,7 +221,7 @@ class StoredLiqueurImageApi {
   ///
   /// * [StoredLiqueurImage] storedLiqueurImage:
   ///   stored_liqueur_image
-  Future<Response> storedLiqueurImagePatchWithHttpInfo({ String? storedLiqueurId, String? imageUrl, String? prefer, StoredLiqueurImage? storedLiqueurImage, }) async {
+  Future<Response> storedLiqueurImagePatchWithHttpInfo({ String? storedLiqueurId, String? imageUrl, String? prefer, StoredLiqueurImage? storedLiqueurImage, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/stored_liqueur_image';
 
@@ -231,11 +239,16 @@ class StoredLiqueurImageApi {
       queryParams.addAll(_queryParams('', 'image_url', imageUrl));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -244,8 +257,7 @@ class StoredLiqueurImageApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -260,8 +272,8 @@ class StoredLiqueurImageApi {
   ///
   /// * [StoredLiqueurImage] storedLiqueurImage:
   ///   stored_liqueur_image
-  Future<void> storedLiqueurImagePatch({ String? storedLiqueurId, String? imageUrl, String? prefer, StoredLiqueurImage? storedLiqueurImage, }) async {
-    final response = await storedLiqueurImagePatchWithHttpInfo( storedLiqueurId: storedLiqueurId, imageUrl: imageUrl, prefer: prefer, storedLiqueurImage: storedLiqueurImage, );
+  Future<void> storedLiqueurImagePatch({ String? storedLiqueurId, String? imageUrl, String? prefer, StoredLiqueurImage? storedLiqueurImage, Map<String, String>? other}) async {
+    final response = await storedLiqueurImagePatchWithHttpInfo( storedLiqueurId: storedLiqueurId, imageUrl: imageUrl, prefer: prefer, storedLiqueurImage: storedLiqueurImage, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -278,7 +290,7 @@ class StoredLiqueurImageApi {
   ///
   /// * [StoredLiqueurImage] storedLiqueurImage:
   ///   stored_liqueur_image
-  Future<Response> storedLiqueurImagePostWithHttpInfo({ String? select, String? prefer, StoredLiqueurImage? storedLiqueurImage, }) async {
+  Future<Response> storedLiqueurImagePostWithHttpInfo({ String? select, String? prefer, StoredLiqueurImage? storedLiqueurImage, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/stored_liqueur_image';
 
@@ -293,11 +305,16 @@ class StoredLiqueurImageApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -306,8 +323,7 @@ class StoredLiqueurImageApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -321,8 +337,8 @@ class StoredLiqueurImageApi {
   ///
   /// * [StoredLiqueurImage] storedLiqueurImage:
   ///   stored_liqueur_image
-  Future<void> storedLiqueurImagePost({ String? select, String? prefer, StoredLiqueurImage? storedLiqueurImage, }) async {
-    final response = await storedLiqueurImagePostWithHttpInfo( select: select, prefer: prefer, storedLiqueurImage: storedLiqueurImage, );
+  Future<void> storedLiqueurImagePost({ String? select, String? prefer, StoredLiqueurImage? storedLiqueurImage, Map<String, String>? other}) async {
+    final response = await storedLiqueurImagePostWithHttpInfo( select: select, prefer: prefer, storedLiqueurImage: storedLiqueurImage, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

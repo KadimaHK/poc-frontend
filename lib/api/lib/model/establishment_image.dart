@@ -39,7 +39,9 @@ class EstablishmentImage {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.establishmentId != null)
       json[r'establishment_id'] = this.establishmentId;
+    if (this.imageUrl != null)
       json[r'image_url'] = this.imageUrl;
     return json;
   }
@@ -51,20 +53,9 @@ class EstablishmentImage {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
-      // Ensure that the map contains the required keys.
-      // Note 1: the values aren't checked for validity beyond being non-null.
-      // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "EstablishmentImage[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "EstablishmentImage[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
-
       return EstablishmentImage(
-        establishmentId: mapValueOfType<int>(json, r'establishment_id')!,
-        imageUrl: mapValueOfType<String>(json, r'image_url')!,
+        establishmentId: mapValueOfType<int>(json, r'establishment_id'),
+        imageUrl: mapValueOfType<String>(json, r'image_url'),
       );
     }
     return null;
@@ -110,10 +101,6 @@ class EstablishmentImage {
     return map;
   }
 
-  /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-    'establishment_id',
-    'image_url',
-  };
+
 }
 

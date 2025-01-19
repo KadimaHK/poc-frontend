@@ -31,7 +31,7 @@ class MenuCategoryApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> menuCategoryDeleteWithHttpInfo({ String? id, String? name, String? description, String? createdAt, String? updatedAt, String? prefer, }) async {
+  Future<Response> menuCategoryDeleteWithHttpInfo({ String? id, String? name, String? description, String? createdAt, String? updatedAt, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/menu_category';
 
@@ -58,11 +58,16 @@ class MenuCategoryApi {
       queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -71,8 +76,7 @@ class MenuCategoryApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -90,8 +94,8 @@ class MenuCategoryApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> menuCategoryDelete({ String? id, String? name, String? description, String? createdAt, String? updatedAt, String? prefer, }) async {
-    final response = await menuCategoryDeleteWithHttpInfo( id: id, name: name, description: description, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, );
+  Future<void> menuCategoryDelete({ String? id, String? name, String? description, String? createdAt, String? updatedAt, String? prefer, Map<String, String>? other}) async {
+    final response = await menuCategoryDeleteWithHttpInfo( id: id, name: name, description: description, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -130,7 +134,7 @@ class MenuCategoryApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> menuCategoryGetWithHttpInfo({ String? id, String? name, String? description, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> menuCategoryGetWithHttpInfo({ String? id, String? name, String? description, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/menu_category';
 
@@ -169,6 +173,12 @@ class MenuCategoryApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -179,7 +189,6 @@ class MenuCategoryApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -188,8 +197,7 @@ class MenuCategoryApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -225,8 +233,8 @@ class MenuCategoryApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<MenuCategory>?> menuCategoryGet({ String? id, String? name, String? description, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await menuCategoryGetWithHttpInfo( id: id, name: name, description: description, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<MenuCategory>?> menuCategoryGet({ String? id, String? name, String? description, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await menuCategoryGetWithHttpInfo( id: id, name: name, description: description, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -261,7 +269,7 @@ class MenuCategoryApi {
   ///
   /// * [MenuCategory] menuCategory:
   ///   menu_category
-  Future<Response> menuCategoryPatchWithHttpInfo({ String? id, String? name, String? description, String? createdAt, String? updatedAt, String? prefer, MenuCategory? menuCategory, }) async {
+  Future<Response> menuCategoryPatchWithHttpInfo({ String? id, String? name, String? description, String? createdAt, String? updatedAt, String? prefer, MenuCategory? menuCategory, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/menu_category';
 
@@ -288,11 +296,16 @@ class MenuCategoryApi {
       queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -301,8 +314,7 @@ class MenuCategoryApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -323,8 +335,8 @@ class MenuCategoryApi {
   ///
   /// * [MenuCategory] menuCategory:
   ///   menu_category
-  Future<void> menuCategoryPatch({ String? id, String? name, String? description, String? createdAt, String? updatedAt, String? prefer, MenuCategory? menuCategory, }) async {
-    final response = await menuCategoryPatchWithHttpInfo( id: id, name: name, description: description, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, menuCategory: menuCategory, );
+  Future<void> menuCategoryPatch({ String? id, String? name, String? description, String? createdAt, String? updatedAt, String? prefer, MenuCategory? menuCategory, Map<String, String>? other}) async {
+    final response = await menuCategoryPatchWithHttpInfo( id: id, name: name, description: description, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, menuCategory: menuCategory, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -341,7 +353,7 @@ class MenuCategoryApi {
   ///
   /// * [MenuCategory] menuCategory:
   ///   menu_category
-  Future<Response> menuCategoryPostWithHttpInfo({ String? select, String? prefer, MenuCategory? menuCategory, }) async {
+  Future<Response> menuCategoryPostWithHttpInfo({ String? select, String? prefer, MenuCategory? menuCategory, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/menu_category';
 
@@ -356,11 +368,16 @@ class MenuCategoryApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -369,8 +386,7 @@ class MenuCategoryApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -384,8 +400,8 @@ class MenuCategoryApi {
   ///
   /// * [MenuCategory] menuCategory:
   ///   menu_category
-  Future<void> menuCategoryPost({ String? select, String? prefer, MenuCategory? menuCategory, }) async {
-    final response = await menuCategoryPostWithHttpInfo( select: select, prefer: prefer, menuCategory: menuCategory, );
+  Future<void> menuCategoryPost({ String? select, String? prefer, MenuCategory? menuCategory, Map<String, String>? other}) async {
+    final response = await menuCategoryPostWithHttpInfo( select: select, prefer: prefer, menuCategory: menuCategory, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

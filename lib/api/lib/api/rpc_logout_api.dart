@@ -34,8 +34,7 @@ class RpcLogoutApi {
       queryParams,
       null,
       headerParams,
-      formParams,
-      'application/json',
+      formParams
     );
   }
 

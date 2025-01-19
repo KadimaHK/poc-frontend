@@ -31,7 +31,7 @@ class OrderApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> orderDeleteWithHttpInfo({ String? id, String? userId, String? establishmentMenuId, String? createdAt, String? updatedAt, String? prefer, }) async {
+  Future<Response> orderDeleteWithHttpInfo({ String? id, String? userId, String? establishmentMenuId, String? createdAt, String? updatedAt, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/order';
 
@@ -58,11 +58,16 @@ class OrderApi {
       queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -71,8 +76,7 @@ class OrderApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -90,8 +94,8 @@ class OrderApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> orderDelete({ String? id, String? userId, String? establishmentMenuId, String? createdAt, String? updatedAt, String? prefer, }) async {
-    final response = await orderDeleteWithHttpInfo( id: id, userId: userId, establishmentMenuId: establishmentMenuId, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, );
+  Future<void> orderDelete({ String? id, String? userId, String? establishmentMenuId, String? createdAt, String? updatedAt, String? prefer, Map<String, String>? other}) async {
+    final response = await orderDeleteWithHttpInfo( id: id, userId: userId, establishmentMenuId: establishmentMenuId, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -130,7 +134,7 @@ class OrderApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> orderGetWithHttpInfo({ String? id, String? userId, String? establishmentMenuId, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> orderGetWithHttpInfo({ String? id, String? userId, String? establishmentMenuId, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/order';
 
@@ -169,6 +173,12 @@ class OrderApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -179,7 +189,6 @@ class OrderApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -188,8 +197,7 @@ class OrderApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -225,8 +233,8 @@ class OrderApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<Order>?> orderGet({ String? id, String? userId, String? establishmentMenuId, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await orderGetWithHttpInfo( id: id, userId: userId, establishmentMenuId: establishmentMenuId, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<Order>?> orderGet({ String? id, String? userId, String? establishmentMenuId, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await orderGetWithHttpInfo( id: id, userId: userId, establishmentMenuId: establishmentMenuId, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -261,7 +269,7 @@ class OrderApi {
   ///
   /// * [Order] order:
   ///   order
-  Future<Response> orderPatchWithHttpInfo({ String? id, String? userId, String? establishmentMenuId, String? createdAt, String? updatedAt, String? prefer, Order? order, }) async {
+  Future<Response> orderPatchWithHttpInfo({ String? id, String? userId, String? establishmentMenuId, String? createdAt, String? updatedAt, String? prefer, Order? order, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/order';
 
@@ -288,11 +296,16 @@ class OrderApi {
       queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -301,8 +314,7 @@ class OrderApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -323,8 +335,8 @@ class OrderApi {
   ///
   /// * [Order] order:
   ///   order
-  Future<void> orderPatch({ String? id, String? userId, String? establishmentMenuId, String? createdAt, String? updatedAt, String? prefer, Order? order, }) async {
-    final response = await orderPatchWithHttpInfo( id: id, userId: userId, establishmentMenuId: establishmentMenuId, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, order: order, );
+  Future<void> orderPatch({ String? id, String? userId, String? establishmentMenuId, String? createdAt, String? updatedAt, String? prefer, Order? order, Map<String, String>? other}) async {
+    final response = await orderPatchWithHttpInfo( id: id, userId: userId, establishmentMenuId: establishmentMenuId, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, order: order, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -341,7 +353,7 @@ class OrderApi {
   ///
   /// * [Order] order:
   ///   order
-  Future<Response> orderPostWithHttpInfo({ String? select, String? prefer, Order? order, }) async {
+  Future<Response> orderPostWithHttpInfo({ String? select, String? prefer, Order? order, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/order';
 
@@ -356,11 +368,16 @@ class OrderApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -369,8 +386,7 @@ class OrderApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -384,8 +400,8 @@ class OrderApi {
   ///
   /// * [Order] order:
   ///   order
-  Future<void> orderPost({ String? select, String? prefer, Order? order, }) async {
-    final response = await orderPostWithHttpInfo( select: select, prefer: prefer, order: order, );
+  Future<void> orderPost({ String? select, String? prefer, Order? order, Map<String, String>? other}) async {
+    final response = await orderPostWithHttpInfo( select: select, prefer: prefer, order: order, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

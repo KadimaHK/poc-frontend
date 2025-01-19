@@ -39,7 +39,9 @@ class PickEstablishment {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.pickId != null)
       json[r'pick_id'] = this.pickId;
+    if (this.establishmentId != null)
       json[r'establishment_id'] = this.establishmentId;
     return json;
   }
@@ -51,20 +53,9 @@ class PickEstablishment {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
-      // Ensure that the map contains the required keys.
-      // Note 1: the values aren't checked for validity beyond being non-null.
-      // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PickEstablishment[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PickEstablishment[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
-
       return PickEstablishment(
-        pickId: mapValueOfType<int>(json, r'pick_id')!,
-        establishmentId: mapValueOfType<int>(json, r'establishment_id')!,
+        pickId: mapValueOfType<int>(json, r'pick_id'),
+        establishmentId: mapValueOfType<int>(json, r'establishment_id'),
       );
     }
     return null;
@@ -110,10 +101,6 @@ class PickEstablishment {
     return map;
   }
 
-  /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-    'pick_id',
-    'establishment_id',
-  };
+
 }
 

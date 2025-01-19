@@ -15,7 +15,8 @@ class UserEstablishmentBookmark {
   UserEstablishmentBookmark({
     this.userId,
     this.establishmentId,
-    this.createdAt = 'now()',
+    this.isPublic,
+    this.createdAt,
   });
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
@@ -24,12 +25,15 @@ class UserEstablishmentBookmark {
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `establishment.id`.<fk table='establishment' column='id'/>
   int? establishmentId;
 
+  bool? isPublic;
+
   String? createdAt;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserEstablishmentBookmark &&
     other.userId == userId &&
     other.establishmentId == establishmentId &&
+    other.isPublic == isPublic &&
     other.createdAt == createdAt;
 
   @override
@@ -37,15 +41,21 @@ class UserEstablishmentBookmark {
     // ignore: unnecessary_parenthesis
     (userId.hashCode) +
     (establishmentId.hashCode) +
+    (isPublic.hashCode) +
     (createdAt.hashCode);
 
   @override
-  String toString() => 'UserEstablishmentBookmark[userId=$userId, establishmentId=$establishmentId, createdAt=$createdAt]';
+  String toString() => 'UserEstablishmentBookmark[userId=$userId, establishmentId=$establishmentId, isPublic=$isPublic, createdAt=$createdAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.userId != null)
       json[r'user_id'] = this.userId;
+    if (this.establishmentId != null)
       json[r'establishment_id'] = this.establishmentId;
+    if (this.isPublic != null)
+      json[r'is_public'] = this.isPublic;
+    if (this.createdAt != null)
       json[r'created_at'] = this.createdAt;
     return json;
   }
@@ -57,20 +67,10 @@ class UserEstablishmentBookmark {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
-      // Ensure that the map contains the required keys.
-      // Note 1: the values aren't checked for validity beyond being non-null.
-      // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "UserEstablishmentBookmark[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "UserEstablishmentBookmark[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
-
       return UserEstablishmentBookmark(
-        userId: mapValueOfType<int>(json, r'user_id')!,
-        establishmentId: mapValueOfType<int>(json, r'establishment_id')!,
+        userId: mapValueOfType<int>(json, r'user_id'),
+        establishmentId: mapValueOfType<int>(json, r'establishment_id'),
+        isPublic: mapValueOfType<bool>(json, r'is_public') ?? true,
         createdAt: mapValueOfType<String>(json, r'created_at') ?? 'now()',
       );
     }
@@ -117,10 +117,6 @@ class UserEstablishmentBookmark {
     return map;
   }
 
-  /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-    'user_id',
-    'establishment_id',
-  };
+
 }
 

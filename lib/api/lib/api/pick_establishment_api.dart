@@ -25,7 +25,7 @@ class PickEstablishmentApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> pickEstablishmentDeleteWithHttpInfo({ String? pickId, String? establishmentId, String? prefer, }) async {
+  Future<Response> pickEstablishmentDeleteWithHttpInfo({ String? pickId, String? establishmentId, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/pick_establishment';
 
@@ -43,11 +43,16 @@ class PickEstablishmentApi {
       queryParams.addAll(_queryParams('', 'establishment_id', establishmentId));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -56,8 +61,7 @@ class PickEstablishmentApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -69,8 +73,8 @@ class PickEstablishmentApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> pickEstablishmentDelete({ String? pickId, String? establishmentId, String? prefer, }) async {
-    final response = await pickEstablishmentDeleteWithHttpInfo( pickId: pickId, establishmentId: establishmentId, prefer: prefer, );
+  Future<void> pickEstablishmentDelete({ String? pickId, String? establishmentId, String? prefer, Map<String, String>? other}) async {
+    final response = await pickEstablishmentDeleteWithHttpInfo( pickId: pickId, establishmentId: establishmentId, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -103,7 +107,7 @@ class PickEstablishmentApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> pickEstablishmentGetWithHttpInfo({ String? pickId, String? establishmentId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> pickEstablishmentGetWithHttpInfo({ String? pickId, String? establishmentId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/pick_establishment';
 
@@ -133,6 +137,12 @@ class PickEstablishmentApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -143,7 +153,6 @@ class PickEstablishmentApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -152,8 +161,7 @@ class PickEstablishmentApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -183,8 +191,8 @@ class PickEstablishmentApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<PickEstablishment>?> pickEstablishmentGet({ String? pickId, String? establishmentId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await pickEstablishmentGetWithHttpInfo( pickId: pickId, establishmentId: establishmentId, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<PickEstablishment>?> pickEstablishmentGet({ String? pickId, String? establishmentId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await pickEstablishmentGetWithHttpInfo( pickId: pickId, establishmentId: establishmentId, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -213,7 +221,7 @@ class PickEstablishmentApi {
   ///
   /// * [PickEstablishment] pickEstablishment:
   ///   pick_establishment
-  Future<Response> pickEstablishmentPatchWithHttpInfo({ String? pickId, String? establishmentId, String? prefer, PickEstablishment? pickEstablishment, }) async {
+  Future<Response> pickEstablishmentPatchWithHttpInfo({ String? pickId, String? establishmentId, String? prefer, PickEstablishment? pickEstablishment, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/pick_establishment';
 
@@ -231,11 +239,16 @@ class PickEstablishmentApi {
       queryParams.addAll(_queryParams('', 'establishment_id', establishmentId));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -244,8 +257,7 @@ class PickEstablishmentApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -260,8 +272,8 @@ class PickEstablishmentApi {
   ///
   /// * [PickEstablishment] pickEstablishment:
   ///   pick_establishment
-  Future<void> pickEstablishmentPatch({ String? pickId, String? establishmentId, String? prefer, PickEstablishment? pickEstablishment, }) async {
-    final response = await pickEstablishmentPatchWithHttpInfo( pickId: pickId, establishmentId: establishmentId, prefer: prefer, pickEstablishment: pickEstablishment, );
+  Future<void> pickEstablishmentPatch({ String? pickId, String? establishmentId, String? prefer, PickEstablishment? pickEstablishment, Map<String, String>? other}) async {
+    final response = await pickEstablishmentPatchWithHttpInfo( pickId: pickId, establishmentId: establishmentId, prefer: prefer, pickEstablishment: pickEstablishment, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -278,7 +290,7 @@ class PickEstablishmentApi {
   ///
   /// * [PickEstablishment] pickEstablishment:
   ///   pick_establishment
-  Future<Response> pickEstablishmentPostWithHttpInfo({ String? select, String? prefer, PickEstablishment? pickEstablishment, }) async {
+  Future<Response> pickEstablishmentPostWithHttpInfo({ String? select, String? prefer, PickEstablishment? pickEstablishment, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/pick_establishment';
 
@@ -293,11 +305,16 @@ class PickEstablishmentApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -306,8 +323,7 @@ class PickEstablishmentApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -321,8 +337,8 @@ class PickEstablishmentApi {
   ///
   /// * [PickEstablishment] pickEstablishment:
   ///   pick_establishment
-  Future<void> pickEstablishmentPost({ String? select, String? prefer, PickEstablishment? pickEstablishment, }) async {
-    final response = await pickEstablishmentPostWithHttpInfo( select: select, prefer: prefer, pickEstablishment: pickEstablishment, );
+  Future<void> pickEstablishmentPost({ String? select, String? prefer, PickEstablishment? pickEstablishment, Map<String, String>? other}) async {
+    final response = await pickEstablishmentPostWithHttpInfo( select: select, prefer: prefer, pickEstablishment: pickEstablishment, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

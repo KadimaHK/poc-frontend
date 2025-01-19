@@ -30,7 +30,6 @@ class IntrospectionApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -39,8 +38,7 @@ class IntrospectionApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 

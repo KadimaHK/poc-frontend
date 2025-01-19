@@ -15,7 +15,7 @@ class UserFeaturedOffer {
   UserFeaturedOffer({
     this.userId,
     this.featuredOfferId,
-    this.isRedeemed = false,
+    this.isRedeemed,
     this.redeemCode,
     this.redeemedAt,
   });
@@ -66,19 +66,16 @@ class UserFeaturedOffer {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.userId != null)
       json[r'user_id'] = this.userId;
+    if (this.featuredOfferId != null)
       json[r'featured_offer_id'] = this.featuredOfferId;
+    if (this.isRedeemed != null)
       json[r'is_redeemed'] = this.isRedeemed;
-    if (this.redeemCode != null) {
+    if (this.redeemCode != null)
       json[r'redeem_code'] = this.redeemCode;
-    } else {
-      json[r'redeem_code'] = null;
-    }
-    if (this.redeemedAt != null) {
+    if (this.redeemedAt != null)
       json[r'redeemed_at'] = this.redeemedAt;
-    } else {
-      json[r'redeemed_at'] = null;
-    }
     return json;
   }
 
@@ -89,20 +86,9 @@ class UserFeaturedOffer {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
-      // Ensure that the map contains the required keys.
-      // Note 1: the values aren't checked for validity beyond being non-null.
-      // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "UserFeaturedOffer[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "UserFeaturedOffer[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
-
       return UserFeaturedOffer(
-        userId: mapValueOfType<int>(json, r'user_id')!,
-        featuredOfferId: mapValueOfType<int>(json, r'featured_offer_id')!,
+        userId: mapValueOfType<int>(json, r'user_id'),
+        featuredOfferId: mapValueOfType<int>(json, r'featured_offer_id'),
         isRedeemed: mapValueOfType<bool>(json, r'is_redeemed') ?? false,
         redeemCode: mapValueOfType<String>(json, r'redeem_code'),
         redeemedAt: mapValueOfType<String>(json, r'redeemed_at'),
@@ -151,10 +137,6 @@ class UserFeaturedOffer {
     return map;
   }
 
-  /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-    'user_id',
-    'featured_offer_id',
-  };
+
 }
 

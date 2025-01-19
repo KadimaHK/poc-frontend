@@ -17,8 +17,8 @@ class Notification {
     this.userId,
     this.message,
     this.type,
-    this.createdAt = 'now()',
-    this.updatedAt = 'now()',
+    this.createdAt,
+    this.updatedAt,
   });
 
   /// Note: This is a Primary Key.<pk/>
@@ -78,23 +78,17 @@ class Notification {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.id != null)
       json[r'id'] = this.id;
-    if (this.userId != null) {
+    if (this.userId != null)
       json[r'user_id'] = this.userId;
-    } else {
-      json[r'user_id'] = null;
-    }
-    if (this.message != null) {
+    if (this.message != null)
       json[r'message'] = this.message;
-    } else {
-      json[r'message'] = null;
-    }
-    if (this.type != null) {
+    if (this.type != null)
       json[r'type'] = this.type;
-    } else {
-      json[r'type'] = null;
-    }
+    if (this.createdAt != null)
       json[r'created_at'] = this.createdAt;
+    if (this.updatedAt != null)
       json[r'updated_at'] = this.updatedAt;
     return json;
   }
@@ -106,19 +100,8 @@ class Notification {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
-      // Ensure that the map contains the required keys.
-      // Note 1: the values aren't checked for validity beyond being non-null.
-      // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Notification[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Notification[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
-
       return Notification(
-        id: mapValueOfType<int>(json, r'id')!,
+        id: mapValueOfType<int>(json, r'id'),
         userId: mapValueOfType<int>(json, r'user_id'),
         message: mapValueOfType<String>(json, r'message'),
         type: mapValueOfType<String>(json, r'type'),
@@ -169,9 +152,6 @@ class Notification {
     return map;
   }
 
-  /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-    'id',
-  };
+
 }
 

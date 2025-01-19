@@ -50,13 +50,12 @@ class EstablishmentRank {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.establishmentId != null)
       json[r'establishment_id'] = this.establishmentId;
+    if (this.userId != null)
       json[r'user_id'] = this.userId;
-    if (this.rank != null) {
+    if (this.rank != null)
       json[r'rank'] = this.rank;
-    } else {
-      json[r'rank'] = null;
-    }
     return json;
   }
 
@@ -67,20 +66,9 @@ class EstablishmentRank {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
-      // Ensure that the map contains the required keys.
-      // Note 1: the values aren't checked for validity beyond being non-null.
-      // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "EstablishmentRank[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "EstablishmentRank[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
-
       return EstablishmentRank(
-        establishmentId: mapValueOfType<int>(json, r'establishment_id')!,
-        userId: mapValueOfType<int>(json, r'user_id')!,
+        establishmentId: mapValueOfType<int>(json, r'establishment_id'),
+        userId: mapValueOfType<int>(json, r'user_id'),
         rank: mapValueOfType<int>(json, r'rank'),
       );
     }
@@ -127,10 +115,6 @@ class EstablishmentRank {
     return map;
   }
 
-  /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-    'establishment_id',
-    'user_id',
-  };
+
 }
 

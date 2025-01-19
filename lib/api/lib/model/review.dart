@@ -19,7 +19,7 @@ class Review {
     this.title,
     this.description,
     this.content,
-    this.isApproved = false,
+    this.isApproved,
     this.rating,
     this.tasteRating,
     this.decorRating,
@@ -29,9 +29,9 @@ class Review {
     this.dateVisited,
     this.spend,
     this.likes,
-    this.status = 'pending',
-    this.createdAt = 'now()',
-    this.updatedAt = 'now()',
+    this.status,
+    this.createdAt,
+    this.updatedAt,
   });
 
   /// Note: This is a Primary Key.<pk/>
@@ -210,80 +210,43 @@ class Review {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.id != null)
       json[r'id'] = this.id;
-    if (this.userId != null) {
+    if (this.userId != null)
       json[r'user_id'] = this.userId;
-    } else {
-      json[r'user_id'] = null;
-    }
-    if (this.establishmentId != null) {
+    if (this.establishmentId != null)
       json[r'establishment_id'] = this.establishmentId;
-    } else {
-      json[r'establishment_id'] = null;
-    }
-    if (this.title != null) {
+    if (this.title != null)
       json[r'title'] = this.title;
-    } else {
-      json[r'title'] = null;
-    }
-    if (this.description != null) {
+    if (this.description != null)
       json[r'description'] = this.description;
-    } else {
-      json[r'description'] = null;
-    }
-    if (this.content != null) {
+    if (this.content != null)
       json[r'content'] = this.content;
-    } else {
-      json[r'content'] = null;
-    }
+    if (this.isApproved != null)
       json[r'is_approved'] = this.isApproved;
-    if (this.rating != null) {
+    if (this.rating != null)
       json[r'rating'] = this.rating;
-    } else {
-      json[r'rating'] = null;
-    }
-    if (this.tasteRating != null) {
+    if (this.tasteRating != null)
       json[r'taste_rating'] = this.tasteRating;
-    } else {
-      json[r'taste_rating'] = null;
-    }
-    if (this.decorRating != null) {
+    if (this.decorRating != null)
       json[r'decor_rating'] = this.decorRating;
-    } else {
-      json[r'decor_rating'] = null;
-    }
-    if (this.serviceRating != null) {
+    if (this.serviceRating != null)
       json[r'service_rating'] = this.serviceRating;
-    } else {
-      json[r'service_rating'] = null;
-    }
-    if (this.hygieneRating != null) {
+    if (this.hygieneRating != null)
       json[r'hygiene_rating'] = this.hygieneRating;
-    } else {
-      json[r'hygiene_rating'] = null;
-    }
-    if (this.valueRating != null) {
+    if (this.valueRating != null)
       json[r'value_rating'] = this.valueRating;
-    } else {
-      json[r'value_rating'] = null;
-    }
-    if (this.dateVisited != null) {
+    if (this.dateVisited != null)
       json[r'date_visited'] = this.dateVisited;
-    } else {
-      json[r'date_visited'] = null;
-    }
-    if (this.spend != null) {
+    if (this.spend != null)
       json[r'spend'] = this.spend;
-    } else {
-      json[r'spend'] = null;
-    }
-    if (this.likes != null) {
+    if (this.likes != null)
       json[r'likes'] = this.likes;
-    } else {
-      json[r'likes'] = null;
-    }
+    if (this.status != null)
       json[r'status'] = this.status;
+    if (this.createdAt != null)
       json[r'created_at'] = this.createdAt;
+    if (this.updatedAt != null)
       json[r'updated_at'] = this.updatedAt;
     return json;
   }
@@ -295,19 +258,8 @@ class Review {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
-      // Ensure that the map contains the required keys.
-      // Note 1: the values aren't checked for validity beyond being non-null.
-      // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Review[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Review[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
-
       return Review(
-        id: mapValueOfType<int>(json, r'id')!,
+        id: mapValueOfType<int>(json, r'id'),
         userId: mapValueOfType<int>(json, r'user_id'),
         establishmentId: mapValueOfType<int>(json, r'establishment_id'),
         title: mapValueOfType<String>(json, r'title'),
@@ -371,9 +323,6 @@ class Review {
     return map;
   }
 
-  /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-    'id',
-  };
+
 }
 

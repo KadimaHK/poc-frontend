@@ -33,7 +33,7 @@ class StoredLiqueurTransferApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> storedLiqueurTransferDeleteWithHttpInfo({ String? id, String? storedLiqueurId, String? fromUserId, String? toUserId, String? isAccepted, String? createdAt, String? prefer, }) async {
+  Future<Response> storedLiqueurTransferDeleteWithHttpInfo({ String? id, String? storedLiqueurId, String? fromUserId, String? toUserId, String? isAccepted, String? createdAt, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/stored_liqueur_transfer';
 
@@ -63,11 +63,16 @@ class StoredLiqueurTransferApi {
       queryParams.addAll(_queryParams('', 'created_at', createdAt));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -76,8 +81,7 @@ class StoredLiqueurTransferApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -97,8 +101,8 @@ class StoredLiqueurTransferApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> storedLiqueurTransferDelete({ String? id, String? storedLiqueurId, String? fromUserId, String? toUserId, String? isAccepted, String? createdAt, String? prefer, }) async {
-    final response = await storedLiqueurTransferDeleteWithHttpInfo( id: id, storedLiqueurId: storedLiqueurId, fromUserId: fromUserId, toUserId: toUserId, isAccepted: isAccepted, createdAt: createdAt, prefer: prefer, );
+  Future<void> storedLiqueurTransferDelete({ String? id, String? storedLiqueurId, String? fromUserId, String? toUserId, String? isAccepted, String? createdAt, String? prefer, Map<String, String>? other}) async {
+    final response = await storedLiqueurTransferDeleteWithHttpInfo( id: id, storedLiqueurId: storedLiqueurId, fromUserId: fromUserId, toUserId: toUserId, isAccepted: isAccepted, createdAt: createdAt, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -139,7 +143,7 @@ class StoredLiqueurTransferApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> storedLiqueurTransferGetWithHttpInfo({ String? id, String? storedLiqueurId, String? fromUserId, String? toUserId, String? isAccepted, String? createdAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> storedLiqueurTransferGetWithHttpInfo({ String? id, String? storedLiqueurId, String? fromUserId, String? toUserId, String? isAccepted, String? createdAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/stored_liqueur_transfer';
 
@@ -181,6 +185,12 @@ class StoredLiqueurTransferApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -191,7 +201,6 @@ class StoredLiqueurTransferApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -200,8 +209,7 @@ class StoredLiqueurTransferApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -239,8 +247,8 @@ class StoredLiqueurTransferApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<StoredLiqueurTransfer>?> storedLiqueurTransferGet({ String? id, String? storedLiqueurId, String? fromUserId, String? toUserId, String? isAccepted, String? createdAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await storedLiqueurTransferGetWithHttpInfo( id: id, storedLiqueurId: storedLiqueurId, fromUserId: fromUserId, toUserId: toUserId, isAccepted: isAccepted, createdAt: createdAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<StoredLiqueurTransfer>?> storedLiqueurTransferGet({ String? id, String? storedLiqueurId, String? fromUserId, String? toUserId, String? isAccepted, String? createdAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await storedLiqueurTransferGetWithHttpInfo( id: id, storedLiqueurId: storedLiqueurId, fromUserId: fromUserId, toUserId: toUserId, isAccepted: isAccepted, createdAt: createdAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -277,7 +285,7 @@ class StoredLiqueurTransferApi {
   ///
   /// * [StoredLiqueurTransfer] storedLiqueurTransfer:
   ///   stored_liqueur_transfer
-  Future<Response> storedLiqueurTransferPatchWithHttpInfo({ String? id, String? storedLiqueurId, String? fromUserId, String? toUserId, String? isAccepted, String? createdAt, String? prefer, StoredLiqueurTransfer? storedLiqueurTransfer, }) async {
+  Future<Response> storedLiqueurTransferPatchWithHttpInfo({ String? id, String? storedLiqueurId, String? fromUserId, String? toUserId, String? isAccepted, String? createdAt, String? prefer, StoredLiqueurTransfer? storedLiqueurTransfer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/stored_liqueur_transfer';
 
@@ -307,11 +315,16 @@ class StoredLiqueurTransferApi {
       queryParams.addAll(_queryParams('', 'created_at', createdAt));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -320,8 +333,7 @@ class StoredLiqueurTransferApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -344,8 +356,8 @@ class StoredLiqueurTransferApi {
   ///
   /// * [StoredLiqueurTransfer] storedLiqueurTransfer:
   ///   stored_liqueur_transfer
-  Future<void> storedLiqueurTransferPatch({ String? id, String? storedLiqueurId, String? fromUserId, String? toUserId, String? isAccepted, String? createdAt, String? prefer, StoredLiqueurTransfer? storedLiqueurTransfer, }) async {
-    final response = await storedLiqueurTransferPatchWithHttpInfo( id: id, storedLiqueurId: storedLiqueurId, fromUserId: fromUserId, toUserId: toUserId, isAccepted: isAccepted, createdAt: createdAt, prefer: prefer, storedLiqueurTransfer: storedLiqueurTransfer, );
+  Future<void> storedLiqueurTransferPatch({ String? id, String? storedLiqueurId, String? fromUserId, String? toUserId, String? isAccepted, String? createdAt, String? prefer, StoredLiqueurTransfer? storedLiqueurTransfer, Map<String, String>? other}) async {
+    final response = await storedLiqueurTransferPatchWithHttpInfo( id: id, storedLiqueurId: storedLiqueurId, fromUserId: fromUserId, toUserId: toUserId, isAccepted: isAccepted, createdAt: createdAt, prefer: prefer, storedLiqueurTransfer: storedLiqueurTransfer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -362,7 +374,7 @@ class StoredLiqueurTransferApi {
   ///
   /// * [StoredLiqueurTransfer] storedLiqueurTransfer:
   ///   stored_liqueur_transfer
-  Future<Response> storedLiqueurTransferPostWithHttpInfo({ String? select, String? prefer, StoredLiqueurTransfer? storedLiqueurTransfer, }) async {
+  Future<Response> storedLiqueurTransferPostWithHttpInfo({ String? select, String? prefer, StoredLiqueurTransfer? storedLiqueurTransfer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/stored_liqueur_transfer';
 
@@ -377,11 +389,16 @@ class StoredLiqueurTransferApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -390,8 +407,7 @@ class StoredLiqueurTransferApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -405,8 +421,8 @@ class StoredLiqueurTransferApi {
   ///
   /// * [StoredLiqueurTransfer] storedLiqueurTransfer:
   ///   stored_liqueur_transfer
-  Future<void> storedLiqueurTransferPost({ String? select, String? prefer, StoredLiqueurTransfer? storedLiqueurTransfer, }) async {
-    final response = await storedLiqueurTransferPostWithHttpInfo( select: select, prefer: prefer, storedLiqueurTransfer: storedLiqueurTransfer, );
+  Future<void> storedLiqueurTransferPost({ String? select, String? prefer, StoredLiqueurTransfer? storedLiqueurTransfer, Map<String, String>? other}) async {
+    final response = await storedLiqueurTransferPostWithHttpInfo( select: select, prefer: prefer, storedLiqueurTransfer: storedLiqueurTransfer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

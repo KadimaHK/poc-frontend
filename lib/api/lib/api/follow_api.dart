@@ -25,7 +25,7 @@ class FollowApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> followDeleteWithHttpInfo({ String? follower, String? following, String? prefer, }) async {
+  Future<Response> followDeleteWithHttpInfo({ String? follower, String? following, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/follow';
 
@@ -43,11 +43,16 @@ class FollowApi {
       queryParams.addAll(_queryParams('', 'following', following));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -56,8 +61,7 @@ class FollowApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -69,8 +73,8 @@ class FollowApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> followDelete({ String? follower, String? following, String? prefer, }) async {
-    final response = await followDeleteWithHttpInfo( follower: follower, following: following, prefer: prefer, );
+  Future<void> followDelete({ String? follower, String? following, String? prefer, Map<String, String>? other}) async {
+    final response = await followDeleteWithHttpInfo( follower: follower, following: following, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -103,7 +107,7 @@ class FollowApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> followGetWithHttpInfo({ String? follower, String? following, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> followGetWithHttpInfo({ String? follower, String? following, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/follow';
 
@@ -133,6 +137,12 @@ class FollowApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -143,7 +153,6 @@ class FollowApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -152,8 +161,7 @@ class FollowApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -183,8 +191,8 @@ class FollowApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<Follow>?> followGet({ String? follower, String? following, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await followGetWithHttpInfo( follower: follower, following: following, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<Follow>?> followGet({ String? follower, String? following, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await followGetWithHttpInfo( follower: follower, following: following, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -213,7 +221,7 @@ class FollowApi {
   ///
   /// * [Follow] follow:
   ///   follow
-  Future<Response> followPatchWithHttpInfo({ String? follower, String? following, String? prefer, Follow? follow, }) async {
+  Future<Response> followPatchWithHttpInfo({ String? follower, String? following, String? prefer, Follow? follow, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/follow';
 
@@ -231,11 +239,16 @@ class FollowApi {
       queryParams.addAll(_queryParams('', 'following', following));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -244,8 +257,7 @@ class FollowApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -260,8 +272,8 @@ class FollowApi {
   ///
   /// * [Follow] follow:
   ///   follow
-  Future<void> followPatch({ String? follower, String? following, String? prefer, Follow? follow, }) async {
-    final response = await followPatchWithHttpInfo( follower: follower, following: following, prefer: prefer, follow: follow, );
+  Future<void> followPatch({ String? follower, String? following, String? prefer, Follow? follow, Map<String, String>? other}) async {
+    final response = await followPatchWithHttpInfo( follower: follower, following: following, prefer: prefer, follow: follow, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -278,7 +290,7 @@ class FollowApi {
   ///
   /// * [Follow] follow:
   ///   follow
-  Future<Response> followPostWithHttpInfo({ String? select, String? prefer, Follow? follow, }) async {
+  Future<Response> followPostWithHttpInfo({ String? select, String? prefer, Follow? follow, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/follow';
 
@@ -293,11 +305,16 @@ class FollowApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -306,8 +323,7 @@ class FollowApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -321,8 +337,8 @@ class FollowApi {
   ///
   /// * [Follow] follow:
   ///   follow
-  Future<void> followPost({ String? select, String? prefer, Follow? follow, }) async {
-    final response = await followPostWithHttpInfo( select: select, prefer: prefer, follow: follow, );
+  Future<void> followPost({ String? select, String? prefer, Follow? follow, Map<String, String>? other}) async {
+    final response = await followPostWithHttpInfo( select: select, prefer: prefer, follow: follow, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

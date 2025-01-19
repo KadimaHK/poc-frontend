@@ -28,10 +28,10 @@ class User {
     this.reviewCount,
     this.photoCount,
     this.points,
-    this.pointsExpiry = '(now() + \'1 year\'::interval)',
-    this.verified = false,
-    this.createdAt = 'now()',
-    this.updatedAt = 'now()',
+    this.pointsExpiry,
+    this.verified,
+    this.createdAt,
+    this.updatedAt,
   });
 
   /// Note: This is a Primary Key.<pk/>
@@ -202,76 +202,43 @@ class User {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.id != null)
       json[r'id'] = this.id;
-    if (this.uuid != null) {
+    if (this.uuid != null)
       json[r'uuid'] = this.uuid;
-    } else {
-      json[r'uuid'] = null;
-    }
+    if (this.email != null)
       json[r'email'] = this.email;
-    if (this.name != null) {
+    if (this.name != null)
       json[r'name'] = this.name;
-    } else {
-      json[r'name'] = null;
-    }
-    if (this.password != null) {
+    if (this.password != null)
       json[r'password'] = this.password;
-    } else {
-      json[r'password'] = null;
-    }
-    if (this.iconUrl != null) {
+    if (this.iconUrl != null)
       json[r'icon_url'] = this.iconUrl;
-    } else {
-      json[r'icon_url'] = null;
-    }
-    if (this.age != null) {
+    if (this.age != null)
       json[r'age'] = this.age;
-    } else {
-      json[r'age'] = null;
-    }
-    if (this.gender != null) {
+    if (this.gender != null)
       json[r'gender'] = this.gender;
-    } else {
-      json[r'gender'] = null;
-    }
-    if (this.description != null) {
+    if (this.description != null)
       json[r'description'] = this.description;
-    } else {
-      json[r'description'] = null;
-    }
-    if (this.followingCount != null) {
+    if (this.followingCount != null)
       json[r'following_count'] = this.followingCount;
-    } else {
-      json[r'following_count'] = null;
-    }
-    if (this.followerCount != null) {
+    if (this.followerCount != null)
       json[r'follower_count'] = this.followerCount;
-    } else {
-      json[r'follower_count'] = null;
-    }
-    if (this.bookmarkCount != null) {
+    if (this.bookmarkCount != null)
       json[r'bookmark_count'] = this.bookmarkCount;
-    } else {
-      json[r'bookmark_count'] = null;
-    }
-    if (this.reviewCount != null) {
+    if (this.reviewCount != null)
       json[r'review_count'] = this.reviewCount;
-    } else {
-      json[r'review_count'] = null;
-    }
-    if (this.photoCount != null) {
+    if (this.photoCount != null)
       json[r'photo_count'] = this.photoCount;
-    } else {
-      json[r'photo_count'] = null;
-    }
-    if (this.points != null) {
+    if (this.points != null)
       json[r'points'] = this.points;
-    } else {
-      json[r'points'] = null;
-    }
+    if (this.pointsExpiry != null)
       json[r'points_expiry'] = this.pointsExpiry;
+    if (this.verified != null)
       json[r'verified'] = this.verified;
+    if (this.createdAt != null)
       json[r'created_at'] = this.createdAt;
+    if (this.updatedAt != null)
       json[r'updated_at'] = this.updatedAt;
     return json;
   }
@@ -283,21 +250,10 @@ class User {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
-      // Ensure that the map contains the required keys.
-      // Note 1: the values aren't checked for validity beyond being non-null.
-      // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "User[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "User[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
-
       return User(
-        id: mapValueOfType<int>(json, r'id')!,
+        id: mapValueOfType<int>(json, r'id'),
         uuid: mapValueOfType<String>(json, r'uuid'),
-        email: mapValueOfType<String>(json, r'email')!,
+        email: mapValueOfType<String>(json, r'email'),
         name: mapValueOfType<String>(json, r'name'),
         password: mapValueOfType<String>(json, r'password'),
         iconUrl: mapValueOfType<String>(json, r'icon_url'),
@@ -359,10 +315,6 @@ class User {
     return map;
   }
 
-  /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-    'id',
-    'email',
-  };
+
 }
 

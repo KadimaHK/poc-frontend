@@ -31,7 +31,7 @@ class MessageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> messageDeleteWithHttpInfo({ String? uuid, String? time, String? fromUserId, String? toUserId, String? body, String? prefer, }) async {
+  Future<Response> messageDeleteWithHttpInfo({ String? uuid, String? time, String? fromUserId, String? toUserId, String? body, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/message';
 
@@ -58,11 +58,16 @@ class MessageApi {
       queryParams.addAll(_queryParams('', 'body', body));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -71,8 +76,7 @@ class MessageApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -90,8 +94,8 @@ class MessageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> messageDelete({ String? uuid, String? time, String? fromUserId, String? toUserId, String? body, String? prefer, }) async {
-    final response = await messageDeleteWithHttpInfo( uuid: uuid, time: time, fromUserId: fromUserId, toUserId: toUserId, body: body, prefer: prefer, );
+  Future<void> messageDelete({ String? uuid, String? time, String? fromUserId, String? toUserId, String? body, String? prefer, Map<String, String>? other}) async {
+    final response = await messageDeleteWithHttpInfo( uuid: uuid, time: time, fromUserId: fromUserId, toUserId: toUserId, body: body, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -130,7 +134,7 @@ class MessageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> messageGetWithHttpInfo({ String? uuid, String? time, String? fromUserId, String? toUserId, String? body, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> messageGetWithHttpInfo({ String? uuid, String? time, String? fromUserId, String? toUserId, String? body, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/message';
 
@@ -169,6 +173,12 @@ class MessageApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -179,7 +189,6 @@ class MessageApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -188,8 +197,7 @@ class MessageApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -225,8 +233,8 @@ class MessageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<Message>?> messageGet({ String? uuid, String? time, String? fromUserId, String? toUserId, String? body, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await messageGetWithHttpInfo( uuid: uuid, time: time, fromUserId: fromUserId, toUserId: toUserId, body: body, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<Message>?> messageGet({ String? uuid, String? time, String? fromUserId, String? toUserId, String? body, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await messageGetWithHttpInfo( uuid: uuid, time: time, fromUserId: fromUserId, toUserId: toUserId, body: body, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -261,7 +269,7 @@ class MessageApi {
   ///
   /// * [Message] message:
   ///   message
-  Future<Response> messagePatchWithHttpInfo({ String? uuid, String? time, String? fromUserId, String? toUserId, String? body, String? prefer, Message? message, }) async {
+  Future<Response> messagePatchWithHttpInfo({ String? uuid, String? time, String? fromUserId, String? toUserId, String? body, String? prefer, Message? message, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/message';
 
@@ -288,11 +296,16 @@ class MessageApi {
       queryParams.addAll(_queryParams('', 'body', body));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -301,8 +314,7 @@ class MessageApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -323,8 +335,8 @@ class MessageApi {
   ///
   /// * [Message] message:
   ///   message
-  Future<void> messagePatch({ String? uuid, String? time, String? fromUserId, String? toUserId, String? body, String? prefer, Message? message, }) async {
-    final response = await messagePatchWithHttpInfo( uuid: uuid, time: time, fromUserId: fromUserId, toUserId: toUserId, body: body, prefer: prefer, message: message, );
+  Future<void> messagePatch({ String? uuid, String? time, String? fromUserId, String? toUserId, String? body, String? prefer, Message? message, Map<String, String>? other}) async {
+    final response = await messagePatchWithHttpInfo( uuid: uuid, time: time, fromUserId: fromUserId, toUserId: toUserId, body: body, prefer: prefer, message: message, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -341,7 +353,7 @@ class MessageApi {
   ///
   /// * [Message] message:
   ///   message
-  Future<Response> messagePostWithHttpInfo({ String? select, String? prefer, Message? message, }) async {
+  Future<Response> messagePostWithHttpInfo({ String? select, String? prefer, Message? message, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/message';
 
@@ -356,11 +368,16 @@ class MessageApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -369,8 +386,7 @@ class MessageApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -384,8 +400,8 @@ class MessageApi {
   ///
   /// * [Message] message:
   ///   message
-  Future<void> messagePost({ String? select, String? prefer, Message? message, }) async {
-    final response = await messagePostWithHttpInfo( select: select, prefer: prefer, message: message, );
+  Future<void> messagePost({ String? select, String? prefer, Message? message, Map<String, String>? other}) async {
+    final response = await messagePostWithHttpInfo( select: select, prefer: prefer, message: message, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

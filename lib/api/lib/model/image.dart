@@ -17,8 +17,8 @@ class Image {
     this.baseUrl,
     this.imageUrl,
     this.likes,
-    this.createdAt = 'now()',
-    this.updatedAt = 'now()',
+    this.createdAt,
+    this.updatedAt,
   });
 
   /// Note: This is a Primary Key.<pk/>
@@ -76,23 +76,17 @@ class Image {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.fileName != null)
       json[r'file_name'] = this.fileName;
-    if (this.baseUrl != null) {
+    if (this.baseUrl != null)
       json[r'base_url'] = this.baseUrl;
-    } else {
-      json[r'base_url'] = null;
-    }
-    if (this.imageUrl != null) {
+    if (this.imageUrl != null)
       json[r'image_url'] = this.imageUrl;
-    } else {
-      json[r'image_url'] = null;
-    }
-    if (this.likes != null) {
+    if (this.likes != null)
       json[r'likes'] = this.likes;
-    } else {
-      json[r'likes'] = null;
-    }
+    if (this.createdAt != null)
       json[r'created_at'] = this.createdAt;
+    if (this.updatedAt != null)
       json[r'updated_at'] = this.updatedAt;
     return json;
   }
@@ -104,19 +98,8 @@ class Image {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
-      // Ensure that the map contains the required keys.
-      // Note 1: the values aren't checked for validity beyond being non-null.
-      // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Image[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Image[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
-
       return Image(
-        fileName: mapValueOfType<String>(json, r'file_name')!,
+        fileName: mapValueOfType<String>(json, r'file_name'),
         baseUrl: mapValueOfType<String>(json, r'base_url'),
         imageUrl: mapValueOfType<String>(json, r'image_url'),
         likes: mapValueOfType<int>(json, r'likes'),
@@ -167,9 +150,6 @@ class Image {
     return map;
   }
 
-  /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-    'file_name',
-  };
+
 }
 

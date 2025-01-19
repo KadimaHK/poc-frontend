@@ -57,7 +57,7 @@ class EstablishmentApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> establishmentDeleteWithHttpInfo({ String? id, String? name, String? description, String? notice, String? address, String? cordX, String? cordY, String? phone, String? email, String? website, String? category, String? thumbnailUrl, String? rank, String? bookingPoints, String? bookmarkCount, String? createdAt, String? updatedAt, String? prefer, }) async {
+  Future<Response> establishmentDeleteWithHttpInfo({ String? id, String? name, String? description, String? notice, String? address, String? cordX, String? cordY, String? phone, String? email, String? website, String? category, String? thumbnailUrl, String? rank, String? bookingPoints, String? bookmarkCount, String? createdAt, String? updatedAt, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment';
 
@@ -120,11 +120,16 @@ class EstablishmentApi {
       queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -133,8 +138,7 @@ class EstablishmentApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -178,8 +182,8 @@ class EstablishmentApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> establishmentDelete({ String? id, String? name, String? description, String? notice, String? address, String? cordX, String? cordY, String? phone, String? email, String? website, String? category, String? thumbnailUrl, String? rank, String? bookingPoints, String? bookmarkCount, String? createdAt, String? updatedAt, String? prefer, }) async {
-    final response = await establishmentDeleteWithHttpInfo( id: id, name: name, description: description, notice: notice, address: address, cordX: cordX, cordY: cordY, phone: phone, email: email, website: website, category: category, thumbnailUrl: thumbnailUrl, rank: rank, bookingPoints: bookingPoints, bookmarkCount: bookmarkCount, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, );
+  Future<void> establishmentDelete({ String? id, String? name, String? description, String? notice, String? address, String? cordX, String? cordY, String? phone, String? email, String? website, String? category, String? thumbnailUrl, String? rank, String? bookingPoints, String? bookmarkCount, String? createdAt, String? updatedAt, String? prefer, Map<String, String>? other}) async {
+    final response = await establishmentDeleteWithHttpInfo( id: id, name: name, description: description, notice: notice, address: address, cordX: cordX, cordY: cordY, phone: phone, email: email, website: website, category: category, thumbnailUrl: thumbnailUrl, rank: rank, bookingPoints: bookingPoints, bookmarkCount: bookmarkCount, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -244,7 +248,7 @@ class EstablishmentApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> establishmentGetWithHttpInfo({ String? id, String? name, String? description, String? notice, String? address, String? cordX, String? cordY, String? phone, String? email, String? website, String? category, String? thumbnailUrl, String? rank, String? bookingPoints, String? bookmarkCount, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> establishmentGetWithHttpInfo({ String? id, String? name, String? description, String? notice, String? address, String? cordX, String? cordY, String? phone, String? email, String? website, String? category, String? thumbnailUrl, String? rank, String? bookingPoints, String? bookmarkCount, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment';
 
@@ -319,6 +323,12 @@ class EstablishmentApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -329,7 +339,6 @@ class EstablishmentApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -338,8 +347,7 @@ class EstablishmentApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -401,8 +409,8 @@ class EstablishmentApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<Establishment>?> establishmentGet({ String? id, String? name, String? description, String? notice, String? address, String? cordX, String? cordY, String? phone, String? email, String? website, String? category, String? thumbnailUrl, String? rank, String? bookingPoints, String? bookmarkCount, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await establishmentGetWithHttpInfo( id: id, name: name, description: description, notice: notice, address: address, cordX: cordX, cordY: cordY, phone: phone, email: email, website: website, category: category, thumbnailUrl: thumbnailUrl, rank: rank, bookingPoints: bookingPoints, bookmarkCount: bookmarkCount, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<Establishment>?> establishmentGet({ String? id, String? name, String? description, String? notice, String? address, String? cordX, String? cordY, String? phone, String? email, String? website, String? category, String? thumbnailUrl, String? rank, String? bookingPoints, String? bookmarkCount, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await establishmentGetWithHttpInfo( id: id, name: name, description: description, notice: notice, address: address, cordX: cordX, cordY: cordY, phone: phone, email: email, website: website, category: category, thumbnailUrl: thumbnailUrl, rank: rank, bookingPoints: bookingPoints, bookmarkCount: bookmarkCount, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -463,7 +471,7 @@ class EstablishmentApi {
   ///
   /// * [Establishment] establishment:
   ///   establishment
-  Future<Response> establishmentPatchWithHttpInfo({ String? id, String? name, String? description, String? notice, String? address, String? cordX, String? cordY, String? phone, String? email, String? website, String? category, String? thumbnailUrl, String? rank, String? bookingPoints, String? bookmarkCount, String? createdAt, String? updatedAt, String? prefer, Establishment? establishment, }) async {
+  Future<Response> establishmentPatchWithHttpInfo({ String? id, String? name, String? description, String? notice, String? address, String? cordX, String? cordY, String? phone, String? email, String? website, String? category, String? thumbnailUrl, String? rank, String? bookingPoints, String? bookmarkCount, String? createdAt, String? updatedAt, String? prefer, Establishment? establishment, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment';
 
@@ -526,11 +534,16 @@ class EstablishmentApi {
       queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -539,8 +552,7 @@ class EstablishmentApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -587,8 +599,8 @@ class EstablishmentApi {
   ///
   /// * [Establishment] establishment:
   ///   establishment
-  Future<void> establishmentPatch({ String? id, String? name, String? description, String? notice, String? address, String? cordX, String? cordY, String? phone, String? email, String? website, String? category, String? thumbnailUrl, String? rank, String? bookingPoints, String? bookmarkCount, String? createdAt, String? updatedAt, String? prefer, Establishment? establishment, }) async {
-    final response = await establishmentPatchWithHttpInfo( id: id, name: name, description: description, notice: notice, address: address, cordX: cordX, cordY: cordY, phone: phone, email: email, website: website, category: category, thumbnailUrl: thumbnailUrl, rank: rank, bookingPoints: bookingPoints, bookmarkCount: bookmarkCount, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, establishment: establishment, );
+  Future<void> establishmentPatch({ String? id, String? name, String? description, String? notice, String? address, String? cordX, String? cordY, String? phone, String? email, String? website, String? category, String? thumbnailUrl, String? rank, String? bookingPoints, String? bookmarkCount, String? createdAt, String? updatedAt, String? prefer, Establishment? establishment, Map<String, String>? other}) async {
+    final response = await establishmentPatchWithHttpInfo( id: id, name: name, description: description, notice: notice, address: address, cordX: cordX, cordY: cordY, phone: phone, email: email, website: website, category: category, thumbnailUrl: thumbnailUrl, rank: rank, bookingPoints: bookingPoints, bookmarkCount: bookmarkCount, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, establishment: establishment, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -605,7 +617,7 @@ class EstablishmentApi {
   ///
   /// * [Establishment] establishment:
   ///   establishment
-  Future<Response> establishmentPostWithHttpInfo({ String? select, String? prefer, Establishment? establishment, }) async {
+  Future<Response> establishmentPostWithHttpInfo({ String? select, String? prefer, Establishment? establishment, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment';
 
@@ -620,11 +632,16 @@ class EstablishmentApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -633,8 +650,7 @@ class EstablishmentApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -648,8 +664,8 @@ class EstablishmentApi {
   ///
   /// * [Establishment] establishment:
   ///   establishment
-  Future<void> establishmentPost({ String? select, String? prefer, Establishment? establishment, }) async {
-    final response = await establishmentPostWithHttpInfo( select: select, prefer: prefer, establishment: establishment, );
+  Future<void> establishmentPost({ String? select, String? prefer, Establishment? establishment, Map<String, String>? other}) async {
+    final response = await establishmentPostWithHttpInfo( select: select, prefer: prefer, establishment: establishment, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

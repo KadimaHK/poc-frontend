@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainSearchBar extends StatefulWidget {
-  const MainSearchBar({super.key});
-
+  MainSearchBar({super.key, this.onChanged});
+  Function(String)? onChanged;
   @override
   State<MainSearchBar> createState() => _MainSearchBarState();
 }
@@ -17,9 +17,8 @@ class _MainSearchBarState extends State<MainSearchBar> {
     final t = AppLocalizations.of(context)!;
     return SearchBar(
       onChanged: (value) => {
-        setState(() {
-          _isShowClearBtn = value.isNotEmpty;
-        })
+        widget.onChanged!(value),
+        setState(() => _isShowClearBtn = value.isNotEmpty),
       },
       controller: searchController,
       hintText: t.search,
@@ -29,14 +28,13 @@ class _MainSearchBarState extends State<MainSearchBar> {
             ? IconButton(
                 onPressed: () {
                   searchController.clear();
-                  setState(() {
-                    _isShowClearBtn = false;
-                  });
+                  setState(() => _isShowClearBtn = false);
                 },
                 icon: Icon(
                   Icons.clear,
                   color: Colors.black,
-                ))
+                ),
+              )
             : const SizedBox()
       ],
     );

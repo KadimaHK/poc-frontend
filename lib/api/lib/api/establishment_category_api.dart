@@ -23,7 +23,7 @@ class EstablishmentCategoryApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> establishmentCategoryDeleteWithHttpInfo({ String? category, String? prefer, }) async {
+  Future<Response> establishmentCategoryDeleteWithHttpInfo({ String? category, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment_category';
 
@@ -38,11 +38,16 @@ class EstablishmentCategoryApi {
       queryParams.addAll(_queryParams('', 'category', category));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -51,8 +56,7 @@ class EstablishmentCategoryApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -62,8 +66,8 @@ class EstablishmentCategoryApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> establishmentCategoryDelete({ String? category, String? prefer, }) async {
-    final response = await establishmentCategoryDeleteWithHttpInfo( category: category, prefer: prefer, );
+  Future<void> establishmentCategoryDelete({ String? category, String? prefer, Map<String, String>? other}) async {
+    final response = await establishmentCategoryDeleteWithHttpInfo( category: category, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -94,7 +98,7 @@ class EstablishmentCategoryApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> establishmentCategoryGetWithHttpInfo({ String? category, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> establishmentCategoryGetWithHttpInfo({ String? category, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment_category';
 
@@ -121,6 +125,12 @@ class EstablishmentCategoryApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -131,7 +141,6 @@ class EstablishmentCategoryApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -140,8 +149,7 @@ class EstablishmentCategoryApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -169,8 +177,8 @@ class EstablishmentCategoryApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<EstablishmentCategory>?> establishmentCategoryGet({ String? category, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await establishmentCategoryGetWithHttpInfo( category: category, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<EstablishmentCategory>?> establishmentCategoryGet({ String? category, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await establishmentCategoryGetWithHttpInfo( category: category, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -197,7 +205,7 @@ class EstablishmentCategoryApi {
   ///
   /// * [EstablishmentCategory] establishmentCategory:
   ///   establishment_category
-  Future<Response> establishmentCategoryPatchWithHttpInfo({ String? category, String? prefer, EstablishmentCategory? establishmentCategory, }) async {
+  Future<Response> establishmentCategoryPatchWithHttpInfo({ String? category, String? prefer, EstablishmentCategory? establishmentCategory, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment_category';
 
@@ -212,11 +220,16 @@ class EstablishmentCategoryApi {
       queryParams.addAll(_queryParams('', 'category', category));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -225,8 +238,7 @@ class EstablishmentCategoryApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -239,8 +251,8 @@ class EstablishmentCategoryApi {
   ///
   /// * [EstablishmentCategory] establishmentCategory:
   ///   establishment_category
-  Future<void> establishmentCategoryPatch({ String? category, String? prefer, EstablishmentCategory? establishmentCategory, }) async {
-    final response = await establishmentCategoryPatchWithHttpInfo( category: category, prefer: prefer, establishmentCategory: establishmentCategory, );
+  Future<void> establishmentCategoryPatch({ String? category, String? prefer, EstablishmentCategory? establishmentCategory, Map<String, String>? other}) async {
+    final response = await establishmentCategoryPatchWithHttpInfo( category: category, prefer: prefer, establishmentCategory: establishmentCategory, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -257,7 +269,7 @@ class EstablishmentCategoryApi {
   ///
   /// * [EstablishmentCategory] establishmentCategory:
   ///   establishment_category
-  Future<Response> establishmentCategoryPostWithHttpInfo({ String? select, String? prefer, EstablishmentCategory? establishmentCategory, }) async {
+  Future<Response> establishmentCategoryPostWithHttpInfo({ String? select, String? prefer, EstablishmentCategory? establishmentCategory, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment_category';
 
@@ -272,11 +284,16 @@ class EstablishmentCategoryApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -285,8 +302,7 @@ class EstablishmentCategoryApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -300,8 +316,8 @@ class EstablishmentCategoryApi {
   ///
   /// * [EstablishmentCategory] establishmentCategory:
   ///   establishment_category
-  Future<void> establishmentCategoryPost({ String? select, String? prefer, EstablishmentCategory? establishmentCategory, }) async {
-    final response = await establishmentCategoryPostWithHttpInfo( select: select, prefer: prefer, establishmentCategory: establishmentCategory, );
+  Future<void> establishmentCategoryPost({ String? select, String? prefer, EstablishmentCategory? establishmentCategory, Map<String, String>? other}) async {
+    final response = await establishmentCategoryPostWithHttpInfo( select: select, prefer: prefer, establishmentCategory: establishmentCategory, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -31,8 +31,7 @@ class RpcSignUpApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      'application/json',
+      formParams
     );
   }
 

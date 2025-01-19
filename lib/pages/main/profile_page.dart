@@ -1,12 +1,10 @@
-import 'dart:convert';
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:poc_frontend/api/lib/api.dart' as api;
 import 'package:poc_frontend/components/app_bar.dart';
-import 'package:poc_frontend/components/establishment_card_view.dart';
 import 'package:poc_frontend/components/icon_button_label.dart';
 import 'package:poc_frontend/components/rating.dart';
 import 'package:poc_frontend/components/textbutton_no_background.dart';
@@ -15,27 +13,28 @@ import 'package:poc_frontend/components/user_membership_card.dart';
 import 'package:poc_frontend/main.dart';
 import 'package:poc_frontend/pages/establishment_profile_page.dart';
 import 'package:poc_frontend/pages/login_page.dart';
-import 'package:poc_frontend/api/lib/api.dart' as api;
-import 'package:http/src/client.dart';
 import 'package:poc_frontend/pages/my_exclusive_benefit_page.dart';
 import 'package:poc_frontend/pages/my_voucher_page.dart';
 import 'package:poc_frontend/pages/review_page.dart';
 import 'package:poc_frontend/pages/stored_liqueur_page.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
-  static String routeName = '/profile';
+  ProfilePage({super.key, this.user});
+  static const routeName = '/profile';
+  api.User? user;
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStateMixin {
   late final TabController _tabController;
+  late final bool isOtherUser;
 
   api.User? user;
   @override
   void initState() {
     super.initState();
+    isOtherUser = widget.user != null;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (MyApp.prefs!.getString('loginSessionToken') == null) {
         Navigator.pushNamed(context, LoginPage.routeName);
@@ -54,6 +53,13 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
   }
 
   void fetchUser() async {
+    if (widget.user != null) {
+      user = widget.user;
+      if (mounted) {
+        setState(() {});
+      }
+      return;
+    }
     try {
       final users = await api.UserApi(MyApp.sessionApiClient).userGet();
       user = users!.firstOrNull;
@@ -104,85 +110,148 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
                       TextButtonNoBackground(
                         onPressed: () {},
                         text: '${user!.followerCount}\n${t.follower('s')}',
+                        fontSize: 13,
                       ),
                       TextButtonNoBackground(
                         onPressed: () {},
                         text: '${user!.followingCount}\n${t.following}',
+                        fontSize: 13,
                       ),
                       SizedBox(width: 10),
-                      Expanded(
-                        child: TextButtonSecondary(onPressed: () {}, text: t.edit),
-                      ),
+                      // Expanded(
+                      //   child: !isOtherUser
+                      //       ? TextButtonSecondary(
+                      //           onPressed: () {},
+                      //           text: t.edit,
+                      //         )
+                      //       : Row(
+                      //           children: [
+                      //             TextButton(
+                      //               onPressed: () {},
+                      //               child: Row(
+                      //                 children: [
+                      //                   Icon(Icons.person_add),
+                      //                   SizedBox(width: 10),
+                      //                   Text(t.follow),
+                      //                 ],
+                      //               ),
+                      //             ),
+                      //             SizedBox(width: 10),
+                      //             TextButtonSecondary(
+                      //               onPressed: () {},
+                      //               child: Row(
+                      //                 children: [
+                      //                   Icon(Icons.message, color: Colors.white),
+                      //                   SizedBox(width: 10),
+                      //                   Text(t.message, style: TextStyle(color: Colors.white)),
+                      //                 ],
+                      //               ),
+                      //             ),
+                      //           ],
+                      //         ),
+                      // ),
+                      if (!isOtherUser)
+                        Expanded(
+                            child: TextButtonSecondary(
+                          onPressed: () {},
+                          text: t.edit,
+                        )),
+                      if (isOtherUser)
+                        Expanded(
+                          child: TextButton(
+                            onPressed: () {},
+                            child: Row(
+                              children: [
+                                Icon(Icons.person_add),
+                                SizedBox(width: 10),
+                                Text(t.follow),
+                              ],
+                            ),
+                          ),
+                        ),
+                      if (isOtherUser)
+                        Expanded(
+                            child: TextButtonSecondary(
+                          onPressed: () {},
+                          child: Row(
+                            children: [
+                              Icon(Icons.message, color: Colors.white),
+                              SizedBox(width: 10),
+                              Text(t.message, style: TextStyle(color: Colors.white)),
+                            ],
+                          ),
+                        )),
                     ],
                   ),
                   _Description(description: user?.description ?? ''),
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Column(
-                children: [
-                  UserMembershipCard(user: user!),
-                  SizedBox(height: 10),
-                  Text(t.earnPointsToRenewMembershipDesc('${user?.points!}', user?.pointsExpiry!.substring(0, 10) ?? '', '3000')),
-                  SizedBox(height: 10),
-                  LinearProgressIndicator(
-                    value: user!.points! / 3000,
-                    minHeight: 7,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  SizedBox(height: 10),
-                  Text(t.membershipRemainingDays(
-                    user!.pointsExpiry!.substring(0, 10),
-                    DateTime.parse(user!.pointsExpiry!).difference(DateTime.now()).inDays,
-                    (3000 - user!.points!).toString(),
-                  )),
-                  Text(t.learnMore),
-                  SizedBox(height: 30),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      LabeledIconButton(
-                        size: 50,
-                        assetImagePath: 'assets/images/icon_menu_voucher.png',
-                        label: t.voucher('s'),
-                        onPressed: () => Navigator.pushNamed(context, MyVoucherPage.routeName, arguments: user!),
-                      ),
-                      LabeledIconButton(
-                        assetImagePath: 'assets/images/icon_menu_booking.png',
-                        label: t.booking('s'),
-                        onPressed: () {},
-                      ),
-                      LabeledIconButton(
-                        assetImagePath: 'assets/images/icon_menu_benefit.png',
-                        label: t.exclusiveBenefit,
-                        onPressed: () => Navigator.pushNamed(context, MyExclusiveBenefitPage.routeName, arguments: user!),
-                      ),
-                      LabeledIconButton(
-                        assetImagePath: 'assets/images/icon_menu_store.png',
-                        label: t.storedLiqueur('s'),
-                        onPressed: () => Navigator.pushNamed(context, StoredLiqueurPage.routeName, arguments: user!),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 30),
-                  Column(
-                    children: [
-                      TabBar(
-                        tabs: [
-                          Tab(text: t.overview),
-                          Tab(text: t.bookmark('s')),
-                          Tab(text: t.review('s')),
-                          Tab(text: t.photo('s')),
-                        ],
-                        controller: _tabController,
-                      ),
-                    ],
-                  ),
-                ],
+            if (!isOtherUser)
+              Padding(
+                padding: const EdgeInsets.all(24.0),
+                child: Column(
+                  children: [
+                    UserMembershipCard(user: user!),
+                    SizedBox(height: 10),
+                    Text(t.earnPointsToRenewMembershipDesc('${user?.points}', user?.pointsExpiry!.substring(0, 10) ?? '', '3000')),
+                    SizedBox(height: 10),
+                    LinearProgressIndicator(
+                      value: user!.points! / 3000,
+                      minHeight: 7,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    SizedBox(height: 10),
+                    Text(t.membershipRemainingDays(
+                      user!.pointsExpiry!.substring(0, 10),
+                      DateTime.parse(user!.pointsExpiry!).difference(DateTime.now()).inDays,
+                      (3000 - user!.points!).toString(),
+                    )),
+                    Text(t.learnMore),
+                    SizedBox(height: 30),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        LabeledIconButton(
+                          size: 50,
+                          assetImagePath: 'assets/images/icon_menu_voucher.png',
+                          label: t.voucher('s'),
+                          onPressed: () => Navigator.pushNamed(context, MyVoucherPage.routeName, arguments: user!),
+                        ),
+                        LabeledIconButton(
+                          assetImagePath: 'assets/images/icon_menu_booking.png',
+                          label: t.booking('s'),
+                          onPressed: () {},
+                        ),
+                        LabeledIconButton(
+                          assetImagePath: 'assets/images/icon_menu_benefit.png',
+                          label: t.exclusiveBenefit,
+                          onPressed: () => Navigator.pushNamed(context, MyExclusiveBenefitPage.routeName, arguments: user!),
+                        ),
+                        LabeledIconButton(
+                          assetImagePath: 'assets/images/icon_menu_store.png',
+                          label: t.storedLiqueur('s'),
+                          onPressed: () => Navigator.pushNamed(context, StoredLiqueurPage.routeName, arguments: user!),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 30),
+                  ],
+                ),
               ),
+            Column(
+              children: [
+                TabBar(
+                  tabs: [
+                    Tab(text: t.overview),
+                    Tab(text: t.bookmark('s')),
+                    Tab(text: t.review('s')),
+                    Tab(text: t.photo('s')),
+                  ],
+                  controller: _tabController,
+                ),
+              ],
             ),
             SizedBox(
               height: 500,
@@ -190,9 +259,9 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
                 controller: _tabController,
                 children: [
                   _Overview(user: user),
-                  _Bookmarks(),
-                  _Reviews(),
-                  _Photos(),
+                  _Bookmarks(user: user),
+                  _Reviews(user: user),
+                  _Photos(user: user),
                 ],
               ),
             )
@@ -213,9 +282,27 @@ class _Description extends StatelessWidget {
 }
 
 class _Reviews extends StatefulWidget {
-  const _Reviews();
+  const _Reviews({required this.user});
+  final api.User? user;
   @override
   State<_Reviews> createState() => _ReviewsState();
+}
+
+class _ReviewComponent extends StatefulWidget {
+  const _ReviewComponent({required this.review});
+  final api.Review review;
+
+  @override
+  State<_ReviewComponent> createState() => _ReviewComponentState();
+}
+
+class _BookmarkComponent extends StatefulWidget {
+  const _BookmarkComponent({required this.bookmark});
+
+  final api.UserEstablishmentBookmark? bookmark;
+
+  @override
+  State<_BookmarkComponent> createState() => _BookmarkComponentState();
 }
 
 class _ReviewsState extends State<_Reviews> {
@@ -227,7 +314,7 @@ class _ReviewsState extends State<_Reviews> {
   }
 
   void fetchData() async {
-    reviews = (await api.ReviewApi(MyApp.sessionApiClient).reviewGet())!;
+    reviews = (await api.ReviewApi().reviewGet(id: 'eq.${widget.user?.id}'))!;
     if (mounted) {
       setState(() {});
     }
@@ -249,14 +336,6 @@ class _ReviewsState extends State<_Reviews> {
   }
 }
 
-class _ReviewComponent extends StatefulWidget {
-  const _ReviewComponent({required this.review});
-  final api.Review review;
-
-  @override
-  State<_ReviewComponent> createState() => _ReviewComponentState();
-}
-
 class _ReviewComponentState extends State<_ReviewComponent> {
   List<api.ReviewImage> images = [];
   String? establishment;
@@ -268,7 +347,7 @@ class _ReviewComponentState extends State<_ReviewComponent> {
 
   void fetchData() async {
     try {
-      images = (await api.ReviewImageApi(MyApp.sessionApiClient).reviewImageGet(reviewId: 'eq.${widget.review.id}'))!;
+      images = (await api.ReviewImageApi().reviewImageGet(reviewId: 'eq.${widget.review.id}'))!;
       establishment = (await api.EstablishmentApi().establishmentGet(id: 'eq.${widget.review.establishmentId}'))?.firstOrNull?.name ?? '';
       if (mounted) {
         setState(() {});
@@ -331,15 +410,6 @@ class _ReviewComponentState extends State<_ReviewComponent> {
   }
 }
 
-class _BookmarkComponent extends StatefulWidget {
-  const _BookmarkComponent({required this.bookmark});
-
-  final api.UserEstablishmentBookmark? bookmark;
-
-  @override
-  State<_BookmarkComponent> createState() => _BookmarkComponentState();
-}
-
 class _BookmarkComponentState extends State<_BookmarkComponent> {
   api.Establishment? establishment;
   @override
@@ -375,7 +445,8 @@ class _BookmarkComponentState extends State<_BookmarkComponent> {
 }
 
 class _Bookmarks extends StatefulWidget {
-  const _Bookmarks();
+  const _Bookmarks({required this.user});
+  final api.User? user;
   @override
   State<_Bookmarks> createState() => _BookmarksState();
 }
@@ -389,7 +460,7 @@ class _BookmarksState extends State<_Bookmarks> {
   }
 
   void fetchData() async {
-    bookmarks = (await api.UserEstablishmentBookmarkApi(MyApp.sessionApiClient).userEstablishmentBookmarkGet())!;
+    bookmarks = (await api.UserEstablishmentBookmarkApi().userEstablishmentBookmarkGet(userId: 'eq.${widget.user?.id}'))!;
     if (mounted) {
       setState(() {});
     }
@@ -477,7 +548,8 @@ class _OverviewState extends State<_Overview> {
 }
 
 class _Photos extends StatefulWidget {
-  const _Photos();
+  const _Photos({required this.user});
+  final api.User? user;
   @override
   State<_Photos> createState() => _PhotosState();
 }
@@ -491,7 +563,9 @@ class _PhotosState extends State<_Photos> {
   }
 
   void fetchData() async {
-    images = (await api.ReviewImageApi(MyApp.sessionApiClient).reviewImageGet())!;
+    // images = (await api.ReviewImageApi().reviewImageGet(select: '*,review!inner()',other:review.user_id=eq.${widget.user?.id}))!;
+    images = (await api.ReviewImageApi().reviewImageGet(select: '*,review!inner()', other: {'review.user_id': 'eq.${widget.user?.id}'}))!;
+    log(images.length.toString());
     if (mounted) {
       setState(() {});
     }

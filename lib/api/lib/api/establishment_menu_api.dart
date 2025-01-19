@@ -37,7 +37,7 @@ class EstablishmentMenuApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> establishmentMenuDeleteWithHttpInfo({ String? id, String? name, String? description, String? price, String? establishmentId, String? menuCategoryId, String? createdAt, String? updatedAt, String? prefer, }) async {
+  Future<Response> establishmentMenuDeleteWithHttpInfo({ String? id, String? name, String? description, String? price, String? establishmentId, String? menuCategoryId, String? createdAt, String? updatedAt, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment_menu';
 
@@ -73,11 +73,16 @@ class EstablishmentMenuApi {
       queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -86,8 +91,7 @@ class EstablishmentMenuApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -111,8 +115,8 @@ class EstablishmentMenuApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> establishmentMenuDelete({ String? id, String? name, String? description, String? price, String? establishmentId, String? menuCategoryId, String? createdAt, String? updatedAt, String? prefer, }) async {
-    final response = await establishmentMenuDeleteWithHttpInfo( id: id, name: name, description: description, price: price, establishmentId: establishmentId, menuCategoryId: menuCategoryId, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, );
+  Future<void> establishmentMenuDelete({ String? id, String? name, String? description, String? price, String? establishmentId, String? menuCategoryId, String? createdAt, String? updatedAt, String? prefer, Map<String, String>? other}) async {
+    final response = await establishmentMenuDeleteWithHttpInfo( id: id, name: name, description: description, price: price, establishmentId: establishmentId, menuCategoryId: menuCategoryId, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -157,7 +161,7 @@ class EstablishmentMenuApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> establishmentMenuGetWithHttpInfo({ String? id, String? name, String? description, String? price, String? establishmentId, String? menuCategoryId, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> establishmentMenuGetWithHttpInfo({ String? id, String? name, String? description, String? price, String? establishmentId, String? menuCategoryId, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment_menu';
 
@@ -205,6 +209,12 @@ class EstablishmentMenuApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -215,7 +225,6 @@ class EstablishmentMenuApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -224,8 +233,7 @@ class EstablishmentMenuApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -267,8 +275,8 @@ class EstablishmentMenuApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<EstablishmentMenu>?> establishmentMenuGet({ String? id, String? name, String? description, String? price, String? establishmentId, String? menuCategoryId, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await establishmentMenuGetWithHttpInfo( id: id, name: name, description: description, price: price, establishmentId: establishmentId, menuCategoryId: menuCategoryId, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<EstablishmentMenu>?> establishmentMenuGet({ String? id, String? name, String? description, String? price, String? establishmentId, String? menuCategoryId, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await establishmentMenuGetWithHttpInfo( id: id, name: name, description: description, price: price, establishmentId: establishmentId, menuCategoryId: menuCategoryId, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -309,7 +317,7 @@ class EstablishmentMenuApi {
   ///
   /// * [EstablishmentMenu] establishmentMenu:
   ///   establishment_menu
-  Future<Response> establishmentMenuPatchWithHttpInfo({ String? id, String? name, String? description, String? price, String? establishmentId, String? menuCategoryId, String? createdAt, String? updatedAt, String? prefer, EstablishmentMenu? establishmentMenu, }) async {
+  Future<Response> establishmentMenuPatchWithHttpInfo({ String? id, String? name, String? description, String? price, String? establishmentId, String? menuCategoryId, String? createdAt, String? updatedAt, String? prefer, EstablishmentMenu? establishmentMenu, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment_menu';
 
@@ -345,11 +353,16 @@ class EstablishmentMenuApi {
       queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -358,8 +371,7 @@ class EstablishmentMenuApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -386,8 +398,8 @@ class EstablishmentMenuApi {
   ///
   /// * [EstablishmentMenu] establishmentMenu:
   ///   establishment_menu
-  Future<void> establishmentMenuPatch({ String? id, String? name, String? description, String? price, String? establishmentId, String? menuCategoryId, String? createdAt, String? updatedAt, String? prefer, EstablishmentMenu? establishmentMenu, }) async {
-    final response = await establishmentMenuPatchWithHttpInfo( id: id, name: name, description: description, price: price, establishmentId: establishmentId, menuCategoryId: menuCategoryId, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, establishmentMenu: establishmentMenu, );
+  Future<void> establishmentMenuPatch({ String? id, String? name, String? description, String? price, String? establishmentId, String? menuCategoryId, String? createdAt, String? updatedAt, String? prefer, EstablishmentMenu? establishmentMenu, Map<String, String>? other}) async {
+    final response = await establishmentMenuPatchWithHttpInfo( id: id, name: name, description: description, price: price, establishmentId: establishmentId, menuCategoryId: menuCategoryId, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, establishmentMenu: establishmentMenu, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -404,7 +416,7 @@ class EstablishmentMenuApi {
   ///
   /// * [EstablishmentMenu] establishmentMenu:
   ///   establishment_menu
-  Future<Response> establishmentMenuPostWithHttpInfo({ String? select, String? prefer, EstablishmentMenu? establishmentMenu, }) async {
+  Future<Response> establishmentMenuPostWithHttpInfo({ String? select, String? prefer, EstablishmentMenu? establishmentMenu, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment_menu';
 
@@ -419,11 +431,16 @@ class EstablishmentMenuApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -432,8 +449,7 @@ class EstablishmentMenuApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -447,8 +463,8 @@ class EstablishmentMenuApi {
   ///
   /// * [EstablishmentMenu] establishmentMenu:
   ///   establishment_menu
-  Future<void> establishmentMenuPost({ String? select, String? prefer, EstablishmentMenu? establishmentMenu, }) async {
-    final response = await establishmentMenuPostWithHttpInfo( select: select, prefer: prefer, establishmentMenu: establishmentMenu, );
+  Future<void> establishmentMenuPost({ String? select, String? prefer, EstablishmentMenu? establishmentMenu, Map<String, String>? other}) async {
+    final response = await establishmentMenuPostWithHttpInfo( select: select, prefer: prefer, establishmentMenu: establishmentMenu, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

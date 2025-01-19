@@ -35,7 +35,7 @@ class ReviewImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> reviewImageDeleteWithHttpInfo({ String? id, String? reviewId, String? imageUrl, String? description, String? itemName, String? price, String? type, String? prefer, }) async {
+  Future<Response> reviewImageDeleteWithHttpInfo({ String? id, String? reviewId, String? imageUrl, String? description, String? itemName, String? price, String? type, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/review_image';
 
@@ -68,11 +68,16 @@ class ReviewImageApi {
       queryParams.addAll(_queryParams('', 'type', type));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -81,8 +86,7 @@ class ReviewImageApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -104,8 +108,8 @@ class ReviewImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> reviewImageDelete({ String? id, String? reviewId, String? imageUrl, String? description, String? itemName, String? price, String? type, String? prefer, }) async {
-    final response = await reviewImageDeleteWithHttpInfo( id: id, reviewId: reviewId, imageUrl: imageUrl, description: description, itemName: itemName, price: price, type: type, prefer: prefer, );
+  Future<void> reviewImageDelete({ String? id, String? reviewId, String? imageUrl, String? description, String? itemName, String? price, String? type, String? prefer, Map<String, String>? other}) async {
+    final response = await reviewImageDeleteWithHttpInfo( id: id, reviewId: reviewId, imageUrl: imageUrl, description: description, itemName: itemName, price: price, type: type, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -148,7 +152,7 @@ class ReviewImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> reviewImageGetWithHttpInfo({ String? id, String? reviewId, String? imageUrl, String? description, String? itemName, String? price, String? type, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> reviewImageGetWithHttpInfo({ String? id, String? reviewId, String? imageUrl, String? description, String? itemName, String? price, String? type, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/review_image';
 
@@ -193,6 +197,12 @@ class ReviewImageApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -203,7 +213,6 @@ class ReviewImageApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -212,8 +221,7 @@ class ReviewImageApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -253,8 +261,8 @@ class ReviewImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<ReviewImage>?> reviewImageGet({ String? id, String? reviewId, String? imageUrl, String? description, String? itemName, String? price, String? type, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await reviewImageGetWithHttpInfo( id: id, reviewId: reviewId, imageUrl: imageUrl, description: description, itemName: itemName, price: price, type: type, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<ReviewImage>?> reviewImageGet({ String? id, String? reviewId, String? imageUrl, String? description, String? itemName, String? price, String? type, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await reviewImageGetWithHttpInfo( id: id, reviewId: reviewId, imageUrl: imageUrl, description: description, itemName: itemName, price: price, type: type, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -293,7 +301,7 @@ class ReviewImageApi {
   ///
   /// * [ReviewImage] reviewImage:
   ///   review_image
-  Future<Response> reviewImagePatchWithHttpInfo({ String? id, String? reviewId, String? imageUrl, String? description, String? itemName, String? price, String? type, String? prefer, ReviewImage? reviewImage, }) async {
+  Future<Response> reviewImagePatchWithHttpInfo({ String? id, String? reviewId, String? imageUrl, String? description, String? itemName, String? price, String? type, String? prefer, ReviewImage? reviewImage, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/review_image';
 
@@ -326,11 +334,16 @@ class ReviewImageApi {
       queryParams.addAll(_queryParams('', 'type', type));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -339,8 +352,7 @@ class ReviewImageApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -365,8 +377,8 @@ class ReviewImageApi {
   ///
   /// * [ReviewImage] reviewImage:
   ///   review_image
-  Future<void> reviewImagePatch({ String? id, String? reviewId, String? imageUrl, String? description, String? itemName, String? price, String? type, String? prefer, ReviewImage? reviewImage, }) async {
-    final response = await reviewImagePatchWithHttpInfo( id: id, reviewId: reviewId, imageUrl: imageUrl, description: description, itemName: itemName, price: price, type: type, prefer: prefer, reviewImage: reviewImage, );
+  Future<void> reviewImagePatch({ String? id, String? reviewId, String? imageUrl, String? description, String? itemName, String? price, String? type, String? prefer, ReviewImage? reviewImage, Map<String, String>? other}) async {
+    final response = await reviewImagePatchWithHttpInfo( id: id, reviewId: reviewId, imageUrl: imageUrl, description: description, itemName: itemName, price: price, type: type, prefer: prefer, reviewImage: reviewImage, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -383,7 +395,7 @@ class ReviewImageApi {
   ///
   /// * [ReviewImage] reviewImage:
   ///   review_image
-  Future<Response> reviewImagePostWithHttpInfo({ String? select, String? prefer, ReviewImage? reviewImage, }) async {
+  Future<Response> reviewImagePostWithHttpInfo({ String? select, String? prefer, ReviewImage? reviewImage, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/review_image';
 
@@ -398,11 +410,16 @@ class ReviewImageApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -411,8 +428,7 @@ class ReviewImageApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -426,8 +442,8 @@ class ReviewImageApi {
   ///
   /// * [ReviewImage] reviewImage:
   ///   review_image
-  Future<void> reviewImagePost({ String? select, String? prefer, ReviewImage? reviewImage, }) async {
-    final response = await reviewImagePostWithHttpInfo( select: select, prefer: prefer, reviewImage: reviewImage, );
+  Future<void> reviewImagePost({ String? select, String? prefer, ReviewImage? reviewImage, Map<String, String>? other}) async {
+    final response = await reviewImagePostWithHttpInfo( select: select, prefer: prefer, reviewImage: reviewImage, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

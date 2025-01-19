@@ -27,7 +27,7 @@ class EstablishmentRankApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> establishmentRankDeleteWithHttpInfo({ String? establishmentId, String? userId, String? rank, String? prefer, }) async {
+  Future<Response> establishmentRankDeleteWithHttpInfo({ String? establishmentId, String? userId, String? rank, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment_rank';
 
@@ -48,11 +48,16 @@ class EstablishmentRankApi {
       queryParams.addAll(_queryParams('', 'rank', rank));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -61,8 +66,7 @@ class EstablishmentRankApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -76,8 +80,8 @@ class EstablishmentRankApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> establishmentRankDelete({ String? establishmentId, String? userId, String? rank, String? prefer, }) async {
-    final response = await establishmentRankDeleteWithHttpInfo( establishmentId: establishmentId, userId: userId, rank: rank, prefer: prefer, );
+  Future<void> establishmentRankDelete({ String? establishmentId, String? userId, String? rank, String? prefer, Map<String, String>? other}) async {
+    final response = await establishmentRankDeleteWithHttpInfo( establishmentId: establishmentId, userId: userId, rank: rank, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -112,7 +116,7 @@ class EstablishmentRankApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> establishmentRankGetWithHttpInfo({ String? establishmentId, String? userId, String? rank, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> establishmentRankGetWithHttpInfo({ String? establishmentId, String? userId, String? rank, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment_rank';
 
@@ -145,6 +149,12 @@ class EstablishmentRankApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -155,7 +165,6 @@ class EstablishmentRankApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -164,8 +173,7 @@ class EstablishmentRankApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -197,8 +205,8 @@ class EstablishmentRankApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<EstablishmentRank>?> establishmentRankGet({ String? establishmentId, String? userId, String? rank, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await establishmentRankGetWithHttpInfo( establishmentId: establishmentId, userId: userId, rank: rank, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<EstablishmentRank>?> establishmentRankGet({ String? establishmentId, String? userId, String? rank, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await establishmentRankGetWithHttpInfo( establishmentId: establishmentId, userId: userId, rank: rank, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -229,7 +237,7 @@ class EstablishmentRankApi {
   ///
   /// * [EstablishmentRank] establishmentRank:
   ///   establishment_rank
-  Future<Response> establishmentRankPatchWithHttpInfo({ String? establishmentId, String? userId, String? rank, String? prefer, EstablishmentRank? establishmentRank, }) async {
+  Future<Response> establishmentRankPatchWithHttpInfo({ String? establishmentId, String? userId, String? rank, String? prefer, EstablishmentRank? establishmentRank, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment_rank';
 
@@ -250,11 +258,16 @@ class EstablishmentRankApi {
       queryParams.addAll(_queryParams('', 'rank', rank));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -263,8 +276,7 @@ class EstablishmentRankApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -281,8 +293,8 @@ class EstablishmentRankApi {
   ///
   /// * [EstablishmentRank] establishmentRank:
   ///   establishment_rank
-  Future<void> establishmentRankPatch({ String? establishmentId, String? userId, String? rank, String? prefer, EstablishmentRank? establishmentRank, }) async {
-    final response = await establishmentRankPatchWithHttpInfo( establishmentId: establishmentId, userId: userId, rank: rank, prefer: prefer, establishmentRank: establishmentRank, );
+  Future<void> establishmentRankPatch({ String? establishmentId, String? userId, String? rank, String? prefer, EstablishmentRank? establishmentRank, Map<String, String>? other}) async {
+    final response = await establishmentRankPatchWithHttpInfo( establishmentId: establishmentId, userId: userId, rank: rank, prefer: prefer, establishmentRank: establishmentRank, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -299,7 +311,7 @@ class EstablishmentRankApi {
   ///
   /// * [EstablishmentRank] establishmentRank:
   ///   establishment_rank
-  Future<Response> establishmentRankPostWithHttpInfo({ String? select, String? prefer, EstablishmentRank? establishmentRank, }) async {
+  Future<Response> establishmentRankPostWithHttpInfo({ String? select, String? prefer, EstablishmentRank? establishmentRank, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment_rank';
 
@@ -314,11 +326,16 @@ class EstablishmentRankApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -327,8 +344,7 @@ class EstablishmentRankApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -342,8 +358,8 @@ class EstablishmentRankApi {
   ///
   /// * [EstablishmentRank] establishmentRank:
   ///   establishment_rank
-  Future<void> establishmentRankPost({ String? select, String? prefer, EstablishmentRank? establishmentRank, }) async {
-    final response = await establishmentRankPostWithHttpInfo( select: select, prefer: prefer, establishmentRank: establishmentRank, );
+  Future<void> establishmentRankPost({ String? select, String? prefer, EstablishmentRank? establishmentRank, Map<String, String>? other}) async {
+    final response = await establishmentRankPostWithHttpInfo( select: select, prefer: prefer, establishmentRank: establishmentRank, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

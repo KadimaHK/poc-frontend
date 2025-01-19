@@ -39,7 +39,9 @@ class Follow {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.follower != null)
       json[r'follower'] = this.follower;
+    if (this.following != null)
       json[r'following'] = this.following;
     return json;
   }
@@ -51,20 +53,9 @@ class Follow {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
-      // Ensure that the map contains the required keys.
-      // Note 1: the values aren't checked for validity beyond being non-null.
-      // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Follow[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Follow[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
-
       return Follow(
-        follower: mapValueOfType<int>(json, r'follower')!,
-        following: mapValueOfType<int>(json, r'following')!,
+        follower: mapValueOfType<int>(json, r'follower'),
+        following: mapValueOfType<int>(json, r'following'),
       );
     }
     return null;
@@ -110,10 +101,6 @@ class Follow {
     return map;
   }
 
-  /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-    'follower',
-    'following',
-  };
+
 }
 

@@ -17,8 +17,8 @@ class StoredLiqueurTransfer {
     this.storedLiqueurId,
     this.fromUserId,
     this.toUserId,
-    this.isAccepted = false,
-    this.createdAt = 'now()',
+    this.isAccepted,
+    this.createdAt,
   });
 
   /// Note: This is a Primary Key.<pk/>
@@ -79,23 +79,17 @@ class StoredLiqueurTransfer {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.id != null)
       json[r'id'] = this.id;
-    if (this.storedLiqueurId != null) {
+    if (this.storedLiqueurId != null)
       json[r'stored_liqueur_id'] = this.storedLiqueurId;
-    } else {
-      json[r'stored_liqueur_id'] = null;
-    }
-    if (this.fromUserId != null) {
+    if (this.fromUserId != null)
       json[r'from_user_id'] = this.fromUserId;
-    } else {
-      json[r'from_user_id'] = null;
-    }
-    if (this.toUserId != null) {
+    if (this.toUserId != null)
       json[r'to_user_id'] = this.toUserId;
-    } else {
-      json[r'to_user_id'] = null;
-    }
+    if (this.isAccepted != null)
       json[r'is_accepted'] = this.isAccepted;
+    if (this.createdAt != null)
       json[r'created_at'] = this.createdAt;
     return json;
   }
@@ -107,19 +101,8 @@ class StoredLiqueurTransfer {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
-      // Ensure that the map contains the required keys.
-      // Note 1: the values aren't checked for validity beyond being non-null.
-      // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "StoredLiqueurTransfer[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "StoredLiqueurTransfer[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
-
       return StoredLiqueurTransfer(
-        id: mapValueOfType<int>(json, r'id')!,
+        id: mapValueOfType<int>(json, r'id'),
         storedLiqueurId: mapValueOfType<int>(json, r'stored_liqueur_id'),
         fromUserId: mapValueOfType<int>(json, r'from_user_id'),
         toUserId: mapValueOfType<int>(json, r'to_user_id'),
@@ -170,9 +153,6 @@ class StoredLiqueurTransfer {
     return map;
   }
 
-  /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-    'id',
-  };
+
 }
 

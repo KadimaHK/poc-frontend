@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:poc_frontend/api/lib/api.dart' as api;
 import 'package:poc_frontend/components/establishment_info_card_view.dart';
+import 'package:poc_frontend/components/qr_code_dialog.dart';
 import 'package:poc_frontend/main.dart';
 import 'package:poc_frontend/pages/stored_liqueur_transfer_page.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -123,30 +124,7 @@ class _StoredLiqueurDetailPageState extends State<StoredLiqueurDetailPage> {
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                    child: TextButton(
-                        onPressed: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) => Dialog(
-                              backgroundColor: Colors.transparent,
-                              child: Center(
-                                widthFactor: 1,
-                                heightFactor: 1,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: QrImageView(
-                                    backgroundColor: Colors.white,
-                                    padding: const EdgeInsets.all(20),
-                                    data: 'stored_liqueur_id=${widget.storedLiqueur.redeemCode}',
-                                    version: QrVersions.auto,
-                                    size: MediaQuery.of(context).size.width * 0.75,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          );
-                        },
-                        child: Text(t.redeem)),
+                    child: TextButton(onPressed: () => showQrCodeDialog(context, 'stored_liqueur_id=${widget.storedLiqueur.redeemCode}'), child: Text(t.redeem)),
                   ),
                 ),
               ],

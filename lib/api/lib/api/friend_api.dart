@@ -25,7 +25,7 @@ class FriendApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> friendDeleteWithHttpInfo({ String? userId, String? friendId, String? prefer, }) async {
+  Future<Response> friendDeleteWithHttpInfo({ String? userId, String? friendId, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/friend';
 
@@ -43,11 +43,16 @@ class FriendApi {
       queryParams.addAll(_queryParams('', 'friend_id', friendId));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -56,8 +61,7 @@ class FriendApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -69,8 +73,8 @@ class FriendApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> friendDelete({ String? userId, String? friendId, String? prefer, }) async {
-    final response = await friendDeleteWithHttpInfo( userId: userId, friendId: friendId, prefer: prefer, );
+  Future<void> friendDelete({ String? userId, String? friendId, String? prefer, Map<String, String>? other}) async {
+    final response = await friendDeleteWithHttpInfo( userId: userId, friendId: friendId, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -103,7 +107,7 @@ class FriendApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> friendGetWithHttpInfo({ String? userId, String? friendId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> friendGetWithHttpInfo({ String? userId, String? friendId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/friend';
 
@@ -133,6 +137,12 @@ class FriendApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -143,7 +153,6 @@ class FriendApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -152,8 +161,7 @@ class FriendApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -183,8 +191,8 @@ class FriendApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<Friend>?> friendGet({ String? userId, String? friendId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await friendGetWithHttpInfo( userId: userId, friendId: friendId, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<Friend>?> friendGet({ String? userId, String? friendId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await friendGetWithHttpInfo( userId: userId, friendId: friendId, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -213,7 +221,7 @@ class FriendApi {
   ///
   /// * [Friend] friend:
   ///   friend
-  Future<Response> friendPatchWithHttpInfo({ String? userId, String? friendId, String? prefer, Friend? friend, }) async {
+  Future<Response> friendPatchWithHttpInfo({ String? userId, String? friendId, String? prefer, Friend? friend, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/friend';
 
@@ -231,11 +239,16 @@ class FriendApi {
       queryParams.addAll(_queryParams('', 'friend_id', friendId));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -244,8 +257,7 @@ class FriendApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -260,8 +272,8 @@ class FriendApi {
   ///
   /// * [Friend] friend:
   ///   friend
-  Future<void> friendPatch({ String? userId, String? friendId, String? prefer, Friend? friend, }) async {
-    final response = await friendPatchWithHttpInfo( userId: userId, friendId: friendId, prefer: prefer, friend: friend, );
+  Future<void> friendPatch({ String? userId, String? friendId, String? prefer, Friend? friend, Map<String, String>? other}) async {
+    final response = await friendPatchWithHttpInfo( userId: userId, friendId: friendId, prefer: prefer, friend: friend, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -278,7 +290,7 @@ class FriendApi {
   ///
   /// * [Friend] friend:
   ///   friend
-  Future<Response> friendPostWithHttpInfo({ String? select, String? prefer, Friend? friend, }) async {
+  Future<Response> friendPostWithHttpInfo({ String? select, String? prefer, Friend? friend, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/friend';
 
@@ -293,11 +305,16 @@ class FriendApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -306,8 +323,7 @@ class FriendApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -321,8 +337,8 @@ class FriendApi {
   ///
   /// * [Friend] friend:
   ///   friend
-  Future<void> friendPost({ String? select, String? prefer, Friend? friend, }) async {
-    final response = await friendPostWithHttpInfo( select: select, prefer: prefer, friend: friend, );
+  Future<void> friendPost({ String? select, String? prefer, Friend? friend, Map<String, String>? other}) async {
+    final response = await friendPostWithHttpInfo( select: select, prefer: prefer, friend: friend, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

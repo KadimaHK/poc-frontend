@@ -33,7 +33,7 @@ class PickApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> pickDeleteWithHttpInfo({ String? id, String? message, String? expiry, String? imageUrl, String? createdAt, String? updatedAt, String? prefer, }) async {
+  Future<Response> pickDeleteWithHttpInfo({ String? id, String? message, String? expiry, String? imageUrl, String? createdAt, String? updatedAt, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/pick';
 
@@ -63,11 +63,16 @@ class PickApi {
       queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -76,8 +81,7 @@ class PickApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -97,8 +101,8 @@ class PickApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> pickDelete({ String? id, String? message, String? expiry, String? imageUrl, String? createdAt, String? updatedAt, String? prefer, }) async {
-    final response = await pickDeleteWithHttpInfo( id: id, message: message, expiry: expiry, imageUrl: imageUrl, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, );
+  Future<void> pickDelete({ String? id, String? message, String? expiry, String? imageUrl, String? createdAt, String? updatedAt, String? prefer, Map<String, String>? other}) async {
+    final response = await pickDeleteWithHttpInfo( id: id, message: message, expiry: expiry, imageUrl: imageUrl, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -139,7 +143,7 @@ class PickApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> pickGetWithHttpInfo({ String? id, String? message, String? expiry, String? imageUrl, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> pickGetWithHttpInfo({ String? id, String? message, String? expiry, String? imageUrl, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/pick';
 
@@ -181,6 +185,12 @@ class PickApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -191,7 +201,6 @@ class PickApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -200,8 +209,7 @@ class PickApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -239,8 +247,8 @@ class PickApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<Pick>?> pickGet({ String? id, String? message, String? expiry, String? imageUrl, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await pickGetWithHttpInfo( id: id, message: message, expiry: expiry, imageUrl: imageUrl, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<Pick>?> pickGet({ String? id, String? message, String? expiry, String? imageUrl, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await pickGetWithHttpInfo( id: id, message: message, expiry: expiry, imageUrl: imageUrl, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -277,7 +285,7 @@ class PickApi {
   ///
   /// * [Pick] pick:
   ///   pick
-  Future<Response> pickPatchWithHttpInfo({ String? id, String? message, String? expiry, String? imageUrl, String? createdAt, String? updatedAt, String? prefer, Pick? pick, }) async {
+  Future<Response> pickPatchWithHttpInfo({ String? id, String? message, String? expiry, String? imageUrl, String? createdAt, String? updatedAt, String? prefer, Pick? pick, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/pick';
 
@@ -307,11 +315,16 @@ class PickApi {
       queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -320,8 +333,7 @@ class PickApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -344,8 +356,8 @@ class PickApi {
   ///
   /// * [Pick] pick:
   ///   pick
-  Future<void> pickPatch({ String? id, String? message, String? expiry, String? imageUrl, String? createdAt, String? updatedAt, String? prefer, Pick? pick, }) async {
-    final response = await pickPatchWithHttpInfo( id: id, message: message, expiry: expiry, imageUrl: imageUrl, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, pick: pick, );
+  Future<void> pickPatch({ String? id, String? message, String? expiry, String? imageUrl, String? createdAt, String? updatedAt, String? prefer, Pick? pick, Map<String, String>? other}) async {
+    final response = await pickPatchWithHttpInfo( id: id, message: message, expiry: expiry, imageUrl: imageUrl, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, pick: pick, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -362,7 +374,7 @@ class PickApi {
   ///
   /// * [Pick] pick:
   ///   pick
-  Future<Response> pickPostWithHttpInfo({ String? select, String? prefer, Pick? pick, }) async {
+  Future<Response> pickPostWithHttpInfo({ String? select, String? prefer, Pick? pick, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/pick';
 
@@ -377,11 +389,16 @@ class PickApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -390,8 +407,7 @@ class PickApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -405,8 +421,8 @@ class PickApi {
   ///
   /// * [Pick] pick:
   ///   pick
-  Future<void> pickPost({ String? select, String? prefer, Pick? pick, }) async {
-    final response = await pickPostWithHttpInfo( select: select, prefer: prefer, pick: pick, );
+  Future<void> pickPost({ String? select, String? prefer, Pick? pick, Map<String, String>? other}) async {
+    final response = await pickPostWithHttpInfo( select: select, prefer: prefer, pick: pick, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

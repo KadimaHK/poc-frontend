@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:poc_frontend/api/lib/api.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:poc_frontend/components/qr_code_dialog.dart';
 
 class UserMembershipCard extends StatefulWidget {
   const UserMembershipCard({Key? key, required this.user}) : super(key: key);
@@ -58,7 +59,7 @@ class _UserMembershipCardState extends State<UserMembershipCard> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                IconButton(onPressed: () {}, icon: const Icon(Icons.qr_code)),
+                IconButton(onPressed: () => showQrCodeDialog(context, widget.user.uuid!), icon: const Icon(Icons.qr_code)),
                 Text(widget.user.uuid!, style: const TextStyle(fontSize: 12)),
                 IconButton(
                     onPressed: () {

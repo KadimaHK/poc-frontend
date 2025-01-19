@@ -16,8 +16,8 @@ class MenuCategory {
     this.id,
     this.name,
     this.description,
-    this.createdAt = 'now()',
-    this.updatedAt = 'now()',
+    this.createdAt,
+    this.updatedAt,
   });
 
   /// Note: This is a Primary Key.<pk/>
@@ -65,18 +65,15 @@ class MenuCategory {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.id != null)
       json[r'id'] = this.id;
-    if (this.name != null) {
+    if (this.name != null)
       json[r'name'] = this.name;
-    } else {
-      json[r'name'] = null;
-    }
-    if (this.description != null) {
+    if (this.description != null)
       json[r'description'] = this.description;
-    } else {
-      json[r'description'] = null;
-    }
+    if (this.createdAt != null)
       json[r'created_at'] = this.createdAt;
+    if (this.updatedAt != null)
       json[r'updated_at'] = this.updatedAt;
     return json;
   }
@@ -88,19 +85,8 @@ class MenuCategory {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
-      // Ensure that the map contains the required keys.
-      // Note 1: the values aren't checked for validity beyond being non-null.
-      // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "MenuCategory[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "MenuCategory[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
-
       return MenuCategory(
-        id: mapValueOfType<int>(json, r'id')!,
+        id: mapValueOfType<int>(json, r'id'),
         name: mapValueOfType<String>(json, r'name'),
         description: mapValueOfType<String>(json, r'description'),
         createdAt: mapValueOfType<String>(json, r'created_at') ?? 'now()',
@@ -150,9 +136,6 @@ class MenuCategory {
     return map;
   }
 
-  /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-    'id',
-  };
+
 }
 

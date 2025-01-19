@@ -31,7 +31,7 @@ class UserFeaturedOfferApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> userFeaturedOfferDeleteWithHttpInfo({ String? userId, String? featuredOfferId, String? isRedeemed, String? redeemCode, String? redeemedAt, String? prefer, }) async {
+  Future<Response> userFeaturedOfferDeleteWithHttpInfo({ String? userId, String? featuredOfferId, String? isRedeemed, String? redeemCode, String? redeemedAt, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/user_featured_offer';
 
@@ -58,11 +58,16 @@ class UserFeaturedOfferApi {
       queryParams.addAll(_queryParams('', 'redeemed_at', redeemedAt));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -71,8 +76,7 @@ class UserFeaturedOfferApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -90,8 +94,8 @@ class UserFeaturedOfferApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> userFeaturedOfferDelete({ String? userId, String? featuredOfferId, String? isRedeemed, String? redeemCode, String? redeemedAt, String? prefer, }) async {
-    final response = await userFeaturedOfferDeleteWithHttpInfo( userId: userId, featuredOfferId: featuredOfferId, isRedeemed: isRedeemed, redeemCode: redeemCode, redeemedAt: redeemedAt, prefer: prefer, );
+  Future<void> userFeaturedOfferDelete({ String? userId, String? featuredOfferId, String? isRedeemed, String? redeemCode, String? redeemedAt, String? prefer, Map<String, String>? other}) async {
+    final response = await userFeaturedOfferDeleteWithHttpInfo( userId: userId, featuredOfferId: featuredOfferId, isRedeemed: isRedeemed, redeemCode: redeemCode, redeemedAt: redeemedAt, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -130,7 +134,7 @@ class UserFeaturedOfferApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> userFeaturedOfferGetWithHttpInfo({ String? userId, String? featuredOfferId, String? isRedeemed, String? redeemCode, String? redeemedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> userFeaturedOfferGetWithHttpInfo({ String? userId, String? featuredOfferId, String? isRedeemed, String? redeemCode, String? redeemedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/user_featured_offer';
 
@@ -169,6 +173,12 @@ class UserFeaturedOfferApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -179,7 +189,6 @@ class UserFeaturedOfferApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -188,8 +197,7 @@ class UserFeaturedOfferApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -225,8 +233,8 @@ class UserFeaturedOfferApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<UserFeaturedOffer>?> userFeaturedOfferGet({ String? userId, String? featuredOfferId, String? isRedeemed, String? redeemCode, String? redeemedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await userFeaturedOfferGetWithHttpInfo( userId: userId, featuredOfferId: featuredOfferId, isRedeemed: isRedeemed, redeemCode: redeemCode, redeemedAt: redeemedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<UserFeaturedOffer>?> userFeaturedOfferGet({ String? userId, String? featuredOfferId, String? isRedeemed, String? redeemCode, String? redeemedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await userFeaturedOfferGetWithHttpInfo( userId: userId, featuredOfferId: featuredOfferId, isRedeemed: isRedeemed, redeemCode: redeemCode, redeemedAt: redeemedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -261,7 +269,7 @@ class UserFeaturedOfferApi {
   ///
   /// * [UserFeaturedOffer] userFeaturedOffer:
   ///   user_featured_offer
-  Future<Response> userFeaturedOfferPatchWithHttpInfo({ String? userId, String? featuredOfferId, String? isRedeemed, String? redeemCode, String? redeemedAt, String? prefer, UserFeaturedOffer? userFeaturedOffer, }) async {
+  Future<Response> userFeaturedOfferPatchWithHttpInfo({ String? userId, String? featuredOfferId, String? isRedeemed, String? redeemCode, String? redeemedAt, String? prefer, UserFeaturedOffer? userFeaturedOffer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/user_featured_offer';
 
@@ -288,11 +296,16 @@ class UserFeaturedOfferApi {
       queryParams.addAll(_queryParams('', 'redeemed_at', redeemedAt));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -301,8 +314,7 @@ class UserFeaturedOfferApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -323,8 +335,8 @@ class UserFeaturedOfferApi {
   ///
   /// * [UserFeaturedOffer] userFeaturedOffer:
   ///   user_featured_offer
-  Future<void> userFeaturedOfferPatch({ String? userId, String? featuredOfferId, String? isRedeemed, String? redeemCode, String? redeemedAt, String? prefer, UserFeaturedOffer? userFeaturedOffer, }) async {
-    final response = await userFeaturedOfferPatchWithHttpInfo( userId: userId, featuredOfferId: featuredOfferId, isRedeemed: isRedeemed, redeemCode: redeemCode, redeemedAt: redeemedAt, prefer: prefer, userFeaturedOffer: userFeaturedOffer, );
+  Future<void> userFeaturedOfferPatch({ String? userId, String? featuredOfferId, String? isRedeemed, String? redeemCode, String? redeemedAt, String? prefer, UserFeaturedOffer? userFeaturedOffer, Map<String, String>? other}) async {
+    final response = await userFeaturedOfferPatchWithHttpInfo( userId: userId, featuredOfferId: featuredOfferId, isRedeemed: isRedeemed, redeemCode: redeemCode, redeemedAt: redeemedAt, prefer: prefer, userFeaturedOffer: userFeaturedOffer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -341,7 +353,7 @@ class UserFeaturedOfferApi {
   ///
   /// * [UserFeaturedOffer] userFeaturedOffer:
   ///   user_featured_offer
-  Future<Response> userFeaturedOfferPostWithHttpInfo({ String? select, String? prefer, UserFeaturedOffer? userFeaturedOffer, }) async {
+  Future<Response> userFeaturedOfferPostWithHttpInfo({ String? select, String? prefer, UserFeaturedOffer? userFeaturedOffer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/user_featured_offer';
 
@@ -356,11 +368,16 @@ class UserFeaturedOfferApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -369,8 +386,7 @@ class UserFeaturedOfferApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -384,8 +400,8 @@ class UserFeaturedOfferApi {
   ///
   /// * [UserFeaturedOffer] userFeaturedOffer:
   ///   user_featured_offer
-  Future<void> userFeaturedOfferPost({ String? select, String? prefer, UserFeaturedOffer? userFeaturedOffer, }) async {
-    final response = await userFeaturedOfferPostWithHttpInfo( select: select, prefer: prefer, userFeaturedOffer: userFeaturedOffer, );
+  Future<void> userFeaturedOfferPost({ String? select, String? prefer, UserFeaturedOffer? userFeaturedOffer, Map<String, String>? other}) async {
+    final response = await userFeaturedOfferPostWithHttpInfo( select: select, prefer: prefer, userFeaturedOffer: userFeaturedOffer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

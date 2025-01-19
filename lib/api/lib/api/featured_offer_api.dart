@@ -47,7 +47,7 @@ class FeaturedOfferApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> featuredOfferDeleteWithHttpInfo({ String? id, String? title, String? voucherCode, String? startDate, String? expiryDate, String? percentageDiscount, String? details, String? description, String? redemptionPeriod, String? howToRedeem, String? isGlobal, String? imageUrl, String? establishmentId, String? prefer, }) async {
+  Future<Response> featuredOfferDeleteWithHttpInfo({ String? id, String? title, String? voucherCode, String? startDate, String? expiryDate, String? percentageDiscount, String? details, String? description, String? redemptionPeriod, String? howToRedeem, String? isGlobal, String? imageUrl, String? establishmentId, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/featured_offer';
 
@@ -98,11 +98,16 @@ class FeaturedOfferApi {
       queryParams.addAll(_queryParams('', 'establishment_id', establishmentId));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -111,8 +116,7 @@ class FeaturedOfferApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -146,8 +150,8 @@ class FeaturedOfferApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> featuredOfferDelete({ String? id, String? title, String? voucherCode, String? startDate, String? expiryDate, String? percentageDiscount, String? details, String? description, String? redemptionPeriod, String? howToRedeem, String? isGlobal, String? imageUrl, String? establishmentId, String? prefer, }) async {
-    final response = await featuredOfferDeleteWithHttpInfo( id: id, title: title, voucherCode: voucherCode, startDate: startDate, expiryDate: expiryDate, percentageDiscount: percentageDiscount, details: details, description: description, redemptionPeriod: redemptionPeriod, howToRedeem: howToRedeem, isGlobal: isGlobal, imageUrl: imageUrl, establishmentId: establishmentId, prefer: prefer, );
+  Future<void> featuredOfferDelete({ String? id, String? title, String? voucherCode, String? startDate, String? expiryDate, String? percentageDiscount, String? details, String? description, String? redemptionPeriod, String? howToRedeem, String? isGlobal, String? imageUrl, String? establishmentId, String? prefer, Map<String, String>? other}) async {
+    final response = await featuredOfferDeleteWithHttpInfo( id: id, title: title, voucherCode: voucherCode, startDate: startDate, expiryDate: expiryDate, percentageDiscount: percentageDiscount, details: details, description: description, redemptionPeriod: redemptionPeriod, howToRedeem: howToRedeem, isGlobal: isGlobal, imageUrl: imageUrl, establishmentId: establishmentId, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -202,7 +206,7 @@ class FeaturedOfferApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> featuredOfferGetWithHttpInfo({ String? id, String? title, String? voucherCode, String? startDate, String? expiryDate, String? percentageDiscount, String? details, String? description, String? redemptionPeriod, String? howToRedeem, String? isGlobal, String? imageUrl, String? establishmentId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> featuredOfferGetWithHttpInfo({ String? id, String? title, String? voucherCode, String? startDate, String? expiryDate, String? percentageDiscount, String? details, String? description, String? redemptionPeriod, String? howToRedeem, String? isGlobal, String? imageUrl, String? establishmentId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/featured_offer';
 
@@ -265,6 +269,12 @@ class FeaturedOfferApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -275,7 +285,6 @@ class FeaturedOfferApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -284,8 +293,7 @@ class FeaturedOfferApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -337,8 +345,8 @@ class FeaturedOfferApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<FeaturedOffer>?> featuredOfferGet({ String? id, String? title, String? voucherCode, String? startDate, String? expiryDate, String? percentageDiscount, String? details, String? description, String? redemptionPeriod, String? howToRedeem, String? isGlobal, String? imageUrl, String? establishmentId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await featuredOfferGetWithHttpInfo( id: id, title: title, voucherCode: voucherCode, startDate: startDate, expiryDate: expiryDate, percentageDiscount: percentageDiscount, details: details, description: description, redemptionPeriod: redemptionPeriod, howToRedeem: howToRedeem, isGlobal: isGlobal, imageUrl: imageUrl, establishmentId: establishmentId, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<FeaturedOffer>?> featuredOfferGet({ String? id, String? title, String? voucherCode, String? startDate, String? expiryDate, String? percentageDiscount, String? details, String? description, String? redemptionPeriod, String? howToRedeem, String? isGlobal, String? imageUrl, String? establishmentId, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await featuredOfferGetWithHttpInfo( id: id, title: title, voucherCode: voucherCode, startDate: startDate, expiryDate: expiryDate, percentageDiscount: percentageDiscount, details: details, description: description, redemptionPeriod: redemptionPeriod, howToRedeem: howToRedeem, isGlobal: isGlobal, imageUrl: imageUrl, establishmentId: establishmentId, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -389,7 +397,7 @@ class FeaturedOfferApi {
   ///
   /// * [FeaturedOffer] featuredOffer:
   ///   featured_offer
-  Future<Response> featuredOfferPatchWithHttpInfo({ String? id, String? title, String? voucherCode, String? startDate, String? expiryDate, String? percentageDiscount, String? details, String? description, String? redemptionPeriod, String? howToRedeem, String? isGlobal, String? imageUrl, String? establishmentId, String? prefer, FeaturedOffer? featuredOffer, }) async {
+  Future<Response> featuredOfferPatchWithHttpInfo({ String? id, String? title, String? voucherCode, String? startDate, String? expiryDate, String? percentageDiscount, String? details, String? description, String? redemptionPeriod, String? howToRedeem, String? isGlobal, String? imageUrl, String? establishmentId, String? prefer, FeaturedOffer? featuredOffer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/featured_offer';
 
@@ -440,11 +448,16 @@ class FeaturedOfferApi {
       queryParams.addAll(_queryParams('', 'establishment_id', establishmentId));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -453,8 +466,7 @@ class FeaturedOfferApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -491,8 +503,8 @@ class FeaturedOfferApi {
   ///
   /// * [FeaturedOffer] featuredOffer:
   ///   featured_offer
-  Future<void> featuredOfferPatch({ String? id, String? title, String? voucherCode, String? startDate, String? expiryDate, String? percentageDiscount, String? details, String? description, String? redemptionPeriod, String? howToRedeem, String? isGlobal, String? imageUrl, String? establishmentId, String? prefer, FeaturedOffer? featuredOffer, }) async {
-    final response = await featuredOfferPatchWithHttpInfo( id: id, title: title, voucherCode: voucherCode, startDate: startDate, expiryDate: expiryDate, percentageDiscount: percentageDiscount, details: details, description: description, redemptionPeriod: redemptionPeriod, howToRedeem: howToRedeem, isGlobal: isGlobal, imageUrl: imageUrl, establishmentId: establishmentId, prefer: prefer, featuredOffer: featuredOffer, );
+  Future<void> featuredOfferPatch({ String? id, String? title, String? voucherCode, String? startDate, String? expiryDate, String? percentageDiscount, String? details, String? description, String? redemptionPeriod, String? howToRedeem, String? isGlobal, String? imageUrl, String? establishmentId, String? prefer, FeaturedOffer? featuredOffer, Map<String, String>? other}) async {
+    final response = await featuredOfferPatchWithHttpInfo( id: id, title: title, voucherCode: voucherCode, startDate: startDate, expiryDate: expiryDate, percentageDiscount: percentageDiscount, details: details, description: description, redemptionPeriod: redemptionPeriod, howToRedeem: howToRedeem, isGlobal: isGlobal, imageUrl: imageUrl, establishmentId: establishmentId, prefer: prefer, featuredOffer: featuredOffer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -509,7 +521,7 @@ class FeaturedOfferApi {
   ///
   /// * [FeaturedOffer] featuredOffer:
   ///   featured_offer
-  Future<Response> featuredOfferPostWithHttpInfo({ String? select, String? prefer, FeaturedOffer? featuredOffer, }) async {
+  Future<Response> featuredOfferPostWithHttpInfo({ String? select, String? prefer, FeaturedOffer? featuredOffer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/featured_offer';
 
@@ -524,11 +536,16 @@ class FeaturedOfferApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -537,8 +554,7 @@ class FeaturedOfferApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -552,8 +568,8 @@ class FeaturedOfferApi {
   ///
   /// * [FeaturedOffer] featuredOffer:
   ///   featured_offer
-  Future<void> featuredOfferPost({ String? select, String? prefer, FeaturedOffer? featuredOffer, }) async {
-    final response = await featuredOfferPostWithHttpInfo( select: select, prefer: prefer, featuredOffer: featuredOffer, );
+  Future<void> featuredOfferPost({ String? select, String? prefer, FeaturedOffer? featuredOffer, Map<String, String>? other}) async {
+    final response = await featuredOfferPostWithHttpInfo( select: select, prefer: prefer, featuredOffer: featuredOffer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -37,7 +37,7 @@ class FeaturedApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> featuredDeleteWithHttpInfo({ String? id, String? title, String? description, String? imageUrl, String? content, String? establishmentId, String? createdAt, String? updatedAt, String? prefer, }) async {
+  Future<Response> featuredDeleteWithHttpInfo({ String? id, String? title, String? description, String? imageUrl, String? content, String? establishmentId, String? createdAt, String? updatedAt, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/featured';
 
@@ -73,11 +73,16 @@ class FeaturedApi {
       queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -86,8 +91,7 @@ class FeaturedApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -111,8 +115,8 @@ class FeaturedApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> featuredDelete({ String? id, String? title, String? description, String? imageUrl, String? content, String? establishmentId, String? createdAt, String? updatedAt, String? prefer, }) async {
-    final response = await featuredDeleteWithHttpInfo( id: id, title: title, description: description, imageUrl: imageUrl, content: content, establishmentId: establishmentId, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, );
+  Future<void> featuredDelete({ String? id, String? title, String? description, String? imageUrl, String? content, String? establishmentId, String? createdAt, String? updatedAt, String? prefer, Map<String, String>? other}) async {
+    final response = await featuredDeleteWithHttpInfo( id: id, title: title, description: description, imageUrl: imageUrl, content: content, establishmentId: establishmentId, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -157,7 +161,7 @@ class FeaturedApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> featuredGetWithHttpInfo({ String? id, String? title, String? description, String? imageUrl, String? content, String? establishmentId, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> featuredGetWithHttpInfo({ String? id, String? title, String? description, String? imageUrl, String? content, String? establishmentId, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/featured';
 
@@ -205,6 +209,12 @@ class FeaturedApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -215,7 +225,6 @@ class FeaturedApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -224,8 +233,7 @@ class FeaturedApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -267,8 +275,8 @@ class FeaturedApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<Featured>?> featuredGet({ String? id, String? title, String? description, String? imageUrl, String? content, String? establishmentId, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await featuredGetWithHttpInfo( id: id, title: title, description: description, imageUrl: imageUrl, content: content, establishmentId: establishmentId, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<Featured>?> featuredGet({ String? id, String? title, String? description, String? imageUrl, String? content, String? establishmentId, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await featuredGetWithHttpInfo( id: id, title: title, description: description, imageUrl: imageUrl, content: content, establishmentId: establishmentId, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -309,7 +317,7 @@ class FeaturedApi {
   ///
   /// * [Featured] featured:
   ///   featured
-  Future<Response> featuredPatchWithHttpInfo({ String? id, String? title, String? description, String? imageUrl, String? content, String? establishmentId, String? createdAt, String? updatedAt, String? prefer, Featured? featured, }) async {
+  Future<Response> featuredPatchWithHttpInfo({ String? id, String? title, String? description, String? imageUrl, String? content, String? establishmentId, String? createdAt, String? updatedAt, String? prefer, Featured? featured, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/featured';
 
@@ -345,11 +353,16 @@ class FeaturedApi {
       queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -358,8 +371,7 @@ class FeaturedApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -386,8 +398,8 @@ class FeaturedApi {
   ///
   /// * [Featured] featured:
   ///   featured
-  Future<void> featuredPatch({ String? id, String? title, String? description, String? imageUrl, String? content, String? establishmentId, String? createdAt, String? updatedAt, String? prefer, Featured? featured, }) async {
-    final response = await featuredPatchWithHttpInfo( id: id, title: title, description: description, imageUrl: imageUrl, content: content, establishmentId: establishmentId, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, featured: featured, );
+  Future<void> featuredPatch({ String? id, String? title, String? description, String? imageUrl, String? content, String? establishmentId, String? createdAt, String? updatedAt, String? prefer, Featured? featured, Map<String, String>? other}) async {
+    final response = await featuredPatchWithHttpInfo( id: id, title: title, description: description, imageUrl: imageUrl, content: content, establishmentId: establishmentId, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, featured: featured, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -404,7 +416,7 @@ class FeaturedApi {
   ///
   /// * [Featured] featured:
   ///   featured
-  Future<Response> featuredPostWithHttpInfo({ String? select, String? prefer, Featured? featured, }) async {
+  Future<Response> featuredPostWithHttpInfo({ String? select, String? prefer, Featured? featured, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/featured';
 
@@ -419,11 +431,16 @@ class FeaturedApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -432,8 +449,7 @@ class FeaturedApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -447,8 +463,8 @@ class FeaturedApi {
   ///
   /// * [Featured] featured:
   ///   featured
-  Future<void> featuredPost({ String? select, String? prefer, Featured? featured, }) async {
-    final response = await featuredPostWithHttpInfo( select: select, prefer: prefer, featured: featured, );
+  Future<void> featuredPost({ String? select, String? prefer, Featured? featured, Map<String, String>? other}) async {
+    final response = await featuredPostWithHttpInfo( select: select, prefer: prefer, featured: featured, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

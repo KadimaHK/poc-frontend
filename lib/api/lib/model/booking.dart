@@ -18,8 +18,8 @@ class Booking {
     this.establishmentId,
     this.reservationStart,
     this.reservationEnd,
-    this.createdAt = 'now()',
-    this.updatedAt = 'now()',
+    this.createdAt,
+    this.updatedAt,
   });
 
   /// Note: This is a Primary Key.<pk/>
@@ -89,28 +89,19 @@ class Booking {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.id != null)
       json[r'id'] = this.id;
-    if (this.userId != null) {
+    if (this.userId != null)
       json[r'user_id'] = this.userId;
-    } else {
-      json[r'user_id'] = null;
-    }
-    if (this.establishmentId != null) {
+    if (this.establishmentId != null)
       json[r'establishment_id'] = this.establishmentId;
-    } else {
-      json[r'establishment_id'] = null;
-    }
-    if (this.reservationStart != null) {
+    if (this.reservationStart != null)
       json[r'reservation_start'] = this.reservationStart;
-    } else {
-      json[r'reservation_start'] = null;
-    }
-    if (this.reservationEnd != null) {
+    if (this.reservationEnd != null)
       json[r'reservation_end'] = this.reservationEnd;
-    } else {
-      json[r'reservation_end'] = null;
-    }
+    if (this.createdAt != null)
       json[r'created_at'] = this.createdAt;
+    if (this.updatedAt != null)
       json[r'updated_at'] = this.updatedAt;
     return json;
   }
@@ -122,19 +113,8 @@ class Booking {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
-      // Ensure that the map contains the required keys.
-      // Note 1: the values aren't checked for validity beyond being non-null.
-      // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Booking[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Booking[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
-
       return Booking(
-        id: mapValueOfType<int>(json, r'id')!,
+        id: mapValueOfType<int>(json, r'id'),
         userId: mapValueOfType<int>(json, r'user_id'),
         establishmentId: mapValueOfType<int>(json, r'establishment_id'),
         reservationStart: mapValueOfType<String>(json, r'reservation_start'),
@@ -186,9 +166,6 @@ class Booking {
     return map;
   }
 
-  /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-    'id',
-  };
+
 }
 

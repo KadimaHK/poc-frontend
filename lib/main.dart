@@ -24,6 +24,7 @@ import 'package:poc_frontend/pages/sign_up_page.dart';
 import 'package:poc_frontend/pages/stored_liqueur_detail_page.dart';
 import 'package:poc_frontend/pages/stored_liqueur_page.dart';
 import 'package:poc_frontend/pages/stored_liqueur_transfer_page.dart';
+import 'package:poc_frontend/pages/user_search_page.dart';
 import 'package:poc_frontend/pages/voucher_detail_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -66,6 +67,7 @@ class MyApp extends StatefulWidget {
   const MyApp({super.key});
   static SharedPreferences? prefs;
   static ApiClient? sessionApiClient;
+  static api.User? user;
   @override
   State<MyApp> createState() => MyAppState();
   static MyAppState? of(BuildContext context) => context.findAncestorStateOfType<MyAppState>();
@@ -105,8 +107,17 @@ class MyAppState extends State<MyApp> {
         ApiKeyAuth apiClientAuth = ApiKeyAuth('header', 'session-token');
         apiClientAuth.apiKey = value.getString('loginSessionToken')!;
         MyApp.sessionApiClient = ApiClient(authentication: apiClientAuth);
+        fetchUser();
       }
     });
+  }
+  void fetchUser() async {
+    try {
+      final user = await UserApi(MyApp.sessionApiClient).userGet();
+      MyApp.user = user!.first;
+    } on ApiException catch (e) {
+      apiErrorHandler(e);
+    }
   }
 
   @override
@@ -231,6 +242,8 @@ class MainState extends State<Main> {
         key: navigatorKey,
         onGenerateRoute: (settings) {
           switch (settings.name) {
+            case UserSearchPage.routeName:
+              return MaterialPageRoute(builder: (_) => UserSearchPage());
             case StoredLiqueurTransferPage.routeName:
               return MaterialPageRoute(builder: (_) => StoredLiqueurTransferPage(storedLiqueur: settings.arguments as api.StoredLiqueur));
             case StoredLiqueurDetailPage.routeName:
@@ -257,6 +270,8 @@ class MainState extends State<Main> {
               return MaterialPageRoute(builder: (_) => LoginPage());
             case EstablishmentProfilePage.routeName:
               return MaterialPageRoute(builder: (_) => EstablishmentProfilePage(establishment: settings.arguments as api.Establishment));
+            case ProfilePage.routeName:
+              return MaterialPageRoute(builder: (_) => ProfilePage(user: settings.arguments as api.User));
             default:
               return PageRouteBuilder(
           pageBuilder: (_, __, ___) => _list[_selectedIndex],

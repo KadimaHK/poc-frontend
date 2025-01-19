@@ -17,7 +17,7 @@ class EstablishmentOpeningHours {
     this.day,
     this.openTime,
     this.closeTime,
-    this.isOvernight = false,
+    this.isOvernight,
   });
 
   /// Note: This is a Primary Key.<pk/> This is a Foreign Key to `establishment.id`.<fk table='establishment' column='id'/>
@@ -66,18 +66,15 @@ class EstablishmentOpeningHours {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.establishmentId != null)
       json[r'establishment_id'] = this.establishmentId;
+    if (this.day != null)
       json[r'day'] = this.day;
-    if (this.openTime != null) {
+    if (this.openTime != null)
       json[r'open_time'] = this.openTime;
-    } else {
-      json[r'open_time'] = null;
-    }
-    if (this.closeTime != null) {
+    if (this.closeTime != null)
       json[r'close_time'] = this.closeTime;
-    } else {
-      json[r'close_time'] = null;
-    }
+    if (this.isOvernight != null)
       json[r'is_overnight'] = this.isOvernight;
     return json;
   }
@@ -89,20 +86,9 @@ class EstablishmentOpeningHours {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
-      // Ensure that the map contains the required keys.
-      // Note 1: the values aren't checked for validity beyond being non-null.
-      // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "EstablishmentOpeningHours[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "EstablishmentOpeningHours[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
-
       return EstablishmentOpeningHours(
-        establishmentId: mapValueOfType<int>(json, r'establishment_id')!,
-        day: mapValueOfType<String>(json, r'day')!,
+        establishmentId: mapValueOfType<int>(json, r'establishment_id'),
+        day: mapValueOfType<String>(json, r'day'),
         openTime: mapValueOfType<String>(json, r'open_time'),
         closeTime: mapValueOfType<String>(json, r'close_time'),
         isOvernight: mapValueOfType<bool>(json, r'is_overnight') ?? false,
@@ -151,10 +137,6 @@ class EstablishmentOpeningHours {
     return map;
   }
 
-  /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-    'establishment_id',
-    'day',
-  };
+
 }
 

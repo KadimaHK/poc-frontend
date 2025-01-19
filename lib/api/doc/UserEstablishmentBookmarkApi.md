@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **userEstablishmentBookmarkDelete**
-> userEstablishmentBookmarkDelete(userId, establishmentId, createdAt, prefer)
+> userEstablishmentBookmarkDelete(userId, establishmentId, isPublic, createdAt, prefer)
 
 
 
@@ -31,11 +31,12 @@ import 'package:openapi/api.dart';
 final api_instance = UserEstablishmentBookmarkApi();
 final userId = userId_example; // String | 
 final establishmentId = establishmentId_example; // String | 
+final isPublic = isPublic_example; // String | 
 final createdAt = createdAt_example; // String | 
 final prefer = prefer_example; // String | Preference
 
 try {
-    api_instance.userEstablishmentBookmarkDelete(userId, establishmentId, createdAt, prefer);
+    api_instance.userEstablishmentBookmarkDelete(userId, establishmentId, isPublic, createdAt, prefer);
 } catch (e) {
     print('Exception when calling UserEstablishmentBookmarkApi->userEstablishmentBookmarkDelete: $e\n');
 }
@@ -47,6 +48,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String**|  | [optional] 
  **establishmentId** | **String**|  | [optional] 
+ **isPublic** | **String**|  | [optional] 
  **createdAt** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 
 
@@ -66,7 +68,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **userEstablishmentBookmarkGet**
-> List<UserEstablishmentBookmark> userEstablishmentBookmarkGet(userId, establishmentId, createdAt, select, order, range, rangeUnit, offset, limit, prefer)
+> List<UserEstablishmentBookmark> userEstablishmentBookmarkGet(userId, establishmentId, isPublic, createdAt, select, order, range, rangeUnit, offset, limit, prefer)
 
 
 
@@ -81,6 +83,7 @@ import 'package:openapi/api.dart';
 final api_instance = UserEstablishmentBookmarkApi();
 final userId = userId_example; // String | 
 final establishmentId = establishmentId_example; // String | 
+final isPublic = isPublic_example; // String | 
 final createdAt = createdAt_example; // String | 
 final select = select_example; // String | Filtering Columns
 final order = order_example; // String | Ordering
@@ -91,7 +94,7 @@ final limit = limit_example; // String | Limiting and Pagination
 final prefer = prefer_example; // String | Preference
 
 try {
-    final result = api_instance.userEstablishmentBookmarkGet(userId, establishmentId, createdAt, select, order, range, rangeUnit, offset, limit, prefer);
+    final result = api_instance.userEstablishmentBookmarkGet(userId, establishmentId, isPublic, createdAt, select, order, range, rangeUnit, offset, limit, prefer);
     print(result);
 } catch (e) {
     print('Exception when calling UserEstablishmentBookmarkApi->userEstablishmentBookmarkGet: $e\n');
@@ -104,6 +107,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String**|  | [optional] 
  **establishmentId** | **String**|  | [optional] 
+ **isPublic** | **String**|  | [optional] 
  **createdAt** | **String**|  | [optional] 
  **select** | **String**| Filtering Columns | [optional] 
  **order** | **String**| Ordering | [optional] 
@@ -129,7 +133,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **userEstablishmentBookmarkPatch**
-> userEstablishmentBookmarkPatch(userId, establishmentId, createdAt, prefer, userEstablishmentBookmark)
+> userEstablishmentBookmarkPatch(userId, establishmentId, isPublic, createdAt, prefer, userEstablishmentBookmark)
 
 
 
@@ -144,12 +148,13 @@ import 'package:openapi/api.dart';
 final api_instance = UserEstablishmentBookmarkApi();
 final userId = userId_example; // String | 
 final establishmentId = establishmentId_example; // String | 
+final isPublic = isPublic_example; // String | 
 final createdAt = createdAt_example; // String | 
 final prefer = prefer_example; // String | Preference
 final userEstablishmentBookmark = UserEstablishmentBookmark(); // UserEstablishmentBookmark | user_establishment_bookmark
 
 try {
-    api_instance.userEstablishmentBookmarkPatch(userId, establishmentId, createdAt, prefer, userEstablishmentBookmark);
+    api_instance.userEstablishmentBookmarkPatch(userId, establishmentId, isPublic, createdAt, prefer, userEstablishmentBookmark);
 } catch (e) {
     print('Exception when calling UserEstablishmentBookmarkApi->userEstablishmentBookmarkPatch: $e\n');
 }
@@ -161,6 +166,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String**|  | [optional] 
  **establishmentId** | **String**|  | [optional] 
+ **isPublic** | **String**|  | [optional] 
  **createdAt** | **String**|  | [optional] 
  **prefer** | **String**| Preference | [optional] 
  **userEstablishmentBookmark** | [**UserEstablishmentBookmark**](UserEstablishmentBookmark.md)| user_establishment_bookmark | [optional] 

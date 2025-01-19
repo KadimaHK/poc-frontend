@@ -35,8 +35,7 @@ class RpcLoginApi {
       queryParams,
       null,
       headerParams,
-      formParams,
-      'application/json',
+      formParams
     );
   }
 

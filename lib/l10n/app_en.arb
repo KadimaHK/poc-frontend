@@ -163,6 +163,8 @@
     "expired": "Expired",
 
     "filters": "{name, select, distance {Distance} location {Location} theme {Theme} facilities {Facilities} other {Other}}",
+    "chatTypes": "{type, select, all {All} primary {Primary} general {General} request {Request} group {Group} other {Other}}",
+
     "result": "{number, plural, =0 {No results} =1 {1 result} other {{number} results}}",
 
     "newWord": "New",
@@ -194,6 +196,11 @@
     "to": "To",
     "liqueurName": "Liqueur Name",
     "amount": "Amount",
+    "online": "Online",
+    "chat": "Chat",
+    "recent": "Recent",
+    "clear": "Clear",
+    "follow": "Follow",
 
 
     "empty":"empty"

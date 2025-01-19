@@ -60,7 +60,7 @@ class ReviewApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> reviewDeleteWithHttpInfo({ String? id, String? userId, String? establishmentId, String? title, String? description, String? content, String? isApproved, String? rating, String? tasteRating, String? decorRating, String? serviceRating, String? hygieneRating, String? valueRating, String? dateVisited, String? spend, String? likes, String? status, String? createdAt, String? updatedAt, String? prefer, }) async {
+  Future<Response> reviewDeleteWithHttpInfo({ String? id, String? userId, String? establishmentId, String? title, String? description, String? content, String? isApproved, String? rating, String? tasteRating, String? decorRating, String? serviceRating, String? hygieneRating, String? valueRating, String? dateVisited, String? spend, String? likes, String? status, String? createdAt, String? updatedAt, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/review';
 
@@ -129,11 +129,16 @@ class ReviewApi {
       queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -142,8 +147,7 @@ class ReviewApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -190,8 +194,8 @@ class ReviewApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> reviewDelete({ String? id, String? userId, String? establishmentId, String? title, String? description, String? content, String? isApproved, String? rating, String? tasteRating, String? decorRating, String? serviceRating, String? hygieneRating, String? valueRating, String? dateVisited, String? spend, String? likes, String? status, String? createdAt, String? updatedAt, String? prefer, }) async {
-    final response = await reviewDeleteWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, title: title, description: description, content: content, isApproved: isApproved, rating: rating, tasteRating: tasteRating, decorRating: decorRating, serviceRating: serviceRating, hygieneRating: hygieneRating, valueRating: valueRating, dateVisited: dateVisited, spend: spend, likes: likes, status: status, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, );
+  Future<void> reviewDelete({ String? id, String? userId, String? establishmentId, String? title, String? description, String? content, String? isApproved, String? rating, String? tasteRating, String? decorRating, String? serviceRating, String? hygieneRating, String? valueRating, String? dateVisited, String? spend, String? likes, String? status, String? createdAt, String? updatedAt, String? prefer, Map<String, String>? other}) async {
+    final response = await reviewDeleteWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, title: title, description: description, content: content, isApproved: isApproved, rating: rating, tasteRating: tasteRating, decorRating: decorRating, serviceRating: serviceRating, hygieneRating: hygieneRating, valueRating: valueRating, dateVisited: dateVisited, spend: spend, likes: likes, status: status, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -259,7 +263,7 @@ class ReviewApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> reviewGetWithHttpInfo({ String? id, String? userId, String? establishmentId, String? title, String? description, String? content, String? isApproved, String? rating, String? tasteRating, String? decorRating, String? serviceRating, String? hygieneRating, String? valueRating, String? dateVisited, String? spend, String? likes, String? status, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> reviewGetWithHttpInfo({ String? id, String? userId, String? establishmentId, String? title, String? description, String? content, String? isApproved, String? rating, String? tasteRating, String? decorRating, String? serviceRating, String? hygieneRating, String? valueRating, String? dateVisited, String? spend, String? likes, String? status, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/review';
 
@@ -340,6 +344,12 @@ class ReviewApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -350,7 +360,6 @@ class ReviewApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -359,8 +368,7 @@ class ReviewApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -425,8 +433,8 @@ class ReviewApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<Review>?> reviewGet({ String? id, String? userId, String? establishmentId, String? title, String? description, String? content, String? isApproved, String? rating, String? tasteRating, String? decorRating, String? serviceRating, String? hygieneRating, String? valueRating, String? dateVisited, String? spend, String? likes, String? status, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await reviewGetWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, title: title, description: description, content: content, isApproved: isApproved, rating: rating, tasteRating: tasteRating, decorRating: decorRating, serviceRating: serviceRating, hygieneRating: hygieneRating, valueRating: valueRating, dateVisited: dateVisited, spend: spend, likes: likes, status: status, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<Review>?> reviewGet({ String? id, String? userId, String? establishmentId, String? title, String? description, String? content, String? isApproved, String? rating, String? tasteRating, String? decorRating, String? serviceRating, String? hygieneRating, String? valueRating, String? dateVisited, String? spend, String? likes, String? status, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await reviewGetWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, title: title, description: description, content: content, isApproved: isApproved, rating: rating, tasteRating: tasteRating, decorRating: decorRating, serviceRating: serviceRating, hygieneRating: hygieneRating, valueRating: valueRating, dateVisited: dateVisited, spend: spend, likes: likes, status: status, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -490,7 +498,7 @@ class ReviewApi {
   ///
   /// * [Review] review:
   ///   review
-  Future<Response> reviewPatchWithHttpInfo({ String? id, String? userId, String? establishmentId, String? title, String? description, String? content, String? isApproved, String? rating, String? tasteRating, String? decorRating, String? serviceRating, String? hygieneRating, String? valueRating, String? dateVisited, String? spend, String? likes, String? status, String? createdAt, String? updatedAt, String? prefer, Review? review, }) async {
+  Future<Response> reviewPatchWithHttpInfo({ String? id, String? userId, String? establishmentId, String? title, String? description, String? content, String? isApproved, String? rating, String? tasteRating, String? decorRating, String? serviceRating, String? hygieneRating, String? valueRating, String? dateVisited, String? spend, String? likes, String? status, String? createdAt, String? updatedAt, String? prefer, Review? review, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/review';
 
@@ -559,11 +567,16 @@ class ReviewApi {
       queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -572,8 +585,7 @@ class ReviewApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -623,8 +635,8 @@ class ReviewApi {
   ///
   /// * [Review] review:
   ///   review
-  Future<void> reviewPatch({ String? id, String? userId, String? establishmentId, String? title, String? description, String? content, String? isApproved, String? rating, String? tasteRating, String? decorRating, String? serviceRating, String? hygieneRating, String? valueRating, String? dateVisited, String? spend, String? likes, String? status, String? createdAt, String? updatedAt, String? prefer, Review? review, }) async {
-    final response = await reviewPatchWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, title: title, description: description, content: content, isApproved: isApproved, rating: rating, tasteRating: tasteRating, decorRating: decorRating, serviceRating: serviceRating, hygieneRating: hygieneRating, valueRating: valueRating, dateVisited: dateVisited, spend: spend, likes: likes, status: status, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, review: review, );
+  Future<void> reviewPatch({ String? id, String? userId, String? establishmentId, String? title, String? description, String? content, String? isApproved, String? rating, String? tasteRating, String? decorRating, String? serviceRating, String? hygieneRating, String? valueRating, String? dateVisited, String? spend, String? likes, String? status, String? createdAt, String? updatedAt, String? prefer, Review? review, Map<String, String>? other}) async {
+    final response = await reviewPatchWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, title: title, description: description, content: content, isApproved: isApproved, rating: rating, tasteRating: tasteRating, decorRating: decorRating, serviceRating: serviceRating, hygieneRating: hygieneRating, valueRating: valueRating, dateVisited: dateVisited, spend: spend, likes: likes, status: status, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, review: review, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -641,7 +653,7 @@ class ReviewApi {
   ///
   /// * [Review] review:
   ///   review
-  Future<Response> reviewPostWithHttpInfo({ String? select, String? prefer, Review? review, }) async {
+  Future<Response> reviewPostWithHttpInfo({ String? select, String? prefer, Review? review, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/review';
 
@@ -656,11 +668,16 @@ class ReviewApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -669,8 +686,7 @@ class ReviewApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -684,8 +700,8 @@ class ReviewApi {
   ///
   /// * [Review] review:
   ///   review
-  Future<void> reviewPost({ String? select, String? prefer, Review? review, }) async {
-    final response = await reviewPostWithHttpInfo( select: select, prefer: prefer, review: review, );
+  Future<void> reviewPost({ String? select, String? prefer, Review? review, Map<String, String>? other}) async {
+    final response = await reviewPostWithHttpInfo( select: select, prefer: prefer, review: review, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -5,10 +5,12 @@ class TextButtonNoBackground extends StatelessWidget {
     Key? key,
     required this.text,
     required this.onPressed,
+    this.fontSize = 16,
   }) : super(key: key);
 
   final String text;
   final void Function() onPressed;
+  final double fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +24,9 @@ class TextButtonNoBackground extends StatelessWidget {
           child: Text(
             textAlign: TextAlign.center,
             text,
-            style: const TextStyle(
+            style: TextStyle(
               color: Colors.white,
-              fontSize: 16,
+              fontSize: fontSize,
             ),
           ),
         ),

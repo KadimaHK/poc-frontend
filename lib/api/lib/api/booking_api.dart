@@ -35,7 +35,7 @@ class BookingApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> bookingDeleteWithHttpInfo({ String? id, String? userId, String? establishmentId, String? reservationStart, String? reservationEnd, String? createdAt, String? updatedAt, String? prefer, }) async {
+  Future<Response> bookingDeleteWithHttpInfo({ String? id, String? userId, String? establishmentId, String? reservationStart, String? reservationEnd, String? createdAt, String? updatedAt, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/booking';
 
@@ -68,11 +68,16 @@ class BookingApi {
       queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -81,8 +86,7 @@ class BookingApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -104,8 +108,8 @@ class BookingApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> bookingDelete({ String? id, String? userId, String? establishmentId, String? reservationStart, String? reservationEnd, String? createdAt, String? updatedAt, String? prefer, }) async {
-    final response = await bookingDeleteWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, reservationStart: reservationStart, reservationEnd: reservationEnd, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, );
+  Future<void> bookingDelete({ String? id, String? userId, String? establishmentId, String? reservationStart, String? reservationEnd, String? createdAt, String? updatedAt, String? prefer, Map<String, String>? other}) async {
+    final response = await bookingDeleteWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, reservationStart: reservationStart, reservationEnd: reservationEnd, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -148,7 +152,7 @@ class BookingApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> bookingGetWithHttpInfo({ String? id, String? userId, String? establishmentId, String? reservationStart, String? reservationEnd, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> bookingGetWithHttpInfo({ String? id, String? userId, String? establishmentId, String? reservationStart, String? reservationEnd, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/booking';
 
@@ -193,6 +197,12 @@ class BookingApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -203,7 +213,6 @@ class BookingApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -212,8 +221,7 @@ class BookingApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -253,8 +261,8 @@ class BookingApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<Booking>?> bookingGet({ String? id, String? userId, String? establishmentId, String? reservationStart, String? reservationEnd, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await bookingGetWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, reservationStart: reservationStart, reservationEnd: reservationEnd, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<Booking>?> bookingGet({ String? id, String? userId, String? establishmentId, String? reservationStart, String? reservationEnd, String? createdAt, String? updatedAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await bookingGetWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, reservationStart: reservationStart, reservationEnd: reservationEnd, createdAt: createdAt, updatedAt: updatedAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -293,7 +301,7 @@ class BookingApi {
   ///
   /// * [Booking] booking:
   ///   booking
-  Future<Response> bookingPatchWithHttpInfo({ String? id, String? userId, String? establishmentId, String? reservationStart, String? reservationEnd, String? createdAt, String? updatedAt, String? prefer, Booking? booking, }) async {
+  Future<Response> bookingPatchWithHttpInfo({ String? id, String? userId, String? establishmentId, String? reservationStart, String? reservationEnd, String? createdAt, String? updatedAt, String? prefer, Booking? booking, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/booking';
 
@@ -326,11 +334,16 @@ class BookingApi {
       queryParams.addAll(_queryParams('', 'updated_at', updatedAt));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -339,8 +352,7 @@ class BookingApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -365,8 +377,8 @@ class BookingApi {
   ///
   /// * [Booking] booking:
   ///   booking
-  Future<void> bookingPatch({ String? id, String? userId, String? establishmentId, String? reservationStart, String? reservationEnd, String? createdAt, String? updatedAt, String? prefer, Booking? booking, }) async {
-    final response = await bookingPatchWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, reservationStart: reservationStart, reservationEnd: reservationEnd, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, booking: booking, );
+  Future<void> bookingPatch({ String? id, String? userId, String? establishmentId, String? reservationStart, String? reservationEnd, String? createdAt, String? updatedAt, String? prefer, Booking? booking, Map<String, String>? other}) async {
+    final response = await bookingPatchWithHttpInfo( id: id, userId: userId, establishmentId: establishmentId, reservationStart: reservationStart, reservationEnd: reservationEnd, createdAt: createdAt, updatedAt: updatedAt, prefer: prefer, booking: booking, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -383,7 +395,7 @@ class BookingApi {
   ///
   /// * [Booking] booking:
   ///   booking
-  Future<Response> bookingPostWithHttpInfo({ String? select, String? prefer, Booking? booking, }) async {
+  Future<Response> bookingPostWithHttpInfo({ String? select, String? prefer, Booking? booking, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/booking';
 
@@ -398,11 +410,16 @@ class BookingApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -411,8 +428,7 @@ class BookingApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -426,8 +442,8 @@ class BookingApi {
   ///
   /// * [Booking] booking:
   ///   booking
-  Future<void> bookingPost({ String? select, String? prefer, Booking? booking, }) async {
-    final response = await bookingPostWithHttpInfo( select: select, prefer: prefer, booking: booking, );
+  Future<void> bookingPost({ String? select, String? prefer, Booking? booking, Map<String, String>? other}) async {
+    final response = await bookingPostWithHttpInfo( select: select, prefer: prefer, booking: booking, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

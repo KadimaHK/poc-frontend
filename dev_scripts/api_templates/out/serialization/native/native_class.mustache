@@ -32,7 +32,7 @@ class {{{classname}}} {
       {{/required}}
     {{/isNullable}}
   {{/isEnum}}
-  {{{datatypeWithEnum}}}{{#isNullable}}?{{/isNullable}}{{^isNullable}}{{^required}}{{^defaultValue}}?{{/defaultValue}}{{/required}}{{/isNullable}} {{{name}}};
+  {{{datatypeWithEnum}}}? {{{name}}};
 
 {{/vars}}
   @override
@@ -54,16 +54,7 @@ class {{{classname}}} {
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
   {{#vars}}
-    {{#isNullable}}
-    if (this.{{{name}}} != null) {
-    {{/isNullable}}
-    {{^isNullable}}
-      {{^required}}
-        {{^defaultValue}}
-    if (this.{{{name}}} != null) {
-        {{/defaultValue}}
-      {{/required}}
-    {{/isNullable}}
+    if (this.{{{name}}} != null)
     {{#isDateTime}}
       {{#pattern}}
       json[r'{{{baseName}}}'] = _isEpochMarker(r'{{{pattern}}}')
@@ -89,20 +80,6 @@ class {{{classname}}} {
       json[r'{{{baseName}}}'] = this.{{{name}}}{{#isArray}}{{#uniqueItems}}{{#isNullable}}!{{/isNullable}}.toList(growable: false){{/uniqueItems}}{{/isArray}};
       {{/isDate}}
     {{/isDateTime}}
-    {{#isNullable}}
-    } else {
-      json[r'{{{baseName}}}'] = null;
-    }
-    {{/isNullable}}
-    {{^isNullable}}
-      {{^required}}
-        {{^defaultValue}}
-    } else {
-      json[r'{{{baseName}}}'] = null;
-    }
-        {{/defaultValue}}
-      {{/required}}
-    {{/isNullable}}
   {{/vars}}
     return json;
   }
@@ -114,24 +91,13 @@ class {{{classname}}} {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
-      // Ensure that the map contains the required keys.
-      // Note 1: the values aren't checked for validity beyond being non-null.
-      // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "{{{classname}}}[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "{{{classname}}}[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
-
       return {{{classname}}}(
   {{#vars}}
     {{#isDateTime}}
-        {{{name}}}: mapDateTime(json, r'{{{baseName}}}', r'{{{pattern}}}'){{#required}}{{^isNullable}}!{{/isNullable}}{{/required}}{{^required}}{{#defaultValue}} ?? {{{.}}}{{/defaultValue}}{{/required}},
+        {{{name}}}: mapDateTime(json, r'{{{baseName}}}', r'{{{pattern}}}'){{^required}}{{#defaultValue}} ?? {{{.}}}{{/defaultValue}}{{/required}},
     {{/isDateTime}}
     {{#isDate}}
-        {{{name}}}: mapDateTime(json, r'{{{baseName}}}', r'{{{pattern}}}'){{#required}}{{^isNullable}}!{{/isNullable}}{{/required}}{{^required}}{{#defaultValue}} ?? {{{.}}}{{/defaultValue}}{{/required}},
+        {{{name}}}: mapDateTime(json, r'{{{baseName}}}', r'{{{pattern}}}'){{^required}}{{#defaultValue}} ?? {{{.}}}{{/defaultValue}}{{/required}},
     {{/isDate}}
     {{^isDateTime}}
       {{^isDate}}
@@ -171,7 +137,7 @@ class {{{classname}}} {
         {{{name}}}: {{items.complexType}}.mapFromJson(json[r'{{{baseName}}}']),
                   {{/items.complexType}}
                   {{^items.complexType}}
-        {{{name}}}: mapCastOfType<String, dynamic>(json, r'{{{baseName}}}'){{#required}}{{^isNullable}}!{{/isNullable}}{{/required}}{{^required}}{{#defaultValue}} ?? {{{.}}}{{/defaultValue}}{{/required}},
+        {{{name}}}: mapCastOfType<String, dynamic>(json, r'{{{baseName}}}'){{^required}}{{#defaultValue}} ?? {{{.}}}{{/defaultValue}}{{/required}},
                   {{/items.complexType}}
                 {{/items.isMap}}
                 {{^items.isMap}}
@@ -179,7 +145,7 @@ class {{{classname}}} {
         {{{name}}}: {{{items.complexType}}}.mapFromJson(json[r'{{{baseName}}}']),
                   {{/items.complexType}}
                   {{^items.complexType}}
-        {{{name}}}: mapCastOfType<String, {{items.dataType}}>(json, r'{{{baseName}}}'){{#required}}{{^isNullable}}!{{/isNullable}}{{/required}}{{^required}}{{#defaultValue}} ?? {{{.}}}{{/defaultValue}}{{/required}},
+        {{{name}}}: mapCastOfType<String, {{items.dataType}}>(json, r'{{{baseName}}}'){{^required}}{{#defaultValue}} ?? {{{.}}}{{/defaultValue}}{{/required}},
                   {{/items.complexType}}
                 {{/items.isMap}}
               {{/items.isArray}}
@@ -189,7 +155,7 @@ class {{{classname}}} {
         {{{name}}}: null, // No support for decoding binary content from JSON
               {{/isBinary}}
               {{^isBinary}}
-        {{{name}}}: {{{complexType}}}.fromJson(json[r'{{{baseName}}}']){{#required}}{{^isNullable}}!{{/isNullable}}{{/required}}{{^required}}{{#defaultValue}} ?? {{{.}}}{{/defaultValue}}{{/required}},
+        {{{name}}}: {{{complexType}}}.fromJson(json[r'{{{baseName}}}']){{^required}}{{#defaultValue}} ?? {{{.}}}{{/defaultValue}}{{/required}},
               {{/isBinary}}
             {{/isMap}}
           {{/isArray}}
@@ -207,7 +173,7 @@ class {{{classname}}} {
           {{/isArray}}
           {{^isArray}}
             {{#isMap}}
-        {{{name}}}: mapCastOfType<String, {{{items.datatype}}}>(json, r'{{{baseName}}}'){{#required}}{{^isNullable}}!{{/isNullable}}{{/required}}{{^required}}{{#defaultValue}} ?? {{{.}}}{{/defaultValue}}{{/required}},
+        {{{name}}}: mapCastOfType<String, {{{items.datatype}}}>(json, r'{{{baseName}}}'){{^required}}{{#defaultValue}} ?? {{{.}}}{{/defaultValue}}{{/required}},
             {{/isMap}}
             {{^isMap}}
               {{#isNumber}}
@@ -217,10 +183,10 @@ class {{{classname}}} {
               {{/isNumber}}
               {{^isNumber}}
                 {{^isEnum}}
-        {{{name}}}: mapValueOfType<{{{datatypeWithEnum}}}>(json, r'{{{baseName}}}'){{#required}}{{^isNullable}}!{{/isNullable}}{{/required}}{{^required}}{{#defaultValue}} ?? {{{.}}}{{/defaultValue}}{{/required}},
+        {{{name}}}: mapValueOfType<{{{datatypeWithEnum}}}>(json, r'{{{baseName}}}'){{^required}}{{#defaultValue}} ?? {{{.}}}{{/defaultValue}}{{/required}},
                 {{/isEnum}}
                 {{#isEnum}}
-        {{{name}}}: {{{enumName}}}.fromJson(json[r'{{{baseName}}}']){{#required}}{{^isNullable}}!{{/isNullable}}{{/required}}{{^required}}{{#defaultValue}} ?? {{{.}}}{{/defaultValue}}{{/required}},
+        {{{name}}}: {{{enumName}}}.fromJson(json[r'{{{baseName}}}']){{^required}}{{#defaultValue}} ?? {{{.}}}{{/defaultValue}}{{/required}},
                 {{/isEnum}}
               {{/isNumber}}
             {{/isMap}}
@@ -274,14 +240,7 @@ class {{{classname}}} {
     return map;
   }
 
-  /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-{{#vars}}
-  {{#required}}
-    '{{{baseName}}}',
-  {{/required}}
-{{/vars}}
-  };
+
 }
 {{#vars}}
     {{^isModel}}

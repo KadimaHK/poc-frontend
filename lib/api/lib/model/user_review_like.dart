@@ -39,7 +39,9 @@ class UserReviewLike {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.userId != null)
       json[r'user_id'] = this.userId;
+    if (this.reviewId != null)
       json[r'review_id'] = this.reviewId;
     return json;
   }
@@ -51,20 +53,9 @@ class UserReviewLike {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
-      // Ensure that the map contains the required keys.
-      // Note 1: the values aren't checked for validity beyond being non-null.
-      // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "UserReviewLike[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "UserReviewLike[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
-
       return UserReviewLike(
-        userId: mapValueOfType<int>(json, r'user_id')!,
-        reviewId: mapValueOfType<int>(json, r'review_id')!,
+        userId: mapValueOfType<int>(json, r'user_id'),
+        reviewId: mapValueOfType<int>(json, r'review_id'),
       );
     }
     return null;
@@ -110,10 +101,6 @@ class UserReviewLike {
     return map;
   }
 
-  /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-    'user_id',
-    'review_id',
-  };
+
 }
 

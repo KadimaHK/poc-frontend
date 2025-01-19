@@ -16,8 +16,8 @@ class Order {
     this.id,
     this.userId,
     this.establishmentMenuId,
-    this.createdAt = 'now()',
-    this.updatedAt = 'now()',
+    this.createdAt,
+    this.updatedAt,
   });
 
   /// Note: This is a Primary Key.<pk/>
@@ -67,18 +67,15 @@ class Order {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.id != null)
       json[r'id'] = this.id;
-    if (this.userId != null) {
+    if (this.userId != null)
       json[r'user_id'] = this.userId;
-    } else {
-      json[r'user_id'] = null;
-    }
-    if (this.establishmentMenuId != null) {
+    if (this.establishmentMenuId != null)
       json[r'establishment_menu_id'] = this.establishmentMenuId;
-    } else {
-      json[r'establishment_menu_id'] = null;
-    }
+    if (this.createdAt != null)
       json[r'created_at'] = this.createdAt;
+    if (this.updatedAt != null)
       json[r'updated_at'] = this.updatedAt;
     return json;
   }
@@ -90,19 +87,8 @@ class Order {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
-      // Ensure that the map contains the required keys.
-      // Note 1: the values aren't checked for validity beyond being non-null.
-      // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Order[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Order[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
-
       return Order(
-        id: mapValueOfType<int>(json, r'id')!,
+        id: mapValueOfType<int>(json, r'id'),
         userId: mapValueOfType<int>(json, r'user_id'),
         establishmentMenuId: mapValueOfType<int>(json, r'establishment_menu_id'),
         createdAt: mapValueOfType<String>(json, r'created_at') ?? 'now()',
@@ -152,9 +138,6 @@ class Order {
     return map;
   }
 
-  /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-    'id',
-  };
+
 }
 

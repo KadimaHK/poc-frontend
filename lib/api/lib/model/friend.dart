@@ -39,7 +39,9 @@ class Friend {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.userId != null)
       json[r'user_id'] = this.userId;
+    if (this.friendId != null)
       json[r'friend_id'] = this.friendId;
     return json;
   }
@@ -51,20 +53,9 @@ class Friend {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
-      // Ensure that the map contains the required keys.
-      // Note 1: the values aren't checked for validity beyond being non-null.
-      // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Friend[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Friend[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
-
       return Friend(
-        userId: mapValueOfType<int>(json, r'user_id')!,
-        friendId: mapValueOfType<int>(json, r'friend_id')!,
+        userId: mapValueOfType<int>(json, r'user_id'),
+        friendId: mapValueOfType<int>(json, r'friend_id'),
       );
     }
     return null;
@@ -110,10 +101,6 @@ class Friend {
     return map;
   }
 
-  /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-    'user_id',
-    'friend_id',
-  };
+
 }
 

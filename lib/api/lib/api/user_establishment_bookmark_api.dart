@@ -23,11 +23,13 @@ class UserEstablishmentBookmarkApi {
   ///
   /// * [String] establishmentId:
   ///
+  /// * [String] isPublic:
+  ///
   /// * [String] createdAt:
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> userEstablishmentBookmarkDeleteWithHttpInfo({ String? userId, String? establishmentId, String? createdAt, String? prefer, }) async {
+  Future<Response> userEstablishmentBookmarkDeleteWithHttpInfo({ String? userId, String? establishmentId, String? isPublic, String? createdAt, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/user_establishment_bookmark';
 
@@ -44,15 +46,23 @@ class UserEstablishmentBookmarkApi {
     if (establishmentId != null) {
       queryParams.addAll(_queryParams('', 'establishment_id', establishmentId));
     }
+    if (isPublic != null) {
+      queryParams.addAll(_queryParams('', 'is_public', isPublic));
+    }
     if (createdAt != null) {
       queryParams.addAll(_queryParams('', 'created_at', createdAt));
+    }
+
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
     }
 
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -61,8 +71,7 @@ class UserEstablishmentBookmarkApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -72,12 +81,14 @@ class UserEstablishmentBookmarkApi {
   ///
   /// * [String] establishmentId:
   ///
+  /// * [String] isPublic:
+  ///
   /// * [String] createdAt:
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> userEstablishmentBookmarkDelete({ String? userId, String? establishmentId, String? createdAt, String? prefer, }) async {
-    final response = await userEstablishmentBookmarkDeleteWithHttpInfo( userId: userId, establishmentId: establishmentId, createdAt: createdAt, prefer: prefer, );
+  Future<void> userEstablishmentBookmarkDelete({ String? userId, String? establishmentId, String? isPublic, String? createdAt, String? prefer, Map<String, String>? other}) async {
+    final response = await userEstablishmentBookmarkDeleteWithHttpInfo( userId: userId, establishmentId: establishmentId, isPublic: isPublic, createdAt: createdAt, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -89,6 +100,8 @@ class UserEstablishmentBookmarkApi {
   /// * [String] userId:
   ///
   /// * [String] establishmentId:
+  ///
+  /// * [String] isPublic:
   ///
   /// * [String] createdAt:
   ///
@@ -112,7 +125,7 @@ class UserEstablishmentBookmarkApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> userEstablishmentBookmarkGetWithHttpInfo({ String? userId, String? establishmentId, String? createdAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> userEstablishmentBookmarkGetWithHttpInfo({ String? userId, String? establishmentId, String? isPublic, String? createdAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/user_establishment_bookmark';
 
@@ -128,6 +141,9 @@ class UserEstablishmentBookmarkApi {
     }
     if (establishmentId != null) {
       queryParams.addAll(_queryParams('', 'establishment_id', establishmentId));
+    }
+    if (isPublic != null) {
+      queryParams.addAll(_queryParams('', 'is_public', isPublic));
     }
     if (createdAt != null) {
       queryParams.addAll(_queryParams('', 'created_at', createdAt));
@@ -145,6 +161,12 @@ class UserEstablishmentBookmarkApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -155,7 +177,6 @@ class UserEstablishmentBookmarkApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -164,8 +185,7 @@ class UserEstablishmentBookmarkApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -174,6 +194,8 @@ class UserEstablishmentBookmarkApi {
   /// * [String] userId:
   ///
   /// * [String] establishmentId:
+  ///
+  /// * [String] isPublic:
   ///
   /// * [String] createdAt:
   ///
@@ -197,8 +219,8 @@ class UserEstablishmentBookmarkApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<UserEstablishmentBookmark>?> userEstablishmentBookmarkGet({ String? userId, String? establishmentId, String? createdAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await userEstablishmentBookmarkGetWithHttpInfo( userId: userId, establishmentId: establishmentId, createdAt: createdAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<UserEstablishmentBookmark>?> userEstablishmentBookmarkGet({ String? userId, String? establishmentId, String? isPublic, String? createdAt, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await userEstablishmentBookmarkGetWithHttpInfo( userId: userId, establishmentId: establishmentId, isPublic: isPublic, createdAt: createdAt, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -222,6 +244,8 @@ class UserEstablishmentBookmarkApi {
   ///
   /// * [String] establishmentId:
   ///
+  /// * [String] isPublic:
+  ///
   /// * [String] createdAt:
   ///
   /// * [String] prefer:
@@ -229,7 +253,7 @@ class UserEstablishmentBookmarkApi {
   ///
   /// * [UserEstablishmentBookmark] userEstablishmentBookmark:
   ///   user_establishment_bookmark
-  Future<Response> userEstablishmentBookmarkPatchWithHttpInfo({ String? userId, String? establishmentId, String? createdAt, String? prefer, UserEstablishmentBookmark? userEstablishmentBookmark, }) async {
+  Future<Response> userEstablishmentBookmarkPatchWithHttpInfo({ String? userId, String? establishmentId, String? isPublic, String? createdAt, String? prefer, UserEstablishmentBookmark? userEstablishmentBookmark, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/user_establishment_bookmark';
 
@@ -246,15 +270,23 @@ class UserEstablishmentBookmarkApi {
     if (establishmentId != null) {
       queryParams.addAll(_queryParams('', 'establishment_id', establishmentId));
     }
+    if (isPublic != null) {
+      queryParams.addAll(_queryParams('', 'is_public', isPublic));
+    }
     if (createdAt != null) {
       queryParams.addAll(_queryParams('', 'created_at', createdAt));
+    }
+
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
     }
 
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -263,8 +295,7 @@ class UserEstablishmentBookmarkApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -274,6 +305,8 @@ class UserEstablishmentBookmarkApi {
   ///
   /// * [String] establishmentId:
   ///
+  /// * [String] isPublic:
+  ///
   /// * [String] createdAt:
   ///
   /// * [String] prefer:
@@ -281,8 +314,8 @@ class UserEstablishmentBookmarkApi {
   ///
   /// * [UserEstablishmentBookmark] userEstablishmentBookmark:
   ///   user_establishment_bookmark
-  Future<void> userEstablishmentBookmarkPatch({ String? userId, String? establishmentId, String? createdAt, String? prefer, UserEstablishmentBookmark? userEstablishmentBookmark, }) async {
-    final response = await userEstablishmentBookmarkPatchWithHttpInfo( userId: userId, establishmentId: establishmentId, createdAt: createdAt, prefer: prefer, userEstablishmentBookmark: userEstablishmentBookmark, );
+  Future<void> userEstablishmentBookmarkPatch({ String? userId, String? establishmentId, String? isPublic, String? createdAt, String? prefer, UserEstablishmentBookmark? userEstablishmentBookmark, Map<String, String>? other}) async {
+    final response = await userEstablishmentBookmarkPatchWithHttpInfo( userId: userId, establishmentId: establishmentId, isPublic: isPublic, createdAt: createdAt, prefer: prefer, userEstablishmentBookmark: userEstablishmentBookmark, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -299,7 +332,7 @@ class UserEstablishmentBookmarkApi {
   ///
   /// * [UserEstablishmentBookmark] userEstablishmentBookmark:
   ///   user_establishment_bookmark
-  Future<Response> userEstablishmentBookmarkPostWithHttpInfo({ String? select, String? prefer, UserEstablishmentBookmark? userEstablishmentBookmark, }) async {
+  Future<Response> userEstablishmentBookmarkPostWithHttpInfo({ String? select, String? prefer, UserEstablishmentBookmark? userEstablishmentBookmark, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/user_establishment_bookmark';
 
@@ -314,11 +347,16 @@ class UserEstablishmentBookmarkApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -327,8 +365,7 @@ class UserEstablishmentBookmarkApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -342,8 +379,8 @@ class UserEstablishmentBookmarkApi {
   ///
   /// * [UserEstablishmentBookmark] userEstablishmentBookmark:
   ///   user_establishment_bookmark
-  Future<void> userEstablishmentBookmarkPost({ String? select, String? prefer, UserEstablishmentBookmark? userEstablishmentBookmark, }) async {
-    final response = await userEstablishmentBookmarkPostWithHttpInfo( select: select, prefer: prefer, userEstablishmentBookmark: userEstablishmentBookmark, );
+  Future<void> userEstablishmentBookmarkPost({ String? select, String? prefer, UserEstablishmentBookmark? userEstablishmentBookmark, Map<String, String>? other}) async {
+    final response = await userEstablishmentBookmarkPostWithHttpInfo( select: select, prefer: prefer, userEstablishmentBookmark: userEstablishmentBookmark, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

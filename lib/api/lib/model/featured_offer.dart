@@ -167,67 +167,32 @@ class FeaturedOffer {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.id != null)
       json[r'id'] = this.id;
-    if (this.title != null) {
+    if (this.title != null)
       json[r'title'] = this.title;
-    } else {
-      json[r'title'] = null;
-    }
-    if (this.voucherCode != null) {
+    if (this.voucherCode != null)
       json[r'voucher_code'] = this.voucherCode;
-    } else {
-      json[r'voucher_code'] = null;
-    }
-    if (this.startDate != null) {
+    if (this.startDate != null)
       json[r'start_date'] = this.startDate;
-    } else {
-      json[r'start_date'] = null;
-    }
-    if (this.expiryDate != null) {
+    if (this.expiryDate != null)
       json[r'expiry_date'] = this.expiryDate;
-    } else {
-      json[r'expiry_date'] = null;
-    }
-    if (this.percentageDiscount != null) {
+    if (this.percentageDiscount != null)
       json[r'percentage_discount'] = this.percentageDiscount;
-    } else {
-      json[r'percentage_discount'] = null;
-    }
-    if (this.details != null) {
+    if (this.details != null)
       json[r'details'] = this.details;
-    } else {
-      json[r'details'] = null;
-    }
-    if (this.description != null) {
+    if (this.description != null)
       json[r'description'] = this.description;
-    } else {
-      json[r'description'] = null;
-    }
-    if (this.redemptionPeriod != null) {
+    if (this.redemptionPeriod != null)
       json[r'redemption_period'] = this.redemptionPeriod;
-    } else {
-      json[r'redemption_period'] = null;
-    }
-    if (this.howToRedeem != null) {
+    if (this.howToRedeem != null)
       json[r'how_to_redeem'] = this.howToRedeem;
-    } else {
-      json[r'how_to_redeem'] = null;
-    }
-    if (this.isGlobal != null) {
+    if (this.isGlobal != null)
       json[r'is_global'] = this.isGlobal;
-    } else {
-      json[r'is_global'] = null;
-    }
-    if (this.imageUrl != null) {
+    if (this.imageUrl != null)
       json[r'image_url'] = this.imageUrl;
-    } else {
-      json[r'image_url'] = null;
-    }
-    if (this.establishmentId != null) {
+    if (this.establishmentId != null)
       json[r'establishment_id'] = this.establishmentId;
-    } else {
-      json[r'establishment_id'] = null;
-    }
     return json;
   }
 
@@ -238,19 +203,8 @@ class FeaturedOffer {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
-      // Ensure that the map contains the required keys.
-      // Note 1: the values aren't checked for validity beyond being non-null.
-      // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "FeaturedOffer[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "FeaturedOffer[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
-
       return FeaturedOffer(
-        id: mapValueOfType<int>(json, r'id')!,
+        id: mapValueOfType<int>(json, r'id'),
         title: mapValueOfType<String>(json, r'title'),
         voucherCode: mapValueOfType<String>(json, r'voucher_code'),
         startDate: mapValueOfType<String>(json, r'start_date'),
@@ -308,9 +262,6 @@ class FeaturedOffer {
     return map;
   }
 
-  /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-    'id',
-  };
+
 }
 

@@ -25,7 +25,7 @@ class EstablishmentImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> establishmentImageDeleteWithHttpInfo({ String? establishmentId, String? imageUrl, String? prefer, }) async {
+  Future<Response> establishmentImageDeleteWithHttpInfo({ String? establishmentId, String? imageUrl, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment_image';
 
@@ -43,11 +43,16 @@ class EstablishmentImageApi {
       queryParams.addAll(_queryParams('', 'image_url', imageUrl));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -56,8 +61,7 @@ class EstablishmentImageApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -69,8 +73,8 @@ class EstablishmentImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<void> establishmentImageDelete({ String? establishmentId, String? imageUrl, String? prefer, }) async {
-    final response = await establishmentImageDeleteWithHttpInfo( establishmentId: establishmentId, imageUrl: imageUrl, prefer: prefer, );
+  Future<void> establishmentImageDelete({ String? establishmentId, String? imageUrl, String? prefer, Map<String, String>? other}) async {
+    final response = await establishmentImageDeleteWithHttpInfo( establishmentId: establishmentId, imageUrl: imageUrl, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -103,7 +107,7 @@ class EstablishmentImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<Response> establishmentImageGetWithHttpInfo({ String? establishmentId, String? imageUrl, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
+  Future<Response> establishmentImageGetWithHttpInfo({ String? establishmentId, String? imageUrl, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment_image';
 
@@ -133,6 +137,12 @@ class EstablishmentImageApi {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
@@ -143,7 +153,6 @@ class EstablishmentImageApi {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -152,8 +161,7 @@ class EstablishmentImageApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -183,8 +191,8 @@ class EstablishmentImageApi {
   ///
   /// * [String] prefer:
   ///   Preference
-  Future<List<EstablishmentImage>?> establishmentImageGet({ String? establishmentId, String? imageUrl, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, }) async {
-    final response = await establishmentImageGetWithHttpInfo( establishmentId: establishmentId, imageUrl: imageUrl, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, );
+  Future<List<EstablishmentImage>?> establishmentImageGet({ String? establishmentId, String? imageUrl, String? select, String? order, String? range, String? rangeUnit, String? offset, String? limit, String? prefer, Map<String, String>? other}) async {
+    final response = await establishmentImageGetWithHttpInfo( establishmentId: establishmentId, imageUrl: imageUrl, select: select, order: order, range: range, rangeUnit: rangeUnit, offset: offset, limit: limit, prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -213,7 +221,7 @@ class EstablishmentImageApi {
   ///
   /// * [EstablishmentImage] establishmentImage:
   ///   establishment_image
-  Future<Response> establishmentImagePatchWithHttpInfo({ String? establishmentId, String? imageUrl, String? prefer, EstablishmentImage? establishmentImage, }) async {
+  Future<Response> establishmentImagePatchWithHttpInfo({ String? establishmentId, String? imageUrl, String? prefer, EstablishmentImage? establishmentImage, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment_image';
 
@@ -231,11 +239,16 @@ class EstablishmentImageApi {
       queryParams.addAll(_queryParams('', 'image_url', imageUrl));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -244,8 +257,7 @@ class EstablishmentImageApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -260,8 +272,8 @@ class EstablishmentImageApi {
   ///
   /// * [EstablishmentImage] establishmentImage:
   ///   establishment_image
-  Future<void> establishmentImagePatch({ String? establishmentId, String? imageUrl, String? prefer, EstablishmentImage? establishmentImage, }) async {
-    final response = await establishmentImagePatchWithHttpInfo( establishmentId: establishmentId, imageUrl: imageUrl, prefer: prefer, establishmentImage: establishmentImage, );
+  Future<void> establishmentImagePatch({ String? establishmentId, String? imageUrl, String? prefer, EstablishmentImage? establishmentImage, Map<String, String>? other}) async {
+    final response = await establishmentImagePatchWithHttpInfo( establishmentId: establishmentId, imageUrl: imageUrl, prefer: prefer, establishmentImage: establishmentImage, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -278,7 +290,7 @@ class EstablishmentImageApi {
   ///
   /// * [EstablishmentImage] establishmentImage:
   ///   establishment_image
-  Future<Response> establishmentImagePostWithHttpInfo({ String? select, String? prefer, EstablishmentImage? establishmentImage, }) async {
+  Future<Response> establishmentImagePostWithHttpInfo({ String? select, String? prefer, EstablishmentImage? establishmentImage, Map<String, String>? other}) async {
     // ignore: prefer_const_declarations
     final path = r'/establishment_image';
 
@@ -293,11 +305,16 @@ class EstablishmentImageApi {
       queryParams.addAll(_queryParams('', 'select', select));
     }
 
+    if(other != null) {
+      other.forEach((key, value) {
+        queryParams.addAll(_queryParams('', key, value));
+      });
+    }
+
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
 
-    const contentTypes = <String>['application/vnd.pgrst.object+json;nulls=stripped', 'application/vnd.pgrst.object+json', 'application/json', 'text/csv'];
 
 
     return apiClient.invokeAPI(
@@ -306,8 +323,7 @@ class EstablishmentImageApi {
       queryParams,
       postBody,
       headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
+      formParams
     );
   }
 
@@ -321,8 +337,8 @@ class EstablishmentImageApi {
   ///
   /// * [EstablishmentImage] establishmentImage:
   ///   establishment_image
-  Future<void> establishmentImagePost({ String? select, String? prefer, EstablishmentImage? establishmentImage, }) async {
-    final response = await establishmentImagePostWithHttpInfo( select: select, prefer: prefer, establishmentImage: establishmentImage, );
+  Future<void> establishmentImagePost({ String? select, String? prefer, EstablishmentImage? establishmentImage, Map<String, String>? other}) async {
+    final response = await establishmentImagePostWithHttpInfo( select: select, prefer: prefer, establishmentImage: establishmentImage, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
