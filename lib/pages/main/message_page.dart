@@ -35,9 +35,6 @@ class _MessagePageState extends State<MessagePage> {
         friends?.add(user);
         log(user.toString());
       }
-      for (int i = 0; i < 15; i++) {
-        friends?.add(api.User(uuid: '1', name: 'name', iconUrl: 'https://picsum.photos/200/300'));
-      }
     }
     if (mounted) {
       setState(() {});
