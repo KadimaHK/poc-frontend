@@ -1,0 +1,7 @@
+---
+appleAws:
+  hosts:
+    main:
+      ansible_host: ec2-18-167-173-94.ap-east-1.compute.amazonaws.com
+      ansible_port: 22
+      ansible_user: admin

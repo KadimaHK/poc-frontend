@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  tasks:
+    - name: build website
+      command: flutter build web --base-href=/app/
+      args:
+        chdir: ../
+- hosts: main
+  user: admin
+  tasks:
+    - name: copy web app files
+      copy:
+        src: "../build/web/"
+        dest: "~/nginx/var/www/app/"
+        mode: 0755
+  
