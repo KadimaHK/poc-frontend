@@ -226,6 +226,8 @@ class ApiClient {
           return Review.fromJson(value);
         case 'ReviewImage':
           return ReviewImage.fromJson(value);
+        case 'Role':
+          return Role.fromJson(value);
         case 'RpcSignUpPostRequest':
           return RpcSignUpPostRequest.fromJson(value);
         case 'StoredLiqueur':
@@ -244,6 +246,8 @@ class ApiClient {
           return UserImageLike.fromJson(value);
         case 'UserReviewLike':
           return UserReviewLike.fromJson(value);
+        case 'UserRole':
+          return UserRole.fromJson(value);
         default:
           dynamic match;
           if (value is List && (match = _regList.firstMatch(targetType)?.group(1)) != null) {
