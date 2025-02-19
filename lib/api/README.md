@@ -65,7 +65,7 @@ try {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://poc-bar-app.com:80/api*
+All URIs are relative to *https://poc-bar-app.com:443/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -180,10 +180,10 @@ Class | Method | HTTP request | Description
 *StoredLiqueurTransferApi* | [**storedLiqueurTransferGet**](doc//StoredLiqueurTransferApi.md#storedliqueurtransferget) | **GET** /stored_liqueur_transfer | 
 *StoredLiqueurTransferApi* | [**storedLiqueurTransferPatch**](doc//StoredLiqueurTransferApi.md#storedliqueurtransferpatch) | **PATCH** /stored_liqueur_transfer | 
 *StoredLiqueurTransferApi* | [**storedLiqueurTransferPost**](doc//StoredLiqueurTransferApi.md#storedliqueurtransferpost) | **POST** /stored_liqueur_transfer | 
-*UserApi* | [**userDelete**](doc//UserApi.md#userdelete) | **DELETE** /user | 
-*UserApi* | [**userGet**](doc//UserApi.md#userget) | **GET** /user | 
-*UserApi* | [**userPatch**](doc//UserApi.md#userpatch) | **PATCH** /user | 
-*UserApi* | [**userPost**](doc//UserApi.md#userpost) | **POST** /user | 
+*UserApi* | [**userDelete**](doc//UserApi.md#userdelete) | **DELETE** /user | Only logged in users can access this table. For anonymous users, use the vw_user_anon view
+*UserApi* | [**userGet**](doc//UserApi.md#userget) | **GET** /user | Only logged in users can access this table. For anonymous users, use the vw_user_anon view
+*UserApi* | [**userPatch**](doc//UserApi.md#userpatch) | **PATCH** /user | Only logged in users can access this table. For anonymous users, use the vw_user_anon view
+*UserApi* | [**userPost**](doc//UserApi.md#userpost) | **POST** /user | Only logged in users can access this table. For anonymous users, use the vw_user_anon view
 *UserEstablishmentBookmarkApi* | [**userEstablishmentBookmarkDelete**](doc//UserEstablishmentBookmarkApi.md#userestablishmentbookmarkdelete) | **DELETE** /user_establishment_bookmark | 
 *UserEstablishmentBookmarkApi* | [**userEstablishmentBookmarkGet**](doc//UserEstablishmentBookmarkApi.md#userestablishmentbookmarkget) | **GET** /user_establishment_bookmark | 
 *UserEstablishmentBookmarkApi* | [**userEstablishmentBookmarkPatch**](doc//UserEstablishmentBookmarkApi.md#userestablishmentbookmarkpatch) | **PATCH** /user_establishment_bookmark | 
@@ -204,6 +204,10 @@ Class | Method | HTTP request | Description
 *UserRoleApi* | [**userRoleGet**](doc//UserRoleApi.md#userroleget) | **GET** /user_role | 
 *UserRoleApi* | [**userRolePatch**](doc//UserRoleApi.md#userrolepatch) | **PATCH** /user_role | 
 *UserRoleApi* | [**userRolePost**](doc//UserRoleApi.md#userrolepost) | **POST** /user_role | 
+*VwUserAnonApi* | [**vwUserAnonDelete**](doc//VwUserAnonApi.md#vwuseranondelete) | **DELETE** /vw_user_anon | View for anonymous user to select user data. Logged in users should use user directly.
+*VwUserAnonApi* | [**vwUserAnonGet**](doc//VwUserAnonApi.md#vwuseranonget) | **GET** /vw_user_anon | View for anonymous user to select user data. Logged in users should use user directly.
+*VwUserAnonApi* | [**vwUserAnonPatch**](doc//VwUserAnonApi.md#vwuseranonpatch) | **PATCH** /vw_user_anon | View for anonymous user to select user data. Logged in users should use user directly.
+*VwUserAnonApi* | [**vwUserAnonPost**](doc//VwUserAnonApi.md#vwuseranonpost) | **POST** /vw_user_anon | View for anonymous user to select user data. Logged in users should use user directly.
 
 
 ## Documentation For Models
@@ -231,6 +235,7 @@ Class | Method | HTTP request | Description
  - [Review](doc//Review.md)
  - [ReviewImage](doc//ReviewImage.md)
  - [Role](doc//Role.md)
+ - [RpcLoginPostRequest](doc//RpcLoginPostRequest.md)
  - [RpcSignUpPostRequest](doc//RpcSignUpPostRequest.md)
  - [StoredLiqueur](doc//StoredLiqueur.md)
  - [StoredLiqueurImage](doc//StoredLiqueurImage.md)
@@ -241,6 +246,7 @@ Class | Method | HTTP request | Description
  - [UserImageLike](doc//UserImageLike.md)
  - [UserReviewLike](doc//UserReviewLike.md)
  - [UserRole](doc//UserRole.md)
+ - [VwUserAnon](doc//VwUserAnon.md)
 
 
 ## Documentation For Authorization

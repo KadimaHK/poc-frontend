@@ -50,6 +50,7 @@ doc/ReviewImageApi.md
 doc/Role.md
 doc/RoleApi.md
 doc/RpcLoginApi.md
+doc/RpcLoginPostRequest.md
 doc/RpcLogoutApi.md
 doc/RpcSignUpApi.md
 doc/RpcSignUpPostRequest.md
@@ -71,6 +72,8 @@ doc/UserReviewLike.md
 doc/UserReviewLikeApi.md
 doc/UserRole.md
 doc/UserRoleApi.md
+doc/VwUserAnon.md
+doc/VwUserAnonApi.md
 git_push.sh
 lib/api.dart
 lib/api/booking_api.dart
@@ -106,6 +109,7 @@ lib/api/user_featured_offer_api.dart
 lib/api/user_image_like_api.dart
 lib/api/user_review_like_api.dart
 lib/api/user_role_api.dart
+lib/api/vw_user_anon_api.dart
 lib/api_client.dart
 lib/api_exception.dart
 lib/api_helper.dart
@@ -137,6 +141,7 @@ lib/model/pick_establishment.dart
 lib/model/review.dart
 lib/model/review_image.dart
 lib/model/role.dart
+lib/model/rpc_login_post_request.dart
 lib/model/rpc_sign_up_post_request.dart
 lib/model/stored_liqueur.dart
 lib/model/stored_liqueur_image.dart
@@ -147,8 +152,7 @@ lib/model/user_featured_offer.dart
 lib/model/user_image_like.dart
 lib/model/user_review_like.dart
 lib/model/user_role.dart
+lib/model/vw_user_anon.dart
 pubspec.yaml
-test/role_api_test.dart
-test/role_test.dart
-test/user_role_api_test.dart
-test/user_role_test.dart
+test/vw_user_anon_api_test.dart
+test/vw_user_anon_test.dart

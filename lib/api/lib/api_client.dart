@@ -11,7 +11,7 @@
 part of openapi.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'http://poc-bar-app.com:80/api', this.authentication,});
+  ApiClient({this.basePath = 'https://poc-bar-app.com:443/api', this.authentication,});
 
   final String basePath;
   final Authentication? authentication;
@@ -228,6 +228,8 @@ class ApiClient {
           return ReviewImage.fromJson(value);
         case 'Role':
           return Role.fromJson(value);
+        case 'RpcLoginPostRequest':
+          return RpcLoginPostRequest.fromJson(value);
         case 'RpcSignUpPostRequest':
           return RpcSignUpPostRequest.fromJson(value);
         case 'StoredLiqueur':
@@ -248,6 +250,8 @@ class ApiClient {
           return UserReviewLike.fromJson(value);
         case 'UserRole':
           return UserRole.fromJson(value);
+        case 'VwUserAnon':
+          return VwUserAnon.fromJson(value);
         default:
           dynamic match;
           if (value is List && (match = _regList.firstMatch(targetType)?.group(1)) != null) {

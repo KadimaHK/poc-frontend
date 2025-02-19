@@ -16,7 +16,10 @@ class UserApi {
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'DELETE /user' operation and returns the [Response].
+  /// Only logged in users can access this table. For anonymous users, use the vw_user_anon view
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
   /// Parameters:
   ///
   /// * [String] id:
@@ -150,6 +153,8 @@ class UserApi {
     );
   }
 
+  /// Only logged in users can access this table. For anonymous users, use the vw_user_anon view
+  ///
   /// Parameters:
   ///
   /// * [String] id:
@@ -199,7 +204,10 @@ class UserApi {
     }
   }
 
-  /// Performs an HTTP 'GET /user' operation and returns the [Response].
+  /// Only logged in users can access this table. For anonymous users, use the vw_user_anon view
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
   /// Parameters:
   ///
   /// * [String] id:
@@ -369,6 +377,8 @@ class UserApi {
     );
   }
 
+  /// Only logged in users can access this table. For anonymous users, use the vw_user_anon view
+  ///
   /// Parameters:
   ///
   /// * [String] id:
@@ -447,7 +457,10 @@ class UserApi {
     return null;
   }
 
-  /// Performs an HTTP 'PATCH /user' operation and returns the [Response].
+  /// Only logged in users can access this table. For anonymous users, use the vw_user_anon view
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
   /// Parameters:
   ///
   /// * [String] id:
@@ -584,6 +597,8 @@ class UserApi {
     );
   }
 
+  /// Only logged in users can access this table. For anonymous users, use the vw_user_anon view
+  ///
   /// Parameters:
   ///
   /// * [String] id:
@@ -636,7 +651,10 @@ class UserApi {
     }
   }
 
-  /// Performs an HTTP 'POST /user' operation and returns the [Response].
+  /// Only logged in users can access this table. For anonymous users, use the vw_user_anon view
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
   /// Parameters:
   ///
   /// * [String] select:
@@ -684,6 +702,8 @@ class UserApi {
     );
   }
 
+  /// Only logged in users can access this table. For anonymous users, use the vw_user_anon view
+  ///
   /// Parameters:
   ///
   /// * [String] select:

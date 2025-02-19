@@ -16,9 +16,9 @@ class UserSearchPage extends StatefulWidget {
 }
 
 class _UserSearchPageState extends State<UserSearchPage> {
-  List<api.User>? friends = [];
+  List<api.VwUserAnon>? friends = [];
 
-  List<api.User>? searchResult = [];
+  List<api.VwUserAnon>? searchResult = [];
 
   @override
   void initState() {
@@ -30,12 +30,12 @@ class _UserSearchPageState extends State<UserSearchPage> {
     {
       List<api.Friend>? fds = (await api.FriendApi(MyApp.sessionApiClient).friendGet())!;
       for (api.Friend item in fds) {
-        api.User user = (await api.UserApi().userGet(id: 'eq.${item.friendId}', select: 'id,uuid,name,icon_url'))!.first;
+        api.VwUserAnon user = (await api.VwUserAnonApi().vwUserAnonGet(id: 'eq.${item.friendId}'))!.first;
         friends?.add(user);
         log(user.toString());
       }
       for (int i = 0; i < 15; i++) {
-        friends?.add(api.User(uuid: '1', name: 'name', iconUrl: 'https://picsum.photos/200/300'));
+        friends?.add(api.VwUserAnon(uuid: '1', name: 'name', iconUrl: 'https://picsum.photos/200/300'));
       }
       searchResult = friends;
     }

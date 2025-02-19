@@ -64,6 +64,7 @@ part 'api/user_featured_offer_api.dart';
 part 'api/user_image_like_api.dart';
 part 'api/user_review_like_api.dart';
 part 'api/user_role_api.dart';
+part 'api/vw_user_anon_api.dart';
 
 part 'model/booking.dart';
 part 'model/establishment.dart';
@@ -88,6 +89,7 @@ part 'model/pick_establishment.dart';
 part 'model/review.dart';
 part 'model/review_image.dart';
 part 'model/role.dart';
+part 'model/rpc_login_post_request.dart';
 part 'model/rpc_sign_up_post_request.dart';
 part 'model/stored_liqueur.dart';
 part 'model/stored_liqueur_image.dart';
@@ -98,6 +100,7 @@ part 'model/user_featured_offer.dart';
 part 'model/user_image_like.dart';
 part 'model/user_review_like.dart';
 part 'model/user_role.dart';
+part 'model/vw_user_anon.dart';
 
 
 /// An [ApiClient] instance that uses the default values obtained from

@@ -5,20 +5,20 @@
 import 'package:openapi/api.dart';
 ```
 
-All URIs are relative to *http://poc-bar-app.com:80/api*
+All URIs are relative to *https://poc-bar-app.com:443/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**userDelete**](UserApi.md#userdelete) | **DELETE** /user | 
-[**userGet**](UserApi.md#userget) | **GET** /user | 
-[**userPatch**](UserApi.md#userpatch) | **PATCH** /user | 
-[**userPost**](UserApi.md#userpost) | **POST** /user | 
+[**userDelete**](UserApi.md#userdelete) | **DELETE** /user | Only logged in users can access this table. For anonymous users, use the vw_user_anon view
+[**userGet**](UserApi.md#userget) | **GET** /user | Only logged in users can access this table. For anonymous users, use the vw_user_anon view
+[**userPatch**](UserApi.md#userpatch) | **PATCH** /user | Only logged in users can access this table. For anonymous users, use the vw_user_anon view
+[**userPost**](UserApi.md#userpost) | **POST** /user | Only logged in users can access this table. For anonymous users, use the vw_user_anon view
 
 
 # **userDelete**
 > userDelete(id, uuid, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, bookmarkCount, reviewCount, photoCount, points, pointsExpiry, verified, createdAt, updatedAt, prefer)
 
-
+Only logged in users can access this table. For anonymous users, use the vw_user_anon view
 
 ### Example
 ```dart
@@ -100,7 +100,7 @@ void (empty response body)
 # **userGet**
 > List<User> userGet(id, uuid, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, bookmarkCount, reviewCount, photoCount, points, pointsExpiry, verified, createdAt, updatedAt, select, order, range, rangeUnit, offset, limit, prefer)
 
-
+Only logged in users can access this table. For anonymous users, use the vw_user_anon view
 
 ### Example
 ```dart
@@ -195,7 +195,7 @@ Name | Type | Description  | Notes
 # **userPatch**
 > userPatch(id, uuid, email, name, password, iconUrl, age, gender, description, followingCount, followerCount, bookmarkCount, reviewCount, photoCount, points, pointsExpiry, verified, createdAt, updatedAt, prefer, user)
 
-
+Only logged in users can access this table. For anonymous users, use the vw_user_anon view
 
 ### Example
 ```dart
@@ -279,7 +279,7 @@ void (empty response body)
 # **userPost**
 > userPost(select, prefer, user)
 
-
+Only logged in users can access this table. For anonymous users, use the vw_user_anon view
 
 ### Example
 ```dart

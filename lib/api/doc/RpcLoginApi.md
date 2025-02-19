@@ -5,7 +5,7 @@
 import 'package:openapi/api.dart';
 ```
 
-All URIs are relative to *http://poc-bar-app.com:80/api*
+All URIs are relative to *https://poc-bar-app.com:443/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **rpcLoginGet**
-> rpcLoginGet()
+> rpcLoginGet(loginEmail, loginPassword)
 
 Don't use this function with GET method, use POST method instead
 
@@ -27,16 +27,22 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
 final api_instance = RpcLoginApi();
+final loginEmail = loginEmail_example; // String | 
+final loginPassword = loginPassword_example; // String | 
 
 try {
-    api_instance.rpcLoginGet();
+    api_instance.rpcLoginGet(loginEmail, loginPassword);
 } catch (e) {
     print('Exception when calling RpcLoginApi->rpcLoginGet: $e\n');
 }
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **loginEmail** | **String**|  | 
+ **loginPassword** | **String**|  | 
 
 ### Return type
 
@@ -67,7 +73,7 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
 final api_instance = RpcLoginApi();
-final args = Object(); // Object | 
+final args = RpcLoginPostRequest(); // RpcLoginPostRequest | 
 final prefer = prefer_example; // String | Preference
 
 try {
@@ -81,7 +87,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **args** | **Object**|  | 
+ **args** | [**RpcLoginPostRequest**](RpcLoginPostRequest.md)|  | 
  **prefer** | **String**| Preference | [optional] 
 
 ### Return type
