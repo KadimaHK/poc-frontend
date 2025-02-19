@@ -11,8 +11,8 @@ custom api
 `openapi-generator generate -i http://<host>/custom-api/v1/ -o lib/custom-api -g dart`
 
 example  
-`openapi-generator generate -t dev_scripts/api_templates/out -i http://localhost/api/ -o lib/api -g dart`  
-`openapi-generator generate -i http://localhost/custom-api/v1/ -o lib/custom-api -g dart`
+`openapi-generator generate -t dev_scripts/api_templates/out -i http://192.168.50.81/api/ -o lib/api -g dart`  
+`openapi-generator generate -i http://192.168.50.81/custom-api/v1/ -o lib/custom-api -g dart`
 
 
 OpenAPI Generator Templates 

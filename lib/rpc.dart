@@ -1,13 +1,12 @@
 import 'dart:io';
 
-import 'package:poc_frontend/custom-api/lib/api.dart';
-
+import 'package:poc_frontend/api/lib/api.dart';
 
 Future<String> rpcLoginPost(
   String loginEmail,
   String loginPassword,
 ) async {
-  final response = await defaultApiClient.invokeAPI('/rpc/login', 'POST', [], {loginEmail: loginEmail, loginPassword: loginPassword}, {}, {}, null);
+  final response = await defaultApiClient.invokeAPI('/rpc/login', 'POST', [], {'login_email': loginEmail, 'login_password': loginPassword}, {}, {});
   if (response.statusCode >= HttpStatus.badRequest) {
     throw ApiException(response.statusCode, response.body);
   }
@@ -20,7 +19,7 @@ rpcSignUpPost(
   String name,
   String password,
 ) async {
-  final response = await defaultApiClient.invokeAPI('/rpc/sign_up', 'POST', [], {email: email, name: name, password: password}, {}, {}, null);
+  final response = await defaultApiClient.invokeAPI('/rpc/sign_up', 'POST', [], {'email': email, 'name': name, 'password': password}, {}, {});
   if (response.statusCode >= HttpStatus.badRequest) {
     throw ApiException(response.statusCode, response.body);
   }
