@@ -32,8 +32,18 @@ void main() {
       // TODO
     });
 
-    // String expiry
-    test('to test the property `expiry`', () async {
+    // String startDate
+    test('to test the property `startDate`', () async {
+      // TODO
+    });
+
+    // String expiryDate
+    test('to test the property `expiryDate`', () async {
+      // TODO
+    });
+
+    // num percentageDiscount
+    test('to test the property `percentageDiscount`', () async {
       // TODO
     });
 

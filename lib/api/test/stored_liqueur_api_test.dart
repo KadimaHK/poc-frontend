@@ -17,17 +17,17 @@ void main() {
   // final instance = StoredLiqueurApi();
 
   group('tests for StoredLiqueurApi', () {
-    //Future storedLiqueurDelete({ String id, String name, String description, String imageUrl, String storedDate, String expiryDate, String establishmentId, String isRedeemed, String userId, String transferedTo, String createdAt, String updatedAt, String prefer }) async
+    //Future storedLiqueurDelete({ String id, String userId, String establishmentId, String imageUrl, String name, String description, String storedDate, String expiryDate, String isRedeemed, String redeemCode, String createdAt, String updatedAt, String prefer }) async
     test('test storedLiqueurDelete', () async {
       // TODO
     });
 
-    //Future<List<StoredLiqueur>> storedLiqueurGet({ String id, String name, String description, String imageUrl, String storedDate, String expiryDate, String establishmentId, String isRedeemed, String userId, String transferedTo, String createdAt, String updatedAt, String select, String order, String range, String rangeUnit, String offset, String limit, String prefer }) async
+    //Future<List<StoredLiqueur>> storedLiqueurGet({ String id, String userId, String establishmentId, String imageUrl, String name, String description, String storedDate, String expiryDate, String isRedeemed, String redeemCode, String createdAt, String updatedAt, String select, String order, String range, String rangeUnit, String offset, String limit, String prefer }) async
     test('test storedLiqueurGet', () async {
       // TODO
     });
 
-    //Future storedLiqueurPatch({ String id, String name, String description, String imageUrl, String storedDate, String expiryDate, String establishmentId, String isRedeemed, String userId, String transferedTo, String createdAt, String updatedAt, String prefer, StoredLiqueur storedLiqueur }) async
+    //Future storedLiqueurPatch({ String id, String userId, String establishmentId, String imageUrl, String name, String description, String storedDate, String expiryDate, String isRedeemed, String redeemCode, String createdAt, String updatedAt, String prefer, StoredLiqueur storedLiqueur }) async
     test('test storedLiqueurPatch', () async {
       // TODO
     });

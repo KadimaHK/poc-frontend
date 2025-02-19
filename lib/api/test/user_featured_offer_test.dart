@@ -16,15 +16,30 @@ void main() {
   // final instance = UserFeaturedOffer();
 
   group('test UserFeaturedOffer', () {
-    // Note: This is a Primary Key.<pk/> This is a Foreign Key to `user.email`.<fk table='user' column='email'/>
-    // String userEmail
-    test('to test the property `userEmail`', () async {
+    // Note: This is a Primary Key.<pk/> This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
+    // int userId
+    test('to test the property `userId`', () async {
       // TODO
     });
 
     // Note: This is a Primary Key.<pk/> This is a Foreign Key to `featured_offer.id`.<fk table='featured_offer' column='id'/>
     // int featuredOfferId
     test('to test the property `featuredOfferId`', () async {
+      // TODO
+    });
+
+    // bool isRedeemed (default value: false)
+    test('to test the property `isRedeemed`', () async {
+      // TODO
+    });
+
+    // String redeemCode
+    test('to test the property `redeemCode`', () async {
+      // TODO
+    });
+
+    // String redeemedAt
+    test('to test the property `redeemedAt`', () async {
       // TODO
     });
 

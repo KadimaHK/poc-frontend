@@ -52,7 +52,6 @@ class UserEstablishmentBookmarkApi {
     if (createdAt != null) {
       queryParams.addAll(_queryParams('', 'created_at', createdAt));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));
@@ -160,7 +159,6 @@ class UserEstablishmentBookmarkApi {
     if (limit != null) {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));
@@ -276,7 +274,6 @@ class UserEstablishmentBookmarkApi {
     if (createdAt != null) {
       queryParams.addAll(_queryParams('', 'created_at', createdAt));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));
@@ -346,7 +343,6 @@ class UserEstablishmentBookmarkApi {
     if (select != null) {
       queryParams.addAll(_queryParams('', 'select', select));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));

@@ -17,17 +17,17 @@ void main() {
   // final instance = MessageApi();
 
   group('tests for MessageApi', () {
-    //Future messageDelete({ String uuid, String time, String from, String to, String body, String prefer }) async
+    //Future messageDelete({ String uuid, String time, String fromUserId, String toUserId, String body, String prefer }) async
     test('test messageDelete', () async {
       // TODO
     });
 
-    //Future<List<Message>> messageGet({ String uuid, String time, String from, String to, String body, String select, String order, String range, String rangeUnit, String offset, String limit, String prefer }) async
+    //Future<List<Message>> messageGet({ String uuid, String time, String fromUserId, String toUserId, String body, String select, String order, String range, String rangeUnit, String offset, String limit, String prefer }) async
     test('test messageGet', () async {
       // TODO
     });
 
-    //Future messagePatch({ String uuid, String time, String from, String to, String body, String prefer, Message message }) async
+    //Future messagePatch({ String uuid, String time, String fromUserId, String toUserId, String body, String prefer, Message message }) async
     test('test messagePatch', () async {
       // TODO
     });

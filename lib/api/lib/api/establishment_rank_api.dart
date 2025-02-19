@@ -47,7 +47,6 @@ class EstablishmentRankApi {
     if (rank != null) {
       queryParams.addAll(_queryParams('', 'rank', rank));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));
@@ -148,7 +147,6 @@ class EstablishmentRankApi {
     if (limit != null) {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));
@@ -257,7 +255,6 @@ class EstablishmentRankApi {
     if (rank != null) {
       queryParams.addAll(_queryParams('', 'rank', rank));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));
@@ -325,7 +322,6 @@ class EstablishmentRankApi {
     if (select != null) {
       queryParams.addAll(_queryParams('', 'select', select));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));

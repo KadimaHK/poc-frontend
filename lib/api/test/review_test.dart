@@ -34,13 +34,74 @@ void main() {
       // TODO
     });
 
-    // int rating
-    test('to test the property `rating`', () async {
+    // String title
+    test('to test the property `title`', () async {
       // TODO
     });
 
     // String description
     test('to test the property `description`', () async {
+      // TODO
+    });
+
+    // String content
+    test('to test the property `content`', () async {
+      // TODO
+    });
+
+    // bool isApproved (default value: false)
+    test('to test the property `isApproved`', () async {
+      // TODO
+    });
+
+    // num rating
+    test('to test the property `rating`', () async {
+      // TODO
+    });
+
+    // num tasteRating
+    test('to test the property `tasteRating`', () async {
+      // TODO
+    });
+
+    // num decorRating
+    test('to test the property `decorRating`', () async {
+      // TODO
+    });
+
+    // num serviceRating
+    test('to test the property `serviceRating`', () async {
+      // TODO
+    });
+
+    // num hygieneRating
+    test('to test the property `hygieneRating`', () async {
+      // TODO
+    });
+
+    // num valueRating
+    test('to test the property `valueRating`', () async {
+      // TODO
+    });
+
+    // String dateVisited
+    test('to test the property `dateVisited`', () async {
+      // TODO
+    });
+
+    // How much did the user spend in the establishment per person
+    // num spend
+    test('to test the property `spend`', () async {
+      // TODO
+    });
+
+    // int likes
+    test('to test the property `likes`', () async {
+      // TODO
+    });
+
+    // String status (default value: 'pending')
+    test('to test the property `status`', () async {
       // TODO
     });
 

@@ -22,6 +22,11 @@ void main() {
       // TODO
     });
 
+    // String uuid
+    test('to test the property `uuid`', () async {
+      // TODO
+    });
+
     // String email
     test('to test the property `email`', () async {
       // TODO
@@ -65,6 +70,31 @@ void main() {
 
     // int followerCount
     test('to test the property `followerCount`', () async {
+      // TODO
+    });
+
+    // int bookmarkCount
+    test('to test the property `bookmarkCount`', () async {
+      // TODO
+    });
+
+    // int reviewCount
+    test('to test the property `reviewCount`', () async {
+      // TODO
+    });
+
+    // int photoCount
+    test('to test the property `photoCount`', () async {
+      // TODO
+    });
+
+    // int points
+    test('to test the property `points`', () async {
+      // TODO
+    });
+
+    // String pointsExpiry (default value: '(now() + \'1 year\'::interval)')
+    test('to test the property `pointsExpiry`', () async {
       // TODO
     });
 

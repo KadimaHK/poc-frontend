@@ -42,7 +42,6 @@ class FollowApi {
     if (following != null) {
       queryParams.addAll(_queryParams('', 'following', following));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));
@@ -136,7 +135,6 @@ class FollowApi {
     if (limit != null) {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));
@@ -238,7 +236,6 @@ class FollowApi {
     if (following != null) {
       queryParams.addAll(_queryParams('', 'following', following));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));
@@ -304,7 +301,6 @@ class FollowApi {
     if (select != null) {
       queryParams.addAll(_queryParams('', 'select', select));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));

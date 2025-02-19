@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 analysis_options.yaml
@@ -22,7 +21,3 @@ lib/auth/oauth.dart
 lib/model/image.dart
 lib/model/unauthorized.dart
 pubspec.yaml
-test/image_api_test.dart
-test/image_test.dart
-test/openapi_api_test.dart
-test/unauthorized_test.dart

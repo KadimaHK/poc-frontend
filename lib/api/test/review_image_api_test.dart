@@ -17,17 +17,17 @@ void main() {
   // final instance = ReviewImageApi();
 
   group('tests for ReviewImageApi', () {
-    //Future reviewImageDelete({ String id, String reviewId, String imageUrl, String prefer }) async
+    //Future reviewImageDelete({ String id, String reviewId, String imageUrl, String description, String itemName, String price, String type, String prefer }) async
     test('test reviewImageDelete', () async {
       // TODO
     });
 
-    //Future<List<ReviewImage>> reviewImageGet({ String id, String reviewId, String imageUrl, String select, String order, String range, String rangeUnit, String offset, String limit, String prefer }) async
+    //Future<List<ReviewImage>> reviewImageGet({ String id, String reviewId, String imageUrl, String description, String itemName, String price, String type, String select, String order, String range, String rangeUnit, String offset, String limit, String prefer }) async
     test('test reviewImageGet', () async {
       // TODO
     });
 
-    //Future reviewImagePatch({ String id, String reviewId, String imageUrl, String prefer, ReviewImage reviewImage }) async
+    //Future reviewImagePatch({ String id, String reviewId, String imageUrl, String description, String itemName, String price, String type, String prefer, ReviewImage reviewImage }) async
     test('test reviewImagePatch', () async {
       // TODO
     });

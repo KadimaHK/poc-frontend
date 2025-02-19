@@ -62,7 +62,6 @@ class StoredLiqueurTransferApi {
     if (createdAt != null) {
       queryParams.addAll(_queryParams('', 'created_at', createdAt));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));
@@ -184,7 +183,6 @@ class StoredLiqueurTransferApi {
     if (limit != null) {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));
@@ -314,7 +312,6 @@ class StoredLiqueurTransferApi {
     if (createdAt != null) {
       queryParams.addAll(_queryParams('', 'created_at', createdAt));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));
@@ -388,7 +385,6 @@ class StoredLiqueurTransferApi {
     if (select != null) {
       queryParams.addAll(_queryParams('', 'select', select));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));

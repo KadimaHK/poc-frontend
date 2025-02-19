@@ -1,5 +1,5 @@
 //
-// Added to .openapi-generator-ignore
+// AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
 
@@ -10,13 +10,77 @@
 
 part of openapi.api;
 
+
 class RpcLoginApi {
   RpcLoginApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
-  Future<Response> rpcLoginPostWithHttpInfo(String email, String password, { String? prefer, }) async {
+  /// Don't use this function with GET method, use POST method instead
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] loginEmail (required):
+  ///
+  /// * [String] loginPassword (required):
+  Future<Response> rpcLoginGetWithHttpInfo(String loginEmail, String loginPassword,) async {
+    // ignore: prefer_const_declarations
     final path = r'/rpc/login';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'login_email', loginEmail));
+      queryParams.addAll(_queryParams('', 'login_password', loginPassword));
+
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams
+    );
+  }
+
+  /// Don't use this function with GET method, use POST method instead
+  ///
+  /// Parameters:
+  ///
+  /// * [String] loginEmail (required):
+  ///
+  /// * [String] loginPassword (required):
+  Future<void> rpcLoginGet(String loginEmail, String loginPassword,) async {
+    final response = await rpcLoginGetWithHttpInfo(loginEmail, loginPassword,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
+  /// Don't use this function with GET method, use POST method instead
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [RpcLoginPostRequest] args (required):
+  ///
+  /// * [String] prefer:
+  ///   Preference
+  Future<Response> rpcLoginPostWithHttpInfo(RpcLoginPostRequest args, { String? prefer, Map<String, String>? other}) async {
+    // ignore: prefer_const_declarations
+    final path = r'/rpc/login';
+
+    // ignore: prefer_final_locals
+    Object? postBody = args;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -25,29 +89,31 @@ class RpcLoginApi {
     if (prefer != null) {
       headerParams[r'Prefer'] = parameterToString(prefer);
     }
-    headerParams[r'email'] = email;
-    headerParams[r'password'] = password;
+
 
 
     return apiClient.invokeAPI(
       path,
       'POST',
       queryParams,
-      null,
+      postBody,
       headerParams,
       formParams
     );
   }
 
-
-  Future<String> rpcLoginPost(String email, String password) async {
-    final response = await rpcLoginPostWithHttpInfo(email, password);
-    String body = await _decodeBodyBytes(response);
+  /// Don't use this function with GET method, use POST method instead
+  ///
+  /// Parameters:
+  ///
+  /// * [RpcLoginPostRequest] args (required):
+  ///
+  /// * [String] prefer:
+  ///   Preference
+  Future<void> rpcLoginPost(RpcLoginPostRequest args, { String? prefer, Map<String, String>? other}) async {
+    final response = await rpcLoginPostWithHttpInfo(args,  prefer: prefer, other: other);
     if (response.statusCode >= HttpStatus.badRequest) {
-      return body;
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
-
-    JsonDecoder _decoder = JsonDecoder();
-    return _decoder.convert(body)['session_token'];
   }
 }

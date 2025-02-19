@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:poc_frontend/api/lib/api.dart';
 import 'package:poc_frontend/main.dart';
 import 'package:poc_frontend/pages/sign_up_page.dart';
+import 'package:poc_frontend/rpc.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -60,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
         ),
         TextButton(
           onPressed: () {
-            RpcLoginApi().rpcLoginPost(_emailController.text, _passwordController.text).then((sessionToken) {
+            rpcLoginPost(_emailController.text, _passwordController.text).then((sessionToken) {
               log(sessionToken, name: 'sessionToken');
               MyApp.prefs!.setString('loginSessionToken', sessionToken);
 
@@ -71,6 +72,12 @@ class _LoginPageState extends State<LoginPage> {
 
               Navigator.pop(context);
               Navigator.pushReplacementNamed(context, '/');
+            }).catchError((error) {
+              Map<String, dynamic> body = error.message as Map<String, dynamic>;
+              if (error is ApiException) {
+                log(body['message'], name: 'error');
+                log(body['hint'], name: 'hint');
+              } 
             });
           },
           style: Theme.of(context).textButtonTheme.style,
@@ -103,7 +110,6 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
-
 
 class _ClickableText extends StatelessWidget {
   const _ClickableText({super.key, required this.text, required this.onPressed});

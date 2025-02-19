@@ -17,17 +17,17 @@ void main() {
   // final instance = StoredLiqueurTransferApi();
 
   group('tests for StoredLiqueurTransferApi', () {
-    //Future storedLiqueurTransferDelete({ String id, String storedLiqueurId, String fromUserId, String toUserId, String createdAt, String prefer }) async
+    //Future storedLiqueurTransferDelete({ String id, String storedLiqueurId, String fromUserId, String toUserId, String isAccepted, String createdAt, String prefer }) async
     test('test storedLiqueurTransferDelete', () async {
       // TODO
     });
 
-    //Future<List<StoredLiqueurTransfer>> storedLiqueurTransferGet({ String id, String storedLiqueurId, String fromUserId, String toUserId, String createdAt, String select, String order, String range, String rangeUnit, String offset, String limit, String prefer }) async
+    //Future<List<StoredLiqueurTransfer>> storedLiqueurTransferGet({ String id, String storedLiqueurId, String fromUserId, String toUserId, String isAccepted, String createdAt, String select, String order, String range, String rangeUnit, String offset, String limit, String prefer }) async
     test('test storedLiqueurTransferGet', () async {
       // TODO
     });
 
-    //Future storedLiqueurTransferPatch({ String id, String storedLiqueurId, String fromUserId, String toUserId, String createdAt, String prefer, StoredLiqueurTransfer storedLiqueurTransfer }) async
+    //Future storedLiqueurTransferPatch({ String id, String storedLiqueurId, String fromUserId, String toUserId, String isAccepted, String createdAt, String prefer, StoredLiqueurTransfer storedLiqueurTransfer }) async
     test('test storedLiqueurTransferPatch', () async {
       // TODO
     });

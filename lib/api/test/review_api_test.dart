@@ -17,17 +17,17 @@ void main() {
   // final instance = ReviewApi();
 
   group('tests for ReviewApi', () {
-    //Future reviewDelete({ String id, String userId, String establishmentId, String rating, String description, String createdAt, String updatedAt, String prefer }) async
+    //Future reviewDelete({ String id, String userId, String establishmentId, String title, String description, String content, String isApproved, String rating, String tasteRating, String decorRating, String serviceRating, String hygieneRating, String valueRating, String dateVisited, String spend, String likes, String status, String createdAt, String updatedAt, String prefer }) async
     test('test reviewDelete', () async {
       // TODO
     });
 
-    //Future<List<Review>> reviewGet({ String id, String userId, String establishmentId, String rating, String description, String createdAt, String updatedAt, String select, String order, String range, String rangeUnit, String offset, String limit, String prefer }) async
+    //Future<List<Review>> reviewGet({ String id, String userId, String establishmentId, String title, String description, String content, String isApproved, String rating, String tasteRating, String decorRating, String serviceRating, String hygieneRating, String valueRating, String dateVisited, String spend, String likes, String status, String createdAt, String updatedAt, String select, String order, String range, String rangeUnit, String offset, String limit, String prefer }) async
     test('test reviewGet', () async {
       // TODO
     });
 
-    //Future reviewPatch({ String id, String userId, String establishmentId, String rating, String description, String createdAt, String updatedAt, String prefer, Review review }) async
+    //Future reviewPatch({ String id, String userId, String establishmentId, String title, String description, String content, String isApproved, String rating, String tasteRating, String decorRating, String serviceRating, String hygieneRating, String valueRating, String dateVisited, String spend, String likes, String status, String createdAt, String updatedAt, String prefer, Review review }) async
     test('test reviewPatch', () async {
       // TODO
     });

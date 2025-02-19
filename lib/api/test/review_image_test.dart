@@ -34,6 +34,26 @@ void main() {
       // TODO
     });
 
+    // String description
+    test('to test the property `description`', () async {
+      // TODO
+    });
+
+    // String itemName
+    test('to test the property `itemName`', () async {
+      // TODO
+    });
+
+    // num price
+    test('to test the property `price`', () async {
+      // TODO
+    });
+
+    // String type
+    test('to test the property `type`', () async {
+      // TODO
+    });
+
 
   });
 

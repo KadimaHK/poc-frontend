@@ -32,6 +32,11 @@ void main() {
       // TODO
     });
 
+    // int likes
+    test('to test the property `likes`', () async {
+      // TODO
+    });
+
     // String createdAt (default value: 'now()')
     test('to test the property `createdAt`', () async {
       // TODO

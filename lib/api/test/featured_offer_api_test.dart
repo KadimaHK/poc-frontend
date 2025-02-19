@@ -17,17 +17,17 @@ void main() {
   // final instance = FeaturedOfferApi();
 
   group('tests for FeaturedOfferApi', () {
-    //Future featuredOfferDelete({ String id, String title, String voucherCode, String expiry, String details, String description, String redemptionPeriod, String howToRedeem, String isGlobal, String imageUrl, String establishmentId, String prefer }) async
+    //Future featuredOfferDelete({ String id, String title, String voucherCode, String startDate, String expiryDate, String percentageDiscount, String details, String description, String redemptionPeriod, String howToRedeem, String isGlobal, String imageUrl, String establishmentId, String prefer }) async
     test('test featuredOfferDelete', () async {
       // TODO
     });
 
-    //Future<List<FeaturedOffer>> featuredOfferGet({ String id, String title, String voucherCode, String expiry, String details, String description, String redemptionPeriod, String howToRedeem, String isGlobal, String imageUrl, String establishmentId, String select, String order, String range, String rangeUnit, String offset, String limit, String prefer }) async
+    //Future<List<FeaturedOffer>> featuredOfferGet({ String id, String title, String voucherCode, String startDate, String expiryDate, String percentageDiscount, String details, String description, String redemptionPeriod, String howToRedeem, String isGlobal, String imageUrl, String establishmentId, String select, String order, String range, String rangeUnit, String offset, String limit, String prefer }) async
     test('test featuredOfferGet', () async {
       // TODO
     });
 
-    //Future featuredOfferPatch({ String id, String title, String voucherCode, String expiry, String details, String description, String redemptionPeriod, String howToRedeem, String isGlobal, String imageUrl, String establishmentId, String prefer, FeaturedOffer featuredOffer }) async
+    //Future featuredOfferPatch({ String id, String title, String voucherCode, String startDate, String expiryDate, String percentageDiscount, String details, String description, String redemptionPeriod, String howToRedeem, String isGlobal, String imageUrl, String establishmentId, String prefer, FeaturedOffer featuredOffer }) async
     test('test featuredOfferPatch', () async {
       // TODO
     });

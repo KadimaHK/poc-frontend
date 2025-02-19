@@ -28,6 +28,11 @@ void main() {
       // TODO
     });
 
+    // bool isPublic (default value: true)
+    test('to test the property `isPublic`', () async {
+      // TODO
+    });
+
     // String createdAt (default value: 'now()')
     test('to test the property `createdAt`', () async {
       // TODO

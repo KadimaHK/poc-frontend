@@ -131,7 +131,7 @@ class _ProfileDrawerState extends State<ProfileDrawer> {
               ),
               tileColor: Color(0xFF78626A),
               onTap: () async {
-                await api.RpcLogoutApi().rpcLogoutPost();
+                await api.RpcLogoutApi().rpcLogoutPost({});
                 MyApp.prefs!.remove('loginSessionToken');
                 MyApp.sessionApiClient = null;
                 Navigator.pop(context);

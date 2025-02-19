@@ -71,12 +71,13 @@ class {{{classname}}} {
     }
         {{/required}}
       {{/queryParams}}
-
+    {{#hasOptionalParams}}
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));
       });
     }
+    {{/hasOptionalParams}}
     {{/hasQueryParams}}
     {{#hasHeaderParams}}
 

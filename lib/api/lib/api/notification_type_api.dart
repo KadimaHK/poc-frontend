@@ -37,7 +37,6 @@ class NotificationTypeApi {
     if (type != null) {
       queryParams.addAll(_queryParams('', 'type', type));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));
@@ -124,7 +123,6 @@ class NotificationTypeApi {
     if (limit != null) {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));
@@ -219,7 +217,6 @@ class NotificationTypeApi {
     if (type != null) {
       queryParams.addAll(_queryParams('', 'type', type));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));
@@ -283,7 +280,6 @@ class NotificationTypeApi {
     if (select != null) {
       queryParams.addAll(_queryParams('', 'select', select));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));

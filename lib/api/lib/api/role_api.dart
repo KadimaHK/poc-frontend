@@ -37,7 +37,6 @@ class RoleApi {
     if (name != null) {
       queryParams.addAll(_queryParams('', 'name', name));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));
@@ -124,7 +123,6 @@ class RoleApi {
     if (limit != null) {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));
@@ -219,7 +217,6 @@ class RoleApi {
     if (name != null) {
       queryParams.addAll(_queryParams('', 'name', name));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));
@@ -283,7 +280,6 @@ class RoleApi {
     if (select != null) {
       queryParams.addAll(_queryParams('', 'select', select));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));

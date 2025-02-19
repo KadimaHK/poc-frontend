@@ -17,17 +17,17 @@ void main() {
   // final instance = UserFeaturedOfferApi();
 
   group('tests for UserFeaturedOfferApi', () {
-    //Future userFeaturedOfferDelete({ String userEmail, String featuredOfferId, String prefer }) async
+    //Future userFeaturedOfferDelete({ String userId, String featuredOfferId, String isRedeemed, String redeemCode, String redeemedAt, String prefer }) async
     test('test userFeaturedOfferDelete', () async {
       // TODO
     });
 
-    //Future<List<UserFeaturedOffer>> userFeaturedOfferGet({ String userEmail, String featuredOfferId, String select, String order, String range, String rangeUnit, String offset, String limit, String prefer }) async
+    //Future<List<UserFeaturedOffer>> userFeaturedOfferGet({ String userId, String featuredOfferId, String isRedeemed, String redeemCode, String redeemedAt, String select, String order, String range, String rangeUnit, String offset, String limit, String prefer }) async
     test('test userFeaturedOfferGet', () async {
       // TODO
     });
 
-    //Future userFeaturedOfferPatch({ String userEmail, String featuredOfferId, String prefer, UserFeaturedOffer userFeaturedOffer }) async
+    //Future userFeaturedOfferPatch({ String userId, String featuredOfferId, String isRedeemed, String redeemCode, String redeemedAt, String prefer, UserFeaturedOffer userFeaturedOffer }) async
     test('test userFeaturedOfferPatch', () async {
       // TODO
     });

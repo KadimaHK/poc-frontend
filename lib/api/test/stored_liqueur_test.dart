@@ -22,6 +22,24 @@ void main() {
       // TODO
     });
 
+    // Note: This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
+    // int userId
+    test('to test the property `userId`', () async {
+      // TODO
+    });
+
+    // Note: This is a Foreign Key to `establishment.id`.<fk table='establishment' column='id'/>
+    // int establishmentId
+    test('to test the property `establishmentId`', () async {
+      // TODO
+    });
+
+    // Note: This is a Foreign Key to `image.image_url`.<fk table='image' column='image_url'/>
+    // String imageUrl
+    test('to test the property `imageUrl`', () async {
+      // TODO
+    });
+
     // String name
     test('to test the property `name`', () async {
       // TODO
@@ -29,12 +47,6 @@ void main() {
 
     // String description
     test('to test the property `description`', () async {
-      // TODO
-    });
-
-    // Note: This is a Foreign Key to `image.image_url`.<fk table='image' column='image_url'/>
-    // String imageUrl
-    test('to test the property `imageUrl`', () async {
       // TODO
     });
 
@@ -48,26 +60,13 @@ void main() {
       // TODO
     });
 
-    // Note: This is a Foreign Key to `establishment.id`.<fk table='establishment' column='id'/>
-    // int establishmentId
-    test('to test the property `establishmentId`', () async {
-      // TODO
-    });
-
     // bool isRedeemed (default value: false)
     test('to test the property `isRedeemed`', () async {
       // TODO
     });
 
-    // Note: This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
-    // int userId
-    test('to test the property `userId`', () async {
-      // TODO
-    });
-
-    // Note: This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
-    // int transferedTo
-    test('to test the property `transferedTo`', () async {
+    // String redeemCode
+    test('to test the property `redeemCode`', () async {
       // TODO
     });
 

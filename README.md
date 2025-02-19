@@ -10,9 +10,9 @@ after the backend up
 custom api
 `openapi-generator generate -i http://<host>/custom-api/v1/ -o lib/custom-api -g dart`
 
-example
-`openapi-generator generate -t dev_scripts/api_templates/out -i http://poc-bar-app.com/api/ -o lib/api -g dart`
-`openapi-generator generate -i http://poc-bar-app.com/custom-api/v1/ -o lib/custom-api -g dart`
+example  
+`openapi-generator generate -t dev_scripts/api_templates/out -i http://localhost/api/ -o lib/api -g dart`  
+`openapi-generator generate -i http://localhost/custom-api/v1/ -o lib/custom-api -g dart`
 
 
 OpenAPI Generator Templates 

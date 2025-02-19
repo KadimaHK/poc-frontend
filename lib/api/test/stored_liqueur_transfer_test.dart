@@ -40,6 +40,11 @@ void main() {
       // TODO
     });
 
+    // bool isAccepted (default value: false)
+    test('to test the property `isAccepted`', () async {
+      // TODO
+    });
+
     // String createdAt (default value: 'now()')
     test('to test the property `createdAt`', () async {
       // TODO

@@ -17,17 +17,17 @@ void main() {
   // final instance = UserEstablishmentBookmarkApi();
 
   group('tests for UserEstablishmentBookmarkApi', () {
-    //Future userEstablishmentBookmarkDelete({ String userId, String establishmentId, String createdAt, String prefer }) async
+    //Future userEstablishmentBookmarkDelete({ String userId, String establishmentId, String isPublic, String createdAt, String prefer }) async
     test('test userEstablishmentBookmarkDelete', () async {
       // TODO
     });
 
-    //Future<List<UserEstablishmentBookmark>> userEstablishmentBookmarkGet({ String userId, String establishmentId, String createdAt, String select, String order, String range, String rangeUnit, String offset, String limit, String prefer }) async
+    //Future<List<UserEstablishmentBookmark>> userEstablishmentBookmarkGet({ String userId, String establishmentId, String isPublic, String createdAt, String select, String order, String range, String rangeUnit, String offset, String limit, String prefer }) async
     test('test userEstablishmentBookmarkGet', () async {
       // TODO
     });
 
-    //Future userEstablishmentBookmarkPatch({ String userId, String establishmentId, String createdAt, String prefer, UserEstablishmentBookmark userEstablishmentBookmark }) async
+    //Future userEstablishmentBookmarkPatch({ String userId, String establishmentId, String isPublic, String createdAt, String prefer, UserEstablishmentBookmark userEstablishmentBookmark }) async
     test('test userEstablishmentBookmarkPatch', () async {
       // TODO
     });

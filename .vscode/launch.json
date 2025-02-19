@@ -5,6 +5,7 @@
     "version": "0.2.0",
     "configurations": [
 
+
         {
             "name": "poc-frontend",
             "request": "launch",
@@ -12,6 +13,12 @@
             "program": "lib/main.dart",
             "args": [
                 "--no-enable-impeller",
+                "-d",
+                "web-server",
+                "--web-port",
+                "8180",
+                "--web-hostname",
+                "192.168.50.81"
             ]
         },
         {

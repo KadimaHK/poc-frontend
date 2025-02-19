@@ -19,21 +19,21 @@ void main() {
   group('tests for ImageApi', () {
     // Don't use this api to upload images, use the gin api instead
     //
-    //Future imageDelete({ String fileName, String baseUrl, String imageUrl, String createdAt, String updatedAt, String prefer }) async
+    //Future imageDelete({ String fileName, String baseUrl, String imageUrl, String likes, String createdAt, String updatedAt, String prefer }) async
     test('test imageDelete', () async {
       // TODO
     });
 
     // Don't use this api to upload images, use the gin api instead
     //
-    //Future<List<Image>> imageGet({ String fileName, String baseUrl, String imageUrl, String createdAt, String updatedAt, String select, String order, String range, String rangeUnit, String offset, String limit, String prefer }) async
+    //Future<List<Image>> imageGet({ String fileName, String baseUrl, String imageUrl, String likes, String createdAt, String updatedAt, String select, String order, String range, String rangeUnit, String offset, String limit, String prefer }) async
     test('test imageGet', () async {
       // TODO
     });
 
     // Don't use this api to upload images, use the gin api instead
     //
-    //Future imagePatch({ String fileName, String baseUrl, String imageUrl, String createdAt, String updatedAt, String prefer, Image image }) async
+    //Future imagePatch({ String fileName, String baseUrl, String imageUrl, String likes, String createdAt, String updatedAt, String prefer, Image image }) async
     test('test imagePatch', () async {
       // TODO
     });

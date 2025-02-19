@@ -57,7 +57,6 @@ class MessageApi {
     if (body != null) {
       queryParams.addAll(_queryParams('', 'body', body));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));
@@ -172,7 +171,6 @@ class MessageApi {
     if (limit != null) {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));
@@ -295,7 +293,6 @@ class MessageApi {
     if (body != null) {
       queryParams.addAll(_queryParams('', 'body', body));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));
@@ -367,7 +364,6 @@ class MessageApi {
     if (select != null) {
       queryParams.addAll(_queryParams('', 'select', select));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));

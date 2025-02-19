@@ -17,17 +17,17 @@ void main() {
   // final instance = EstablishmentApi();
 
   group('tests for EstablishmentApi', () {
-    //Future establishmentDelete({ String id, String name, String description, String location, String cordX, String cordY, String category, String thumbnailUrl, String rank, String bookingPoints, String createdAt, String updatedAt, String prefer }) async
+    //Future establishmentDelete({ String id, String name, String description, String notice, String address, String cordX, String cordY, String phone, String email, String website, String category, String thumbnailUrl, String rank, String bookingPoints, String bookmarkCount, String createdAt, String updatedAt, String prefer }) async
     test('test establishmentDelete', () async {
       // TODO
     });
 
-    //Future<List<Establishment>> establishmentGet({ String id, String name, String description, String location, String cordX, String cordY, String category, String thumbnailUrl, String rank, String bookingPoints, String createdAt, String updatedAt, String select, String order, String range, String rangeUnit, String offset, String limit, String prefer }) async
+    //Future<List<Establishment>> establishmentGet({ String id, String name, String description, String notice, String address, String cordX, String cordY, String phone, String email, String website, String category, String thumbnailUrl, String rank, String bookingPoints, String bookmarkCount, String createdAt, String updatedAt, String select, String order, String range, String rangeUnit, String offset, String limit, String prefer }) async
     test('test establishmentGet', () async {
       // TODO
     });
 
-    //Future establishmentPatch({ String id, String name, String description, String location, String cordX, String cordY, String category, String thumbnailUrl, String rank, String bookingPoints, String createdAt, String updatedAt, String prefer, Establishment establishment }) async
+    //Future establishmentPatch({ String id, String name, String description, String notice, String address, String cordX, String cordY, String phone, String email, String website, String category, String thumbnailUrl, String rank, String bookingPoints, String bookmarkCount, String createdAt, String updatedAt, String prefer, Establishment establishment }) async
     test('test establishmentPatch', () async {
       // TODO
     });

@@ -7,6 +7,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:http/src/response.dart';
 import 'package:poc_frontend/api/lib/api.dart';
 import 'package:poc_frontend/main.dart';
+import 'package:poc_frontend/rpc.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -97,12 +98,7 @@ class _SignUpPageState extends State<SignUpPage> {
         TextButton(
           onPressed: () async {
             try {
-              Object res = await RpcSignUpApi().rpcSignUpPost({
-                'email': _emailController.text,
-                'name': _nameController.text,
-                'password': _passwordController.text,
-              });
-              String sessionToken = res as String;
+              String sessionToken = rpcSignUpPost(_emailController.text, _nameController.text, _passwordController.text);
               log(sessionToken, name: 'session_token');
               MyApp.prefs!.setString('loginSessionToken', sessionToken);
 

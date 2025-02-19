@@ -32,8 +32,13 @@ void main() {
       // TODO
     });
 
-    // String location
-    test('to test the property `location`', () async {
+    // String notice
+    test('to test the property `notice`', () async {
+      // TODO
+    });
+
+    // String address
+    test('to test the property `address`', () async {
       // TODO
     });
 
@@ -44,6 +49,21 @@ void main() {
 
     // num cordY
     test('to test the property `cordY`', () async {
+      // TODO
+    });
+
+    // String phone
+    test('to test the property `phone`', () async {
+      // TODO
+    });
+
+    // String email
+    test('to test the property `email`', () async {
+      // TODO
+    });
+
+    // String website
+    test('to test the property `website`', () async {
       // TODO
     });
 
@@ -68,6 +88,11 @@ void main() {
     // How many points are a user earning by booking this establishment
     // int bookingPoints
     test('to test the property `bookingPoints`', () async {
+      // TODO
+    });
+
+    // int bookmarkCount
+    test('to test the property `bookmarkCount`', () async {
       // TODO
     });
 

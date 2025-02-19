@@ -27,14 +27,15 @@ void main() {
       // TODO
     });
 
-    // String from (default value: 'CURRENT_USER')
-    test('to test the property `from`', () async {
+    // Note: This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
+    // int fromUserId
+    test('to test the property `fromUserId`', () async {
       // TODO
     });
 
-    // Note: This is a Foreign Key to `user.email`.<fk table='user' column='email'/>
-    // String to
-    test('to test the property `to`', () async {
+    // Note: This is a Foreign Key to `user.id`.<fk table='user' column='id'/>
+    // int toUserId
+    test('to test the property `toUserId`', () async {
       // TODO
     });
 

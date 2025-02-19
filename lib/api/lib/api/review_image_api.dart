@@ -67,7 +67,6 @@ class ReviewImageApi {
     if (type != null) {
       queryParams.addAll(_queryParams('', 'type', type));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));
@@ -196,7 +195,6 @@ class ReviewImageApi {
     if (limit != null) {
       queryParams.addAll(_queryParams('', 'limit', limit));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));
@@ -333,7 +331,6 @@ class ReviewImageApi {
     if (type != null) {
       queryParams.addAll(_queryParams('', 'type', type));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));
@@ -409,7 +406,6 @@ class ReviewImageApi {
     if (select != null) {
       queryParams.addAll(_queryParams('', 'select', select));
     }
-
     if(other != null) {
       other.forEach((key, value) {
         queryParams.addAll(_queryParams('', key, value));
