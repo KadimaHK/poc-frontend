@@ -19,7 +19,7 @@ class MessagePage extends StatefulWidget {
 }
 
 class _MessagePageState extends State<MessagePage> {
-  List<api.VwUserAnon>? friends = [];
+  List<api.User>? friends = [];
 
   @override
   void initState() {
@@ -32,7 +32,7 @@ class _MessagePageState extends State<MessagePage> {
       List<api.Friend>? fds = (await api.FriendApi(MyApp.sessionApiClient).friendGet())!;
       for (api.Friend item in fds) {
         // api.User user = (await api.UserApi().userGet(id: 'eq.${item.friendId}', select: 'id,uuid,name,icon_url,following_count,follower_count'))!.first;
-        api.VwUserAnon user = (await api.VwUserAnonApi(MyApp.sessionApiClient).vwUserAnonGet(id: 'eq.${item.friendId}'))!.first;
+        api.User user = (await api.UserApi(MyApp.sessionApiClient).userGet(id: 'eq.${item.friendId}'))!.first;
         friends?.add(user);
         log(user.toString());
       }
