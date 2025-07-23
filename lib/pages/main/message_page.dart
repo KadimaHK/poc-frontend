@@ -8,6 +8,7 @@ import 'package:poc_frontend/components/app_bar.dart';
 import 'package:poc_frontend/consts.dart';
 import 'package:poc_frontend/main.dart';
 import 'package:poc_frontend/pages/chat_page.dart';
+import 'package:poc_frontend/pages/login_page.dart';
 import 'package:poc_frontend/pages/main/profile_page.dart';
 import 'package:poc_frontend/pages/user_search_page.dart';
 
@@ -24,7 +25,14 @@ class _MessagePageState extends State<MessagePage> {
   @override
   void initState() {
     super.initState();
-    fetchData();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (MyApp.prefs!.getString('loginSessionToken') == null) {
+        Navigator.pushNamed(context, LoginPage.routeName);
+        return;
+      } else {
+        fetchData();
+      }
+    });
   }
 
   void fetchData() async {

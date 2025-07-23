@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:poc_frontend/api/lib/api.dart';
@@ -10,7 +11,7 @@ Future<String> rpcLoginPost(
   if (response.statusCode >= HttpStatus.badRequest) {
     throw ApiException(response.statusCode, response.body);
   }
-  Map<String, dynamic> body = response.body as Map<String, dynamic>;
+  Map<String, dynamic> body = jsonDecode(response.body) as Map<String, dynamic>;
   return body['session_token'];
 }
 
