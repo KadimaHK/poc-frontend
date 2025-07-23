@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:poc_frontend/l10n/app_localizations.dart';
 import 'package:poc_frontend/api/lib/api.dart' as api;
 import 'package:poc_frontend/api/lib/api.dart';
 import 'package:poc_frontend/components/profile_drawer.dart';
@@ -137,7 +137,7 @@ class MyAppState extends State<MyApp> {
           actionsIconTheme: IconThemeData(color: Colors.white),
           iconTheme: IconThemeData(color: Colors.white),
         ),
-        dialogTheme: DialogTheme(
+        dialogTheme: DialogThemeData(
           backgroundColor: primaryColor,
           titleTextStyle: TextStyle(color: Colors.white),
           contentTextStyle: TextStyle(color: Colors.white),
@@ -165,7 +165,7 @@ class MyAppState extends State<MyApp> {
         drawerTheme: DrawerThemeData(
           backgroundColor: primaryColor,
         ),
-        cardTheme: CardTheme(
+        cardTheme: CardThemeData(
           color: secondaryColor,
           elevation: 5,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -177,7 +177,7 @@ class MyAppState extends State<MyApp> {
           textColor: Colors.white,
           titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
         ),
-        tabBarTheme: TabBarTheme(
+        tabBarTheme: TabBarThemeData(
           labelColor: Colors.white,
           unselectedLabelColor: Colors.grey,
         ),

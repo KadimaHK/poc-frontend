@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:poc_frontend/api/lib/api.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:poc_frontend/l10n/app_localizations.dart';
 import 'package:poc_frontend/components/qr_code_dialog.dart';
 
 class UserMembershipCard extends StatefulWidget {

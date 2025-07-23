@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:poc_frontend/l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
 import 'package:poc_frontend/api/lib/api.dart' as api;
 import 'package:poc_frontend/components/rating.dart';

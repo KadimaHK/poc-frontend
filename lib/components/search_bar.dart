@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:poc_frontend/l10n/app_localizations.dart';
 
 class MainSearchBar extends StatefulWidget {
   MainSearchBar({super.key, this.onChanged});
